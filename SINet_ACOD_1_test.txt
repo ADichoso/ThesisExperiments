@@ -1,0 +1,73 @@
+C2F-log.txt
+C2FNet
+C2FNet_ACOD_1.txt
+checkpoints
+ckpt
+ckptlog.log
+datasets
+OCENet
+OCENet_ACOD_1.txt
+PreyNet
+PreyNet_ACOD_1.txt
+results
+Results
+RISNet
+RISNet_test.out
+run_C2FNet.slurm
+run_OCENet.slurm
+run_PreyNet.slurm
+run_RISNet.slurm
+run_SINet.slurm
+run_SINetV2.slurm
+run_UGTR.slurm
+scratch1
+SINet
+SINet_ACOD_1_test.txt
+SINet_ACOD_1.txt
+SINetV2
+SINetV2_ACOD_1_test.txt
+SINetV2_ACOD_1.txt
+snapshot
+Snapshot
+test_SINet.slurm
+test_SINetV2.slurm
+UGTR
+UGTR_ACOD_1.txt
+CUDA_DEVICE=/dev/nvidia/0
+Wed Jun 11 16:17:42 2025       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 470.239.06   Driver Version: 470.239.06   CUDA Version: 11.4     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  Tesla P40           Off  | 00000000:82:00.0 Off |                    0 |
+| N/A   30C    P0    46W / 250W |      0MiB / 22919MiB |      1%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|  No running processes found                                                 |
++-----------------------------------------------------------------------------+
+Module load: anaconda/3-2023.07-2
+conda 23.7.4
+[INFO] initialize weights from resnet50
+1492
+Traceback (most recent call last):
+  File "/scratch1/aaron.dichoso/SINet/MyTest.py", line 45, in <module>
+    _, cam = model(image)
+  File "/home/aaron.dichoso/.conda/envs/TrainingApex/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch1/aaron.dichoso/SINet/Src/SINet.py", line 218, in forward
+    camouflage_map_sm = self.pdc_sm(x4_sm_rf, x3_sm_rf, x2_sm_rf, x01_sm_rf)
+  File "/home/aaron.dichoso/.conda/envs/TrainingApex/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch1/aaron.dichoso/SINet/Src/SINet.py", line 106, in forward
+    x3_2 = torch.cat((x3_1, self.conv_upsample5(x2_2_up_x3), x4), dim=1)
+RuntimeError: Sizes of tensors must match except in dimension 1. Expected size 187 but got size 186 for tensor number 2 in the list.
+srun: error: saliksik-gpu-03: task 0: Exited with exit code 1

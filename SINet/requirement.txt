@@ -1,0 +1,4 @@
+torch
+scipy==1.2.2
+torchvision
+opencv-python==3.4.2.17
