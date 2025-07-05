@@ -7,13 +7,15 @@
 #SBATCH --job-name="OCENet-ACOD-1"
 #SBATCH --cpus-per-task=8
 #SBATCH --mem-per-cpu=8GB
-#SBATCH --output="Logs/Train/OCENet_ACOD_1.txt"
+#SBATCH --output="./output/OCENet_ACOD_1.txt"
 #SBATCH --mail-user=aaron_gabrielle_dichoso@dlsu.edu.ph
 #SBATCH --mail-type=END
 
 
 echo "CUDA_DEVICE=/dev/nvidia/$CUDA_VISIBLE_DEVICES"
 nvidia-smi
+
+cd ..
 
 module load anaconda
 conda init

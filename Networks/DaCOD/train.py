@@ -24,24 +24,35 @@ from utils.misc import check_mkdir ,AvgMeter
 from models.Depth_cod import De_cod
 
 import utils.loss as loss
+
+
+import argparse
+parser = argparse.ArgumentParser()
+parser.add_argument('--epoch', type=int, default=60)
+parser.add_argument('--lr', type=float, default=1e-3)
+parser.add_argument('--batchsize', type=int, default=10)
+parser.add_argument('--trainsize', type=int, default=448)
+parser.add_argument('--dataset', type=str, default='ACOD-12K')
+
+opt = parser.parse_args()
+
 cudnn.benchmark = True  
 torch.manual_seed(2021)  
 device_ids = [3]         
 
-ckpt_path = './ckpt'     
-ckpt_path2 = './DaCOD/logs'     
+ckpt_path = './Checkpoints/Train/'     
 exp_name = 'DaCOD'
 
 args = {
-    'epoch_num': 60,                                    
-    'train_batch_size': 10,                             
+    'epoch_num': opt.epoch,                                    
+    'train_batch_size': opt.batchsize,                             
     'last_epoch': 0,                                    
-    'lr': 1e-3,                                         
+    'lr': opt.lr,                                         
     'lr_decay': 0.9,                                    
     'weight_decay': 5e-4,                               
     'momentum': 0.9,                                    
     'snapshot': '',
-    'scale': 448,                                       
+    'scale': opt.trainsize,                                       
     'save_point': [i for i in range (5, 50, 5)],
     'poly_train': True,                                 
     'optimizer': 'SGD',                                 
@@ -52,9 +63,11 @@ print(torch.__version__)
 #路径Path设置
 check_mkdir(ckpt_path)                               #检查路径是否存在  没有就创建
 check_mkdir(os.path.join(ckpt_path,exp_name))        #同上
-vis_path = os.path.join(ckpt_path2,exp_name,'log')    #拼接日志文件夹的路径
+vis_path = os.path.join(ckpt_path,exp_name,'log')    #拼接日志文件夹的路径
 check_mkdir(vis_path)                                #检查日志文件夹路径是否存在   没有就创建
-log_path = os.path.join(ckpt_path,exp_name,str(datetime.datetime.now())+'.txt')
+
+
+log_path = os.path.join("./Logs/",exp_name,exp_name + "_" + opt.dataset + "_" + str(datetime.datetime.now())+'.txt')
 
 log_path = log_path.replace('-','_')
 log_path = log_path.replace(':','_')
@@ -80,10 +93,9 @@ dp_transform = transforms.ToTensor()
 
 
 
-train_set = ImageFolder("./ACOD-12K/Train",joint_transform,img_transform,gt_transform,dp_transform)
+train_set = ImageFolder(".Datasets/{}/Train".format(opt.dataset),joint_transform,img_transform,gt_transform,dp_transform)
 print("Train set: {}".format(train_set.__len__()))
 train_loader = DataLoader(train_set, batch_size=args['train_batch_size'], num_workers=16, shuffle=True)
-
 
 total_epoch = args['epoch_num'] * len(train_loader)
 

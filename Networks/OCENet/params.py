@@ -20,17 +20,17 @@ parser.add_argument('--des_reduced_channel', type=int, default=64, help='reduced
 parser.add_argument('--langevin_step_num_des', type=int, default=10, help='number of langevin steps for ebm')
 parser.add_argument('--langevin_step_size_des', type=float, default=0.026, help='step size of EBM langevin')
 parser.add_argument('--energy_form', default='identity', help='tanh | sigmoid | identity | softplus')
-parser.add_argument('--train_image_root', default='./datasets/ACOD-12K/Train/Imgs/',
+parser.add_argument('--train_image_root', default='./Datasets/ACOD-12K/Train/Imgs/',
                     help='training image root directory')
-parser.add_argument('--train_gt_root', default='./datasets/ACOD-12K/Train/GT/',
+parser.add_argument('--train_gt_root', default='./Datasets/ACOD-12K/Train/GT/',
                     help='training ground truth root directory')
 parser.add_argument('--train_bd_root', default='/students/u6617221/COD-master/dataset/train/Edge/',
                     help='training boundary label root directory')
 parser.add_argument('--test_dataset_root', default='./datasets/ACOD-12K/Test/',
                     help='testing image root directory')
-parser.add_argument('--model_save_path', default='./checkpoints/', help='directory where training model is saved to')
+parser.add_argument('--model_save_path', default='./Checkpoints/', help='directory where training model is saved to')
 parser.add_argument('--experiment_name', default='OCENet', help='name of the experiment where model checkpoints are saved to')
-parser.add_argument('--test_datasets', default=['CAMO', 'CHAMELEON', 'COD10K'],
+parser.add_argument('--test_datasets', default=['ACOD-12K'],
                     help='collection of testing dataset')
 parser.add_argument('--eval_save_path', default='/students/u6617221/COD-master/train_val/')
 parser.add_argument('--seed', type=int, default=1, help='random seed')

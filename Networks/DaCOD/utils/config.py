@@ -1,6 +1,6 @@
 import os 
 
-backbone_path = './DaCOD/backbone/resnet50-19c8e357.pth'
+backbone_path = './Backbones/resnet50-19c8e357.pth'
 
 datasets_root = './Datasets'
 

@@ -110,8 +110,8 @@ def train():
             os.makedirs(args.model_save_path)
 
         if epoch % 10 == 0:
-            torch.save(COD_Net.state_dict(), os.path.join(args.model_save_path, args.experiment_name + f'/COD_Model_{epoch}.pth'))
-            torch.save(OCE_Net.state_dict(), os.path.join(args.model_save_path, args.experiment_name + f'/OCE_Model_{epoch}.pth'))
+            torch.save(COD_Net.state_dict(), os.path.join(args.model_save_path, args.experiment_name, f'/COD_Model_{epoch}.pth'))
+            torch.save(OCE_Net.state_dict(), os.path.join(args.model_save_path, args.experiment_name, f'/OCE_Model_{epoch}.pth'))
             print("Successfully saved the trained models to {}".format(args.model_save_path))
 
 if __name__ == "__main__":

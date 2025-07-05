@@ -19,6 +19,6 @@ module load anaconda/3-2024
 conda init
 conda activate Training36
 
-srun python Networks/DaCOD/train.py
+srun python Networks/DaCOD/train.py --dataset="ACOD-12K"
 
 conda deactivate

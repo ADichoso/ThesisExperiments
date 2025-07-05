@@ -55,9 +55,9 @@ def train(train_loader, model, optimizer, epoch):
         if i % 20 == 0 or i == total_step:
             log_text = '{} Epoch [{:03d}/{:03d}], Step [{:04d}/{:04d}], [lateral-3: {:.4f}]'.format(datetime.now(), epoch, opt.epoch, i, total_step,loss_record3.show())
             print(log_text)
-            with open("C2F-log.txt", 'w', encoding="utf-8") as file:
+            with open("./Logs/Train/C2F-log-{}.txt".format(opt.dataset), 'w', encoding="utf-8") as file:
                 file.write(log_text + "\n")
-    save_path = 'checkpoints/{}/'.format(opt.train_save)
+    save_path = 'Checkpoints/{}/{}'.format(opt.train_save, opt.dataset)
     os.makedirs(save_path, exist_ok=True)
     if (epoch+1) % 5 == 0:
         torch.save(model.state_dict(), save_path + 'C2FNet-%d.pth' % epoch)
@@ -76,8 +76,8 @@ if __name__ == '__main__':
                         default=352, help='training dataset size')
     parser.add_argument('--clip', type=float,
                         default=0.5, help='gradient clipping margin')
-    parser.add_argument('--train_path', type=str,
-                        default='./datasets/ACOD-12K/Train', help='path to train dataset')
+    parser.add_argument('--dataset', type=str,
+                        default='ACOD-12K', help='path to train dataset')
     parser.add_argument('--train_save', type=str,
                         default='C2FNet')
     opt = parser.parse_args()
@@ -88,9 +88,10 @@ if __name__ == '__main__':
 
     params = model.parameters()
     optimizer = AdaXW(params, opt.lr)
+    train_path = './Datasets/{}/Train'.format(opt.dataset)
 
-    image_root = '{}/Imgs/'.format(opt.train_path)
-    gt_root = '{}/GT/'.format(opt.train_path)
+    image_root = '{}/Imgs/'.format(train_path)
+    gt_root = '{}/GT/'.format(train_path)
 
     train_loader = get_loader(image_root, gt_root, batchsize=opt.batchsize, trainsize=opt.trainsize)
     total_step = len(train_loader)

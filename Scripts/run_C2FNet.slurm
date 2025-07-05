@@ -7,7 +7,7 @@
 #SBATCH --job-name="C2FNet-ACOD-1"
 #SBATCH --cpus-per-task=8
 #SBATCH --mem-per-cpu=4GB
-#SBATCH --output="Logs/Train/C2FNet_ACOD_1.txt"
+#SBATCH --output="./output/C2FNet_ACOD_1.txt"
 #SBATCH --mail-user=aaron_gabrielle_dichoso@dlsu.edu.ph
 #SBATCH --mail-type=END
 
@@ -15,10 +15,12 @@
 echo "CUDA_DEVICE=/dev/nvidia/$CUDA_VISIBLE_DEVICES"
 nvidia-smi
 
+cd ..
+
 module load anaconda
 conda init
 conda activate Training36
 
-srun python Networks/C2FNet/MyTrain.py
+srun python Networks/C2FNet/MyTrain.py --dataset="ACOD-12K"
 
 conda deactivate

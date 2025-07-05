@@ -1,3 +1,4 @@
-datasets/
-results/
+Results/
+Backbones/
+Datasets/
 *.pth

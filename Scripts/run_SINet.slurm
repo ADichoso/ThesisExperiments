@@ -7,7 +7,7 @@
 #SBATCH --job-name="SINet-ACOD-1"
 #SBATCH --cpus-per-task=8
 #SBATCH --mem-per-cpu=4GB
-#SBATCH --output="Logs/Train/SINet_ACOD_1.txt"
+#SBATCH --output="output/SINet_ACOD_1.txt"
 #SBATCH --mail-user=aaron_gabrielle_dichoso@dlsu.edu.ph
 #SBATCH --mail-type=END
 

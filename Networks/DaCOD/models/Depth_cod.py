@@ -537,7 +537,7 @@ class De_cod(nn.Module):
         
 
         self.swin = swin.Swintransformer(224)
-        self.swin.load_state_dict(torch.load('./DaCOD/backbone/swin_large_patch4_window7_224_22k.pth')['model'],strict=False)
+        self.swin.load_state_dict(torch.load('./Backbones/swin_large_patch4_window7_224_22k.pth')['model'],strict=False)
 
         # channel reduction
         self.cr4 = nn.Sequential(nn.Conv2d(2048, 512, 3, 1, 1), nn.BatchNorm2d(512), nn.ReLU())
