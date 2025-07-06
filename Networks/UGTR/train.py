@@ -37,7 +37,7 @@ import h5py
 
 def get_parser():
     parser = argparse.ArgumentParser(description='PyTorch Semantic Segmentation')
-    parser.add_argument('--config', type=str, default='./UGTR/config/cod_resnet50.yaml', help='config file')
+    parser.add_argument('--config', type=str, default='./Networks/UGTR/config/cod_resnet50.yaml', help='config file')
     parser.add_argument('opts', help='see config/cod_resnet50.yaml for all options', default=None, nargs=argparse.REMAINDER)
     args = parser.parse_args()
     assert args.config is not None

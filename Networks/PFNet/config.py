@@ -11,9 +11,9 @@
 """
 import os
 
-backbone_path = './PFNet/backbone/resnet/resnet50-19c8e357.pth'
+backbone_path = './Backbones/resnet50-19c8e357.pth'
 
-datasets_root = './'
+datasets_root = './Datasets'
 
 cod_training_root = os.path.join(datasets_root, 'train')
 acod_training_root = os.path.join(datasets_root, 'ACOD-12K/Train')

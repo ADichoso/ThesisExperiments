@@ -103,6 +103,7 @@ class PDC_SM(nn.Module):
 
         # x3_2: concat x3_1, upsampled x2_2 to x3_1 size, and x4
         x2_2_up_x3 = F.interpolate(x2_2, size=x3_1.shape[2:], mode='bilinear', align_corners=True)
+        x4 = F.interpolate(x4, size=x3_1.shape[2:], mode='bilinear', align_corners=False)
         x3_2 = torch.cat((x3_1, self.conv_upsample5(x2_2_up_x3), x4), dim=1)
         x3_2 = self.conv_concat3(x3_2)
 

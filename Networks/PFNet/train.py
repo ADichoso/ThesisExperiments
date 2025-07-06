@@ -36,7 +36,7 @@ cudnn.benchmark = True
 torch.manual_seed(2021)
 device_ids = [2]
 
-ckpt_path = './ckpt'
+ckpt_path = './Checkpoints'
 exp_name = 'PFNet'
 
 args = {
@@ -59,9 +59,9 @@ print(torch.__version__)
 # Path.
 check_mkdir(ckpt_path)
 check_mkdir(os.path.join(ckpt_path, exp_name))
-vis_path = os.path.join(ckpt_path, exp_name, 'log')
+vis_path = os.path.join("./Logs/Train", exp_name)
 check_mkdir(vis_path)
-log_path = os.path.join(ckpt_path, exp_name, str(datetime.datetime.now()) + '.txt')
+log_path = os.path.join(ckpt_path, exp_name + "_" + str(datetime.datetime.now()) + '.txt')
 writer = SummaryWriter(log_dir=vis_path, comment=exp_name)
 
 # Transform Data.

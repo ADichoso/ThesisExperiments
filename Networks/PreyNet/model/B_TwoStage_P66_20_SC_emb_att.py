@@ -222,7 +222,7 @@ class EmbingBlock(nn.Module):
 
 class SAM_ResNet(nn.Module):
     # resnet based encoder decoder
-    def __init__(self, backbone_path='./PreyNet/ckpt/resnet50-19c8e357.pth'):
+    def __init__(self, backbone_path='./Backbones/resnet50-19c8e357.pth'):
         super(SAM_ResNet, self).__init__()
 
         # backbone

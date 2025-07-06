@@ -149,12 +149,12 @@ if __name__ == '__main__':
     parser.add_argument('--decay_epoch', type=int, default=50, help='every n epochs decay learning rate')
     parser.add_argument('--load', type=str, default=None, help='train from checkpoints')
     parser.add_argument('--gpu_id', type=str, default='0', help='train use gpu')
-    parser.add_argument('--train_root', type=str, default='./datasets/ACOD-12K/Train/',
+    parser.add_argument('--train_root', type=str, default='./Datasets/ACOD-12K/Train/',
                         help='the training rgb images root')
-    parser.add_argument('--val_root', type=str, default='./datasets/ACOD-12K/Test/',
+    parser.add_argument('--val_root', type=str, default='./Datasets/ACOD-12K/Test/',
                         help='the test rgb images root')
     parser.add_argument('--save_path', type=str,
-                        default='./snapshot/SINet_V2/',
+                        default='./Checkpoints/SINet_V2/',
                         help='the path to save model and log')
     opt = parser.parse_args()
 
@@ -193,7 +193,7 @@ if __name__ == '__main__':
     total_step = len(train_loader)
 
     # logging
-    logging.basicConfig(filename=save_path + 'log.log',
+    logging.basicConfig(filename='./Logs/Train/SINet_V2.txt',
                         format='[%(asctime)s-%(filename)s-%(levelname)s:%(message)s]',
                         level=logging.INFO, filemode='a', datefmt='%Y-%m-%d %I:%M:%S %p')
     logging.info("Network-Train")

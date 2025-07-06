@@ -82,14 +82,14 @@ if __name__ == "__main__":
     parser.add_argument('--clip', type=float, default=0.5, help='gradient clipping margin')
     parser.add_argument('--decay_rate', type=float, default=0.1, help='decay rate of learning rate')
     parser.add_argument('--decay_epoch', type=int, default=50, help='every n epochs decay learning rate')
-    parser.add_argument('--train_path', type=str, default='./datasets/detection/train', help='path to train dataset')
-    parser.add_argument('--save_path', type=str, default='./checkpoints/RISNet_NoDepth', help='path to save your model')
+    parser.add_argument('--train_path', type=str, default='./Datasets/detection/train', help='path to train dataset')
+    parser.add_argument('--save_path', type=str, default='./Checkpoints/RISNet_NoDepth', help='path to save your model')
     parser.add_argument('--epoch_save', type=int, default=5, help='every n epochs to save model')
     opt = parser.parse_args()
 
     os.makedirs(opt.save_path, exist_ok=True)
 
-    logging.basicConfig(filename=opt.save_path+'log.log',
+    logging.basicConfig(filename='./Logs/Train/RISNet_NoDepth.txt',
                         format='[%(asctime)s-%(filename)s-%(levelname)s:%(message)s]',
                         level = logging.INFO, filemode='a', datefmt='%Y-%m-%d %I:%M:%S %p')
     logging.info("CCD-Train")

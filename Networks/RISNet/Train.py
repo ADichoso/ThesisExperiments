@@ -84,8 +84,8 @@ if __name__ == "__main__":
     parser.add_argument('--clip', type=float, default=0.5, help='gradient clipping margin')
     parser.add_argument('--decay_rate', type=float, default=0.1, help='decay rate of learning rate')
     parser.add_argument('--decay_epoch', type=int, default=5, help='every n epochs decay learning rate')
-    parser.add_argument('--train_path', type=str, default='./datasets/detection/detection/train', help='path to train dataset')
-    parser.add_argument('--save_path', type=str, default='./scratch1/aaron.dichoso/ckpt', help='path to save your model')
+    parser.add_argument('--train_path', type=str, default='./Datasets/ACOD-12K/Train', help='path to train dataset')
+    parser.add_argument('--save_path', type=str, default='./Checkpoints/', help='path to save your model')
     parser.add_argument('--epoch_save', type=int, default=5, help='every n epochs to save model')
     parser.add_argument('--has_depth', dest="depth", action="store_true", help='training data has depth images')
     parser.add_argument('--no_depth', dest="depth", action="store_false", help='training data has no depth images')
@@ -95,7 +95,7 @@ if __name__ == "__main__":
 
     os.makedirs(opt.save_path, exist_ok=True)
 
-    logging.basicConfig(filename=opt.save_path+'log.log',
+    logging.basicConfig(filename='./Logs/Train/RISNet.txt',
                         format='[%(asctime)s-%(filename)s-%(levelname)s:%(message)s]',
                         level = logging.INFO, filemode='a', datefmt='%Y-%m-%d %I:%M:%S %p')
     logging.info("CCD-Train")

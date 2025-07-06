@@ -160,9 +160,9 @@ if __name__ == '__main__':
     parser.add_argument('--load', type=str, default=None, help='train from checkpoints')
     parser.add_argument('--decay_rate', type=float,default=0.1, help='decay rate of learning rate')
     parser.add_argument('--decay_epoch', type=int,default=50, help='every n epochs decay learning rate')
-    parser.add_argument('--train_path', type=str,default='./ACOD-12K/Train',help='path to train dataset')
-    parser.add_argument('--test_path', type=str,default='./ACOD-12K/Test',help='path to testing dataset')
-    parser.add_argument('--save_path', type=str,default='./ckpt/HitNet/')
+    parser.add_argument('--train_path', type=str,default='./Datasets/ACOD-12K/Train',help='path to train dataset')
+    parser.add_argument('--test_path', type=str,default='./Datasets/ACOD-12K/Test',help='path to testing dataset')
+    parser.add_argument('--save_path', type=str,default='./Checkpoints/HitNet/')
     parser.add_argument('--epoch_save', type=int,default=1, help='every n epochs to save model')
     opt = parser.parse_args()
 
@@ -170,7 +170,7 @@ if __name__ == '__main__':
     if not os.path.exists(opt.save_path):
         os.makedirs(opt.save_path)
 
-    logging.basicConfig(filename=opt.save_path + 'log.log',
+    logging.basicConfig(filename='./Logs/Train/HitNet.txt',
                         format='[%(asctime)s-%(filename)s-%(levelname)s:%(message)s]',
                         level=logging.INFO, filemode='a', datefmt='%Y-%m-%d %I:%M:%S %p')
     logging.info("Network-Train")

@@ -1,0 +1,43 @@
+Backbones
+Checkpoints
+Datasets
+Logs
+Networks
+py_sod_metrics
+Results
+RISNetTesting.ipynb
+Scripts
+CUDA_DEVICE=/dev/nvidia/0
+Sat Jul  5 22:22:41 2025       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 470.239.06   Driver Version: 470.239.06   CUDA Version: 11.4     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  Tesla P40           Off  | 00000000:82:00.0 Off |                    0 |
+| N/A   50C    P0    47W / 250W |      0MiB / 22919MiB |      1%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|  No running processes found                                                 |
++-----------------------------------------------------------------------------+
+Module load: anaconda/3-2023.07-2
+conda 23.7.4
+Traceback (most recent call last):
+  File "/scratch1/aaron.dichoso/Networks/UGTR/train.py", line 427, in <module>
+    main()
+  File "/scratch1/aaron.dichoso/Networks/UGTR/train.py", line 79, in main
+    args = get_parser()
+  File "/scratch1/aaron.dichoso/Networks/UGTR/train.py", line 44, in get_parser
+    cfg = config.load_cfg_from_cfg_file(args.config)
+  File "/scratch1/aaron.dichoso/Networks/UGTR/util/config.py", line 59, in load_cfg_from_cfg_file
+    assert os.path.isfile(file) and file.endswith('.yaml'), \
+AssertionError: ./UGTR/config/cod_resnet50.yaml is not a yaml file
+srun: error: saliksik-gpu-03: task 0: Exited with exit code 1

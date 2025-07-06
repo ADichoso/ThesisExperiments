@@ -255,15 +255,15 @@ if __name__ == '__main__':
     parser.add_argument('--decay_epoch', type=int, default=50, help='every n epochs decay learning rate')
     parser.add_argument('--load', type=str, default=None, help='train from checkpoints')
     parser.add_argument('--gpu_id', type=str, default='0', help='train use gpu')
-    parser.add_argument('--train_root', type=str, default='./datasets/ACOD-12K/Train/',
+    parser.add_argument('--train_root', type=str, default='./Datasets/ACOD-12K/Train/',
                         help='the training rgb images root')
-    parser.add_argument('--val_root', type=str, default='./datasets/ACOD-12K/Test/',
+    parser.add_argument('--val_root', type=str, default='./Datasets/ACOD-12K/Test/',
                         help='the test rgb images root')
     parser.add_argument('--val_root_2', type=str,
-                        default='./datasets/ACOD-12K/Test/',
+                        default='./Datasets/ACOD-12K/Test/',
                         help='the test rgb images root')
     parser.add_argument('--save_path', type=str,
-                        default='./checkpoint/PreyNet/',
+                        default='./Checkpoints/PreyNet/',
                         help='the path to save model and log')
     opt = parser.parse_args()
 
