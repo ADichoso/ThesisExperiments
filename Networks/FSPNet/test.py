@@ -6,7 +6,7 @@ from torch.utils.data import DataLoader
 import numpy as np
 import torch.nn.functional as F
 from imageio import imwrite
-
+import time
 if __name__ =='__main__':
     batch_size = 1
     net = FSPNet_model.Model(None, img_size=384).cuda()
@@ -20,6 +20,7 @@ if __name__ =='__main__':
 
     result_save_root="/path_to_save_root/results/"
 
+    inference_times = [-1 for i in range(test_loader.size)]
     for m in ckpt:
         print(m)
         # pretrained_dict = torch.load("./ckpt/"+m)['model']

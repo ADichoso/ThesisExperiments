@@ -1,0 +1,12 @@
+Network,Plant,S,FWB,E,MAE
+SINet,bean,0.525,0.079,0.624,0.008
+SINet,cucumber,0.517,0.096,0.515,0.028
+SINet,kiwi,0.763,0.651,0.907,0.018
+SINet,loquat,0.638,0.393,0.845,0.012
+SINet,peach,0.631,0.359,0.873,0.006
+SINet,pepper,0.49,0.042,0.385,0.026
+SINet,plum,0.513,0.15,0.462,0.037
+SINet,tomato,0.565,0.216,0.536,0.033
+SINet,watermelon,0.5,0.045,0.454,0.017
+SINet,zucchini,0.586,0.247,0.645,0.02
+SINet,Average,0.5728,0.2278,0.6246,0.020499999999999997
