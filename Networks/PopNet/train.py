@@ -18,6 +18,9 @@ from Code.lib.sobel import *
 # set the device for training
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
+torch.autograd.set_detect_anomaly(True)
+
+
 cudnn.benchmark = True  # 可以增加程序的运行效率
 
 # build the model
