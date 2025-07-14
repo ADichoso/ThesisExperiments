@@ -85,6 +85,9 @@ def train(train_loader, model, optimizer, epoch, save_path):
             gts = gts.cuda()  
             depths = depths.cuda()  #
 
+            print("Image Shape", images.shape)
+            print("Depth Shape", depths.shape)
+            print("GT Shape", gts.shape)
             ##
             pre_res = model(images, depths)  
 
