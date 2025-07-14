@@ -22,18 +22,20 @@ parser.add_argument('--langevin_step_num_des', type=int, default=10, help='numbe
 parser.add_argument('-langevin_step_size_des', type=float, default=0.026,help='step size of EBM langevin')
 parser.add_argument('--energy_form', default='identity', help='tanh | sigmoid | identity | softplus')
 opt = parser.parse_args()
+# Set device to CPU
+device = torch.device('cpu')
 
 dataset_path = './Datasets/'
 
 # Create the COD-Network and load the weights
-COD_Net = Generator(channel=32).cuda()
-COD_state = torch.load('./Checkpoints/OCENet/COD_Model_50.pth')
+COD_Net = Generator(channel=32).to(device)
+COD_state = torch.load('./Checkpoints/OCENet/COD_Model_50.pth', map_location=device)
 COD_Net.load_state_dict(COD_state)
 COD_Net.eval()
 
 # Create the OCE-Network and load the weights
-OCE_Net = FCDiscriminator().cuda()
-OCE_state = torch.load('./Checkpoints/OCENet/OCE_Model_50.pth')
+OCE_Net = FCDiscriminator().to(device)
+OCE_state = torch.load('./Checkpoints/OCENet/OCE_Model_50.pth', map_location=device)
 OCE_Net.load_state_dict(OCE_state)
 OCE_Net.eval()
 
@@ -55,7 +57,7 @@ for dataset in test_datasets:
 
     for i in range(test_loader.size):
         image, HH, WW, name = test_loader.load_data()
-        image = image.cuda()
+        image = image.to(device)
 
         # Compute COD prediction
         _, COD_pred = COD_Net.forward(image)

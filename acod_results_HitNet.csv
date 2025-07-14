@@ -1,0 +1,12 @@
+Network,Plant,S,FWB,E,MAE
+HitNet,bean,0.722,0.518,0.918,0.006
+HitNet,cucumber,0.793,0.704,0.944,0.011
+HitNet,kiwi,0.869,0.827,0.98,0.01
+HitNet,loquat,0.732,0.667,0.97,0.009
+HitNet,peach,0.794,0.663,0.958,0.004
+HitNet,pepper,0.725,0.535,0.939,0.016
+HitNet,plum,0.747,0.565,0.935,0.026
+HitNet,tomato,0.848,0.78,0.974,0.012
+HitNet,watermelon,0.874,0.813,0.968,0.004
+HitNet,zucchini,0.842,0.784,0.974,0.009
+HitNet,Average,0.7946,0.6856000000000001,0.9560000000000001,0.0107

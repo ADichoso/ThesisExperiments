@@ -16,7 +16,7 @@ torch.manual_seed(2021)
 device_ids = [0]
 torch.cuda.set_device(device_ids[0])
 
-results_path = './results'
+results_path = './Results'
 check_mkdir(results_path)
 exp_name = 'DaCOD'
 args = {
@@ -43,16 +43,16 @@ gt_transform = transforms.Compose([
 to_pil = transforms.ToPILImage()
 
 to_test = OrderedDict([
-                       ('ACOD-12K', "./Datasets/ACOD-12K/test/"),
+                       ('ACOD-12K', "./Datasets/ACOD-12K/Test/"),
                        ])
 
 
 results = OrderedDict()
 
 def main():
-    net = De_cod('./Networks/DaCOD/backbone/resnet50-19c8e357.pth').cuda(device_ids[0])
+    net = De_cod('./Backbones/resnet50-19c8e357.pth').cuda(device_ids[0])
 
-    net.load_state_dict(torch.load('./Networks/DaCOD/checkpoints/55.pth'))
+    net.load_state_dict(torch.load('./Checkpoints/DaCOD/55.pth'))
     print('Load {} succeed!'.format('55.pth'))
 
     net.eval()
@@ -100,7 +100,9 @@ def main():
             print(('{}'.format(exp_name)))
             print("{}'s average Time Is : {:.3f} s".format(name, mean(time_list)))
             print("{}'s average Time Is : {:.1f} fps".format(name, 1 / mean(time_list)))
-
+            
+            test_fps = [1 / time for time in time_list]
+            print("AVERAGE FPS:", sum(test_fps) / len(test_fps))
     end = time.time()
     print("Total Testing Time: {}".format(str(datetime.timedelta(seconds=int(end - start)))))
 
