@@ -1,6 +1,6 @@
 import torch
 import torch.nn as nn
-from Networks.PopNet.Code.lib.sobel import Sobel
+from Code.lib.sobel import Sobel
 
 get_gradient = Sobel().cuda()
 cos = nn.CosineSimilarity(dim=1, eps=0)    
