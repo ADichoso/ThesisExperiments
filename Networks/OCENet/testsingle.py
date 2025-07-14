@@ -27,18 +27,14 @@ dataset_path = './Datasets/'
 
 # Create the COD-Network and load the weights
 COD_Net = Generator(channel=32).cuda()
-state_dict = torch.load('./Checkpoints/OCENet/COD_Model_50.pth')
-new_state_dict = OrderedDict()
-# for k, v in state_dict.items():
-#     name = k[7:]
-#     new_state_dict[name] = v
-COD_Net.load_state_dict(state_dict)
+COD_state = torch.load('./Checkpoints/OCENet/COD_Model_50.pth')
+COD_Net.load_state_dict(COD_state)
 COD_Net.eval()
 
 # Create the OCE-Network and load the weights
 OCE_Net = FCDiscriminator().cuda()
-OCE_Net = torch.nn.DataParallel(OCE_Net, device_ids=[0])
-OCE_Net.load_state_dict(torch.load('./Checkpoints/OCENet/OCE_Model_50.pth'))
+OCE_state = torch.load('./Checkpoints/OCENet/OCE_Model_50.pth')
+OCE_Net.load_state_dict(OCE_state)
 OCE_Net.eval()
 
 # 4 COD test datasets
@@ -64,7 +60,6 @@ for dataset in test_datasets:
         # Compute COD prediction
         _, COD_pred = COD_Net.forward(image)
 
-        # Uncomment this section of codes if you want to produce confidence map.
         # Compute confidence map prediction
         OCE_input = torch.cat((COD_pred, image), dim=1)
         confi_pred = torch.sigmoid(OCE_Net.forward(OCE_input))
