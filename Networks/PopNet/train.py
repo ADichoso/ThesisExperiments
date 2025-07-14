@@ -22,7 +22,7 @@ cudnn.benchmark = True  # 可以增加程序的运行效率
 
 # build the model
 model = PopNet(32, 50)  ### 
-if (opt.load is not None):
+if (opt.load is not None) and opt.load is not '':
     model.load_state_dict(torch.load(opt.load))  
     print('load model from ', opt.load)
 
