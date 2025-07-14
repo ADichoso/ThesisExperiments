@@ -22,7 +22,6 @@ parser.add_argument('--langevin_step_num_des', type=int, default=10, help='numbe
 parser.add_argument('-langevin_step_size_des', type=float, default=0.026,help='step size of EBM langevin')
 parser.add_argument('--energy_form', default='identity', help='tanh | sigmoid | identity | softplus')
 opt = parser.parse_args()
-
 # Set device to CPU
 device = torch.device('cpu')
 
