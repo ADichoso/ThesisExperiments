@@ -18,6 +18,7 @@ from Code.lib.sobel import *
 # Set device
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"
+print("PyTorch CUDA version:", torch.version.cuda)
 
 torch.autograd.set_detect_anomaly(True)
 cudnn.benchmark = True  # Enable to improve performance if input size is constant
@@ -90,10 +91,6 @@ def train(train_loader, model, optimizer, epoch, save_path):
             images = images.to(device)
             gts = gts.to(device)
             depths = depths.to(device)
-
-            print("Image Shape", images.shape)
-            print("Depth Shape", depths.shape)
-            print("GT Shape", gts.shape)
 
             pre_res = model(images, depths)
 
@@ -196,4 +193,4 @@ if __name__ == '__main__':
         train(train_loader, model, optimizer, epoch, save_path)
 
         # Validate
-        val(test_loader, model, epoch, save_path)
+        # val(test_loader, model, epoch, save_path)
