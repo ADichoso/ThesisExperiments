@@ -82,7 +82,7 @@ if __name__ == "__main__":
     parser.add_argument('--clip', type=float, default=0.5, help='gradient clipping margin')
     parser.add_argument('--decay_rate', type=float, default=0.1, help='decay rate of learning rate')
     parser.add_argument('--decay_epoch', type=int, default=50, help='every n epochs decay learning rate')
-    parser.add_argument('--train_path', type=str, default='./Datasets/detection/train', help='path to train dataset')
+    parser.add_argument('--train_path', type=str, default='./Datasets/ACOD-12K/Train', help='path to train dataset')
     parser.add_argument('--save_path', type=str, default='./Checkpoints/RISNet_NoDepth', help='path to save your model')
     parser.add_argument('--epoch_save', type=int, default=5, help='every n epochs to save model')
     opt = parser.parse_args()
@@ -100,8 +100,8 @@ if __name__ == "__main__":
     else:
         optimizer = torch.optim.Adam(model.parameters(), opt.lr)
 
-    train_image_root = '{}/images/'.format(opt.train_path)
-    train_gt_root = '{}/masks/'.format(opt.train_path)
+    train_image_root = '{}/Imgs/'.format(opt.train_path)
+    train_gt_root = '{}/GT/'.format(opt.train_path)
     train_loader = get_loader(train_image_root, train_gt_root, batch_size=opt.batchsize, image_size=opt.trainsize, num_workers=20)
 
     total_step = len(train_loader)
