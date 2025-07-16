@@ -12,7 +12,7 @@ from utils.dataloader import test_dataset
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--testsize', type=int, default=448, help='testing size default 704')
-parser.add_argument('--pth_path', type=str, default='./Networks/RISNet/ckpt45_RISNet.pth', help='path to load your model checkpoint')
+parser.add_argument('--pth_path', type=str, default='./Checkpoints/RISNet_NoDepth/RISNet_NoDepth100_RISNet.pth', help='path to load your model checkpoint')
 parser.add_argument('--test_path', type=str, default='./Datasets/', help='path to test dataset')
 opt = parser.parse_args()
 
