@@ -1,6 +1,7 @@
 import torch
 import torch.nn as nn
 from Code.lib.sobel import Sobel
+import torch.nn.functional as F
 
 get_gradient = Sobel().cuda()
 cos = nn.CosineSimilarity(dim=1, eps=0)    
