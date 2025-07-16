@@ -192,4 +192,4 @@ if __name__ == '__main__':
         train(train_loader, model, optimizer, epoch, save_path)
 
         # Validate
-        val(test_loader, model, epoch, save_path)
+        #val(test_loader, model, epoch, save_path)
