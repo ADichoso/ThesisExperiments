@@ -1,5 +1,5 @@
 CUDA_DEVICE=/dev/nvidia/0
-Wed Jul 16 12:31:29 2025       
+Thu Jul 17 08:12:01 2025       
 +-----------------------------------------------------------------------------------------+
 | NVIDIA-SMI 570.124.06             Driver Version: 570.124.06     CUDA Version: 12.8     |
 |-----------------------------------------+------------------------+----------------------+
@@ -7,8 +7,8 @@ Wed Jul 16 12:31:29 2025
 | Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
 |                                         |                        |               MIG M. |
 |=========================================+========================+======================|
-|   0  NVIDIA A100-SXM4-80GB          Off |   00000000:DB:00.0 Off |                    0 |
-| N/A   28C    P0             58W /  400W |       1MiB /  81920MiB |      0%      Default |
+|   0  NVIDIA A100-SXM4-80GB          Off |   00000000:A1:00.0 Off |                    0 |
+| N/A   29C    P0             57W /  400W |       1MiB /  81920MiB |      0%      Default |
 |                                         |                        |             Disabled |
 +-----------------------------------------+------------------------+----------------------+
                                                                                          
@@ -19,7 +19,7 @@ Wed Jul 16 12:31:29 2025
 |=========================================================================================|
 |  No running processes found                                                             |
 +-----------------------------------------------------------------------------------------+
-/var/spool/slurm/job315343/slurm_script: line 17: nvcc: command not found
+/var/spool/slurm/job315590/slurm_script: line 17: nvcc: command not found
 Module load: anaconda/3-2023.07-2
 no change     /opt/modules/library/cpu/anaconda/3-2023.07-2/condabin/conda
 no change     /opt/modules/library/cpu/anaconda/3-2023.07-2/bin/conda
@@ -42,407 +42,1092 @@ Loading data...
 Start training...
 /home/aaron.dichoso/.local/lib/python3.11/site-packages/torch/nn/_reduction.py:51: UserWarning: size_average and reduce args will be deprecated, please use reduction='mean' instead.
   warnings.warn(warning.format(ret))
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-2025-07-16 12:32:14.473431 Epoch [001/100], Step [0001/0472], Loss1: 1.6394 Loss2: 1.5195 Loss3: 1.5592
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-2025-07-16 12:33:18.282938 Epoch [001/100], Step [0050/0472], Loss1: 1.2071 Loss2: 1.2071 Loss3: 1.1708
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-2025-07-16 12:34:23.480779 Epoch [001/100], Step [0100/0472], Loss1: 1.0852 Loss2: 1.1822 Loss3: 1.0532
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
-GT Shape torch.Size([8, 1, 512, 512])
-Image Shape torch.Size([8, 3, 512, 512])
-Depth Shape torch.Size([8, 1, 512, 512])
+2025-07-17 08:14:10.918971 Epoch [001/100], Step [0001/0472], Loss1: 1.5982 Loss2: 1.6737 Loss3: 1.6389
+2025-07-17 08:15:17.986613 Epoch [001/100], Step [0050/0472], Loss1: 1.1872 Loss2: 1.2582 Loss3: 1.1778
+2025-07-17 08:16:26.160408 Epoch [001/100], Step [0100/0472], Loss1: 1.0901 Loss2: 1.2221 Loss3: 1.0909
+2025-07-17 08:17:34.351904 Epoch [001/100], Step [0150/0472], Loss1: 1.0266 Loss2: 1.1827 Loss3: 1.0185
+2025-07-17 08:18:42.163076 Epoch [001/100], Step [0200/0472], Loss1: 1.0293 Loss2: 1.1660 Loss3: 1.0203
+2025-07-17 08:19:50.255057 Epoch [001/100], Step [0250/0472], Loss1: 0.9921 Loss2: 1.1498 Loss3: 0.9888
+2025-07-17 08:20:58.390172 Epoch [001/100], Step [0300/0472], Loss1: 0.9583 Loss2: 1.1547 Loss3: 0.9507
+2025-07-17 08:22:06.506298 Epoch [001/100], Step [0350/0472], Loss1: 0.8480 Loss2: 1.1411 Loss3: 0.8377
+2025-07-17 08:23:14.470921 Epoch [001/100], Step [0400/0472], Loss1: 0.8716 Loss2: 1.1252 Loss3: 0.8683
+2025-07-17 08:24:22.319277 Epoch [001/100], Step [0450/0472], Loss1: 0.9144 Loss2: 1.1180 Loss3: 0.9113
+2025-07-17 08:24:53.333009 Epoch [001/100], Step [0472/0472], Loss1: 0.7435 Loss2: 1.1411 Loss3: 0.7234
+2025-07-17 08:25:01.198256 Epoch [002/100], Step [0001/0472], Loss1: 0.8002 Loss2: 1.1194 Loss3: 0.7890
+2025-07-17 08:26:08.325192 Epoch [002/100], Step [0050/0472], Loss1: 0.8814 Loss2: 1.1009 Loss3: 0.8715
+2025-07-17 08:27:16.583513 Epoch [002/100], Step [0100/0472], Loss1: 0.8298 Loss2: 1.1243 Loss3: 0.8203
+2025-07-17 08:28:25.095389 Epoch [002/100], Step [0150/0472], Loss1: 0.7331 Loss2: 1.1237 Loss3: 0.7235
+2025-07-17 08:29:33.775731 Epoch [002/100], Step [0200/0472], Loss1: 0.6664 Loss2: 1.1662 Loss3: 0.6581
+2025-07-17 08:30:41.786449 Epoch [002/100], Step [0250/0472], Loss1: 0.7238 Loss2: 1.0986 Loss3: 0.7207
+2025-07-17 08:31:50.597915 Epoch [002/100], Step [0300/0472], Loss1: 0.7311 Loss2: 1.0863 Loss3: 0.7248
+2025-07-17 08:32:58.931689 Epoch [002/100], Step [0350/0472], Loss1: 0.6752 Loss2: 1.0994 Loss3: 0.6644
+2025-07-17 08:34:07.204757 Epoch [002/100], Step [0400/0472], Loss1: 0.7023 Loss2: 1.1293 Loss3: 0.6812
+2025-07-17 08:35:15.580490 Epoch [002/100], Step [0450/0472], Loss1: 0.7353 Loss2: 1.0771 Loss3: 0.7362
+2025-07-17 08:35:44.781265 Epoch [002/100], Step [0472/0472], Loss1: 0.4994 Loss2: 1.1485 Loss3: 0.4717
+2025-07-17 08:35:53.254831 Epoch [003/100], Step [0001/0472], Loss1: 0.5254 Loss2: 1.1080 Loss3: 0.5135
+2025-07-17 08:37:00.366124 Epoch [003/100], Step [0050/0472], Loss1: 0.6488 Loss2: 1.1109 Loss3: 0.6198
+2025-07-17 08:38:08.660835 Epoch [003/100], Step [0100/0472], Loss1: 0.5463 Loss2: 1.1013 Loss3: 0.5292
+2025-07-17 08:39:17.236246 Epoch [003/100], Step [0150/0472], Loss1: 0.6464 Loss2: 1.0720 Loss3: 0.6367
+2025-07-17 08:40:25.663129 Epoch [003/100], Step [0200/0472], Loss1: 0.6477 Loss2: 1.0707 Loss3: 0.6310
+2025-07-17 08:41:34.164084 Epoch [003/100], Step [0250/0472], Loss1: 0.5682 Loss2: 1.0891 Loss3: 0.5433
+2025-07-17 08:42:43.038359 Epoch [003/100], Step [0300/0472], Loss1: 0.5117 Loss2: 1.1213 Loss3: 0.4958
+2025-07-17 08:43:51.626083 Epoch [003/100], Step [0350/0472], Loss1: 0.5466 Loss2: 1.0934 Loss3: 0.5266
+2025-07-17 08:45:00.303696 Epoch [003/100], Step [0400/0472], Loss1: 0.6408 Loss2: 1.1679 Loss3: 0.6139
+2025-07-17 08:46:08.712473 Epoch [003/100], Step [0450/0472], Loss1: 0.5174 Loss2: 1.0972 Loss3: 0.5084
+2025-07-17 08:46:37.990095 Epoch [003/100], Step [0472/0472], Loss1: 0.4808 Loss2: 1.0791 Loss3: 0.4586
+2025-07-17 08:46:46.989342 Epoch [004/100], Step [0001/0472], Loss1: 0.5072 Loss2: 1.0839 Loss3: 0.4890
+2025-07-17 08:47:54.282637 Epoch [004/100], Step [0050/0472], Loss1: 0.3999 Loss2: 1.1047 Loss3: 0.3692
+2025-07-17 08:49:03.214498 Epoch [004/100], Step [0100/0472], Loss1: 0.5678 Loss2: 1.0812 Loss3: 0.5604
+2025-07-17 08:50:11.706364 Epoch [004/100], Step [0150/0472], Loss1: 0.5360 Loss2: 1.0978 Loss3: 0.5038
+2025-07-17 08:51:20.601003 Epoch [004/100], Step [0200/0472], Loss1: 0.4002 Loss2: 1.0898 Loss3: 0.3845
+2025-07-17 08:52:29.222641 Epoch [004/100], Step [0250/0472], Loss1: 0.4463 Loss2: 1.0675 Loss3: 0.4389
+2025-07-17 08:53:38.172400 Epoch [004/100], Step [0300/0472], Loss1: 0.6061 Loss2: 1.0678 Loss3: 0.5923
+2025-07-17 08:54:46.954669 Epoch [004/100], Step [0350/0472], Loss1: 0.4058 Loss2: 1.0184 Loss3: 0.3935
+2025-07-17 08:55:55.863492 Epoch [004/100], Step [0400/0472], Loss1: 0.4106 Loss2: 1.0080 Loss3: 0.3958
+2025-07-17 08:57:05.577528 Epoch [004/100], Step [0450/0472], Loss1: 0.6694 Loss2: 1.0494 Loss3: 0.6490
+2025-07-17 08:57:35.573447 Epoch [004/100], Step [0472/0472], Loss1: 0.5228 Loss2: 1.0123 Loss3: 0.5071
+2025-07-17 08:57:45.726709 Epoch [005/100], Step [0001/0472], Loss1: 0.3588 Loss2: 0.9617 Loss3: 0.3340
+2025-07-17 08:58:54.902139 Epoch [005/100], Step [0050/0472], Loss1: 0.4819 Loss2: 1.0263 Loss3: 0.4605
+2025-07-17 09:00:04.121739 Epoch [005/100], Step [0100/0472], Loss1: 0.4822 Loss2: 0.8675 Loss3: 0.4654
+2025-07-17 09:01:13.453836 Epoch [005/100], Step [0150/0472], Loss1: 0.5542 Loss2: 0.9577 Loss3: 0.5419
+2025-07-17 09:02:22.203462 Epoch [005/100], Step [0200/0472], Loss1: 0.4690 Loss2: 0.9670 Loss3: 0.4539
+2025-07-17 09:03:31.092050 Epoch [005/100], Step [0250/0472], Loss1: 0.4785 Loss2: 0.9688 Loss3: 0.4547
+2025-07-17 09:04:39.940214 Epoch [005/100], Step [0300/0472], Loss1: 0.4282 Loss2: 0.9165 Loss3: 0.4145
+2025-07-17 09:05:48.969558 Epoch [005/100], Step [0350/0472], Loss1: 0.5022 Loss2: 0.8004 Loss3: 0.4793
+2025-07-17 09:06:58.041174 Epoch [005/100], Step [0400/0472], Loss1: 0.4965 Loss2: 0.9037 Loss3: 0.4895
+2025-07-17 09:08:07.312982 Epoch [005/100], Step [0450/0472], Loss1: 0.4761 Loss2: 0.8363 Loss3: 0.4647
+2025-07-17 09:08:37.264010 Epoch [005/100], Step [0472/0472], Loss1: 0.6204 Loss2: 1.0333 Loss3: 0.5714
+2025-07-17 09:08:45.800196 Epoch [006/100], Step [0001/0472], Loss1: 0.4201 Loss2: 0.9195 Loss3: 0.3935
+2025-07-17 09:09:54.364418 Epoch [006/100], Step [0050/0472], Loss1: 0.2756 Loss2: 0.7252 Loss3: 0.2530
+2025-07-17 09:11:04.235539 Epoch [006/100], Step [0100/0472], Loss1: 0.3109 Loss2: 0.7810 Loss3: 0.2934
+2025-07-17 09:12:14.107726 Epoch [006/100], Step [0150/0472], Loss1: 0.3818 Loss2: 0.6976 Loss3: 0.3523
+2025-07-17 09:13:23.561084 Epoch [006/100], Step [0200/0472], Loss1: 0.4468 Loss2: 0.8387 Loss3: 0.4263
+2025-07-17 09:14:33.408380 Epoch [006/100], Step [0250/0472], Loss1: 0.4353 Loss2: 0.8522 Loss3: 0.4156
+2025-07-17 09:15:43.268917 Epoch [006/100], Step [0300/0472], Loss1: 0.5986 Loss2: 0.9073 Loss3: 0.5624
+2025-07-17 09:16:53.033054 Epoch [006/100], Step [0350/0472], Loss1: 0.3706 Loss2: 0.6964 Loss3: 0.3491
+2025-07-17 09:18:02.778694 Epoch [006/100], Step [0400/0472], Loss1: 0.4052 Loss2: 0.7396 Loss3: 0.3827
+2025-07-17 09:19:12.409074 Epoch [006/100], Step [0450/0472], Loss1: 0.3611 Loss2: 0.7259 Loss3: 0.3375
+2025-07-17 09:19:42.712176 Epoch [006/100], Step [0472/0472], Loss1: 0.3820 Loss2: 0.8662 Loss3: 0.3319
+2025-07-17 09:19:50.005773 Epoch [007/100], Step [0001/0472], Loss1: 0.3611 Loss2: 0.7940 Loss3: 0.3345
+2025-07-17 09:20:59.510652 Epoch [007/100], Step [0050/0472], Loss1: 0.3843 Loss2: 0.6646 Loss3: 0.3595
+2025-07-17 09:22:08.845253 Epoch [007/100], Step [0100/0472], Loss1: 0.3559 Loss2: 0.6790 Loss3: 0.3404
+2025-07-17 09:23:18.655815 Epoch [007/100], Step [0150/0472], Loss1: 0.3650 Loss2: 0.8379 Loss3: 0.3492
+2025-07-17 09:24:28.532437 Epoch [007/100], Step [0200/0472], Loss1: 0.3240 Loss2: 0.5910 Loss3: 0.3014
+2025-07-17 09:25:38.362065 Epoch [007/100], Step [0250/0472], Loss1: 0.4002 Loss2: 0.6917 Loss3: 0.3868
+2025-07-17 09:26:47.923207 Epoch [007/100], Step [0300/0472], Loss1: 0.2883 Loss2: 0.6786 Loss3: 0.2755
+2025-07-17 09:27:57.572273 Epoch [007/100], Step [0350/0472], Loss1: 0.3706 Loss2: 0.7326 Loss3: 0.3416
+2025-07-17 09:29:07.435340 Epoch [007/100], Step [0400/0472], Loss1: 0.3612 Loss2: 0.6273 Loss3: 0.3436
+2025-07-17 09:30:17.111885 Epoch [007/100], Step [0450/0472], Loss1: 0.3674 Loss2: 0.5782 Loss3: 0.3471
+2025-07-17 09:30:47.213460 Epoch [007/100], Step [0472/0472], Loss1: 0.4952 Loss2: 0.7010 Loss3: 0.4906
+2025-07-17 09:30:54.407606 Epoch [008/100], Step [0001/0472], Loss1: 0.4575 Loss2: 0.6404 Loss3: 0.4448
+2025-07-17 09:32:03.971145 Epoch [008/100], Step [0050/0472], Loss1: 0.3494 Loss2: 0.6005 Loss3: 0.3306
+2025-07-17 09:33:14.213933 Epoch [008/100], Step [0100/0472], Loss1: 0.3963 Loss2: 0.7831 Loss3: 0.3800
+2025-07-17 09:34:23.946510 Epoch [008/100], Step [0150/0472], Loss1: 0.4098 Loss2: 0.7348 Loss3: 0.3903
+2025-07-17 09:35:33.799917 Epoch [008/100], Step [0200/0472], Loss1: 0.3377 Loss2: 0.6170 Loss3: 0.3291
+2025-07-17 09:36:43.826328 Epoch [008/100], Step [0250/0472], Loss1: 0.3684 Loss2: 0.7420 Loss3: 0.3408
+2025-07-17 09:37:53.884824 Epoch [008/100], Step [0300/0472], Loss1: 0.2761 Loss2: 0.5676 Loss3: 0.2562
+2025-07-17 09:39:03.719717 Epoch [008/100], Step [0350/0472], Loss1: 0.3597 Loss2: 0.7309 Loss3: 0.3470
+2025-07-17 09:40:13.442284 Epoch [008/100], Step [0400/0472], Loss1: 0.4501 Loss2: 0.6915 Loss3: 0.4204
+2025-07-17 09:41:23.125339 Epoch [008/100], Step [0450/0472], Loss1: 0.3271 Loss2: 0.6371 Loss3: 0.2913
+2025-07-17 09:41:52.820278 Epoch [008/100], Step [0472/0472], Loss1: 0.6649 Loss2: 0.4802 Loss3: 0.6523
+2025-07-17 09:42:00.717262 Epoch [009/100], Step [0001/0472], Loss1: 0.3923 Loss2: 0.6475 Loss3: 0.3622
+2025-07-17 09:43:09.574084 Epoch [009/100], Step [0050/0472], Loss1: 0.3943 Loss2: 0.6036 Loss3: 0.3715
+2025-07-17 09:44:16.114925 Epoch [009/100], Step [0100/0472], Loss1: 0.3623 Loss2: 0.6850 Loss3: 0.3472
+2025-07-17 09:45:23.666787 Epoch [009/100], Step [0150/0472], Loss1: 0.3203 Loss2: 0.5712 Loss3: 0.2934
+2025-07-17 09:46:33.818417 Epoch [009/100], Step [0200/0472], Loss1: 0.3922 Loss2: 0.7409 Loss3: 0.3707
+2025-07-17 09:47:44.015409 Epoch [009/100], Step [0250/0472], Loss1: 0.3580 Loss2: 0.7710 Loss3: 0.3345
+2025-07-17 09:48:53.675860 Epoch [009/100], Step [0300/0472], Loss1: 0.4008 Loss2: 0.6574 Loss3: 0.3795
+2025-07-17 09:50:03.359774 Epoch [009/100], Step [0350/0472], Loss1: 0.3549 Loss2: 0.5518 Loss3: 0.3313
+2025-07-17 09:51:13.376266 Epoch [009/100], Step [0400/0472], Loss1: 0.3466 Loss2: 0.6413 Loss3: 0.3309
+2025-07-17 09:52:23.074003 Epoch [009/100], Step [0450/0472], Loss1: 0.2512 Loss2: 0.4283 Loss3: 0.2400
+2025-07-17 09:52:52.687817 Epoch [009/100], Step [0472/0472], Loss1: 0.3768 Loss2: 0.5372 Loss3: 0.3694
+2025-07-17 09:53:03.901408 Epoch [010/100], Step [0001/0472], Loss1: 0.3147 Loss2: 0.5787 Loss3: 0.3064
+2025-07-17 09:54:13.056699 Epoch [010/100], Step [0050/0472], Loss1: 0.4600 Loss2: 0.7390 Loss3: 0.4515
+2025-07-17 09:55:22.865459 Epoch [010/100], Step [0100/0472], Loss1: 0.3259 Loss2: 0.6520 Loss3: 0.3161
+2025-07-17 09:56:32.930691 Epoch [010/100], Step [0150/0472], Loss1: 0.3345 Loss2: 0.5275 Loss3: 0.3188
+2025-07-17 09:57:42.756815 Epoch [010/100], Step [0200/0472], Loss1: 0.3956 Loss2: 0.6380 Loss3: 0.3713
+2025-07-17 09:58:52.659736 Epoch [010/100], Step [0250/0472], Loss1: 0.3283 Loss2: 0.5471 Loss3: 0.2981
+2025-07-17 10:00:02.774839 Epoch [010/100], Step [0300/0472], Loss1: 0.3147 Loss2: 0.6312 Loss3: 0.2873
+2025-07-17 10:01:13.481569 Epoch [010/100], Step [0350/0472], Loss1: 0.4596 Loss2: 0.7304 Loss3: 0.4466
+2025-07-17 10:02:25.104583 Epoch [010/100], Step [0400/0472], Loss1: 0.3179 Loss2: 0.5245 Loss3: 0.2911
+2025-07-17 10:03:37.005687 Epoch [010/100], Step [0450/0472], Loss1: 0.2844 Loss2: 0.5704 Loss3: 0.2745
+2025-07-17 10:04:08.759861 Epoch [010/100], Step [0472/0472], Loss1: 0.6816 Loss2: 0.9805 Loss3: 0.5714
+2025-07-17 10:04:18.115871 Epoch [011/100], Step [0001/0472], Loss1: 0.2999 Loss2: 0.5249 Loss3: 0.2806
+2025-07-17 10:05:30.430718 Epoch [011/100], Step [0050/0472], Loss1: 0.3281 Loss2: 0.5524 Loss3: 0.3134
+2025-07-17 10:06:44.732982 Epoch [011/100], Step [0100/0472], Loss1: 0.4051 Loss2: 0.6819 Loss3: 0.3930
+2025-07-17 10:07:59.671886 Epoch [011/100], Step [0150/0472], Loss1: 0.4271 Loss2: 0.6057 Loss3: 0.4110
+2025-07-17 10:09:15.001264 Epoch [011/100], Step [0200/0472], Loss1: 0.4005 Loss2: 0.6242 Loss3: 0.3760
+2025-07-17 10:10:31.789907 Epoch [011/100], Step [0250/0472], Loss1: 0.3619 Loss2: 0.6017 Loss3: 0.3311
+2025-07-17 10:11:50.140711 Epoch [011/100], Step [0300/0472], Loss1: 0.3680 Loss2: 0.6435 Loss3: 0.3584
+2025-07-17 10:13:08.895954 Epoch [011/100], Step [0350/0472], Loss1: 0.3128 Loss2: 0.5469 Loss3: 0.2944
+2025-07-17 10:14:27.778853 Epoch [011/100], Step [0400/0472], Loss1: 0.2758 Loss2: 0.4865 Loss3: 0.2601
+2025-07-17 10:15:46.506500 Epoch [011/100], Step [0450/0472], Loss1: 0.2679 Loss2: 0.4806 Loss3: 0.2550
+2025-07-17 10:16:20.407616 Epoch [011/100], Step [0472/0472], Loss1: 0.4035 Loss2: 0.4306 Loss3: 0.3759
+2025-07-17 10:16:29.355863 Epoch [012/100], Step [0001/0472], Loss1: 0.3613 Loss2: 0.5043 Loss3: 0.3343
+2025-07-17 10:17:46.468098 Epoch [012/100], Step [0050/0472], Loss1: 0.2684 Loss2: 0.4272 Loss3: 0.2497
+2025-07-17 10:19:05.342945 Epoch [012/100], Step [0100/0472], Loss1: 0.3045 Loss2: 0.5029 Loss3: 0.2781
+2025-07-17 10:20:24.218953 Epoch [012/100], Step [0150/0472], Loss1: 0.3856 Loss2: 0.6480 Loss3: 0.3632
+2025-07-17 10:21:43.103220 Epoch [012/100], Step [0200/0472], Loss1: 0.3424 Loss2: 0.5401 Loss3: 0.3294
+2025-07-17 10:23:01.756248 Epoch [012/100], Step [0250/0472], Loss1: 0.4024 Loss2: 0.4788 Loss3: 0.3731
+2025-07-17 10:24:19.942278 Epoch [012/100], Step [0300/0472], Loss1: 0.3571 Loss2: 0.5329 Loss3: 0.3182
+2025-07-17 10:25:38.286659 Epoch [012/100], Step [0350/0472], Loss1: 0.3390 Loss2: 0.4915 Loss3: 0.3241
+2025-07-17 10:26:56.545924 Epoch [012/100], Step [0400/0472], Loss1: 0.4587 Loss2: 0.7431 Loss3: 0.4285
+2025-07-17 10:28:14.513185 Epoch [012/100], Step [0450/0472], Loss1: 0.3540 Loss2: 0.6433 Loss3: 0.3232
+2025-07-17 10:28:48.564865 Epoch [012/100], Step [0472/0472], Loss1: 0.3248 Loss2: 0.4713 Loss3: 0.2971
+2025-07-17 10:28:57.182717 Epoch [013/100], Step [0001/0472], Loss1: 0.3196 Loss2: 0.5492 Loss3: 0.3055
+2025-07-17 10:30:14.568907 Epoch [013/100], Step [0050/0472], Loss1: 0.2828 Loss2: 0.4623 Loss3: 0.2667
+2025-07-17 10:31:32.763118 Epoch [013/100], Step [0100/0472], Loss1: 0.3716 Loss2: 0.5225 Loss3: 0.3569
+2025-07-17 10:32:50.854753 Epoch [013/100], Step [0150/0472], Loss1: 0.3960 Loss2: 0.5319 Loss3: 0.3666
+2025-07-17 10:34:08.866693 Epoch [013/100], Step [0200/0472], Loss1: 0.4403 Loss2: 0.6584 Loss3: 0.4123
+2025-07-17 10:35:27.168891 Epoch [013/100], Step [0250/0472], Loss1: 0.4157 Loss2: 0.5598 Loss3: 0.3983
+2025-07-17 10:36:45.267434 Epoch [013/100], Step [0300/0472], Loss1: 0.3643 Loss2: 0.5656 Loss3: 0.3483
+2025-07-17 10:38:03.295785 Epoch [013/100], Step [0350/0472], Loss1: 0.2658 Loss2: 0.4326 Loss3: 0.2441
+2025-07-17 10:39:21.202357 Epoch [013/100], Step [0400/0472], Loss1: 0.3562 Loss2: 0.5367 Loss3: 0.3263
+2025-07-17 10:40:38.983762 Epoch [013/100], Step [0450/0472], Loss1: 0.3554 Loss2: 0.5119 Loss3: 0.3286
+2025-07-17 10:41:12.492144 Epoch [013/100], Step [0472/0472], Loss1: 0.2995 Loss2: 0.3684 Loss3: 0.2580
+2025-07-17 10:41:19.561403 Epoch [014/100], Step [0001/0472], Loss1: 0.3610 Loss2: 0.4516 Loss3: 0.3330
+2025-07-17 10:42:35.930323 Epoch [014/100], Step [0050/0472], Loss1: 0.2997 Loss2: 0.4575 Loss3: 0.2870
+2025-07-17 10:43:53.916876 Epoch [014/100], Step [0100/0472], Loss1: 0.4334 Loss2: 0.5712 Loss3: 0.4184
+2025-07-17 10:45:12.051067 Epoch [014/100], Step [0150/0472], Loss1: 0.4210 Loss2: 0.5347 Loss3: 0.3943
+2025-07-17 10:46:29.900951 Epoch [014/100], Step [0200/0472], Loss1: 0.3684 Loss2: 0.5293 Loss3: 0.3443
+2025-07-17 10:47:47.474706 Epoch [014/100], Step [0250/0472], Loss1: 0.3558 Loss2: 0.5030 Loss3: 0.3389
+2025-07-17 10:49:05.184720 Epoch [014/100], Step [0300/0472], Loss1: 0.3066 Loss2: 0.4491 Loss3: 0.2835
+2025-07-17 10:50:22.627103 Epoch [014/100], Step [0350/0472], Loss1: 0.2627 Loss2: 0.3724 Loss3: 0.2432
+2025-07-17 10:51:39.815573 Epoch [014/100], Step [0400/0472], Loss1: 0.4335 Loss2: 0.5688 Loss3: 0.4097
+2025-07-17 10:52:56.866673 Epoch [014/100], Step [0450/0472], Loss1: 0.4357 Loss2: 0.6311 Loss3: 0.4206
+2025-07-17 10:53:30.337147 Epoch [014/100], Step [0472/0472], Loss1: 0.1789 Loss2: 0.2395 Loss3: 0.1696
+2025-07-17 10:53:43.221544 Epoch [015/100], Step [0001/0472], Loss1: 0.2736 Loss2: 0.4630 Loss3: 0.2594
+2025-07-17 10:54:58.234717 Epoch [015/100], Step [0050/0472], Loss1: 0.3424 Loss2: 0.5522 Loss3: 0.3309
+2025-07-17 10:56:14.634646 Epoch [015/100], Step [0100/0472], Loss1: 0.2585 Loss2: 0.4266 Loss3: 0.2365
+2025-07-17 10:57:31.555701 Epoch [015/100], Step [0150/0472], Loss1: 0.3464 Loss2: 0.4941 Loss3: 0.3168
+2025-07-17 10:58:47.609857 Epoch [015/100], Step [0200/0472], Loss1: 0.2761 Loss2: 0.3894 Loss3: 0.2563
+2025-07-17 11:00:03.702387 Epoch [015/100], Step [0250/0472], Loss1: 0.3153 Loss2: 0.4292 Loss3: 0.2890
+2025-07-17 11:01:19.751053 Epoch [015/100], Step [0300/0472], Loss1: 0.2894 Loss2: 0.5235 Loss3: 0.2656
+2025-07-17 11:02:35.573503 Epoch [015/100], Step [0350/0472], Loss1: 0.3639 Loss2: 0.4905 Loss3: 0.3392
+2025-07-17 11:03:51.118115 Epoch [015/100], Step [0400/0472], Loss1: 0.3509 Loss2: 0.5678 Loss3: 0.3210
+2025-07-17 11:05:06.361767 Epoch [015/100], Step [0450/0472], Loss1: 0.3381 Loss2: 0.4990 Loss3: 0.3127
+2025-07-17 11:05:38.852749 Epoch [015/100], Step [0472/0472], Loss1: 0.6628 Loss2: 0.7814 Loss3: 0.6252
+2025-07-17 11:05:47.179258 Epoch [016/100], Step [0001/0472], Loss1: 0.2671 Loss2: 0.3791 Loss3: 0.2486
+2025-07-17 11:07:01.401384 Epoch [016/100], Step [0050/0472], Loss1: 0.3541 Loss2: 0.5431 Loss3: 0.3369
+2025-07-17 11:08:17.109558 Epoch [016/100], Step [0100/0472], Loss1: 0.3772 Loss2: 0.5877 Loss3: 0.3623
+2025-07-17 11:09:32.690752 Epoch [016/100], Step [0150/0472], Loss1: 0.3716 Loss2: 0.5255 Loss3: 0.3474
+2025-07-17 11:10:48.160895 Epoch [016/100], Step [0200/0472], Loss1: 0.2419 Loss2: 0.4204 Loss3: 0.2193
+2025-07-17 11:12:03.656485 Epoch [016/100], Step [0250/0472], Loss1: 0.3194 Loss2: 0.4625 Loss3: 0.2845
+2025-07-17 11:13:18.973711 Epoch [016/100], Step [0300/0472], Loss1: 0.4079 Loss2: 0.5783 Loss3: 0.3723
+2025-07-17 11:14:34.233806 Epoch [016/100], Step [0350/0472], Loss1: 0.3386 Loss2: 0.4617 Loss3: 0.3279
+2025-07-17 11:15:48.894634 Epoch [016/100], Step [0400/0472], Loss1: 0.3243 Loss2: 0.5895 Loss3: 0.3050
+2025-07-17 11:17:03.714679 Epoch [016/100], Step [0450/0472], Loss1: 0.3451 Loss2: 0.4924 Loss3: 0.3238
+2025-07-17 11:17:35.892813 Epoch [016/100], Step [0472/0472], Loss1: 0.5950 Loss2: 1.0282 Loss3: 0.5709
+2025-07-17 11:17:42.778460 Epoch [017/100], Step [0001/0472], Loss1: 0.3430 Loss2: 0.5231 Loss3: 0.3158
+2025-07-17 11:18:56.687491 Epoch [017/100], Step [0050/0472], Loss1: 0.3043 Loss2: 0.5344 Loss3: 0.2749
+2025-07-17 11:20:11.505622 Epoch [017/100], Step [0100/0472], Loss1: 0.2311 Loss2: 0.4175 Loss3: 0.2014
+2025-07-17 11:21:26.408160 Epoch [017/100], Step [0150/0472], Loss1: 0.3064 Loss2: 0.5545 Loss3: 0.2841
+2025-07-17 11:22:41.045016 Epoch [017/100], Step [0200/0472], Loss1: 0.2978 Loss2: 0.5329 Loss3: 0.2824
+2025-07-17 11:23:55.719741 Epoch [017/100], Step [0250/0472], Loss1: 0.3027 Loss2: 0.4103 Loss3: 0.2698
+2025-07-17 11:25:10.045960 Epoch [017/100], Step [0300/0472], Loss1: 0.3129 Loss2: 0.4609 Loss3: 0.2907
+2025-07-17 11:26:24.725663 Epoch [017/100], Step [0350/0472], Loss1: 0.3234 Loss2: 0.5364 Loss3: 0.3087
+2025-07-17 11:27:38.433238 Epoch [017/100], Step [0400/0472], Loss1: 0.3863 Loss2: 0.6019 Loss3: 0.3738
+2025-07-17 11:28:52.640181 Epoch [017/100], Step [0450/0472], Loss1: 0.2641 Loss2: 0.4534 Loss3: 0.2535
+2025-07-17 11:29:24.564216 Epoch [017/100], Step [0472/0472], Loss1: 0.9914 Loss2: 1.3027 Loss3: 1.0069
+2025-07-17 11:29:32.114007 Epoch [018/100], Step [0001/0472], Loss1: 0.3519 Loss2: 0.5652 Loss3: 0.3289
+2025-07-17 11:30:45.452853 Epoch [018/100], Step [0050/0472], Loss1: 0.3207 Loss2: 0.7059 Loss3: 0.2966
+2025-07-17 11:31:59.827018 Epoch [018/100], Step [0100/0472], Loss1: 0.2646 Loss2: 0.5005 Loss3: 0.2495
+2025-07-17 11:33:14.047878 Epoch [018/100], Step [0150/0472], Loss1: 0.3431 Loss2: 0.5907 Loss3: 0.3143
+2025-07-17 11:34:28.628078 Epoch [018/100], Step [0200/0472], Loss1: 0.3578 Loss2: 0.5871 Loss3: 0.3365
+2025-07-17 11:35:43.157251 Epoch [018/100], Step [0250/0472], Loss1: 0.3421 Loss2: 0.6524 Loss3: 0.3139
+2025-07-17 11:36:57.813264 Epoch [018/100], Step [0300/0472], Loss1: 0.2583 Loss2: 0.5325 Loss3: 0.2460
+2025-07-17 11:38:11.829552 Epoch [018/100], Step [0350/0472], Loss1: 0.2855 Loss2: 0.5424 Loss3: 0.2661
+2025-07-17 11:39:26.261298 Epoch [018/100], Step [0400/0472], Loss1: 0.3212 Loss2: 0.5473 Loss3: 0.2961
+2025-07-17 11:40:40.781074 Epoch [018/100], Step [0450/0472], Loss1: 0.3339 Loss2: 0.5686 Loss3: 0.3208
+2025-07-17 11:41:12.991386 Epoch [018/100], Step [0472/0472], Loss1: 0.2612 Loss2: 0.4668 Loss3: 0.2248
+2025-07-17 11:41:19.201366 Epoch [019/100], Step [0001/0472], Loss1: 0.4389 Loss2: 0.7318 Loss3: 0.4073
+2025-07-17 11:42:32.791064 Epoch [019/100], Step [0050/0472], Loss1: 0.3226 Loss2: 0.5662 Loss3: 0.3023
+2025-07-17 11:43:46.851378 Epoch [019/100], Step [0100/0472], Loss1: 0.3027 Loss2: 0.4319 Loss3: 0.2828
+2025-07-17 11:45:00.808952 Epoch [019/100], Step [0150/0472], Loss1: 0.2870 Loss2: 0.4478 Loss3: 0.2698
+2025-07-17 11:46:14.928532 Epoch [019/100], Step [0200/0472], Loss1: 0.3660 Loss2: 0.5247 Loss3: 0.3498
+2025-07-17 11:47:28.938404 Epoch [019/100], Step [0250/0472], Loss1: 0.2976 Loss2: 0.5563 Loss3: 0.2733
+2025-07-17 11:48:42.561253 Epoch [019/100], Step [0300/0472], Loss1: 0.3429 Loss2: 0.5553 Loss3: 0.3290
+2025-07-17 11:49:56.344504 Epoch [019/100], Step [0350/0472], Loss1: 0.3242 Loss2: 0.6057 Loss3: 0.3045
+2025-07-17 11:51:10.237041 Epoch [019/100], Step [0400/0472], Loss1: 0.3354 Loss2: 0.5202 Loss3: 0.3059
+2025-07-17 11:52:24.200301 Epoch [019/100], Step [0450/0472], Loss1: 0.2605 Loss2: 0.4446 Loss3: 0.2298
+2025-07-17 11:52:55.886022 Epoch [019/100], Step [0472/0472], Loss1: 0.8529 Loss2: 0.9778 Loss3: 0.7763
+2025-07-17 11:53:08.284914 Epoch [020/100], Step [0001/0472], Loss1: 0.2975 Loss2: 0.5256 Loss3: 0.2753
+2025-07-17 11:54:20.855351 Epoch [020/100], Step [0050/0472], Loss1: 0.3112 Loss2: 0.4323 Loss3: 0.2866
+2025-07-17 11:55:34.848191 Epoch [020/100], Step [0100/0472], Loss1: 0.2505 Loss2: 0.4378 Loss3: 0.2279
+2025-07-17 11:56:48.770502 Epoch [020/100], Step [0150/0472], Loss1: 0.3508 Loss2: 0.4926 Loss3: 0.3241
+2025-07-17 11:58:02.776757 Epoch [020/100], Step [0200/0472], Loss1: 0.2668 Loss2: 0.4880 Loss3: 0.2528
+2025-07-17 11:59:16.409603 Epoch [020/100], Step [0250/0472], Loss1: 0.2839 Loss2: 0.4596 Loss3: 0.2664
+2025-07-17 12:00:30.325435 Epoch [020/100], Step [0300/0472], Loss1: 0.2742 Loss2: 0.4316 Loss3: 0.2521
+2025-07-17 12:01:44.360668 Epoch [020/100], Step [0350/0472], Loss1: 0.2809 Loss2: 0.4633 Loss3: 0.2504
+2025-07-17 12:02:58.456611 Epoch [020/100], Step [0400/0472], Loss1: 0.2820 Loss2: 0.4800 Loss3: 0.2595
+2025-07-17 12:04:12.432191 Epoch [020/100], Step [0450/0472], Loss1: 0.3481 Loss2: 0.7340 Loss3: 0.3349
+2025-07-17 12:04:44.212522 Epoch [020/100], Step [0472/0472], Loss1: 0.3631 Loss2: 0.6237 Loss3: 0.3093
+2025-07-17 12:04:51.722909 Epoch [021/100], Step [0001/0472], Loss1: 0.3243 Loss2: 0.4479 Loss3: 0.2902
+2025-07-17 12:06:05.491764 Epoch [021/100], Step [0050/0472], Loss1: 0.3114 Loss2: 0.4280 Loss3: 0.2974
+2025-07-17 12:07:19.611065 Epoch [021/100], Step [0100/0472], Loss1: 0.4758 Loss2: 0.6087 Loss3: 0.4515
+2025-07-17 12:08:33.502251 Epoch [021/100], Step [0150/0472], Loss1: 0.3042 Loss2: 0.4713 Loss3: 0.2737
+2025-07-17 12:09:47.236827 Epoch [021/100], Step [0200/0472], Loss1: 0.3688 Loss2: 0.5156 Loss3: 0.3512
+2025-07-17 12:11:01.006626 Epoch [021/100], Step [0250/0472], Loss1: 0.2448 Loss2: 0.4785 Loss3: 0.2249
+2025-07-17 12:12:15.022200 Epoch [021/100], Step [0300/0472], Loss1: 0.2587 Loss2: 0.3796 Loss3: 0.2324
+2025-07-17 12:13:29.114978 Epoch [021/100], Step [0350/0472], Loss1: 0.3413 Loss2: 0.5271 Loss3: 0.3196
+2025-07-17 12:14:43.002499 Epoch [021/100], Step [0400/0472], Loss1: 0.3108 Loss2: 0.5703 Loss3: 0.2913
+2025-07-17 12:15:56.729804 Epoch [021/100], Step [0450/0472], Loss1: 0.2600 Loss2: 0.4140 Loss3: 0.2307
+2025-07-17 12:16:28.371570 Epoch [021/100], Step [0472/0472], Loss1: 0.1748 Loss2: 0.2562 Loss3: 0.1302
+2025-07-17 12:16:37.128528 Epoch [022/100], Step [0001/0472], Loss1: 0.2721 Loss2: 0.4553 Loss3: 0.2521
+2025-07-17 12:17:50.234392 Epoch [022/100], Step [0050/0472], Loss1: 0.2583 Loss2: 0.3991 Loss3: 0.2298
+2025-07-17 12:19:04.592391 Epoch [022/100], Step [0100/0472], Loss1: 0.2885 Loss2: 0.5143 Loss3: 0.2604
+2025-07-17 12:20:19.012825 Epoch [022/100], Step [0150/0472], Loss1: 0.3142 Loss2: 0.4840 Loss3: 0.2924
+2025-07-17 12:21:32.906004 Epoch [022/100], Step [0200/0472], Loss1: 0.2954 Loss2: 0.4960 Loss3: 0.2675
+2025-07-17 12:22:47.465027 Epoch [022/100], Step [0250/0472], Loss1: 0.2368 Loss2: 0.4014 Loss3: 0.2218
+2025-07-17 12:24:02.028610 Epoch [022/100], Step [0300/0472], Loss1: 0.3017 Loss2: 0.5760 Loss3: 0.2813
+2025-07-17 12:25:16.309214 Epoch [022/100], Step [0350/0472], Loss1: 0.2830 Loss2: 0.4431 Loss3: 0.2554
+2025-07-17 12:26:30.603838 Epoch [022/100], Step [0400/0472], Loss1: 0.3168 Loss2: 0.5055 Loss3: 0.2910
+2025-07-17 12:27:44.985844 Epoch [022/100], Step [0450/0472], Loss1: 0.3162 Loss2: 0.5147 Loss3: 0.2981
+2025-07-17 12:28:17.026969 Epoch [022/100], Step [0472/0472], Loss1: 0.2684 Loss2: 0.2767 Loss3: 0.2245
+2025-07-17 12:28:24.260426 Epoch [023/100], Step [0001/0472], Loss1: 0.3061 Loss2: 0.5029 Loss3: 0.2705
+2025-07-17 12:29:37.510930 Epoch [023/100], Step [0050/0472], Loss1: 0.3509 Loss2: 0.5167 Loss3: 0.3334
+2025-07-17 12:30:51.235822 Epoch [023/100], Step [0100/0472], Loss1: 0.2438 Loss2: 0.3568 Loss3: 0.2135
+2025-07-17 12:32:04.821042 Epoch [023/100], Step [0150/0472], Loss1: 0.2609 Loss2: 0.3478 Loss3: 0.2438
+2025-07-17 12:33:18.660290 Epoch [023/100], Step [0200/0472], Loss1: 0.2850 Loss2: 0.5400 Loss3: 0.2619
+2025-07-17 12:34:32.378701 Epoch [023/100], Step [0250/0472], Loss1: 0.3954 Loss2: 0.4702 Loss3: 0.3447
+2025-07-17 12:35:45.831390 Epoch [023/100], Step [0300/0472], Loss1: 0.2578 Loss2: 0.4117 Loss3: 0.2373
+2025-07-17 12:36:59.871164 Epoch [023/100], Step [0350/0472], Loss1: 0.2083 Loss2: 0.2613 Loss3: 0.1827
+2025-07-17 12:38:13.633262 Epoch [023/100], Step [0400/0472], Loss1: 0.3284 Loss2: 0.5123 Loss3: 0.3100
+2025-07-17 12:39:27.525050 Epoch [023/100], Step [0450/0472], Loss1: 0.2538 Loss2: 0.4569 Loss3: 0.2277
+2025-07-17 12:39:59.102530 Epoch [023/100], Step [0472/0472], Loss1: 0.9953 Loss2: 1.1440 Loss3: 1.0265
+2025-07-17 12:40:07.972617 Epoch [024/100], Step [0001/0472], Loss1: 0.3473 Loss2: 0.6370 Loss3: 0.3349
+2025-07-17 12:41:20.299705 Epoch [024/100], Step [0050/0472], Loss1: 0.3278 Loss2: 0.4689 Loss3: 0.3159
+2025-07-17 12:42:34.053938 Epoch [024/100], Step [0100/0472], Loss1: 0.2634 Loss2: 0.4403 Loss3: 0.2373
+2025-07-17 12:43:48.531411 Epoch [024/100], Step [0150/0472], Loss1: 0.2894 Loss2: 0.4114 Loss3: 0.2632
+2025-07-17 12:45:03.721848 Epoch [024/100], Step [0200/0472], Loss1: 0.2838 Loss2: 0.5550 Loss3: 0.2627
+2025-07-17 12:46:18.860525 Epoch [024/100], Step [0250/0472], Loss1: 0.2862 Loss2: 0.4159 Loss3: 0.2668
+2025-07-17 12:47:34.103269 Epoch [024/100], Step [0300/0472], Loss1: 0.2991 Loss2: 0.4447 Loss3: 0.2762
+2025-07-17 12:48:49.222818 Epoch [024/100], Step [0350/0472], Loss1: 0.2724 Loss2: 0.3893 Loss3: 0.2447
+2025-07-17 12:50:04.192284 Epoch [024/100], Step [0400/0472], Loss1: 0.3865 Loss2: 0.5271 Loss3: 0.3630
+2025-07-17 12:51:19.314858 Epoch [024/100], Step [0450/0472], Loss1: 0.3050 Loss2: 0.4962 Loss3: 0.2817
+2025-07-17 12:51:51.591634 Epoch [024/100], Step [0472/0472], Loss1: 0.5429 Loss2: 1.2962 Loss3: 0.5220
+2025-07-17 12:52:02.352889 Epoch [025/100], Step [0001/0472], Loss1: 0.2960 Loss2: 0.4900 Loss3: 0.2631
+2025-07-17 12:53:16.271047 Epoch [025/100], Step [0050/0472], Loss1: 0.3055 Loss2: 0.4768 Loss3: 0.2811
+2025-07-17 12:54:30.515713 Epoch [025/100], Step [0100/0472], Loss1: 0.4261 Loss2: 0.5878 Loss3: 0.4142
+2025-07-17 12:55:45.059320 Epoch [025/100], Step [0150/0472], Loss1: 0.3959 Loss2: 0.5201 Loss3: 0.3770
+2025-07-17 12:56:59.455989 Epoch [025/100], Step [0200/0472], Loss1: 0.2631 Loss2: 0.3828 Loss3: 0.2351
+2025-07-17 12:58:13.709172 Epoch [025/100], Step [0250/0472], Loss1: 0.2770 Loss2: 0.4295 Loss3: 0.2480
+2025-07-17 12:59:28.504645 Epoch [025/100], Step [0300/0472], Loss1: 0.2503 Loss2: 0.4739 Loss3: 0.2306
+2025-07-17 13:00:43.460350 Epoch [025/100], Step [0350/0472], Loss1: 0.3107 Loss2: 0.5100 Loss3: 0.2872
+2025-07-17 13:01:59.953941 Epoch [025/100], Step [0400/0472], Loss1: 0.2573 Loss2: 0.5020 Loss3: 0.2381
+2025-07-17 13:03:14.902206 Epoch [025/100], Step [0450/0472], Loss1: 0.3411 Loss2: 0.6137 Loss3: 0.3296
+2025-07-17 13:03:47.295382 Epoch [025/100], Step [0472/0472], Loss1: 0.2602 Loss2: 1.2049 Loss3: 0.2524
+2025-07-17 13:03:55.824531 Epoch [026/100], Step [0001/0472], Loss1: 0.2980 Loss2: 0.5612 Loss3: 0.2591
+2025-07-17 13:05:10.370084 Epoch [026/100], Step [0050/0472], Loss1: 0.2830 Loss2: 0.5325 Loss3: 0.2598
+2025-07-17 13:06:26.469087 Epoch [026/100], Step [0100/0472], Loss1: 0.2309 Loss2: 0.4407 Loss3: 0.2038
+2025-07-17 13:07:43.153699 Epoch [026/100], Step [0150/0472], Loss1: 0.2984 Loss2: 0.5698 Loss3: 0.2655
+2025-07-17 13:08:59.727711 Epoch [026/100], Step [0200/0472], Loss1: 0.2990 Loss2: 0.5125 Loss3: 0.2747
+2025-07-17 13:10:16.374747 Epoch [026/100], Step [0250/0472], Loss1: 0.2464 Loss2: 0.5091 Loss3: 0.2353
+2025-07-17 13:11:33.252065 Epoch [026/100], Step [0300/0472], Loss1: 0.2759 Loss2: 0.4377 Loss3: 0.2587
+2025-07-17 13:12:49.730504 Epoch [026/100], Step [0350/0472], Loss1: 0.1911 Loss2: 0.5225 Loss3: 0.1700
+2025-07-17 13:14:05.463540 Epoch [026/100], Step [0400/0472], Loss1: 0.2730 Loss2: 0.4885 Loss3: 0.2451
+2025-07-17 13:15:21.177270 Epoch [026/100], Step [0450/0472], Loss1: 0.3602 Loss2: 0.6130 Loss3: 0.3383
+2025-07-17 13:15:54.274664 Epoch [026/100], Step [0472/0472], Loss1: 0.4622 Loss2: 1.0628 Loss3: 0.4384
+2025-07-17 13:16:03.806684 Epoch [027/100], Step [0001/0472], Loss1: 0.3188 Loss2: 0.5211 Loss3: 0.2933
+2025-07-17 13:17:17.482161 Epoch [027/100], Step [0050/0472], Loss1: 0.2934 Loss2: 0.6026 Loss3: 0.2753
+2025-07-17 13:18:31.909605 Epoch [027/100], Step [0100/0472], Loss1: 0.3207 Loss2: 0.5514 Loss3: 0.3011
+2025-07-17 13:19:46.819741 Epoch [027/100], Step [0150/0472], Loss1: 0.3019 Loss2: 0.4529 Loss3: 0.2756
+2025-07-17 13:21:01.347720 Epoch [027/100], Step [0200/0472], Loss1: 0.2549 Loss2: 0.5118 Loss3: 0.2412
+2025-07-17 13:22:15.857622 Epoch [027/100], Step [0250/0472], Loss1: 0.2785 Loss2: 0.4929 Loss3: 0.2558
+2025-07-17 13:23:30.308422 Epoch [027/100], Step [0300/0472], Loss1: 0.2868 Loss2: 0.4759 Loss3: 0.2552
+2025-07-17 13:24:44.815908 Epoch [027/100], Step [0350/0472], Loss1: 0.3077 Loss2: 0.5151 Loss3: 0.2853
+2025-07-17 13:25:59.471895 Epoch [027/100], Step [0400/0472], Loss1: 0.2572 Loss2: 0.5785 Loss3: 0.2445
+2025-07-17 13:27:13.691997 Epoch [027/100], Step [0450/0472], Loss1: 0.2858 Loss2: 0.5301 Loss3: 0.2661
+2025-07-17 13:27:45.568202 Epoch [027/100], Step [0472/0472], Loss1: 0.6959 Loss2: 1.2502 Loss3: 0.7863
+2025-07-17 13:27:54.345390 Epoch [028/100], Step [0001/0472], Loss1: 0.3111 Loss2: 0.5561 Loss3: 0.2765
+2025-07-17 13:29:07.577578 Epoch [028/100], Step [0050/0472], Loss1: 0.3097 Loss2: 0.5746 Loss3: 0.2883
+2025-07-17 13:30:22.174939 Epoch [028/100], Step [0100/0472], Loss1: 0.2744 Loss2: 0.4297 Loss3: 0.2426
+2025-07-17 13:31:36.805540 Epoch [028/100], Step [0150/0472], Loss1: 0.3128 Loss2: 0.5310 Loss3: 0.2870
+2025-07-17 13:32:51.227653 Epoch [028/100], Step [0200/0472], Loss1: 0.2390 Loss2: 0.4279 Loss3: 0.2168
+2025-07-17 13:34:05.646566 Epoch [028/100], Step [0250/0472], Loss1: 0.3234 Loss2: 0.5135 Loss3: 0.2805
+2025-07-17 13:35:20.283112 Epoch [028/100], Step [0300/0472], Loss1: 0.2512 Loss2: 0.4325 Loss3: 0.2176
+2025-07-17 13:36:34.801787 Epoch [028/100], Step [0350/0472], Loss1: 0.2306 Loss2: 0.3312 Loss3: 0.2095
+2025-07-17 13:37:50.180074 Epoch [028/100], Step [0400/0472], Loss1: 0.2551 Loss2: 0.4801 Loss3: 0.2346
+2025-07-17 13:39:03.995916 Epoch [028/100], Step [0450/0472], Loss1: 0.3602 Loss2: 0.5358 Loss3: 0.3402
+2025-07-17 13:39:35.467662 Epoch [028/100], Step [0472/0472], Loss1: 0.4002 Loss2: 1.2541 Loss3: 0.4127
+2025-07-17 13:39:42.972910 Epoch [029/100], Step [0001/0472], Loss1: 0.2549 Loss2: 0.4606 Loss3: 0.2216
+2025-07-17 13:40:55.377483 Epoch [029/100], Step [0050/0472], Loss1: 0.2311 Loss2: 0.4145 Loss3: 0.2056
+2025-07-17 13:42:08.225026 Epoch [029/100], Step [0100/0472], Loss1: 0.3090 Loss2: 0.5623 Loss3: 0.2778
+2025-07-17 13:43:19.411467 Epoch [029/100], Step [0150/0472], Loss1: 0.2909 Loss2: 0.5718 Loss3: 0.2683
+2025-07-17 13:44:30.236379 Epoch [029/100], Step [0200/0472], Loss1: 0.2636 Loss2: 0.4492 Loss3: 0.2371
+2025-07-17 13:45:40.829450 Epoch [029/100], Step [0250/0472], Loss1: 0.3200 Loss2: 0.5516 Loss3: 0.3026
+2025-07-17 13:46:51.472330 Epoch [029/100], Step [0300/0472], Loss1: 0.2946 Loss2: 0.5003 Loss3: 0.2766
+2025-07-17 13:48:01.113316 Epoch [029/100], Step [0350/0472], Loss1: 0.2813 Loss2: 0.4971 Loss3: 0.2521
+2025-07-17 13:49:08.992976 Epoch [029/100], Step [0400/0472], Loss1: 0.3587 Loss2: 0.6187 Loss3: 0.3448
+2025-07-17 13:50:16.096534 Epoch [029/100], Step [0450/0472], Loss1: 0.2529 Loss2: 0.4749 Loss3: 0.2474
+2025-07-17 13:50:45.026028 Epoch [029/100], Step [0472/0472], Loss1: 0.3827 Loss2: 0.8166 Loss3: 0.3670
+2025-07-17 13:50:57.982678 Epoch [030/100], Step [0001/0472], Loss1: 0.3068 Loss2: 0.6255 Loss3: 0.2835
+2025-07-17 13:52:04.594531 Epoch [030/100], Step [0050/0472], Loss1: 0.2479 Loss2: 0.4809 Loss3: 0.2290
+2025-07-17 13:53:12.536997 Epoch [030/100], Step [0100/0472], Loss1: 0.3083 Loss2: 0.5029 Loss3: 0.2637
+2025-07-17 13:54:20.677061 Epoch [030/100], Step [0150/0472], Loss1: 0.3817 Loss2: 0.5986 Loss3: 0.3559
+2025-07-17 13:55:28.790541 Epoch [030/100], Step [0200/0472], Loss1: 0.3403 Loss2: 0.6133 Loss3: 0.3138
+2025-07-17 13:56:37.691115 Epoch [030/100], Step [0250/0472], Loss1: 0.3045 Loss2: 0.5641 Loss3: 0.2872
+2025-07-17 13:57:45.282961 Epoch [030/100], Step [0300/0472], Loss1: 0.2450 Loss2: 0.5674 Loss3: 0.2202
+2025-07-17 13:58:53.894031 Epoch [030/100], Step [0350/0472], Loss1: 0.3233 Loss2: 0.4775 Loss3: 0.3020
+2025-07-17 14:00:02.720065 Epoch [030/100], Step [0400/0472], Loss1: 0.2725 Loss2: 0.5641 Loss3: 0.2470
+2025-07-17 14:01:11.545087 Epoch [030/100], Step [0450/0472], Loss1: 0.2179 Loss2: 0.4636 Loss3: 0.1992
+2025-07-17 14:01:41.591060 Epoch [030/100], Step [0472/0472], Loss1: 0.4861 Loss2: 1.0872 Loss3: 0.4935
+2025-07-17 14:01:49.369819 Epoch [031/100], Step [0001/0472], Loss1: 0.3392 Loss2: 0.5477 Loss3: 0.3033
+2025-07-17 14:02:57.941577 Epoch [031/100], Step [0050/0472], Loss1: 0.2804 Loss2: 0.4096 Loss3: 0.2609
+2025-07-17 14:04:05.906979 Epoch [031/100], Step [0100/0472], Loss1: 0.2732 Loss2: 0.4723 Loss3: 0.2370
+2025-07-17 14:05:14.174652 Epoch [031/100], Step [0150/0472], Loss1: 0.2533 Loss2: 0.3273 Loss3: 0.2266
+2025-07-17 14:06:22.665200 Epoch [031/100], Step [0200/0472], Loss1: 0.2794 Loss2: 0.4221 Loss3: 0.2582
+2025-07-17 14:07:30.428806 Epoch [031/100], Step [0250/0472], Loss1: 0.2222 Loss2: 0.3455 Loss3: 0.1953
+2025-07-17 14:08:39.810855 Epoch [031/100], Step [0300/0472], Loss1: 0.2706 Loss2: 0.4854 Loss3: 0.2602
+2025-07-17 14:09:48.230345 Epoch [031/100], Step [0350/0472], Loss1: 0.2625 Loss2: 0.3798 Loss3: 0.2510
+2025-07-17 14:10:57.055330 Epoch [031/100], Step [0400/0472], Loss1: 0.3046 Loss2: 0.4864 Loss3: 0.2946
+2025-07-17 14:12:06.983727 Epoch [031/100], Step [0450/0472], Loss1: 0.2447 Loss2: 0.4318 Loss3: 0.2239
+2025-07-17 14:12:36.131734 Epoch [031/100], Step [0472/0472], Loss1: 0.5173 Loss2: 1.1932 Loss3: 0.4508
+2025-07-17 14:12:43.673569 Epoch [032/100], Step [0001/0472], Loss1: 0.3454 Loss2: 0.5192 Loss3: 0.3127
+2025-07-17 14:13:50.838848 Epoch [032/100], Step [0050/0472], Loss1: 0.2498 Loss2: 0.4329 Loss3: 0.2351
+2025-07-17 14:14:59.614608 Epoch [032/100], Step [0100/0472], Loss1: 0.3013 Loss2: 0.4869 Loss3: 0.2789
+2025-07-17 14:16:07.937315 Epoch [032/100], Step [0150/0472], Loss1: 0.2945 Loss2: 0.4320 Loss3: 0.2695
+2025-07-17 14:17:17.554931 Epoch [032/100], Step [0200/0472], Loss1: 0.3495 Loss2: 0.5132 Loss3: 0.3283
+2025-07-17 14:18:26.960363 Epoch [032/100], Step [0250/0472], Loss1: 0.2549 Loss2: 0.4096 Loss3: 0.2447
+2025-07-17 14:19:36.008505 Epoch [032/100], Step [0300/0472], Loss1: 0.2063 Loss2: 0.3616 Loss3: 0.1777
+2025-07-17 14:20:44.253949 Epoch [032/100], Step [0350/0472], Loss1: 0.2283 Loss2: 0.3999 Loss3: 0.2107
+2025-07-17 14:21:52.320371 Epoch [032/100], Step [0400/0472], Loss1: 0.3244 Loss2: 0.5153 Loss3: 0.3021
+2025-07-17 14:23:00.885441 Epoch [032/100], Step [0450/0472], Loss1: 0.2401 Loss2: 0.3789 Loss3: 0.2222
+2025-07-17 14:23:30.269828 Epoch [032/100], Step [0472/0472], Loss1: 0.2463 Loss2: 0.7423 Loss3: 0.2703
+2025-07-17 14:23:38.504336 Epoch [033/100], Step [0001/0472], Loss1: 0.2633 Loss2: 0.3639 Loss3: 0.2415
+2025-07-17 14:24:45.113922 Epoch [033/100], Step [0050/0472], Loss1: 0.2661 Loss2: 0.4474 Loss3: 0.2497
+2025-07-17 14:25:53.788076 Epoch [033/100], Step [0100/0472], Loss1: 0.3477 Loss2: 0.4939 Loss3: 0.3393
+2025-07-17 14:27:01.923403 Epoch [033/100], Step [0150/0472], Loss1: 0.3730 Loss2: 0.5527 Loss3: 0.3595
+2025-07-17 14:28:11.232732 Epoch [033/100], Step [0200/0472], Loss1: 0.3316 Loss2: 0.5286 Loss3: 0.3033
+2025-07-17 14:29:19.843435 Epoch [033/100], Step [0250/0472], Loss1: 0.3167 Loss2: 0.5575 Loss3: 0.2855
+2025-07-17 14:30:28.812704 Epoch [033/100], Step [0300/0472], Loss1: 0.2415 Loss2: 0.4643 Loss3: 0.2223
+2025-07-17 14:31:37.828468 Epoch [033/100], Step [0350/0472], Loss1: 0.2398 Loss2: 0.4100 Loss3: 0.2270
+2025-07-17 14:32:46.925605 Epoch [033/100], Step [0400/0472], Loss1: 0.2117 Loss2: 0.4152 Loss3: 0.1970
+2025-07-17 14:33:55.818306 Epoch [033/100], Step [0450/0472], Loss1: 0.3320 Loss2: 0.4559 Loss3: 0.3183
+2025-07-17 14:34:25.340821 Epoch [033/100], Step [0472/0472], Loss1: 0.7186 Loss2: 1.2244 Loss3: 0.7222
+2025-07-17 14:34:34.346329 Epoch [034/100], Step [0001/0472], Loss1: 0.2447 Loss2: 0.3685 Loss3: 0.2263
+2025-07-17 14:35:42.070832 Epoch [034/100], Step [0050/0472], Loss1: 0.3377 Loss2: 0.4842 Loss3: 0.3153
+2025-07-17 14:36:51.350615 Epoch [034/100], Step [0100/0472], Loss1: 0.2463 Loss2: 0.3978 Loss3: 0.2256
+2025-07-17 14:38:00.387365 Epoch [034/100], Step [0150/0472], Loss1: 0.2390 Loss2: 0.3785 Loss3: 0.2129
+2025-07-17 14:39:09.340847 Epoch [034/100], Step [0200/0472], Loss1: 0.2997 Loss2: 0.4348 Loss3: 0.2730
+2025-07-17 14:40:18.510599 Epoch [034/100], Step [0250/0472], Loss1: 0.1764 Loss2: 0.2376 Loss3: 0.1671
+2025-07-17 14:41:27.119259 Epoch [034/100], Step [0300/0472], Loss1: 0.3575 Loss2: 0.5431 Loss3: 0.3302
+2025-07-17 14:42:35.656721 Epoch [034/100], Step [0350/0472], Loss1: 0.2585 Loss2: 0.4450 Loss3: 0.2377
+2025-07-17 14:43:44.128646 Epoch [034/100], Step [0400/0472], Loss1: 0.2571 Loss2: 0.4081 Loss3: 0.2278
+2025-07-17 14:44:53.118533 Epoch [034/100], Step [0450/0472], Loss1: 0.2577 Loss2: 0.5601 Loss3: 0.2249
+2025-07-17 14:45:22.508618 Epoch [034/100], Step [0472/0472], Loss1: 0.3376 Loss2: 0.4762 Loss3: 0.2846
+2025-07-17 14:45:33.607528 Epoch [035/100], Step [0001/0472], Loss1: 0.2461 Loss2: 0.4025 Loss3: 0.2296
+2025-07-17 14:46:41.294630 Epoch [035/100], Step [0050/0472], Loss1: 0.2178 Loss2: 0.4088 Loss3: 0.1968
+2025-07-17 14:47:49.954720 Epoch [035/100], Step [0100/0472], Loss1: 0.2959 Loss2: 0.3929 Loss3: 0.2765
+2025-07-17 14:48:57.805758 Epoch [035/100], Step [0150/0472], Loss1: 0.2781 Loss2: 0.3470 Loss3: 0.2650
+2025-07-17 14:50:06.220458 Epoch [035/100], Step [0200/0472], Loss1: 0.3559 Loss2: 0.5719 Loss3: 0.3372
+2025-07-17 14:51:14.538392 Epoch [035/100], Step [0250/0472], Loss1: 0.3221 Loss2: 0.3818 Loss3: 0.3056
+2025-07-17 14:52:22.809722 Epoch [035/100], Step [0300/0472], Loss1: 0.2817 Loss2: 0.3578 Loss3: 0.2504
+2025-07-17 14:53:31.002092 Epoch [035/100], Step [0350/0472], Loss1: 0.2681 Loss2: 0.3964 Loss3: 0.2368
+2025-07-17 14:54:40.782857 Epoch [035/100], Step [0400/0472], Loss1: 0.2770 Loss2: 0.4695 Loss3: 0.2437
+2025-07-17 14:55:51.565316 Epoch [035/100], Step [0450/0472], Loss1: 0.2811 Loss2: 0.3958 Loss3: 0.2558
+2025-07-17 14:56:23.171067 Epoch [035/100], Step [0472/0472], Loss1: 0.2091 Loss2: 0.2997 Loss3: 0.1873
+2025-07-17 14:56:30.992397 Epoch [036/100], Step [0001/0472], Loss1: 0.2813 Loss2: 0.3931 Loss3: 0.2506
+2025-07-17 14:57:41.643324 Epoch [036/100], Step [0050/0472], Loss1: 0.2711 Loss2: 0.4321 Loss3: 0.2459
+2025-07-17 14:58:53.342425 Epoch [036/100], Step [0100/0472], Loss1: 0.2529 Loss2: 0.3563 Loss3: 0.2313
+2025-07-17 15:00:04.699452 Epoch [036/100], Step [0150/0472], Loss1: 0.2425 Loss2: 0.3399 Loss3: 0.2141
+2025-07-17 15:01:17.665843 Epoch [036/100], Step [0200/0472], Loss1: 0.2445 Loss2: 0.3362 Loss3: 0.2218
+2025-07-17 15:02:29.607749 Epoch [036/100], Step [0250/0472], Loss1: 0.3212 Loss2: 0.4479 Loss3: 0.2969
+2025-07-17 15:03:41.983777 Epoch [036/100], Step [0300/0472], Loss1: 0.1996 Loss2: 0.2663 Loss3: 0.1807
+2025-07-17 15:04:52.028052 Epoch [036/100], Step [0350/0472], Loss1: 0.2738 Loss2: 0.3959 Loss3: 0.2387
+2025-07-17 15:06:02.131501 Epoch [036/100], Step [0400/0472], Loss1: 0.2677 Loss2: 0.3528 Loss3: 0.2442
+2025-07-17 15:07:16.029727 Epoch [036/100], Step [0450/0472], Loss1: 0.2873 Loss2: 0.5726 Loss3: 0.2575
+2025-07-17 15:07:46.490491 Epoch [036/100], Step [0472/0472], Loss1: 0.5491 Loss2: 0.6922 Loss3: 0.5326
+2025-07-17 15:07:54.120955 Epoch [037/100], Step [0001/0472], Loss1: 0.2673 Loss2: 0.4189 Loss3: 0.2264
+2025-07-17 15:09:01.807064 Epoch [037/100], Step [0050/0472], Loss1: 0.2628 Loss2: 0.4759 Loss3: 0.2408
+2025-07-17 15:10:14.610872 Epoch [037/100], Step [0100/0472], Loss1: 0.2090 Loss2: 0.2912 Loss3: 0.1846
+2025-07-17 15:11:26.715350 Epoch [037/100], Step [0150/0472], Loss1: 0.2344 Loss2: 0.3196 Loss3: 0.2127
+2025-07-17 15:12:37.988612 Epoch [037/100], Step [0200/0472], Loss1: 0.2484 Loss2: 0.3828 Loss3: 0.2402
+2025-07-17 15:13:51.569205 Epoch [037/100], Step [0250/0472], Loss1: 0.2627 Loss2: 0.4250 Loss3: 0.2472
+2025-07-17 15:15:03.110636 Epoch [037/100], Step [0300/0472], Loss1: 0.1946 Loss2: 0.3370 Loss3: 0.1761
+2025-07-17 15:16:15.589542 Epoch [037/100], Step [0350/0472], Loss1: 0.2813 Loss2: 0.3872 Loss3: 0.2573
+2025-07-17 15:17:28.718759 Epoch [037/100], Step [0400/0472], Loss1: 0.2647 Loss2: 0.4019 Loss3: 0.2211
+2025-07-17 15:18:40.155524 Epoch [037/100], Step [0450/0472], Loss1: 0.2143 Loss2: 0.3826 Loss3: 0.1939
+2025-07-17 15:19:11.812466 Epoch [037/100], Step [0472/0472], Loss1: 0.1024 Loss2: 0.1117 Loss3: 0.0947
+2025-07-17 15:19:17.016013 Epoch [038/100], Step [0001/0472], Loss1: 0.3400 Loss2: 0.4430 Loss3: 0.3060
+2025-07-17 15:20:28.181999 Epoch [038/100], Step [0050/0472], Loss1: 0.2429 Loss2: 0.3660 Loss3: 0.2277
+2025-07-17 15:21:38.910794 Epoch [038/100], Step [0100/0472], Loss1: 0.2704 Loss2: 0.3734 Loss3: 0.2495
+2025-07-17 15:22:51.235242 Epoch [038/100], Step [0150/0472], Loss1: 0.2562 Loss2: 0.3538 Loss3: 0.2327
+2025-07-17 15:24:02.207437 Epoch [038/100], Step [0200/0472], Loss1: 0.2301 Loss2: 0.3404 Loss3: 0.2104
+2025-07-17 15:25:10.048184 Epoch [038/100], Step [0250/0472], Loss1: 0.2363 Loss2: 0.4373 Loss3: 0.2322
+2025-07-17 15:26:21.543593 Epoch [038/100], Step [0300/0472], Loss1: 0.2658 Loss2: 0.3929 Loss3: 0.2460
+2025-07-17 15:27:29.336299 Epoch [038/100], Step [0350/0472], Loss1: 0.2456 Loss2: 0.4334 Loss3: 0.2306
+2025-07-17 15:28:39.865502 Epoch [038/100], Step [0400/0472], Loss1: 0.2395 Loss2: 0.3357 Loss3: 0.2225
+2025-07-17 15:29:52.433855 Epoch [038/100], Step [0450/0472], Loss1: 0.2289 Loss2: 0.3392 Loss3: 0.1948
+2025-07-17 15:30:24.079850 Epoch [038/100], Step [0472/0472], Loss1: 0.3355 Loss2: 0.4335 Loss3: 0.3197
+2025-07-17 15:30:33.365828 Epoch [039/100], Step [0001/0472], Loss1: 0.2535 Loss2: 0.4170 Loss3: 0.2267
+2025-07-17 15:31:43.235053 Epoch [039/100], Step [0050/0472], Loss1: 0.2786 Loss2: 0.4098 Loss3: 0.2673
+2025-07-17 15:32:50.754947 Epoch [039/100], Step [0100/0472], Loss1: 0.2525 Loss2: 0.5282 Loss3: 0.2319
+2025-07-17 15:34:02.318521 Epoch [039/100], Step [0150/0472], Loss1: 0.2294 Loss2: 0.3113 Loss3: 0.2025
+2025-07-17 15:35:11.246508 Epoch [039/100], Step [0200/0472], Loss1: 0.2483 Loss2: 0.3376 Loss3: 0.2062
+2025-07-17 15:36:20.526913 Epoch [039/100], Step [0250/0472], Loss1: 0.2500 Loss2: 0.3350 Loss3: 0.2275
+2025-07-17 15:37:33.318904 Epoch [039/100], Step [0300/0472], Loss1: 0.3238 Loss2: 0.4297 Loss3: 0.2938
+2025-07-17 15:38:45.272096 Epoch [039/100], Step [0350/0472], Loss1: 0.2356 Loss2: 0.4159 Loss3: 0.2225
+2025-07-17 15:39:57.966198 Epoch [039/100], Step [0400/0472], Loss1: 0.2596 Loss2: 0.4204 Loss3: 0.2415
+2025-07-17 15:41:10.320968 Epoch [039/100], Step [0450/0472], Loss1: 0.2319 Loss2: 0.4013 Loss3: 0.1975
+2025-07-17 15:41:42.004257 Epoch [039/100], Step [0472/0472], Loss1: 0.2385 Loss2: 1.1710 Loss3: 0.2651
+2025-07-17 15:41:53.289381 Epoch [040/100], Step [0001/0472], Loss1: 0.2541 Loss2: 0.4018 Loss3: 0.2369
+2025-07-17 15:43:05.172912 Epoch [040/100], Step [0050/0472], Loss1: 0.3054 Loss2: 0.4435 Loss3: 0.2795
+2025-07-17 15:44:17.222734 Epoch [040/100], Step [0100/0472], Loss1: 0.3078 Loss2: 0.4846 Loss3: 0.2853
+2025-07-17 15:45:30.102176 Epoch [040/100], Step [0150/0472], Loss1: 0.3000 Loss2: 0.4059 Loss3: 0.2673
+2025-07-17 15:46:42.714192 Epoch [040/100], Step [0200/0472], Loss1: 0.3178 Loss2: 0.4092 Loss3: 0.2904
+2025-07-17 15:47:53.483880 Epoch [040/100], Step [0250/0472], Loss1: 0.3048 Loss2: 0.4529 Loss3: 0.2839
+2025-07-17 15:49:03.304862 Epoch [040/100], Step [0300/0472], Loss1: 0.2966 Loss2: 0.3768 Loss3: 0.2687
+2025-07-17 15:50:14.124884 Epoch [040/100], Step [0350/0472], Loss1: 0.2477 Loss2: 0.3269 Loss3: 0.2187
+2025-07-17 15:51:24.927650 Epoch [040/100], Step [0400/0472], Loss1: 0.3015 Loss2: 0.4482 Loss3: 0.2617
+2025-07-17 15:52:37.076049 Epoch [040/100], Step [0450/0472], Loss1: 0.1665 Loss2: 0.1966 Loss3: 0.1446
+2025-07-17 15:53:08.427319 Epoch [040/100], Step [0472/0472], Loss1: 0.3991 Loss2: 0.4212 Loss3: 0.3828
+2025-07-17 15:53:16.888125 Epoch [041/100], Step [0001/0472], Loss1: 0.3508 Loss2: 0.4539 Loss3: 0.3383
+2025-07-17 15:54:26.922442 Epoch [041/100], Step [0050/0472], Loss1: 0.2533 Loss2: 0.3812 Loss3: 0.2354
+2025-07-17 15:55:39.946126 Epoch [041/100], Step [0100/0472], Loss1: 0.2306 Loss2: 0.3120 Loss3: 0.1942
+2025-07-17 15:56:50.728953 Epoch [041/100], Step [0150/0472], Loss1: 0.2808 Loss2: 0.3839 Loss3: 0.2502
+2025-07-17 15:58:01.397871 Epoch [041/100], Step [0200/0472], Loss1: 0.1995 Loss2: 0.2847 Loss3: 0.1809
+2025-07-17 15:59:12.979321 Epoch [041/100], Step [0250/0472], Loss1: 0.2584 Loss2: 0.3494 Loss3: 0.2465
+2025-07-17 16:00:25.476715 Epoch [041/100], Step [0300/0472], Loss1: 0.1725 Loss2: 0.2656 Loss3: 0.1568
+2025-07-17 16:01:37.219222 Epoch [041/100], Step [0350/0472], Loss1: 0.2704 Loss2: 0.3746 Loss3: 0.2407
+2025-07-17 16:02:49.224095 Epoch [041/100], Step [0400/0472], Loss1: 0.3200 Loss2: 0.4354 Loss3: 0.2973
+2025-07-17 16:04:01.290098 Epoch [041/100], Step [0450/0472], Loss1: 0.3107 Loss2: 0.3815 Loss3: 0.2876
+2025-07-17 16:04:32.879039 Epoch [041/100], Step [0472/0472], Loss1: 0.7247 Loss2: 0.7119 Loss3: 0.7035
+2025-07-17 16:04:42.116741 Epoch [042/100], Step [0001/0472], Loss1: 0.2339 Loss2: 0.3466 Loss3: 0.2144
+2025-07-17 16:05:52.800496 Epoch [042/100], Step [0050/0472], Loss1: 0.2543 Loss2: 0.3367 Loss3: 0.2296
+2025-07-17 16:07:05.251680 Epoch [042/100], Step [0100/0472], Loss1: 0.2496 Loss2: 0.3562 Loss3: 0.2292
+2025-07-17 16:08:16.776145 Epoch [042/100], Step [0150/0472], Loss1: 0.2219 Loss2: 0.3881 Loss3: 0.1885
+2025-07-17 16:09:25.373694 Epoch [042/100], Step [0200/0472], Loss1: 0.3104 Loss2: 0.3778 Loss3: 0.3008
+2025-07-17 16:10:34.203527 Epoch [042/100], Step [0250/0472], Loss1: 0.2286 Loss2: 0.3014 Loss3: 0.2141
+2025-07-17 16:11:42.899877 Epoch [042/100], Step [0300/0472], Loss1: 0.3095 Loss2: 0.4570 Loss3: 0.2832
+2025-07-17 16:12:51.786310 Epoch [042/100], Step [0350/0472], Loss1: 0.2270 Loss2: 0.3973 Loss3: 0.2043
+2025-07-17 16:14:01.304280 Epoch [042/100], Step [0400/0472], Loss1: 0.2704 Loss2: 0.3636 Loss3: 0.2419
+2025-07-17 16:15:10.627635 Epoch [042/100], Step [0450/0472], Loss1: 0.2751 Loss2: 0.3676 Loss3: 0.2573
+2025-07-17 16:15:41.168869 Epoch [042/100], Step [0472/0472], Loss1: 0.2430 Loss2: 0.3821 Loss3: 0.2113
+2025-07-17 16:15:48.897225 Epoch [043/100], Step [0001/0472], Loss1: 0.3295 Loss2: 0.4604 Loss3: 0.2944
+2025-07-17 16:16:57.920907 Epoch [043/100], Step [0050/0472], Loss1: 0.2177 Loss2: 0.3532 Loss3: 0.1935
+2025-07-17 16:18:08.146584 Epoch [043/100], Step [0100/0472], Loss1: 0.2610 Loss2: 0.4007 Loss3: 0.2386
+2025-07-17 16:19:19.188722 Epoch [043/100], Step [0150/0472], Loss1: 0.2515 Loss2: 0.3721 Loss3: 0.2274
+2025-07-17 16:20:29.884277 Epoch [043/100], Step [0200/0472], Loss1: 0.3468 Loss2: 0.4732 Loss3: 0.3159
+2025-07-17 16:21:40.941921 Epoch [043/100], Step [0250/0472], Loss1: 0.2321 Loss2: 0.2923 Loss3: 0.2092
+2025-07-17 16:22:52.094431 Epoch [043/100], Step [0300/0472], Loss1: 0.3325 Loss2: 0.4465 Loss3: 0.3025
+2025-07-17 16:24:03.074259 Epoch [043/100], Step [0350/0472], Loss1: 0.2179 Loss2: 0.2914 Loss3: 0.1876
+2025-07-17 16:25:14.457624 Epoch [043/100], Step [0400/0472], Loss1: 0.2393 Loss2: 0.3232 Loss3: 0.2116
+2025-07-17 16:26:29.344194 Epoch [043/100], Step [0450/0472], Loss1: 0.3565 Loss2: 0.5161 Loss3: 0.3225
+2025-07-17 16:27:02.034276 Epoch [043/100], Step [0472/0472], Loss1: 0.3632 Loss2: 0.5263 Loss3: 0.3096
+2025-07-17 16:27:09.744389 Epoch [044/100], Step [0001/0472], Loss1: 0.2608 Loss2: 0.5185 Loss3: 0.2345
+2025-07-17 16:28:23.944444 Epoch [044/100], Step [0050/0472], Loss1: 0.2675 Loss2: 0.3802 Loss3: 0.2398
+2025-07-17 16:29:39.442422 Epoch [044/100], Step [0100/0472], Loss1: 0.2550 Loss2: 0.4152 Loss3: 0.2355
+2025-07-17 16:30:54.617361 Epoch [044/100], Step [0150/0472], Loss1: 0.2055 Loss2: 0.3645 Loss3: 0.1897
+2025-07-17 16:32:10.350193 Epoch [044/100], Step [0200/0472], Loss1: 0.4028 Loss2: 0.5353 Loss3: 0.3739
+2025-07-17 16:33:24.951268 Epoch [044/100], Step [0250/0472], Loss1: 0.2006 Loss2: 0.2739 Loss3: 0.1770
+2025-07-17 16:34:39.409588 Epoch [044/100], Step [0300/0472], Loss1: 0.2832 Loss2: 0.4183 Loss3: 0.2510
+2025-07-17 16:35:54.808886 Epoch [044/100], Step [0350/0472], Loss1: 0.2331 Loss2: 0.4382 Loss3: 0.2017
+2025-07-17 16:37:09.536180 Epoch [044/100], Step [0400/0472], Loss1: 0.1769 Loss2: 0.3079 Loss3: 0.1620
+2025-07-17 16:38:24.407091 Epoch [044/100], Step [0450/0472], Loss1: 0.2079 Loss2: 0.2775 Loss3: 0.1872
+2025-07-17 16:38:56.816970 Epoch [044/100], Step [0472/0472], Loss1: 0.3827 Loss2: 0.3995 Loss3: 0.3242
+2025-07-17 16:39:08.230377 Epoch [045/100], Step [0001/0472], Loss1: 0.2398 Loss2: 0.3355 Loss3: 0.2114
+2025-07-17 16:40:22.178375 Epoch [045/100], Step [0050/0472], Loss1: 0.2605 Loss2: 0.3363 Loss3: 0.2381
+2025-07-17 16:41:37.659366 Epoch [045/100], Step [0100/0472], Loss1: 0.3038 Loss2: 0.4554 Loss3: 0.2810
+2025-07-17 16:42:53.266205 Epoch [045/100], Step [0150/0472], Loss1: 0.2069 Loss2: 0.3163 Loss3: 0.1791
+2025-07-17 16:44:09.045455 Epoch [045/100], Step [0200/0472], Loss1: 0.2368 Loss2: 0.3152 Loss3: 0.2066
+2025-07-17 16:45:24.693092 Epoch [045/100], Step [0250/0472], Loss1: 0.2479 Loss2: 0.3218 Loss3: 0.2311
+2025-07-17 16:46:40.134358 Epoch [045/100], Step [0300/0472], Loss1: 0.2081 Loss2: 0.2839 Loss3: 0.1790
+2025-07-17 16:47:55.514107 Epoch [045/100], Step [0350/0472], Loss1: 0.2397 Loss2: 0.4187 Loss3: 0.2162
+2025-07-17 16:49:10.963061 Epoch [045/100], Step [0400/0472], Loss1: 0.3035 Loss2: 0.4084 Loss3: 0.2718
+2025-07-17 16:50:26.171830 Epoch [045/100], Step [0450/0472], Loss1: 0.2861 Loss2: 0.3887 Loss3: 0.2598
+2025-07-17 16:50:59.131605 Epoch [045/100], Step [0472/0472], Loss1: 0.5711 Loss2: 0.7602 Loss3: 0.5556
+2025-07-17 16:51:07.810058 Epoch [046/100], Step [0001/0472], Loss1: 0.3170 Loss2: 0.4577 Loss3: 0.2924
+2025-07-17 16:52:20.157837 Epoch [046/100], Step [0050/0472], Loss1: 0.3325 Loss2: 0.4687 Loss3: 0.2819
+2025-07-17 16:53:34.028853 Epoch [046/100], Step [0100/0472], Loss1: 0.2783 Loss2: 0.3740 Loss3: 0.2532
+2025-07-17 16:54:48.336484 Epoch [046/100], Step [0150/0472], Loss1: 0.3012 Loss2: 0.4573 Loss3: 0.2626
+2025-07-17 16:56:04.553289 Epoch [046/100], Step [0200/0472], Loss1: 0.2107 Loss2: 0.2899 Loss3: 0.1905
+2025-07-17 16:57:18.129529 Epoch [046/100], Step [0250/0472], Loss1: 0.3455 Loss2: 0.4466 Loss3: 0.3226
+2025-07-17 16:58:31.406783 Epoch [046/100], Step [0300/0472], Loss1: 0.2184 Loss2: 0.3203 Loss3: 0.2047
+2025-07-17 16:59:44.945905 Epoch [046/100], Step [0350/0472], Loss1: 0.2201 Loss2: 0.3105 Loss3: 0.1868
+2025-07-17 17:00:57.840410 Epoch [046/100], Step [0400/0472], Loss1: 0.2600 Loss2: 0.3704 Loss3: 0.2206
+2025-07-17 17:02:10.771820 Epoch [046/100], Step [0450/0472], Loss1: 0.2203 Loss2: 0.2874 Loss3: 0.1908
+2025-07-17 17:02:42.245281 Epoch [046/100], Step [0472/0472], Loss1: 0.2029 Loss2: 0.2887 Loss3: 0.1865
+2025-07-17 17:02:50.088432 Epoch [047/100], Step [0001/0472], Loss1: 0.2858 Loss2: 0.4313 Loss3: 0.2800
+2025-07-17 17:04:01.941769 Epoch [047/100], Step [0050/0472], Loss1: 0.2847 Loss2: 0.4659 Loss3: 0.2571
+2025-07-17 17:05:14.911119 Epoch [047/100], Step [0100/0472], Loss1: 0.3427 Loss2: 0.4195 Loss3: 0.2928
+2025-07-17 17:06:27.384481 Epoch [047/100], Step [0150/0472], Loss1: 0.2733 Loss2: 0.4016 Loss3: 0.2462
+2025-07-17 17:07:40.319736 Epoch [047/100], Step [0200/0472], Loss1: 0.2038 Loss2: 0.3551 Loss3: 0.1814
+2025-07-17 17:08:53.741573 Epoch [047/100], Step [0250/0472], Loss1: 0.2819 Loss2: 0.3667 Loss3: 0.2592
+2025-07-17 17:10:07.799333 Epoch [047/100], Step [0300/0472], Loss1: 0.2242 Loss2: 0.2874 Loss3: 0.1972
+2025-07-17 17:11:21.371572 Epoch [047/100], Step [0350/0472], Loss1: 0.2861 Loss2: 0.4012 Loss3: 0.2590
+2025-07-17 17:12:34.307000 Epoch [047/100], Step [0400/0472], Loss1: 0.1986 Loss2: 0.2869 Loss3: 0.1788
+2025-07-17 17:13:46.199353 Epoch [047/100], Step [0450/0472], Loss1: 0.2619 Loss2: 0.3427 Loss3: 0.2376
+2025-07-17 17:14:15.000947 Epoch [047/100], Step [0472/0472], Loss1: 0.2046 Loss2: 0.3490 Loss3: 0.1800
+2025-07-17 17:14:21.979745 Epoch [048/100], Step [0001/0472], Loss1: 0.1438 Loss2: 0.2028 Loss3: 0.1219
+2025-07-17 17:15:27.978268 Epoch [048/100], Step [0050/0472], Loss1: 0.2893 Loss2: 0.3811 Loss3: 0.2642
+2025-07-17 17:16:34.346727 Epoch [048/100], Step [0100/0472], Loss1: 0.2260 Loss2: 0.3377 Loss3: 0.2043
+2025-07-17 17:17:40.338615 Epoch [048/100], Step [0150/0472], Loss1: 0.2215 Loss2: 0.3096 Loss3: 0.1991
+2025-07-17 17:18:46.359001 Epoch [048/100], Step [0200/0472], Loss1: 0.2731 Loss2: 0.3851 Loss3: 0.2475
+2025-07-17 17:19:51.870980 Epoch [048/100], Step [0250/0472], Loss1: 0.2660 Loss2: 0.3606 Loss3: 0.2447
+2025-07-17 17:20:57.316394 Epoch [048/100], Step [0300/0472], Loss1: 0.2622 Loss2: 0.4331 Loss3: 0.2344
+2025-07-17 17:22:02.610270 Epoch [048/100], Step [0350/0472], Loss1: 0.2456 Loss2: 0.3522 Loss3: 0.2224
+2025-07-17 17:23:07.596293 Epoch [048/100], Step [0400/0472], Loss1: 0.1794 Loss2: 0.3118 Loss3: 0.1640
+2025-07-17 17:24:12.439137 Epoch [048/100], Step [0450/0472], Loss1: 0.2434 Loss2: 0.3973 Loss3: 0.2220
+2025-07-17 17:24:40.134052 Epoch [048/100], Step [0472/0472], Loss1: 0.3279 Loss2: 0.4837 Loss3: 0.2286
+2025-07-17 17:24:48.425262 Epoch [049/100], Step [0001/0472], Loss1: 0.2165 Loss2: 0.2898 Loss3: 0.1943
+2025-07-17 17:25:52.006941 Epoch [049/100], Step [0050/0472], Loss1: 0.2167 Loss2: 0.2968 Loss3: 0.1905
+2025-07-17 17:26:56.540283 Epoch [049/100], Step [0100/0472], Loss1: 0.2290 Loss2: 0.3546 Loss3: 0.2042
+2025-07-17 17:28:00.798044 Epoch [049/100], Step [0150/0472], Loss1: 0.3299 Loss2: 0.4321 Loss3: 0.2793
+2025-07-17 17:29:05.086510 Epoch [049/100], Step [0200/0472], Loss1: 0.2041 Loss2: 0.3974 Loss3: 0.1934
+2025-07-17 17:30:09.141589 Epoch [049/100], Step [0250/0472], Loss1: 0.2542 Loss2: 0.3334 Loss3: 0.2360
+2025-07-17 17:31:12.993700 Epoch [049/100], Step [0300/0472], Loss1: 0.2365 Loss2: 0.3863 Loss3: 0.2106
+2025-07-17 17:32:16.847401 Epoch [049/100], Step [0350/0472], Loss1: 0.2102 Loss2: 0.2795 Loss3: 0.1831
+2025-07-17 17:33:20.789377 Epoch [049/100], Step [0400/0472], Loss1: 0.1884 Loss2: 0.2645 Loss3: 0.1699
+2025-07-17 17:34:24.573671 Epoch [049/100], Step [0450/0472], Loss1: 0.2675 Loss2: 0.3891 Loss3: 0.2429
+2025-07-17 17:34:51.748019 Epoch [049/100], Step [0472/0472], Loss1: 0.3617 Loss2: 0.4054 Loss3: 0.3366
+2025-07-17 17:35:04.601293 Epoch [050/100], Step [0001/0472], Loss1: 0.2463 Loss2: 0.3134 Loss3: 0.2224
+2025-07-17 17:36:07.003087 Epoch [050/100], Step [0050/0472], Loss1: 0.1867 Loss2: 0.2751 Loss3: 0.1638
+2025-07-17 17:37:10.355610 Epoch [050/100], Step [0100/0472], Loss1: 0.2429 Loss2: 0.3116 Loss3: 0.2167
+2025-07-17 17:38:13.596734 Epoch [050/100], Step [0150/0472], Loss1: 0.3119 Loss2: 0.4578 Loss3: 0.2744
+2025-07-17 17:39:16.738449 Epoch [050/100], Step [0200/0472], Loss1: 0.2240 Loss2: 0.3834 Loss3: 0.2008
+2025-07-17 17:40:19.909705 Epoch [050/100], Step [0250/0472], Loss1: 0.2408 Loss2: 0.3634 Loss3: 0.2150
+2025-07-17 17:41:23.229771 Epoch [050/100], Step [0300/0472], Loss1: 0.3563 Loss2: 0.4783 Loss3: 0.3297
+2025-07-17 17:42:26.557227 Epoch [050/100], Step [0350/0472], Loss1: 0.1756 Loss2: 0.2427 Loss3: 0.1552
+2025-07-17 17:43:29.945054 Epoch [050/100], Step [0400/0472], Loss1: 0.2682 Loss2: 0.3508 Loss3: 0.2347
+2025-07-17 17:44:33.325068 Epoch [050/100], Step [0450/0472], Loss1: 0.2625 Loss2: 0.3928 Loss3: 0.2425
+2025-07-17 17:45:00.567269 Epoch [050/100], Step [0472/0472], Loss1: 0.3016 Loss2: 0.3678 Loss3: 0.2933
+2025-07-17 17:45:08.199728 Epoch [051/100], Step [0001/0472], Loss1: 0.2694 Loss2: 0.3626 Loss3: 0.2435
+2025-07-17 17:46:11.284538 Epoch [051/100], Step [0050/0472], Loss1: 0.2620 Loss2: 0.3879 Loss3: 0.2315
+2025-07-17 17:47:15.016317 Epoch [051/100], Step [0100/0472], Loss1: 0.2170 Loss2: 0.3271 Loss3: 0.1879
+2025-07-17 17:48:18.843577 Epoch [051/100], Step [0150/0472], Loss1: 0.2344 Loss2: 0.3642 Loss3: 0.2186
+2025-07-17 17:49:22.513664 Epoch [051/100], Step [0200/0472], Loss1: 0.2263 Loss2: 0.3243 Loss3: 0.2100
+2025-07-17 17:50:26.096313 Epoch [051/100], Step [0250/0472], Loss1: 0.2754 Loss2: 0.2953 Loss3: 0.2389
+2025-07-17 17:51:29.561362 Epoch [051/100], Step [0300/0472], Loss1: 0.2340 Loss2: 0.2852 Loss3: 0.2061
+2025-07-17 17:52:33.036961 Epoch [051/100], Step [0350/0472], Loss1: 0.2464 Loss2: 0.3660 Loss3: 0.2072
+2025-07-17 17:53:36.529559 Epoch [051/100], Step [0400/0472], Loss1: 0.2898 Loss2: 0.4322 Loss3: 0.2489
+2025-07-17 17:54:39.847817 Epoch [051/100], Step [0450/0472], Loss1: 0.1843 Loss2: 0.2614 Loss3: 0.1530
+2025-07-17 17:55:07.101625 Epoch [051/100], Step [0472/0472], Loss1: 0.2952 Loss2: 0.3288 Loss3: 0.2903
+2025-07-17 17:55:15.649624 Epoch [052/100], Step [0001/0472], Loss1: 0.2479 Loss2: 0.3780 Loss3: 0.2305
+2025-07-17 17:56:17.622090 Epoch [052/100], Step [0050/0472], Loss1: 0.2106 Loss2: 0.2679 Loss3: 0.1815
+2025-07-17 17:57:20.853625 Epoch [052/100], Step [0100/0472], Loss1: 0.2318 Loss2: 0.2900 Loss3: 0.1977
+2025-07-17 17:58:24.033762 Epoch [052/100], Step [0150/0472], Loss1: 0.2368 Loss2: 0.3349 Loss3: 0.2122
+2025-07-17 17:59:27.288013 Epoch [052/100], Step [0200/0472], Loss1: 0.2218 Loss2: 0.3830 Loss3: 0.1990
+2025-07-17 18:00:30.580216 Epoch [052/100], Step [0250/0472], Loss1: 0.2132 Loss2: 0.3079 Loss3: 0.1913
+2025-07-17 18:01:33.824912 Epoch [052/100], Step [0300/0472], Loss1: 0.2514 Loss2: 0.3178 Loss3: 0.2283
+2025-07-17 18:02:36.935572 Epoch [052/100], Step [0350/0472], Loss1: 0.2801 Loss2: 0.4287 Loss3: 0.2360
+2025-07-17 18:03:40.084154 Epoch [052/100], Step [0400/0472], Loss1: 0.2821 Loss2: 0.3464 Loss3: 0.2559
+2025-07-17 18:04:43.068251 Epoch [052/100], Step [0450/0472], Loss1: 0.2842 Loss2: 0.3829 Loss3: 0.2543
+2025-07-17 18:05:10.164005 Epoch [052/100], Step [0472/0472], Loss1: 0.3874 Loss2: 0.5018 Loss3: 0.4314
+2025-07-17 18:05:17.800993 Epoch [053/100], Step [0001/0472], Loss1: 0.2323 Loss2: 0.3169 Loss3: 0.2074
+2025-07-17 18:06:20.657410 Epoch [053/100], Step [0050/0472], Loss1: 0.1970 Loss2: 0.2582 Loss3: 0.1746
+2025-07-17 18:07:24.322197 Epoch [053/100], Step [0100/0472], Loss1: 0.2955 Loss2: 0.3501 Loss3: 0.2656
+2025-07-17 18:08:27.920338 Epoch [053/100], Step [0150/0472], Loss1: 0.2161 Loss2: 0.3054 Loss3: 0.1965
+2025-07-17 18:09:31.463425 Epoch [053/100], Step [0200/0472], Loss1: 0.2201 Loss2: 0.3288 Loss3: 0.1991
+2025-07-17 18:10:34.898632 Epoch [053/100], Step [0250/0472], Loss1: 0.2564 Loss2: 0.3358 Loss3: 0.2276
+2025-07-17 18:11:38.766738 Epoch [053/100], Step [0300/0472], Loss1: 0.2725 Loss2: 0.3569 Loss3: 0.2505
+2025-07-17 18:12:42.909029 Epoch [053/100], Step [0350/0472], Loss1: 0.2710 Loss2: 0.4227 Loss3: 0.2365
+2025-07-17 18:13:46.671123 Epoch [053/100], Step [0400/0472], Loss1: 0.1910 Loss2: 0.2782 Loss3: 0.1725
+2025-07-17 18:14:50.506709 Epoch [053/100], Step [0450/0472], Loss1: 0.2125 Loss2: 0.2710 Loss3: 0.1998
+2025-07-17 18:15:17.872261 Epoch [053/100], Step [0472/0472], Loss1: 0.7306 Loss2: 1.1050 Loss3: 0.7368
+2025-07-17 18:15:26.322043 Epoch [054/100], Step [0001/0472], Loss1: 0.2549 Loss2: 0.3429 Loss3: 0.2181
+2025-07-17 18:16:29.007991 Epoch [054/100], Step [0050/0472], Loss1: 0.2335 Loss2: 0.2956 Loss3: 0.2065
+2025-07-17 18:17:32.798338 Epoch [054/100], Step [0100/0472], Loss1: 0.3090 Loss2: 0.4512 Loss3: 0.2712
+2025-07-17 18:18:36.585969 Epoch [054/100], Step [0150/0472], Loss1: 0.2311 Loss2: 0.3661 Loss3: 0.2112
+2025-07-17 18:19:40.446945 Epoch [054/100], Step [0200/0472], Loss1: 0.2283 Loss2: 0.3670 Loss3: 0.2059
+2025-07-17 18:20:44.356803 Epoch [054/100], Step [0250/0472], Loss1: 0.2580 Loss2: 0.3443 Loss3: 0.2390
+2025-07-17 18:21:48.324635 Epoch [054/100], Step [0300/0472], Loss1: 0.2171 Loss2: 0.3021 Loss3: 0.1889
+2025-07-17 18:22:52.321808 Epoch [054/100], Step [0350/0472], Loss1: 0.2046 Loss2: 0.2806 Loss3: 0.1772
+2025-07-17 18:23:56.481279 Epoch [054/100], Step [0400/0472], Loss1: 0.2907 Loss2: 0.3878 Loss3: 0.2667
+2025-07-17 18:25:00.682030 Epoch [054/100], Step [0450/0472], Loss1: 0.2534 Loss2: 0.3474 Loss3: 0.2104
+2025-07-17 18:25:28.522548 Epoch [054/100], Step [0472/0472], Loss1: 0.6348 Loss2: 0.7343 Loss3: 0.6587
+2025-07-17 18:25:39.344211 Epoch [055/100], Step [0001/0472], Loss1: 0.2055 Loss2: 0.2844 Loss3: 0.1882
+2025-07-17 18:26:43.783658 Epoch [055/100], Step [0050/0472], Loss1: 0.1820 Loss2: 0.2898 Loss3: 0.1521
+2025-07-17 18:27:48.026130 Epoch [055/100], Step [0100/0472], Loss1: 0.2056 Loss2: 0.3044 Loss3: 0.1857
+2025-07-17 18:28:52.343466 Epoch [055/100], Step [0150/0472], Loss1: 0.2192 Loss2: 0.3452 Loss3: 0.1996
+2025-07-17 18:29:56.811691 Epoch [055/100], Step [0200/0472], Loss1: 0.2680 Loss2: 0.3193 Loss3: 0.2421
+2025-07-17 18:31:01.555862 Epoch [055/100], Step [0250/0472], Loss1: 0.2413 Loss2: 0.3222 Loss3: 0.1958
+2025-07-17 18:32:06.149677 Epoch [055/100], Step [0300/0472], Loss1: 0.1952 Loss2: 0.4360 Loss3: 0.1799
+2025-07-17 18:33:10.688434 Epoch [055/100], Step [0350/0472], Loss1: 0.2187 Loss2: 0.3154 Loss3: 0.1945
+2025-07-17 18:34:15.481890 Epoch [055/100], Step [0400/0472], Loss1: 0.2060 Loss2: 0.2388 Loss3: 0.1689
+2025-07-17 18:35:20.278364 Epoch [055/100], Step [0450/0472], Loss1: 0.3194 Loss2: 0.4132 Loss3: 0.2851
+2025-07-17 18:35:47.999164 Epoch [055/100], Step [0472/0472], Loss1: 0.1633 Loss2: 0.3690 Loss3: 0.1459
+2025-07-17 18:35:56.835183 Epoch [056/100], Step [0001/0472], Loss1: 0.2062 Loss2: 0.2795 Loss3: 0.1791
+2025-07-17 18:37:00.422298 Epoch [056/100], Step [0050/0472], Loss1: 0.2712 Loss2: 0.3943 Loss3: 0.2503
+2025-07-17 18:38:05.366726 Epoch [056/100], Step [0100/0472], Loss1: 0.2022 Loss2: 0.3012 Loss3: 0.1766
+2025-07-17 18:39:10.324079 Epoch [056/100], Step [0150/0472], Loss1: 0.2376 Loss2: 0.3136 Loss3: 0.2148
+2025-07-17 18:40:15.232745 Epoch [056/100], Step [0200/0472], Loss1: 0.1753 Loss2: 0.2706 Loss3: 0.1487
+2025-07-17 18:41:20.362831 Epoch [056/100], Step [0250/0472], Loss1: 0.2244 Loss2: 0.3605 Loss3: 0.1942
+2025-07-17 18:42:25.517955 Epoch [056/100], Step [0300/0472], Loss1: 0.2222 Loss2: 0.3517 Loss3: 0.1961
+2025-07-17 18:43:30.862091 Epoch [056/100], Step [0350/0472], Loss1: 0.2709 Loss2: 0.3498 Loss3: 0.2485
+2025-07-17 18:44:36.235258 Epoch [056/100], Step [0400/0472], Loss1: 0.2145 Loss2: 0.3347 Loss3: 0.1853
+2025-07-17 18:45:41.602480 Epoch [056/100], Step [0450/0472], Loss1: 0.3301 Loss2: 0.4628 Loss3: 0.3067
+2025-07-17 18:46:09.553385 Epoch [056/100], Step [0472/0472], Loss1: 0.2676 Loss2: 0.4186 Loss3: 0.2546
+2025-07-17 18:46:17.109952 Epoch [057/100], Step [0001/0472], Loss1: 0.2137 Loss2: 0.2815 Loss3: 0.1920
+2025-07-17 18:47:22.219499 Epoch [057/100], Step [0050/0472], Loss1: 0.2541 Loss2: 0.3918 Loss3: 0.2212
+2025-07-17 18:48:27.676647 Epoch [057/100], Step [0100/0472], Loss1: 0.1972 Loss2: 0.3836 Loss3: 0.1798
+2025-07-17 18:49:33.197806 Epoch [057/100], Step [0150/0472], Loss1: 0.2024 Loss2: 0.3421 Loss3: 0.1825
+2025-07-17 18:50:38.710931 Epoch [057/100], Step [0200/0472], Loss1: 0.2447 Loss2: 0.3327 Loss3: 0.2242
+2025-07-17 18:51:44.301740 Epoch [057/100], Step [0250/0472], Loss1: 0.2921 Loss2: 0.3823 Loss3: 0.2752
+2025-07-17 18:52:49.980103 Epoch [057/100], Step [0300/0472], Loss1: 0.2273 Loss2: 0.3338 Loss3: 0.2108
+2025-07-17 18:53:55.792878 Epoch [057/100], Step [0350/0472], Loss1: 0.3111 Loss2: 0.4183 Loss3: 0.2780
+2025-07-17 18:55:01.751424 Epoch [057/100], Step [0400/0472], Loss1: 0.2040 Loss2: 0.3385 Loss3: 0.1844
+2025-07-17 18:56:07.472743 Epoch [057/100], Step [0450/0472], Loss1: 0.2524 Loss2: 0.3698 Loss3: 0.2344
+2025-07-17 18:56:35.725292 Epoch [057/100], Step [0472/0472], Loss1: 0.2099 Loss2: 0.3076 Loss3: 0.1820
+2025-07-17 18:56:43.710454 Epoch [058/100], Step [0001/0472], Loss1: 0.2630 Loss2: 0.4364 Loss3: 0.2393
+2025-07-17 18:57:48.881583 Epoch [058/100], Step [0050/0472], Loss1: 0.2794 Loss2: 0.3702 Loss3: 0.2447
+2025-07-17 18:58:55.095730 Epoch [058/100], Step [0100/0472], Loss1: 0.2692 Loss2: 0.3876 Loss3: 0.2453
+2025-07-17 19:00:01.424926 Epoch [058/100], Step [0150/0472], Loss1: 0.2933 Loss2: 0.3691 Loss3: 0.2423
+2025-07-17 19:01:07.661650 Epoch [058/100], Step [0200/0472], Loss1: 0.2771 Loss2: 0.3577 Loss3: 0.2596
+2025-07-17 19:02:14.030278 Epoch [058/100], Step [0250/0472], Loss1: 0.2597 Loss2: 0.3817 Loss3: 0.2321
+2025-07-17 19:03:20.393056 Epoch [058/100], Step [0300/0472], Loss1: 0.1810 Loss2: 0.2566 Loss3: 0.1563
+2025-07-17 19:04:26.833215 Epoch [058/100], Step [0350/0472], Loss1: 0.2177 Loss2: 0.3036 Loss3: 0.1925
+2025-07-17 19:05:33.349633 Epoch [058/100], Step [0400/0472], Loss1: 0.2859 Loss2: 0.4062 Loss3: 0.2639
+2025-07-17 19:06:39.816619 Epoch [058/100], Step [0450/0472], Loss1: 0.2366 Loss2: 0.3420 Loss3: 0.2017
+2025-07-17 19:07:08.855925 Epoch [058/100], Step [0472/0472], Loss1: 0.1722 Loss2: 0.1635 Loss3: 0.1463
+2025-07-17 19:07:17.670714 Epoch [059/100], Step [0001/0472], Loss1: 0.2227 Loss2: 0.3919 Loss3: 0.2006
+2025-07-17 19:08:23.144615 Epoch [059/100], Step [0050/0472], Loss1: 0.1918 Loss2: 0.3177 Loss3: 0.1589
+2025-07-17 19:09:29.907152 Epoch [059/100], Step [0100/0472], Loss1: 0.2875 Loss2: 0.3552 Loss3: 0.2620
+2025-07-17 19:10:36.792621 Epoch [059/100], Step [0150/0472], Loss1: 0.2163 Loss2: 0.3474 Loss3: 0.1984
+2025-07-17 19:11:43.781367 Epoch [059/100], Step [0200/0472], Loss1: 0.3090 Loss2: 0.3805 Loss3: 0.2886
+2025-07-17 19:12:50.760578 Epoch [059/100], Step [0250/0472], Loss1: 0.2199 Loss2: 0.3203 Loss3: 0.1903
+2025-07-17 19:13:57.793230 Epoch [059/100], Step [0300/0472], Loss1: 0.3128 Loss2: 0.4095 Loss3: 0.3126
+2025-07-17 19:15:04.978185 Epoch [059/100], Step [0350/0472], Loss1: 0.2586 Loss2: 0.3542 Loss3: 0.2227
+2025-07-17 19:16:12.180834 Epoch [059/100], Step [0400/0472], Loss1: 0.2363 Loss2: 0.3404 Loss3: 0.2108
+2025-07-17 19:17:19.294056 Epoch [059/100], Step [0450/0472], Loss1: 0.2590 Loss2: 0.3288 Loss3: 0.2228
+2025-07-17 19:17:48.128967 Epoch [059/100], Step [0472/0472], Loss1: 0.6180 Loss2: 0.7288 Loss3: 0.5563
+2025-07-17 19:17:59.965684 Epoch [060/100], Step [0001/0472], Loss1: 0.1981 Loss2: 0.2688 Loss3: 0.1710
+2025-07-17 19:19:06.564114 Epoch [060/100], Step [0050/0472], Loss1: 0.2563 Loss2: 0.3104 Loss3: 0.2193
+2025-07-17 19:20:13.627787 Epoch [060/100], Step [0100/0472], Loss1: 0.1975 Loss2: 0.2705 Loss3: 0.1737
+2025-07-17 19:21:20.788682 Epoch [060/100], Step [0150/0472], Loss1: 0.2499 Loss2: 0.3617 Loss3: 0.2201
+2025-07-17 19:22:27.893606 Epoch [060/100], Step [0200/0472], Loss1: 0.2039 Loss2: 0.3218 Loss3: 0.1813
+2025-07-17 19:23:35.007296 Epoch [060/100], Step [0250/0472], Loss1: 0.1737 Loss2: 0.2310 Loss3: 0.1477
+2025-07-17 19:24:42.118240 Epoch [060/100], Step [0300/0472], Loss1: 0.2493 Loss2: 0.3047 Loss3: 0.2243
+2025-07-17 19:25:49.259145 Epoch [060/100], Step [0350/0472], Loss1: 0.2097 Loss2: 0.2736 Loss3: 0.1818
+2025-07-17 19:26:56.117191 Epoch [060/100], Step [0400/0472], Loss1: 0.3174 Loss2: 0.4378 Loss3: 0.2863
+2025-07-17 19:28:02.652248 Epoch [060/100], Step [0450/0472], Loss1: 0.2430 Loss2: 0.3247 Loss3: 0.2009
+2025-07-17 19:28:31.056766 Epoch [060/100], Step [0472/0472], Loss1: 0.1304 Loss2: 0.1351 Loss3: 0.1273
+2025-07-17 19:28:39.770357 Epoch [061/100], Step [0001/0472], Loss1: 0.2436 Loss2: 0.2711 Loss3: 0.2102
+2025-07-17 19:29:44.973808 Epoch [061/100], Step [0050/0472], Loss1: 0.2285 Loss2: 0.3208 Loss3: 0.2004
+2025-07-17 19:30:51.441493 Epoch [061/100], Step [0100/0472], Loss1: 0.2154 Loss2: 0.3094 Loss3: 0.1918
+2025-07-17 19:31:58.031965 Epoch [061/100], Step [0150/0472], Loss1: 0.2280 Loss2: 0.2803 Loss3: 0.2018
+2025-07-17 19:33:04.420021 Epoch [061/100], Step [0200/0472], Loss1: 0.2283 Loss2: 0.3418 Loss3: 0.2106
+2025-07-17 19:34:10.664327 Epoch [061/100], Step [0250/0472], Loss1: 0.2272 Loss2: 0.3221 Loss3: 0.2059
+2025-07-17 19:35:16.932172 Epoch [061/100], Step [0300/0472], Loss1: 0.2130 Loss2: 0.2814 Loss3: 0.1887
+2025-07-17 19:36:23.073616 Epoch [061/100], Step [0350/0472], Loss1: 0.2419 Loss2: 0.2874 Loss3: 0.2144
+2025-07-17 19:37:29.098693 Epoch [061/100], Step [0400/0472], Loss1: 0.2653 Loss2: 0.3465 Loss3: 0.2372
+2025-07-17 19:38:35.301260 Epoch [061/100], Step [0450/0472], Loss1: 0.2476 Loss2: 0.2980 Loss3: 0.2175
+2025-07-17 19:39:03.477260 Epoch [061/100], Step [0472/0472], Loss1: 0.1911 Loss2: 0.2312 Loss3: 0.1247
+2025-07-17 19:39:10.718586 Epoch [062/100], Step [0001/0472], Loss1: 0.2866 Loss2: 0.3742 Loss3: 0.2517
+2025-07-17 19:40:16.514901 Epoch [062/100], Step [0050/0472], Loss1: 0.2439 Loss2: 0.3238 Loss3: 0.2081
+2025-07-17 19:41:23.030630 Epoch [062/100], Step [0100/0472], Loss1: 0.1669 Loss2: 0.2105 Loss3: 0.1463
+2025-07-17 19:42:29.192309 Epoch [062/100], Step [0150/0472], Loss1: 0.2342 Loss2: 0.2757 Loss3: 0.2069
+2025-07-17 19:43:35.501605 Epoch [062/100], Step [0200/0472], Loss1: 0.2172 Loss2: 0.2533 Loss3: 0.1915
+2025-07-17 19:44:41.700327 Epoch [062/100], Step [0250/0472], Loss1: 0.2430 Loss2: 0.2894 Loss3: 0.2267
+2025-07-17 19:45:47.476022 Epoch [062/100], Step [0300/0472], Loss1: 0.2966 Loss2: 0.3686 Loss3: 0.2656
+2025-07-17 19:46:53.191548 Epoch [062/100], Step [0350/0472], Loss1: 0.2384 Loss2: 0.3350 Loss3: 0.2128
+2025-07-17 19:47:58.889647 Epoch [062/100], Step [0400/0472], Loss1: 0.2127 Loss2: 0.2785 Loss3: 0.1822
+2025-07-17 19:49:04.523775 Epoch [062/100], Step [0450/0472], Loss1: 0.2170 Loss2: 0.2928 Loss3: 0.1918
+2025-07-17 19:49:32.682597 Epoch [062/100], Step [0472/0472], Loss1: 0.2079 Loss2: 0.4025 Loss3: 0.1900
+2025-07-17 19:49:39.940523 Epoch [063/100], Step [0001/0472], Loss1: 0.2368 Loss2: 0.2990 Loss3: 0.2083
+2025-07-17 19:50:45.400542 Epoch [063/100], Step [0050/0472], Loss1: 0.2656 Loss2: 0.3946 Loss3: 0.2391
+2025-07-17 19:51:51.675511 Epoch [063/100], Step [0100/0472], Loss1: 0.1772 Loss2: 0.2211 Loss3: 0.1569
+2025-07-17 19:52:57.880576 Epoch [063/100], Step [0150/0472], Loss1: 0.1680 Loss2: 0.2123 Loss3: 0.1447
+2025-07-17 19:54:04.157568 Epoch [063/100], Step [0200/0472], Loss1: 0.2364 Loss2: 0.3421 Loss3: 0.2157
+2025-07-17 19:55:10.309740 Epoch [063/100], Step [0250/0472], Loss1: 0.2145 Loss2: 0.2692 Loss3: 0.1881
+2025-07-17 19:56:16.482671 Epoch [063/100], Step [0300/0472], Loss1: 0.1674 Loss2: 0.2537 Loss3: 0.1449
+2025-07-17 19:57:22.531401 Epoch [063/100], Step [0350/0472], Loss1: 0.2721 Loss2: 0.3733 Loss3: 0.2428
+2025-07-17 19:58:28.669263 Epoch [063/100], Step [0400/0472], Loss1: 0.2140 Loss2: 0.3102 Loss3: 0.1922
+2025-07-17 19:59:34.835676 Epoch [063/100], Step [0450/0472], Loss1: 0.1913 Loss2: 0.2586 Loss3: 0.1736
+2025-07-17 20:00:03.116696 Epoch [063/100], Step [0472/0472], Loss1: 0.9113 Loss2: 0.8485 Loss3: 0.8133
+2025-07-17 20:00:11.885520 Epoch [064/100], Step [0001/0472], Loss1: 0.2219 Loss2: 0.2657 Loss3: 0.1956
+2025-07-17 20:01:17.061934 Epoch [064/100], Step [0050/0472], Loss1: 0.1824 Loss2: 0.2441 Loss3: 0.1628
+2025-07-17 20:02:23.236040 Epoch [064/100], Step [0100/0472], Loss1: 0.2345 Loss2: 0.3126 Loss3: 0.2020
+2025-07-17 20:03:29.557920 Epoch [064/100], Step [0150/0472], Loss1: 0.2763 Loss2: 0.3569 Loss3: 0.2405
+2025-07-17 20:04:35.839292 Epoch [064/100], Step [0200/0472], Loss1: 0.2786 Loss2: 0.3411 Loss3: 0.2293
+2025-07-17 20:05:42.152290 Epoch [064/100], Step [0250/0472], Loss1: 0.1922 Loss2: 0.2635 Loss3: 0.1714
+2025-07-17 20:06:48.371557 Epoch [064/100], Step [0300/0472], Loss1: 0.2433 Loss2: 0.3158 Loss3: 0.2143
+2025-07-17 20:07:54.635761 Epoch [064/100], Step [0350/0472], Loss1: 0.2515 Loss2: 0.3257 Loss3: 0.2306
+2025-07-17 20:09:00.999254 Epoch [064/100], Step [0400/0472], Loss1: 0.2379 Loss2: 0.3035 Loss3: 0.2153
+2025-07-17 20:10:07.388288 Epoch [064/100], Step [0450/0472], Loss1: 0.1910 Loss2: 0.2913 Loss3: 0.1713
+2025-07-17 20:10:35.743539 Epoch [064/100], Step [0472/0472], Loss1: 0.1511 Loss2: 0.1556 Loss3: 0.1032
+2025-07-17 20:10:47.420769 Epoch [065/100], Step [0001/0472], Loss1: 0.1892 Loss2: 0.2611 Loss3: 0.1645
+2025-07-17 20:11:53.171970 Epoch [065/100], Step [0050/0472], Loss1: 0.2509 Loss2: 0.3489 Loss3: 0.2232
+2025-07-17 20:12:59.233574 Epoch [065/100], Step [0100/0472], Loss1: 0.2390 Loss2: 0.3038 Loss3: 0.2057
+2025-07-17 20:14:05.295106 Epoch [065/100], Step [0150/0472], Loss1: 0.2216 Loss2: 0.2986 Loss3: 0.1930
+2025-07-17 20:15:11.388533 Epoch [065/100], Step [0200/0472], Loss1: 0.2240 Loss2: 0.2655 Loss3: 0.1942
+2025-07-17 20:16:17.785103 Epoch [065/100], Step [0250/0472], Loss1: 0.2548 Loss2: 0.3303 Loss3: 0.2223
+2025-07-17 20:17:24.303506 Epoch [065/100], Step [0300/0472], Loss1: 0.1936 Loss2: 0.3103 Loss3: 0.1705
+2025-07-17 20:18:30.673424 Epoch [065/100], Step [0350/0472], Loss1: 0.1986 Loss2: 0.2656 Loss3: 0.1737
+2025-07-17 20:19:36.963555 Epoch [065/100], Step [0400/0472], Loss1: 0.1646 Loss2: 0.2576 Loss3: 0.1435
+2025-07-17 20:20:43.395473 Epoch [065/100], Step [0450/0472], Loss1: 0.2219 Loss2: 0.2717 Loss3: 0.1889
+2025-07-17 20:21:11.981215 Epoch [065/100], Step [0472/0472], Loss1: 0.4148 Loss2: 0.7325 Loss3: 0.4699
+2025-07-17 20:21:19.145204 Epoch [066/100], Step [0001/0472], Loss1: 0.2140 Loss2: 0.2861 Loss3: 0.1912
+2025-07-17 20:22:24.981555 Epoch [066/100], Step [0050/0472], Loss1: 0.2271 Loss2: 0.2979 Loss3: 0.2070
+2025-07-17 20:23:31.621595 Epoch [066/100], Step [0100/0472], Loss1: 0.1675 Loss2: 0.2821 Loss3: 0.1379
+2025-07-17 20:24:38.288000 Epoch [066/100], Step [0150/0472], Loss1: 0.2448 Loss2: 0.3590 Loss3: 0.2093
+2025-07-17 20:25:45.200673 Epoch [066/100], Step [0200/0472], Loss1: 0.1607 Loss2: 0.2291 Loss3: 0.1439
+2025-07-17 20:26:52.271610 Epoch [066/100], Step [0250/0472], Loss1: 0.2572 Loss2: 0.3467 Loss3: 0.2348
+2025-07-17 20:27:59.247418 Epoch [066/100], Step [0300/0472], Loss1: 0.2041 Loss2: 0.2994 Loss3: 0.1842
+2025-07-17 20:29:06.146554 Epoch [066/100], Step [0350/0472], Loss1: 0.1757 Loss2: 0.2463 Loss3: 0.1559
+2025-07-17 20:30:13.057615 Epoch [066/100], Step [0400/0472], Loss1: 0.1988 Loss2: 0.2837 Loss3: 0.1745
+2025-07-17 20:31:20.236450 Epoch [066/100], Step [0450/0472], Loss1: 0.2113 Loss2: 0.3123 Loss3: 0.1806
+2025-07-17 20:31:49.046267 Epoch [066/100], Step [0472/0472], Loss1: 0.1909 Loss2: 0.2925 Loss3: 0.2000
+2025-07-17 20:31:55.749014 Epoch [067/100], Step [0001/0472], Loss1: 0.1874 Loss2: 0.2400 Loss3: 0.1642
+2025-07-17 20:33:02.475250 Epoch [067/100], Step [0050/0472], Loss1: 0.2224 Loss2: 0.2986 Loss3: 0.1970
+2025-07-17 20:34:09.069752 Epoch [067/100], Step [0100/0472], Loss1: 0.1583 Loss2: 0.2373 Loss3: 0.1337
+2025-07-17 20:35:15.749714 Epoch [067/100], Step [0150/0472], Loss1: 0.1570 Loss2: 0.1816 Loss3: 0.1365
+2025-07-17 20:36:22.310198 Epoch [067/100], Step [0200/0472], Loss1: 0.1978 Loss2: 0.2517 Loss3: 0.1744
+2025-07-17 20:37:28.762183 Epoch [067/100], Step [0250/0472], Loss1: 0.2644 Loss2: 0.3242 Loss3: 0.2340
+2025-07-17 20:38:35.272389 Epoch [067/100], Step [0300/0472], Loss1: 0.2000 Loss2: 0.2615 Loss3: 0.1774
+2025-07-17 20:39:41.626763 Epoch [067/100], Step [0350/0472], Loss1: 0.2827 Loss2: 0.3985 Loss3: 0.2444
+2025-07-17 20:40:47.888383 Epoch [067/100], Step [0400/0472], Loss1: 0.1736 Loss2: 0.2282 Loss3: 0.1522
+2025-07-17 20:41:54.274590 Epoch [067/100], Step [0450/0472], Loss1: 0.1882 Loss2: 0.2334 Loss3: 0.1657
+2025-07-17 20:42:22.721626 Epoch [067/100], Step [0472/0472], Loss1: 0.1383 Loss2: 0.1721 Loss3: 0.1239
+2025-07-17 20:42:30.337834 Epoch [068/100], Step [0001/0472], Loss1: 0.2086 Loss2: 0.2785 Loss3: 0.1888
+2025-07-17 20:43:35.945089 Epoch [068/100], Step [0050/0472], Loss1: 0.1656 Loss2: 0.2131 Loss3: 0.1422
+2025-07-17 20:44:42.263951 Epoch [068/100], Step [0100/0472], Loss1: 0.2144 Loss2: 0.2902 Loss3: 0.1918
+2025-07-17 20:45:48.636703 Epoch [068/100], Step [0150/0472], Loss1: 0.3312 Loss2: 0.4028 Loss3: 0.3056
+2025-07-17 20:46:54.967688 Epoch [068/100], Step [0200/0472], Loss1: 0.2191 Loss2: 0.3001 Loss3: 0.1879
+2025-07-17 20:48:01.121626 Epoch [068/100], Step [0250/0472], Loss1: 0.2502 Loss2: 0.3560 Loss3: 0.2231
+2025-07-17 20:49:07.384517 Epoch [068/100], Step [0300/0472], Loss1: 0.2343 Loss2: 0.3252 Loss3: 0.2074
+2025-07-17 20:50:13.641286 Epoch [068/100], Step [0350/0472], Loss1: 0.2803 Loss2: 0.3376 Loss3: 0.2539
+2025-07-17 20:51:19.944285 Epoch [068/100], Step [0400/0472], Loss1: 0.2717 Loss2: 0.3639 Loss3: 0.2388
+2025-07-17 20:52:26.102841 Epoch [068/100], Step [0450/0472], Loss1: 0.2697 Loss2: 0.3074 Loss3: 0.2489
+2025-07-17 20:52:54.454905 Epoch [068/100], Step [0472/0472], Loss1: 0.7410 Loss2: 0.8134 Loss3: 0.7821
+2025-07-17 20:53:00.142582 Epoch [069/100], Step [0001/0472], Loss1: 0.2115 Loss2: 0.2787 Loss3: 0.1808
+2025-07-17 20:54:06.870151 Epoch [069/100], Step [0050/0472], Loss1: 0.2407 Loss2: 0.3409 Loss3: 0.2099
+2025-07-17 20:55:13.110100 Epoch [069/100], Step [0100/0472], Loss1: 0.1937 Loss2: 0.2434 Loss3: 0.1620
+2025-07-17 20:56:19.393906 Epoch [069/100], Step [0150/0472], Loss1: 0.1876 Loss2: 0.2428 Loss3: 0.1746
+2025-07-17 20:57:25.632627 Epoch [069/100], Step [0200/0472], Loss1: 0.1984 Loss2: 0.3070 Loss3: 0.1639
+2025-07-17 20:58:32.154097 Epoch [069/100], Step [0250/0472], Loss1: 0.2003 Loss2: 0.2585 Loss3: 0.1809
+2025-07-17 20:59:38.169949 Epoch [069/100], Step [0300/0472], Loss1: 0.2138 Loss2: 0.2860 Loss3: 0.1950
+2025-07-17 21:00:44.321696 Epoch [069/100], Step [0350/0472], Loss1: 0.1896 Loss2: 0.2413 Loss3: 0.1659
+2025-07-17 21:01:50.331298 Epoch [069/100], Step [0400/0472], Loss1: 0.2172 Loss2: 0.2917 Loss3: 0.2059
+2025-07-17 21:02:56.233218 Epoch [069/100], Step [0450/0472], Loss1: 0.1982 Loss2: 0.2570 Loss3: 0.1786
+2025-07-17 21:03:24.501609 Epoch [069/100], Step [0472/0472], Loss1: 0.5406 Loss2: 0.6130 Loss3: 0.5754
+2025-07-17 21:03:37.303243 Epoch [070/100], Step [0001/0472], Loss1: 0.2078 Loss2: 0.2967 Loss3: 0.1898
+2025-07-17 21:04:42.331947 Epoch [070/100], Step [0050/0472], Loss1: 0.1701 Loss2: 0.2207 Loss3: 0.1546
+2025-07-17 21:05:48.973588 Epoch [070/100], Step [0100/0472], Loss1: 0.2771 Loss2: 0.3450 Loss3: 0.2457
+2025-07-17 21:06:55.253712 Epoch [070/100], Step [0150/0472], Loss1: 0.1881 Loss2: 0.2406 Loss3: 0.1627
+2025-07-17 21:08:01.883722 Epoch [070/100], Step [0200/0472], Loss1: 0.2042 Loss2: 0.3167 Loss3: 0.1780
+2025-07-17 21:09:08.388461 Epoch [070/100], Step [0250/0472], Loss1: 0.2090 Loss2: 0.2888 Loss3: 0.1876
+2025-07-17 21:10:14.772532 Epoch [070/100], Step [0300/0472], Loss1: 0.1886 Loss2: 0.2403 Loss3: 0.1732
+2025-07-17 21:11:21.248672 Epoch [070/100], Step [0350/0472], Loss1: 0.2561 Loss2: 0.3014 Loss3: 0.2175
+2025-07-17 21:12:27.844333 Epoch [070/100], Step [0400/0472], Loss1: 0.1655 Loss2: 0.2814 Loss3: 0.1448
+2025-07-17 21:13:34.388974 Epoch [070/100], Step [0450/0472], Loss1: 0.2249 Loss2: 0.3019 Loss3: 0.1903
+2025-07-17 21:14:02.990700 Epoch [070/100], Step [0472/0472], Loss1: 0.0763 Loss2: 0.1038 Loss3: 0.0628
+2025-07-17 21:14:07.988738 Epoch [071/100], Step [0001/0472], Loss1: 0.1513 Loss2: 0.2197 Loss3: 0.1289
+2025-07-17 21:15:14.823574 Epoch [071/100], Step [0050/0472], Loss1: 0.1961 Loss2: 0.2725 Loss3: 0.1665
+2025-07-17 21:16:21.252078 Epoch [071/100], Step [0100/0472], Loss1: 0.1734 Loss2: 0.2185 Loss3: 0.1534
+2025-07-17 21:17:27.812773 Epoch [071/100], Step [0150/0472], Loss1: 0.2093 Loss2: 0.2569 Loss3: 0.1838
+2025-07-17 21:18:34.540503 Epoch [071/100], Step [0200/0472], Loss1: 0.2796 Loss2: 0.3735 Loss3: 0.2585
+2025-07-17 21:19:41.247005 Epoch [071/100], Step [0250/0472], Loss1: 0.2090 Loss2: 0.2557 Loss3: 0.1883
+2025-07-17 21:20:47.859928 Epoch [071/100], Step [0300/0472], Loss1: 0.2624 Loss2: 0.3783 Loss3: 0.2344
+2025-07-17 21:21:54.638484 Epoch [071/100], Step [0350/0472], Loss1: 0.2136 Loss2: 0.2625 Loss3: 0.1867
+2025-07-17 21:23:00.964716 Epoch [071/100], Step [0400/0472], Loss1: 0.1790 Loss2: 0.2414 Loss3: 0.1651
+2025-07-17 21:24:07.346058 Epoch [071/100], Step [0450/0472], Loss1: 0.2536 Loss2: 0.3228 Loss3: 0.2324
+2025-07-17 21:24:35.719555 Epoch [071/100], Step [0472/0472], Loss1: 0.2807 Loss2: 0.3154 Loss3: 0.2563
+2025-07-17 21:24:44.280950 Epoch [072/100], Step [0001/0472], Loss1: 0.1882 Loss2: 0.2507 Loss3: 0.1725
+2025-07-17 21:25:49.690986 Epoch [072/100], Step [0050/0472], Loss1: 0.2550 Loss2: 0.3889 Loss3: 0.2234
+2025-07-17 21:26:56.379331 Epoch [072/100], Step [0100/0472], Loss1: 0.2036 Loss2: 0.2750 Loss3: 0.1857
+2025-07-17 21:28:03.093481 Epoch [072/100], Step [0150/0472], Loss1: 0.2278 Loss2: 0.3268 Loss3: 0.2095
+2025-07-17 21:29:09.794628 Epoch [072/100], Step [0200/0472], Loss1: 0.1767 Loss2: 0.2580 Loss3: 0.1546
+2025-07-17 21:30:16.590414 Epoch [072/100], Step [0250/0472], Loss1: 0.2114 Loss2: 0.2567 Loss3: 0.1751
+2025-07-17 21:31:23.600330 Epoch [072/100], Step [0300/0472], Loss1: 0.1724 Loss2: 0.2271 Loss3: 0.1473
+2025-07-17 21:32:30.695491 Epoch [072/100], Step [0350/0472], Loss1: 0.2196 Loss2: 0.2985 Loss3: 0.1954
+2025-07-17 21:33:38.110078 Epoch [072/100], Step [0400/0472], Loss1: 0.2794 Loss2: 0.3333 Loss3: 0.2498
+2025-07-17 21:34:45.301380 Epoch [072/100], Step [0450/0472], Loss1: 0.1681 Loss2: 0.2320 Loss3: 0.1525
+2025-07-17 21:35:14.081824 Epoch [072/100], Step [0472/0472], Loss1: 0.2812 Loss2: 0.3767 Loss3: 0.2692
+2025-07-17 21:35:23.158654 Epoch [073/100], Step [0001/0472], Loss1: 0.2012 Loss2: 0.2847 Loss3: 0.1817
+2025-07-17 21:36:28.988341 Epoch [073/100], Step [0050/0472], Loss1: 0.2751 Loss2: 0.3753 Loss3: 0.2510
+2025-07-17 21:37:36.100658 Epoch [073/100], Step [0100/0472], Loss1: 0.1539 Loss2: 0.2129 Loss3: 0.1381
+2025-07-17 21:38:43.269320 Epoch [073/100], Step [0150/0472], Loss1: 0.1761 Loss2: 0.2572 Loss3: 0.1612
+2025-07-17 21:39:50.384766 Epoch [073/100], Step [0200/0472], Loss1: 0.2392 Loss2: 0.3446 Loss3: 0.2017
+2025-07-17 21:40:57.572985 Epoch [073/100], Step [0250/0472], Loss1: 0.3584 Loss2: 0.4297 Loss3: 0.3432
+2025-07-17 21:42:04.887407 Epoch [073/100], Step [0300/0472], Loss1: 0.2681 Loss2: 0.3021 Loss3: 0.2210
+2025-07-17 21:43:12.043725 Epoch [073/100], Step [0350/0472], Loss1: 0.2380 Loss2: 0.3039 Loss3: 0.2177
+2025-07-17 21:44:18.948486 Epoch [073/100], Step [0400/0472], Loss1: 0.2096 Loss2: 0.2954 Loss3: 0.1827
+2025-07-17 21:45:25.901002 Epoch [073/100], Step [0450/0472], Loss1: 0.2356 Loss2: 0.2912 Loss3: 0.2102
+2025-07-17 21:45:54.748052 Epoch [073/100], Step [0472/0472], Loss1: 0.0855 Loss2: 0.1777 Loss3: 0.0898
+2025-07-17 21:46:03.838832 Epoch [074/100], Step [0001/0472], Loss1: 0.2485 Loss2: 0.3087 Loss3: 0.2297
+2025-07-17 21:47:09.490771 Epoch [074/100], Step [0050/0472], Loss1: 0.1769 Loss2: 0.2252 Loss3: 0.1484
+2025-07-17 21:48:16.250323 Epoch [074/100], Step [0100/0472], Loss1: 0.1795 Loss2: 0.2433 Loss3: 0.1561
+2025-07-17 21:49:23.182031 Epoch [074/100], Step [0150/0472], Loss1: 0.2115 Loss2: 0.2891 Loss3: 0.1786
+2025-07-17 21:50:30.023152 Epoch [074/100], Step [0200/0472], Loss1: 0.2027 Loss2: 0.2961 Loss3: 0.1793
+2025-07-17 21:51:36.776190 Epoch [074/100], Step [0250/0472], Loss1: 0.1827 Loss2: 0.2808 Loss3: 0.1608
+2025-07-17 21:52:43.546309 Epoch [074/100], Step [0300/0472], Loss1: 0.1812 Loss2: 0.2535 Loss3: 0.1568
+2025-07-17 21:53:50.458456 Epoch [074/100], Step [0350/0472], Loss1: 0.1410 Loss2: 0.1924 Loss3: 0.1257
+2025-07-17 21:54:57.156651 Epoch [074/100], Step [0400/0472], Loss1: 0.2148 Loss2: 0.2695 Loss3: 0.1819
+2025-07-17 21:56:03.662879 Epoch [074/100], Step [0450/0472], Loss1: 0.2790 Loss2: 0.3513 Loss3: 0.2555
+2025-07-17 21:56:32.276693 Epoch [074/100], Step [0472/0472], Loss1: 0.1697 Loss2: 0.2438 Loss3: 0.1611
+2025-07-17 21:56:43.238652 Epoch [075/100], Step [0001/0472], Loss1: 0.2220 Loss2: 0.2787 Loss3: 0.2012
+2025-07-17 21:57:50.398303 Epoch [075/100], Step [0050/0472], Loss1: 0.2134 Loss2: 0.2673 Loss3: 0.1882
+2025-07-17 21:58:57.055325 Epoch [075/100], Step [0100/0472], Loss1: 0.1666 Loss2: 0.2011 Loss3: 0.1442
+2025-07-17 22:00:03.652101 Epoch [075/100], Step [0150/0472], Loss1: 0.1908 Loss2: 0.2538 Loss3: 0.1657
+2025-07-17 22:01:10.169447 Epoch [075/100], Step [0200/0472], Loss1: 0.2206 Loss2: 0.3023 Loss3: 0.1928
+2025-07-17 22:02:16.569038 Epoch [075/100], Step [0250/0472], Loss1: 0.2411 Loss2: 0.3774 Loss3: 0.2056
+2025-07-17 22:03:22.956538 Epoch [075/100], Step [0300/0472], Loss1: 0.2111 Loss2: 0.3041 Loss3: 0.1904
+2025-07-17 22:04:29.344026 Epoch [075/100], Step [0350/0472], Loss1: 0.1843 Loss2: 0.2393 Loss3: 0.1660
+2025-07-17 22:05:35.721753 Epoch [075/100], Step [0400/0472], Loss1: 0.1786 Loss2: 0.2501 Loss3: 0.1591
+2025-07-17 22:06:42.018536 Epoch [075/100], Step [0450/0472], Loss1: 0.1795 Loss2: 0.1961 Loss3: 0.1576
+2025-07-17 22:07:10.464899 Epoch [075/100], Step [0472/0472], Loss1: 0.3595 Loss2: 0.4953 Loss3: 0.3429
+2025-07-17 22:07:19.807320 Epoch [076/100], Step [0001/0472], Loss1: 0.1954 Loss2: 0.2605 Loss3: 0.1824
+2025-07-17 22:08:25.003567 Epoch [076/100], Step [0050/0472], Loss1: 0.1518 Loss2: 0.1855 Loss3: 0.1296
+2025-07-17 22:09:31.566488 Epoch [076/100], Step [0100/0472], Loss1: 0.1922 Loss2: 0.2594 Loss3: 0.1674
+2025-07-17 22:10:38.046128 Epoch [076/100], Step [0150/0472], Loss1: 0.2080 Loss2: 0.2921 Loss3: 0.1808
+2025-07-17 22:11:44.574083 Epoch [076/100], Step [0200/0472], Loss1: 0.1712 Loss2: 0.2192 Loss3: 0.1512
+2025-07-17 22:12:51.103062 Epoch [076/100], Step [0250/0472], Loss1: 0.2249 Loss2: 0.2784 Loss3: 0.1933
+2025-07-17 22:13:57.573332 Epoch [076/100], Step [0300/0472], Loss1: 0.1906 Loss2: 0.2822 Loss3: 0.1659
+2025-07-17 22:15:04.092037 Epoch [076/100], Step [0350/0472], Loss1: 0.1880 Loss2: 0.2460 Loss3: 0.1678
+2025-07-17 22:16:10.761396 Epoch [076/100], Step [0400/0472], Loss1: 0.2303 Loss2: 0.3491 Loss3: 0.2036
+2025-07-17 22:17:17.784016 Epoch [076/100], Step [0450/0472], Loss1: 0.2016 Loss2: 0.2594 Loss3: 0.1809
+2025-07-17 22:17:46.425491 Epoch [076/100], Step [0472/0472], Loss1: 0.3628 Loss2: 0.4099 Loss3: 0.3062
+2025-07-17 22:17:55.262312 Epoch [077/100], Step [0001/0472], Loss1: 0.2855 Loss2: 0.3494 Loss3: 0.2611
+2025-07-17 22:19:01.139985 Epoch [077/100], Step [0050/0472], Loss1: 0.2314 Loss2: 0.2610 Loss3: 0.2028
+2025-07-17 22:20:07.983306 Epoch [077/100], Step [0100/0472], Loss1: 0.1797 Loss2: 0.2484 Loss3: 0.1594
+2025-07-17 22:21:14.873886 Epoch [077/100], Step [0150/0472], Loss1: 0.2323 Loss2: 0.3069 Loss3: 0.2025
+2025-07-17 22:22:21.462751 Epoch [077/100], Step [0200/0472], Loss1: 0.1843 Loss2: 0.2580 Loss3: 0.1640
+2025-07-17 22:23:28.126575 Epoch [077/100], Step [0250/0472], Loss1: 0.2178 Loss2: 0.3004 Loss3: 0.1979
+2025-07-17 22:24:34.911709 Epoch [077/100], Step [0300/0472], Loss1: 0.1647 Loss2: 0.2411 Loss3: 0.1498
+2025-07-17 22:25:41.576665 Epoch [077/100], Step [0350/0472], Loss1: 0.2066 Loss2: 0.2691 Loss3: 0.1730
+2025-07-17 22:26:47.977495 Epoch [077/100], Step [0400/0472], Loss1: 0.1894 Loss2: 0.2449 Loss3: 0.1627
+2025-07-17 22:27:54.359634 Epoch [077/100], Step [0450/0472], Loss1: 0.1555 Loss2: 0.2161 Loss3: 0.1358
+2025-07-17 22:28:22.979528 Epoch [077/100], Step [0472/0472], Loss1: 0.1242 Loss2: 0.3594 Loss3: 0.0957
+2025-07-17 22:28:30.016604 Epoch [078/100], Step [0001/0472], Loss1: 0.1874 Loss2: 0.2384 Loss3: 0.1651
+2025-07-17 22:29:36.747334 Epoch [078/100], Step [0050/0472], Loss1: 0.1850 Loss2: 0.2834 Loss3: 0.1655
+2025-07-17 22:30:43.412451 Epoch [078/100], Step [0100/0472], Loss1: 0.1735 Loss2: 0.3032 Loss3: 0.1526
+2025-07-17 22:31:49.960497 Epoch [078/100], Step [0150/0472], Loss1: 0.2281 Loss2: 0.2854 Loss3: 0.2011
+2025-07-17 22:32:56.631637 Epoch [078/100], Step [0200/0472], Loss1: 0.1599 Loss2: 0.2390 Loss3: 0.1328
+2025-07-17 22:34:03.435387 Epoch [078/100], Step [0250/0472], Loss1: 0.1975 Loss2: 0.2412 Loss3: 0.1657
+2025-07-17 22:35:10.146262 Epoch [078/100], Step [0300/0472], Loss1: 0.2034 Loss2: 0.2539 Loss3: 0.1849
+2025-07-17 22:36:17.041800 Epoch [078/100], Step [0350/0472], Loss1: 0.2240 Loss2: 0.3309 Loss3: 0.1956
+2025-07-17 22:37:23.857532 Epoch [078/100], Step [0400/0472], Loss1: 0.2106 Loss2: 0.2908 Loss3: 0.1893
+2025-07-17 22:38:30.707768 Epoch [078/100], Step [0450/0472], Loss1: 0.2560 Loss2: 0.3496 Loss3: 0.2208
+2025-07-17 22:38:59.493487 Epoch [078/100], Step [0472/0472], Loss1: 0.2510 Loss2: 0.2877 Loss3: 0.2141
+2025-07-17 22:39:08.229527 Epoch [079/100], Step [0001/0472], Loss1: 0.2209 Loss2: 0.3073 Loss3: 0.1902
+2025-07-17 22:40:13.867958 Epoch [079/100], Step [0050/0472], Loss1: 0.1923 Loss2: 0.2400 Loss3: 0.1684
+2025-07-17 22:41:20.789819 Epoch [079/100], Step [0100/0472], Loss1: 0.1824 Loss2: 0.2430 Loss3: 0.1533
+2025-07-17 22:42:27.858483 Epoch [079/100], Step [0150/0472], Loss1: 0.2108 Loss2: 0.2743 Loss3: 0.1881
+2025-07-17 22:43:35.007461 Epoch [079/100], Step [0200/0472], Loss1: 0.2169 Loss2: 0.3045 Loss3: 0.1925
+2025-07-17 22:44:42.181540 Epoch [079/100], Step [0250/0472], Loss1: 0.1786 Loss2: 0.2054 Loss3: 0.1512
+2025-07-17 22:45:49.318837 Epoch [079/100], Step [0300/0472], Loss1: 0.2336 Loss2: 0.2833 Loss3: 0.2071
+2025-07-17 22:46:56.638298 Epoch [079/100], Step [0350/0472], Loss1: 0.2576 Loss2: 0.3448 Loss3: 0.2408
+2025-07-17 22:48:03.953691 Epoch [079/100], Step [0400/0472], Loss1: 0.1753 Loss2: 0.2346 Loss3: 0.1465
+2025-07-17 22:49:11.303321 Epoch [079/100], Step [0450/0472], Loss1: 0.2308 Loss2: 0.3308 Loss3: 0.1938
+2025-07-17 22:49:40.415260 Epoch [079/100], Step [0472/0472], Loss1: 0.5842 Loss2: 0.7208 Loss3: 0.5218
+2025-07-17 22:49:52.638938 Epoch [080/100], Step [0001/0472], Loss1: 0.1523 Loss2: 0.2048 Loss3: 0.1356
+2025-07-17 22:50:59.036509 Epoch [080/100], Step [0050/0472], Loss1: 0.2819 Loss2: 0.3708 Loss3: 0.2519
+2025-07-17 22:52:06.423155 Epoch [080/100], Step [0100/0472], Loss1: 0.1901 Loss2: 0.2395 Loss3: 0.1715
+2025-07-17 22:53:13.779185 Epoch [080/100], Step [0150/0472], Loss1: 0.2541 Loss2: 0.3287 Loss3: 0.2204
+2025-07-17 22:54:21.074198 Epoch [080/100], Step [0200/0472], Loss1: 0.2356 Loss2: 0.3297 Loss3: 0.2130
+2025-07-17 22:55:28.467845 Epoch [080/100], Step [0250/0472], Loss1: 0.2315 Loss2: 0.3304 Loss3: 0.2042
+2025-07-17 22:56:35.886913 Epoch [080/100], Step [0300/0472], Loss1: 0.2044 Loss2: 0.2875 Loss3: 0.1791
+2025-07-17 22:57:43.071843 Epoch [080/100], Step [0350/0472], Loss1: 0.1610 Loss2: 0.2130 Loss3: 0.1423
+2025-07-17 22:58:50.160222 Epoch [080/100], Step [0400/0472], Loss1: 0.1649 Loss2: 0.2307 Loss3: 0.1423
+2025-07-17 22:59:57.239648 Epoch [080/100], Step [0450/0472], Loss1: 0.1712 Loss2: 0.2112 Loss3: 0.1512
+2025-07-17 23:00:26.011389 Epoch [080/100], Step [0472/0472], Loss1: 0.2818 Loss2: 0.3735 Loss3: 0.2588
+2025-07-17 23:00:34.085474 Epoch [081/100], Step [0001/0472], Loss1: 0.2717 Loss2: 0.3747 Loss3: 0.2384
+2025-07-17 23:01:40.139829 Epoch [081/100], Step [0050/0472], Loss1: 0.1995 Loss2: 0.2609 Loss3: 0.1799
+2025-07-17 23:02:47.472537 Epoch [081/100], Step [0100/0472], Loss1: 0.1311 Loss2: 0.1564 Loss3: 0.1173
+2025-07-17 23:03:54.461925 Epoch [081/100], Step [0150/0472], Loss1: 0.2386 Loss2: 0.3203 Loss3: 0.2075
+2025-07-17 23:05:01.412938 Epoch [081/100], Step [0200/0472], Loss1: 0.2035 Loss2: 0.2443 Loss3: 0.1736
+2025-07-17 23:06:08.516608 Epoch [081/100], Step [0250/0472], Loss1: 0.2154 Loss2: 0.2706 Loss3: 0.1925
+2025-07-17 23:07:15.343550 Epoch [081/100], Step [0300/0472], Loss1: 0.1652 Loss2: 0.2109 Loss3: 0.1497
+2025-07-17 23:08:22.137095 Epoch [081/100], Step [0350/0472], Loss1: 0.1824 Loss2: 0.2380 Loss3: 0.1589
+2025-07-17 23:09:28.964696 Epoch [081/100], Step [0400/0472], Loss1: 0.1951 Loss2: 0.2719 Loss3: 0.1689
+2025-07-17 23:10:35.711203 Epoch [081/100], Step [0450/0472], Loss1: 0.1459 Loss2: 0.1871 Loss3: 0.1248
+2025-07-17 23:11:04.245170 Epoch [081/100], Step [0472/0472], Loss1: 0.1197 Loss2: 0.1768 Loss3: 0.1018
+2025-07-17 23:11:12.729815 Epoch [082/100], Step [0001/0472], Loss1: 0.1966 Loss2: 0.2671 Loss3: 0.1780
+2025-07-17 23:12:18.355060 Epoch [082/100], Step [0050/0472], Loss1: 0.2054 Loss2: 0.2580 Loss3: 0.1762
+2025-07-17 23:13:25.051823 Epoch [082/100], Step [0100/0472], Loss1: 0.1940 Loss2: 0.2532 Loss3: 0.1795
+2025-07-17 23:14:31.839486 Epoch [082/100], Step [0150/0472], Loss1: 0.1657 Loss2: 0.2422 Loss3: 0.1416
+2025-07-17 23:15:38.427201 Epoch [082/100], Step [0200/0472], Loss1: 0.2131 Loss2: 0.3055 Loss3: 0.1872
+2025-07-17 23:16:44.989328 Epoch [082/100], Step [0250/0472], Loss1: 0.1706 Loss2: 0.2306 Loss3: 0.1445
+2025-07-17 23:17:51.545383 Epoch [082/100], Step [0300/0472], Loss1: 0.1692 Loss2: 0.2348 Loss3: 0.1461
+2025-07-17 23:18:58.030750 Epoch [082/100], Step [0350/0472], Loss1: 0.1837 Loss2: 0.2357 Loss3: 0.1674
+2025-07-17 23:20:04.601213 Epoch [082/100], Step [0400/0472], Loss1: 0.2246 Loss2: 0.2702 Loss3: 0.2072
+2025-07-17 23:21:11.304386 Epoch [082/100], Step [0450/0472], Loss1: 0.2568 Loss2: 0.3262 Loss3: 0.2287
+2025-07-17 23:21:39.896448 Epoch [082/100], Step [0472/0472], Loss1: 0.5422 Loss2: 0.5937 Loss3: 0.5618
+2025-07-17 23:21:48.261677 Epoch [083/100], Step [0001/0472], Loss1: 0.2414 Loss2: 0.3204 Loss3: 0.2215
+2025-07-17 23:22:53.682891 Epoch [083/100], Step [0050/0472], Loss1: 0.2613 Loss2: 0.3052 Loss3: 0.2277
+2025-07-17 23:24:00.169563 Epoch [083/100], Step [0100/0472], Loss1: 0.2748 Loss2: 0.3796 Loss3: 0.2640
+2025-07-17 23:25:06.614512 Epoch [083/100], Step [0150/0472], Loss1: 0.1976 Loss2: 0.3355 Loss3: 0.1830
+2025-07-17 23:26:12.958958 Epoch [083/100], Step [0200/0472], Loss1: 0.2472 Loss2: 0.3198 Loss3: 0.1992
+2025-07-17 23:27:19.494262 Epoch [083/100], Step [0250/0472], Loss1: 0.2577 Loss2: 0.3604 Loss3: 0.2337
+2025-07-17 23:28:25.870819 Epoch [083/100], Step [0300/0472], Loss1: 0.1928 Loss2: 0.2559 Loss3: 0.1674
+2025-07-17 23:29:32.232645 Epoch [083/100], Step [0350/0472], Loss1: 0.2004 Loss2: 0.2532 Loss3: 0.1830
+2025-07-17 23:30:38.408242 Epoch [083/100], Step [0400/0472], Loss1: 0.2170 Loss2: 0.3120 Loss3: 0.1947
+2025-07-17 23:31:44.542031 Epoch [083/100], Step [0450/0472], Loss1: 0.2365 Loss2: 0.2881 Loss3: 0.2113
+2025-07-17 23:32:12.907332 Epoch [083/100], Step [0472/0472], Loss1: 0.1928 Loss2: 0.1965 Loss3: 0.1612
+2025-07-17 23:32:20.220255 Epoch [084/100], Step [0001/0472], Loss1: 0.1709 Loss2: 0.2352 Loss3: 0.1514
+2025-07-17 23:33:26.498684 Epoch [084/100], Step [0050/0472], Loss1: 0.1895 Loss2: 0.2788 Loss3: 0.1691
+2025-07-17 23:34:32.854729 Epoch [084/100], Step [0100/0472], Loss1: 0.1928 Loss2: 0.2607 Loss3: 0.1737
+2025-07-17 23:35:39.124910 Epoch [084/100], Step [0150/0472], Loss1: 0.1944 Loss2: 0.3001 Loss3: 0.1731
+2025-07-17 23:36:45.585894 Epoch [084/100], Step [0200/0472], Loss1: 0.1938 Loss2: 0.2861 Loss3: 0.1661
+2025-07-17 23:37:52.367316 Epoch [084/100], Step [0250/0472], Loss1: 0.2023 Loss2: 0.2511 Loss3: 0.1732
+2025-07-17 23:38:58.904014 Epoch [084/100], Step [0300/0472], Loss1: 0.2131 Loss2: 0.3469 Loss3: 0.1891
+2025-07-17 23:40:05.442608 Epoch [084/100], Step [0350/0472], Loss1: 0.2029 Loss2: 0.2663 Loss3: 0.1605
+2025-07-17 23:41:11.822357 Epoch [084/100], Step [0400/0472], Loss1: 0.1903 Loss2: 0.2487 Loss3: 0.1703
+2025-07-17 23:42:18.666919 Epoch [084/100], Step [0450/0472], Loss1: 0.2105 Loss2: 0.2730 Loss3: 0.1892
+2025-07-17 23:42:47.519030 Epoch [084/100], Step [0472/0472], Loss1: 0.1344 Loss2: 0.1773 Loss3: 0.1398
+2025-07-17 23:42:59.372731 Epoch [085/100], Step [0001/0472], Loss1: 0.2009 Loss2: 0.2540 Loss3: 0.1758
+2025-07-17 23:44:04.941494 Epoch [085/100], Step [0050/0472], Loss1: 0.1832 Loss2: 0.2850 Loss3: 0.1590
+2025-07-17 23:45:11.564575 Epoch [085/100], Step [0100/0472], Loss1: 0.1618 Loss2: 0.1860 Loss3: 0.1425
+2025-07-17 23:46:18.190484 Epoch [085/100], Step [0150/0472], Loss1: 0.2191 Loss2: 0.2671 Loss3: 0.2017
+2025-07-17 23:47:25.011314 Epoch [085/100], Step [0200/0472], Loss1: 0.1519 Loss2: 0.1910 Loss3: 0.1289
+2025-07-17 23:48:31.922813 Epoch [085/100], Step [0250/0472], Loss1: 0.1879 Loss2: 0.2725 Loss3: 0.1604
+2025-07-17 23:49:38.831020 Epoch [085/100], Step [0300/0472], Loss1: 0.1892 Loss2: 0.2297 Loss3: 0.1689
+2025-07-17 23:50:45.471527 Epoch [085/100], Step [0350/0472], Loss1: 0.1839 Loss2: 0.2192 Loss3: 0.1615
+2025-07-17 23:51:52.469429 Epoch [085/100], Step [0400/0472], Loss1: 0.2047 Loss2: 0.3695 Loss3: 0.1785
+2025-07-17 23:52:59.392945 Epoch [085/100], Step [0450/0472], Loss1: 0.2024 Loss2: 0.2639 Loss3: 0.1777
+2025-07-17 23:53:28.191704 Epoch [085/100], Step [0472/0472], Loss1: 0.2207 Loss2: 0.3009 Loss3: 0.2086
+2025-07-17 23:53:36.420092 Epoch [086/100], Step [0001/0472], Loss1: 0.2493 Loss2: 0.3121 Loss3: 0.2370
+2025-07-17 23:54:42.328383 Epoch [086/100], Step [0050/0472], Loss1: 0.1939 Loss2: 0.2599 Loss3: 0.1643
+2025-07-17 23:55:49.618780 Epoch [086/100], Step [0100/0472], Loss1: 0.1611 Loss2: 0.2036 Loss3: 0.1415
+2025-07-17 23:56:57.063526 Epoch [086/100], Step [0150/0472], Loss1: 0.2093 Loss2: 0.3019 Loss3: 0.1870
+2025-07-17 23:58:04.601478 Epoch [086/100], Step [0200/0472], Loss1: 0.2800 Loss2: 0.4436 Loss3: 0.2468
+2025-07-17 23:59:12.352301 Epoch [086/100], Step [0250/0472], Loss1: 0.2089 Loss2: 0.2781 Loss3: 0.1863
+2025-07-18 00:00:19.788388 Epoch [086/100], Step [0300/0472], Loss1: 0.1997 Loss2: 0.2912 Loss3: 0.1785
+2025-07-18 00:01:27.192532 Epoch [086/100], Step [0350/0472], Loss1: 0.2359 Loss2: 0.3157 Loss3: 0.2108
+2025-07-18 00:02:34.701658 Epoch [086/100], Step [0400/0472], Loss1: 0.1870 Loss2: 0.2614 Loss3: 0.1652
+2025-07-18 00:03:42.229380 Epoch [086/100], Step [0450/0472], Loss1: 0.1948 Loss2: 0.2790 Loss3: 0.1712
+2025-07-18 00:04:11.025946 Epoch [086/100], Step [0472/0472], Loss1: 0.2310 Loss2: 0.3001 Loss3: 0.1949
+2025-07-18 00:04:17.922434 Epoch [087/100], Step [0001/0472], Loss1: 0.2000 Loss2: 0.3282 Loss3: 0.1838
+2025-07-18 00:05:24.835433 Epoch [087/100], Step [0050/0472], Loss1: 0.1388 Loss2: 0.1811 Loss3: 0.1203
+2025-07-18 00:06:31.644878 Epoch [087/100], Step [0100/0472], Loss1: 0.2066 Loss2: 0.2733 Loss3: 0.1772
+2025-07-18 00:07:38.462586 Epoch [087/100], Step [0150/0472], Loss1: 0.2056 Loss2: 0.2744 Loss3: 0.1838
+2025-07-18 00:08:45.120685 Epoch [087/100], Step [0200/0472], Loss1: 0.2409 Loss2: 0.2942 Loss3: 0.2159
+2025-07-18 00:09:51.741241 Epoch [087/100], Step [0250/0472], Loss1: 0.1848 Loss2: 0.2387 Loss3: 0.1622
+2025-07-18 00:10:58.264371 Epoch [087/100], Step [0300/0472], Loss1: 0.1745 Loss2: 0.2201 Loss3: 0.1575
+2025-07-18 00:12:04.850959 Epoch [087/100], Step [0350/0472], Loss1: 0.2019 Loss2: 0.2526 Loss3: 0.1829
+2025-07-18 00:13:11.420507 Epoch [087/100], Step [0400/0472], Loss1: 0.1719 Loss2: 0.2443 Loss3: 0.1485
+2025-07-18 00:14:17.939157 Epoch [087/100], Step [0450/0472], Loss1: 0.2122 Loss2: 0.2605 Loss3: 0.1905
+2025-07-18 00:14:46.522067 Epoch [087/100], Step [0472/0472], Loss1: 0.2588 Loss2: 0.5093 Loss3: 0.2716
+2025-07-18 00:14:54.923272 Epoch [088/100], Step [0001/0472], Loss1: 0.2080 Loss2: 0.3145 Loss3: 0.1852
+2025-07-18 00:16:00.541630 Epoch [088/100], Step [0050/0472], Loss1: 0.1910 Loss2: 0.2912 Loss3: 0.1723
+2025-07-18 00:17:07.357107 Epoch [088/100], Step [0100/0472], Loss1: 0.1992 Loss2: 0.2474 Loss3: 0.1718
+2025-07-18 00:18:13.898582 Epoch [088/100], Step [0150/0472], Loss1: 0.1563 Loss2: 0.2306 Loss3: 0.1400
+2025-07-18 00:19:20.372707 Epoch [088/100], Step [0200/0472], Loss1: 0.2299 Loss2: 0.2959 Loss3: 0.2053
+2025-07-18 00:20:26.742939 Epoch [088/100], Step [0250/0472], Loss1: 0.2188 Loss2: 0.3118 Loss3: 0.1924
+2025-07-18 00:21:33.243787 Epoch [088/100], Step [0300/0472], Loss1: 0.2834 Loss2: 0.3677 Loss3: 0.2525
+2025-07-18 00:22:39.822763 Epoch [088/100], Step [0350/0472], Loss1: 0.1960 Loss2: 0.2758 Loss3: 0.1771
+2025-07-18 00:23:46.311087 Epoch [088/100], Step [0400/0472], Loss1: 0.1872 Loss2: 0.2479 Loss3: 0.1672
+2025-07-18 00:24:52.615267 Epoch [088/100], Step [0450/0472], Loss1: 0.2070 Loss2: 0.2715 Loss3: 0.1774
+2025-07-18 00:25:20.951371 Epoch [088/100], Step [0472/0472], Loss1: 0.1038 Loss2: 0.1333 Loss3: 0.0927
+2025-07-18 00:25:27.516658 Epoch [089/100], Step [0001/0472], Loss1: 0.2354 Loss2: 0.2573 Loss3: 0.2136
+2025-07-18 00:26:33.683708 Epoch [089/100], Step [0050/0472], Loss1: 0.2020 Loss2: 0.2585 Loss3: 0.1762
+2025-07-18 00:27:40.072591 Epoch [089/100], Step [0100/0472], Loss1: 0.2371 Loss2: 0.3153 Loss3: 0.2141
+2025-07-18 00:28:46.671949 Epoch [089/100], Step [0150/0472], Loss1: 0.1859 Loss2: 0.2774 Loss3: 0.1574
+2025-07-18 00:29:53.291480 Epoch [089/100], Step [0200/0472], Loss1: 0.1856 Loss2: 0.2469 Loss3: 0.1630
+2025-07-18 00:30:59.610682 Epoch [089/100], Step [0250/0472], Loss1: 0.1894 Loss2: 0.2738 Loss3: 0.1559
+2025-07-18 00:32:06.061011 Epoch [089/100], Step [0300/0472], Loss1: 0.1713 Loss2: 0.2310 Loss3: 0.1552
+2025-07-18 00:33:12.594629 Epoch [089/100], Step [0350/0472], Loss1: 0.2256 Loss2: 0.3057 Loss3: 0.1951
+2025-07-18 00:34:19.094064 Epoch [089/100], Step [0400/0472], Loss1: 0.2144 Loss2: 0.3734 Loss3: 0.1879
+2025-07-18 00:35:25.978626 Epoch [089/100], Step [0450/0472], Loss1: 0.2011 Loss2: 0.2631 Loss3: 0.1793
+2025-07-18 00:35:54.716005 Epoch [089/100], Step [0472/0472], Loss1: 0.1105 Loss2: 0.2750 Loss3: 0.0965
+2025-07-18 00:36:07.568095 Epoch [090/100], Step [0001/0472], Loss1: 0.1904 Loss2: 0.2359 Loss3: 0.1762
+2025-07-18 00:37:13.729025 Epoch [090/100], Step [0050/0472], Loss1: 0.2091 Loss2: 0.2872 Loss3: 0.1833
+2025-07-18 00:38:21.373568 Epoch [090/100], Step [0100/0472], Loss1: 0.2452 Loss2: 0.3455 Loss3: 0.2141
+2025-07-18 00:39:29.149980 Epoch [090/100], Step [0150/0472], Loss1: 0.1701 Loss2: 0.2264 Loss3: 0.1487
+2025-07-18 00:40:37.118980 Epoch [090/100], Step [0200/0472], Loss1: 0.2213 Loss2: 0.2995 Loss3: 0.2053
+2025-07-18 00:41:45.401887 Epoch [090/100], Step [0250/0472], Loss1: 0.1697 Loss2: 0.2249 Loss3: 0.1447
+2025-07-18 00:42:54.144364 Epoch [090/100], Step [0300/0472], Loss1: 0.2293 Loss2: 0.3198 Loss3: 0.2084
+2025-07-18 00:44:03.477824 Epoch [090/100], Step [0350/0472], Loss1: 0.1437 Loss2: 0.1850 Loss3: 0.1276
+2025-07-18 00:45:12.951898 Epoch [090/100], Step [0400/0472], Loss1: 0.1840 Loss2: 0.2589 Loss3: 0.1602
+2025-07-18 00:46:22.543086 Epoch [090/100], Step [0450/0472], Loss1: 0.1555 Loss2: 0.2597 Loss3: 0.1410
+2025-07-18 00:46:52.610361 Epoch [090/100], Step [0472/0472], Loss1: 0.2423 Loss2: 0.4334 Loss3: 0.2167
+2025-07-18 00:46:59.847658 Epoch [091/100], Step [0001/0472], Loss1: 0.1295 Loss2: 0.1705 Loss3: 0.1128
+2025-07-18 00:48:08.848898 Epoch [091/100], Step [0050/0472], Loss1: 0.2029 Loss2: 0.2685 Loss3: 0.1738
+2025-07-18 00:49:19.061547 Epoch [091/100], Step [0100/0472], Loss1: 0.1742 Loss2: 0.2174 Loss3: 0.1539
+2025-07-18 00:50:29.639434 Epoch [091/100], Step [0150/0472], Loss1: 0.2207 Loss2: 0.2831 Loss3: 0.1877
+2025-07-18 00:51:40.625828 Epoch [091/100], Step [0200/0472], Loss1: 0.1903 Loss2: 0.2278 Loss3: 0.1742
+2025-07-18 00:52:51.462755 Epoch [091/100], Step [0250/0472], Loss1: 0.2215 Loss2: 0.2934 Loss3: 0.1983
+2025-07-18 00:54:02.734819 Epoch [091/100], Step [0300/0472], Loss1: 0.1918 Loss2: 0.2312 Loss3: 0.1749
+2025-07-18 00:55:14.353554 Epoch [091/100], Step [0350/0472], Loss1: 0.1747 Loss2: 0.2231 Loss3: 0.1500
+2025-07-18 00:56:26.131262 Epoch [091/100], Step [0400/0472], Loss1: 0.2997 Loss2: 0.3690 Loss3: 0.2673
+2025-07-18 00:57:38.066277 Epoch [091/100], Step [0450/0472], Loss1: 0.1647 Loss2: 0.2337 Loss3: 0.1433
+2025-07-18 00:58:09.166839 Epoch [091/100], Step [0472/0472], Loss1: 0.1766 Loss2: 0.4138 Loss3: 0.2613
+2025-07-18 00:58:18.505913 Epoch [092/100], Step [0001/0472], Loss1: 0.2732 Loss2: 0.3428 Loss3: 0.2385
+2025-07-18 00:59:30.067197 Epoch [092/100], Step [0050/0472], Loss1: 0.1649 Loss2: 0.2343 Loss3: 0.1431
+2025-07-18 01:00:43.218582 Epoch [092/100], Step [0100/0472], Loss1: 0.2375 Loss2: 0.3314 Loss3: 0.2108
+2025-07-18 01:01:57.262303 Epoch [092/100], Step [0150/0472], Loss1: 0.2210 Loss2: 0.2661 Loss3: 0.2041
+2025-07-18 01:03:11.500714 Epoch [092/100], Step [0200/0472], Loss1: 0.2184 Loss2: 0.2952 Loss3: 0.1876
+2025-07-18 01:04:25.826314 Epoch [092/100], Step [0250/0472], Loss1: 0.1833 Loss2: 0.2554 Loss3: 0.1673
+2025-07-18 01:05:40.040822 Epoch [092/100], Step [0300/0472], Loss1: 0.1817 Loss2: 0.2167 Loss3: 0.1528
+2025-07-18 01:06:54.520630 Epoch [092/100], Step [0350/0472], Loss1: 0.1941 Loss2: 0.2460 Loss3: 0.1657
+2025-07-18 01:08:08.956824 Epoch [092/100], Step [0400/0472], Loss1: 0.2213 Loss2: 0.2888 Loss3: 0.1989
+2025-07-18 01:09:23.485923 Epoch [092/100], Step [0450/0472], Loss1: 0.1755 Loss2: 0.2499 Loss3: 0.1607
+2025-07-18 01:09:55.549325 Epoch [092/100], Step [0472/0472], Loss1: 0.2202 Loss2: 0.3990 Loss3: 0.2100
+2025-07-18 01:10:04.276287 Epoch [093/100], Step [0001/0472], Loss1: 0.2488 Loss2: 0.3315 Loss3: 0.2155
+2025-07-18 01:11:17.678776 Epoch [093/100], Step [0050/0472], Loss1: 0.2358 Loss2: 0.3115 Loss3: 0.2065
+2025-07-18 01:12:32.336748 Epoch [093/100], Step [0100/0472], Loss1: 0.2443 Loss2: 0.3022 Loss3: 0.2125
+2025-07-18 01:13:46.943777 Epoch [093/100], Step [0150/0472], Loss1: 0.1785 Loss2: 0.2349 Loss3: 0.1555
+2025-07-18 01:15:01.430757 Epoch [093/100], Step [0200/0472], Loss1: 0.1930 Loss2: 0.2559 Loss3: 0.1712
+2025-07-18 01:16:15.809683 Epoch [093/100], Step [0250/0472], Loss1: 0.2262 Loss2: 0.2886 Loss3: 0.1994
+2025-07-18 01:17:30.185705 Epoch [093/100], Step [0300/0472], Loss1: 0.2339 Loss2: 0.3157 Loss3: 0.1985
+2025-07-18 01:18:44.405340 Epoch [093/100], Step [0350/0472], Loss1: 0.2434 Loss2: 0.3309 Loss3: 0.2213
+2025-07-18 01:19:58.541851 Epoch [093/100], Step [0400/0472], Loss1: 0.2044 Loss2: 0.2720 Loss3: 0.1820
+2025-07-18 01:21:12.676116 Epoch [093/100], Step [0450/0472], Loss1: 0.2751 Loss2: 0.3692 Loss3: 0.2530
+2025-07-18 01:21:44.652727 Epoch [093/100], Step [0472/0472], Loss1: 0.3533 Loss2: 0.4978 Loss3: 0.2506
+2025-07-18 01:21:53.691470 Epoch [094/100], Step [0001/0472], Loss1: 0.1790 Loss2: 0.2515 Loss3: 0.1509
+2025-07-18 01:23:06.206027 Epoch [094/100], Step [0050/0472], Loss1: 0.2160 Loss2: 0.3085 Loss3: 0.1909
+2025-07-18 01:24:20.283449 Epoch [094/100], Step [0100/0472], Loss1: 0.1890 Loss2: 0.2513 Loss3: 0.1554
+2025-07-18 01:25:34.058143 Epoch [094/100], Step [0150/0472], Loss1: 0.1999 Loss2: 0.2596 Loss3: 0.1797
+2025-07-18 01:26:47.840363 Epoch [094/100], Step [0200/0472], Loss1: 0.2409 Loss2: 0.3178 Loss3: 0.2176
+2025-07-18 01:28:01.624354 Epoch [094/100], Step [0250/0472], Loss1: 0.2430 Loss2: 0.3407 Loss3: 0.2189
+2025-07-18 01:29:15.529348 Epoch [094/100], Step [0300/0472], Loss1: 0.1954 Loss2: 0.2343 Loss3: 0.1662
+2025-07-18 01:30:29.379021 Epoch [094/100], Step [0350/0472], Loss1: 0.2374 Loss2: 0.3037 Loss3: 0.2083
+2025-07-18 01:31:43.128679 Epoch [094/100], Step [0400/0472], Loss1: 0.2505 Loss2: 0.3015 Loss3: 0.2191
+2025-07-18 01:32:57.520547 Epoch [094/100], Step [0450/0472], Loss1: 0.1803 Loss2: 0.2493 Loss3: 0.1524
+2025-07-18 01:33:29.191695 Epoch [094/100], Step [0472/0472], Loss1: 0.4714 Loss2: 0.7568 Loss3: 0.4335
+2025-07-18 01:33:40.983225 Epoch [095/100], Step [0001/0472], Loss1: 0.1989 Loss2: 0.2403 Loss3: 0.1766
+2025-07-18 01:34:53.563027 Epoch [095/100], Step [0050/0472], Loss1: 0.2029 Loss2: 0.2612 Loss3: 0.1705
+2025-07-18 01:36:07.091688 Epoch [095/100], Step [0100/0472], Loss1: 0.2055 Loss2: 0.2732 Loss3: 0.1838
+2025-07-18 01:37:20.539583 Epoch [095/100], Step [0150/0472], Loss1: 0.1190 Loss2: 0.1627 Loss3: 0.1027
+2025-07-18 01:38:34.082843 Epoch [095/100], Step [0200/0472], Loss1: 0.2472 Loss2: 0.3503 Loss3: 0.2158
+2025-07-18 01:39:47.579721 Epoch [095/100], Step [0250/0472], Loss1: 0.2158 Loss2: 0.2705 Loss3: 0.1757
+2025-07-18 01:41:00.651751 Epoch [095/100], Step [0300/0472], Loss1: 0.2264 Loss2: 0.3236 Loss3: 0.2006
+2025-07-18 01:42:13.562530 Epoch [095/100], Step [0350/0472], Loss1: 0.2008 Loss2: 0.2259 Loss3: 0.1713
+2025-07-18 01:43:26.738487 Epoch [095/100], Step [0400/0472], Loss1: 0.1951 Loss2: 0.2587 Loss3: 0.1743
+2025-07-18 01:44:39.749633 Epoch [095/100], Step [0450/0472], Loss1: 0.1810 Loss2: 0.2710 Loss3: 0.1587
+2025-07-18 01:45:11.230451 Epoch [095/100], Step [0472/0472], Loss1: 0.1674 Loss2: 0.2780 Loss3: 0.1477
+2025-07-18 01:45:19.508943 Epoch [096/100], Step [0001/0472], Loss1: 0.1768 Loss2: 0.2764 Loss3: 0.1468
+2025-07-18 01:46:31.238350 Epoch [096/100], Step [0050/0472], Loss1: 0.2203 Loss2: 0.3084 Loss3: 0.1967
+2025-07-18 01:47:44.214867 Epoch [096/100], Step [0100/0472], Loss1: 0.1472 Loss2: 0.2030 Loss3: 0.1298
+2025-07-18 01:48:56.955455 Epoch [096/100], Step [0150/0472], Loss1: 0.1985 Loss2: 0.2522 Loss3: 0.1755
+2025-07-18 01:50:09.885249 Epoch [096/100], Step [0200/0472], Loss1: 0.1885 Loss2: 0.2697 Loss3: 0.1596
+2025-07-18 01:51:22.641994 Epoch [096/100], Step [0250/0472], Loss1: 0.2497 Loss2: 0.3622 Loss3: 0.2196
+2025-07-18 01:52:35.557856 Epoch [096/100], Step [0300/0472], Loss1: 0.2795 Loss2: 0.4126 Loss3: 0.2493
+2025-07-18 01:53:48.330251 Epoch [096/100], Step [0350/0472], Loss1: 0.1798 Loss2: 0.2489 Loss3: 0.1537
+2025-07-18 01:55:01.174456 Epoch [096/100], Step [0400/0472], Loss1: 0.1729 Loss2: 0.2266 Loss3: 0.1501
+2025-07-18 01:56:13.977730 Epoch [096/100], Step [0450/0472], Loss1: 0.2110 Loss2: 0.2731 Loss3: 0.1878
+2025-07-18 01:56:45.505522 Epoch [096/100], Step [0472/0472], Loss1: 1.1418 Loss2: 2.0647 Loss3: 1.3838
+2025-07-18 01:56:53.548677 Epoch [097/100], Step [0001/0472], Loss1: 0.1847 Loss2: 0.2304 Loss3: 0.1597
+2025-07-18 01:58:05.780243 Epoch [097/100], Step [0050/0472], Loss1: 0.2064 Loss2: 0.2715 Loss3: 0.1851
+2025-07-18 01:59:19.090108 Epoch [097/100], Step [0100/0472], Loss1: 0.2120 Loss2: 0.2687 Loss3: 0.1869
+2025-07-18 02:00:32.372269 Epoch [097/100], Step [0150/0472], Loss1: 0.2560 Loss2: 0.3568 Loss3: 0.2301
+2025-07-18 02:01:45.711437 Epoch [097/100], Step [0200/0472], Loss1: 0.2631 Loss2: 0.3550 Loss3: 0.2386
+2025-07-18 02:02:59.223954 Epoch [097/100], Step [0250/0472], Loss1: 0.1777 Loss2: 0.2466 Loss3: 0.1511
+2025-07-18 02:04:12.667666 Epoch [097/100], Step [0300/0472], Loss1: 0.1548 Loss2: 0.2119 Loss3: 0.1364
+2025-07-18 02:05:26.037509 Epoch [097/100], Step [0350/0472], Loss1: 0.2000 Loss2: 0.2511 Loss3: 0.1777
+2025-07-18 02:06:39.474532 Epoch [097/100], Step [0400/0472], Loss1: 0.1961 Loss2: 0.2593 Loss3: 0.1655
+2025-07-18 02:07:53.133061 Epoch [097/100], Step [0450/0472], Loss1: 0.1840 Loss2: 0.2250 Loss3: 0.1520
+2025-07-18 02:08:24.749741 Epoch [097/100], Step [0472/0472], Loss1: 0.1832 Loss2: 0.3713 Loss3: 0.1505
+2025-07-18 02:08:33.945015 Epoch [098/100], Step [0001/0472], Loss1: 0.1809 Loss2: 0.3061 Loss3: 0.1592
+2025-07-18 02:09:46.339146 Epoch [098/100], Step [0050/0472], Loss1: 0.3504 Loss2: 0.4294 Loss3: 0.3220
+2025-07-18 02:11:00.342606 Epoch [098/100], Step [0100/0472], Loss1: 0.2009 Loss2: 0.2380 Loss3: 0.1713
+2025-07-18 02:12:14.321451 Epoch [098/100], Step [0150/0472], Loss1: 0.2082 Loss2: 0.3064 Loss3: 0.1898
+2025-07-18 02:13:28.810605 Epoch [098/100], Step [0200/0472], Loss1: 0.1915 Loss2: 0.3126 Loss3: 0.1683
+2025-07-18 02:14:43.649561 Epoch [098/100], Step [0250/0472], Loss1: 0.1796 Loss2: 0.2827 Loss3: 0.1515
+2025-07-18 02:15:58.482383 Epoch [098/100], Step [0300/0472], Loss1: 0.1974 Loss2: 0.2527 Loss3: 0.1716
+2025-07-18 02:17:13.278351 Epoch [098/100], Step [0350/0472], Loss1: 0.2105 Loss2: 0.2798 Loss3: 0.1824
+2025-07-18 02:18:28.170620 Epoch [098/100], Step [0400/0472], Loss1: 0.1590 Loss2: 0.2115 Loss3: 0.1399
+2025-07-18 02:19:42.694318 Epoch [098/100], Step [0450/0472], Loss1: 0.1867 Loss2: 0.2532 Loss3: 0.1596
+2025-07-18 02:20:15.030684 Epoch [098/100], Step [0472/0472], Loss1: 0.4637 Loss2: 0.5176 Loss3: 0.4417
+2025-07-18 02:20:23.310758 Epoch [099/100], Step [0001/0472], Loss1: 0.1896 Loss2: 0.2580 Loss3: 0.1574
+2025-07-18 02:21:36.631308 Epoch [099/100], Step [0050/0472], Loss1: 0.2313 Loss2: 0.2877 Loss3: 0.2053
+2025-07-18 02:22:51.092129 Epoch [099/100], Step [0100/0472], Loss1: 0.2455 Loss2: 0.3109 Loss3: 0.2214
+2025-07-18 02:24:05.826685 Epoch [099/100], Step [0150/0472], Loss1: 0.2391 Loss2: 0.3010 Loss3: 0.2140
+2025-07-18 02:25:20.346763 Epoch [099/100], Step [0200/0472], Loss1: 0.2261 Loss2: 0.2948 Loss3: 0.1988
+2025-07-18 02:26:35.123148 Epoch [099/100], Step [0250/0472], Loss1: 0.2178 Loss2: 0.3100 Loss3: 0.1849
+2025-07-18 02:27:49.324468 Epoch [099/100], Step [0300/0472], Loss1: 0.1920 Loss2: 0.2754 Loss3: 0.1699
+2025-07-18 02:29:03.293569 Epoch [099/100], Step [0350/0472], Loss1: 0.1968 Loss2: 0.2449 Loss3: 0.1690
+2025-07-18 02:30:16.990475 Epoch [099/100], Step [0400/0472], Loss1: 0.1736 Loss2: 0.2453 Loss3: 0.1535
+2025-07-18 02:31:31.396235 Epoch [099/100], Step [0450/0472], Loss1: 0.2944 Loss2: 0.3846 Loss3: 0.2566
+2025-07-18 02:32:03.707635 Epoch [099/100], Step [0472/0472], Loss1: 0.7140 Loss2: 0.5939 Loss3: 0.6301
