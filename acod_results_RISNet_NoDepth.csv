@@ -1,0 +1,11 @@
+Network,Plant,S,FWB,E,MAE
+RISNet_NoDepth,bean,0.632,0.388,0.863,0.005
+RISNet_NoDepth,cucumber,0.814,0.7,0.919,0.008
+RISNet_NoDepth,kiwi,0.881,0.829,0.976,0.008
+RISNet_NoDepth,loquat,0.797,0.701,0.99,0.007
+RISNet_NoDepth,peach,0.794,0.602,0.898,0.003
+RISNet_NoDepth,pepper,0.717,0.504,0.857,0.015
+RISNet_NoDepth,plum,0.768,0.6,0.928,0.024
+RISNet_NoDepth,tomato,0.848,0.774,0.966,0.011
+RISNet_NoDepth,watermelon,0.916,0.855,0.972,0.003
+RISNet_NoDepth,zucchini,0.841,0.758,0.969,0.007
