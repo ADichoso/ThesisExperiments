@@ -1,13 +1,13 @@
 #!/bin/bash
-#SBATCH --partition="gpu_a100"
-#SBATCH --qos="gpu-a100_default"
+#SBATCH --partition="gpu"
+#SBATCH --qos="gpu-p40_default"
 #SBATCH --gres=gpu:1
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
-#SBATCH --job-name="RISNetND-ACOD-1"
+#SBATCH --job-name="RISNetND-ACOD-TEST-1"
 #SBATCH --cpus-per-task=8
 #SBATCH --mem-per-cpu=4GB
-#SBATCH --output="output/RISNetND_ACOD_1.txt"
+#SBATCH --output="output/RISNetND_ACOD_TEST_1.txt"
 #SBATCH --mail-user=aaron_gabrielle_dichoso@dlsu.edu.ph
 #SBATCH --mail-type=END
 
@@ -20,7 +20,6 @@ conda init
 conda activate RISNet
 
 cd ..
-
-srun python Networks/RISNet_NoDepth/Train.py --train_path="./Datasets/ACOD-12K/Train"
+srun python Networks/RISNet_NoDepth/Test.py
 
 conda deactivate

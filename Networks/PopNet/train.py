@@ -18,6 +18,7 @@ from Code.lib.sobel import *
 # Set device
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"
+print("PyTorch CUDA version:", torch.version.cuda)
 
 torch.autograd.set_detect_anomaly(True)
 cudnn.benchmark = True  # Enable to improve performance if input size is constant
@@ -132,8 +133,8 @@ def train(train_loader, model, optimizer, epoch, save_path):
         logging.info('#TRAIN#:Epoch [{:03d}/{:03d}], Loss_AVG: {:.4f}'.format(epoch, opt.epoch, loss_all))
         writer.add_scalar('Loss-epoch', loss_all, global_step=epoch)
 
-        if (epoch) % 5 == 0:
-            torch.save(model.state_dict(), save_path + 'PopNet_epoch_{}.pth'.format(epoch))
+        if (epoch + 1) % 5 == 0:
+            torch.save(model.state_dict(), save_path + 'PopNet_epoch_{}.pth'.format(epoch + 1))
 
     except KeyboardInterrupt:
         print('Keyboard Interrupt: save model and exit.')
@@ -192,4 +193,4 @@ if __name__ == '__main__':
         train(train_loader, model, optimizer, epoch, save_path)
 
         # Validate
-        #val(test_loader, model, epoch, save_path)
+        # val(test_loader, model, epoch, save_path)
