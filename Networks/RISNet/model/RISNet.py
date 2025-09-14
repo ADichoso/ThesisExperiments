@@ -225,6 +225,7 @@ class RISNet(nn.Module):
     def __init__(self, channel=32, kernel_size=3, reduction=4, bias=False, act=nn.PReLU(), n_resblocks=2, iteration=3):
         super(RISNet, self).__init__()
 
+        # Load PVT
         self.backbone = pvt_v2_b2()  # [64, 128, 320, 512]
         path = os.getcwd() + '/Backbones/RISNet_pvt_v2_b2.pth'
         save_model = torch.load(path)
