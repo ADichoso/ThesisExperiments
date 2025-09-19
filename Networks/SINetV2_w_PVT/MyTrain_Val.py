@@ -154,7 +154,7 @@ if __name__ == '__main__':
     parser.add_argument('--val_root', type=str, default='./Datasets/ACOD-12K/Test/',
                         help='the test rgb images root')
     parser.add_argument('--save_path', type=str,
-                        default='./Checkpoints/SINet_V2/',
+                        default='./Checkpoints/SINet_V2_w_PVT/',
                         help='the path to save model and log')
     opt = parser.parse_args()
 
