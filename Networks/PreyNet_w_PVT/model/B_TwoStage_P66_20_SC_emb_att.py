@@ -236,12 +236,12 @@ class SAM_ResNet(nn.Module):
         self.backbone.load_state_dict(model_dict)
 
         # backbone
-        resnet50 = resnet.resnet50(backbone_path)
-        self.layer0 = nn.Sequential(resnet50.conv1, resnet50.bn1, resnet50.relu)
-        self.layer1 = nn.Sequential(resnet50.maxpool, resnet50.layer1)
-        self.layer2 = resnet50.layer2
-        self.layer3 = resnet50.layer3
-        self.layer4 = resnet50.layer4
+        #resnet50 = resnet.resnet50(backbone_path)
+        #self.layer0 = nn.Sequential(resnet50.conv1, resnet50.bn1, resnet50.relu)
+        #self.layer1 = nn.Sequential(resnet50.maxpool, resnet50.layer1)
+        #self.layer2 = resnet50.layer2
+        #self.layer3 = resnet50.layer3
+        #self.layer4 = resnet50.layer4
 
         # channel reduction
         # Conv+BN+Relu
@@ -312,11 +312,11 @@ class SAM_ResNet(nn.Module):
         layer3_pvt = pvt[2]  # 320x44x44
         layer4_pvt = pvt[3]  # 512x22x22
 
-        layer0 = self.layer0(x)  # [-1, 64, h/2, w/2]
-        layer1 = self.layer1(layer0)  # [-1, 256, h/4, w/4]
-        layer2 = self.layer2(layer1)  # [-1, 512, h/8, w/8]
-        layer3 = self.layer3(layer2)  # [-1, 1024, h/16, w/16]
-        layer4 = self.layer4(layer3)  # [-1, 2048, h/32, w/32]
+        #layer0 = self.layer0(x)  # [-1, 64, h/2, w/2]
+        #layer1 = self.layer1(layer0)  # [-1, 256, h/4, w/4]
+        #layer2 = self.layer2(layer1)  # [-1, 512, h/8, w/8]
+        #layer3 = self.layer3(layer2)  # [-1, 1024, h/16, w/16]
+        #layer4 = self.layer4(layer3)  # [-1, 2048, h/32, w/32]
 
         x0_1 = layer0_pvt  # 64 x 176 x 176
         x1_1 = layer1_pvt  # 256 x 88 x 88
