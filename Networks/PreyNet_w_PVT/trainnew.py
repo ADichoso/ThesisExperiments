@@ -263,7 +263,7 @@ if __name__ == '__main__':
                         default='./Datasets/ACOD-12K/Test/',
                         help='the test rgb images root')
     parser.add_argument('--save_path', type=str,
-                        default='./Checkpoints/PreyNet/',
+                        default='./Checkpoints/PreyNetwPVT/',
                         help='the path to save model and log')
     opt = parser.parse_args()
 
