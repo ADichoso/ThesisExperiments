@@ -167,9 +167,9 @@ class Network(nn.Module):
         # ---- ResNet Backbone ----
         #self.resnet = res2net50_v1b_26w_4s(pretrained=imagenet_pretrained)
         # ---- Receptive Field Block like module ----
-        self.rfb2_1 = RFB_modified(512, channel)
-        self.rfb3_1 = RFB_modified(1024, channel)
-        self.rfb4_1 = RFB_modified(2048, channel)
+        self.rfb2_1 = RFB_modified(128, channel)
+        self.rfb3_1 = RFB_modified(320, channel)
+        self.rfb4_1 = RFB_modified(512, channel)
         # ---- Partial Decoder ----
         self.NCD = NeighborConnectionDecoder(channel)
 
