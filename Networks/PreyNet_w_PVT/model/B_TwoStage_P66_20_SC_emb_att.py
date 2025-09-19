@@ -236,8 +236,8 @@ class SAM_ResNet(nn.Module):
         self.backbone.load_state_dict(model_dict)
 
         # backbone
-        #resnet50 = resnet.resnet50(backbone_path)
-        #self.layer0 = nn.Sequential(resnet50.conv1, resnet50.bn1, resnet50.relu)
+        resnet50 = resnet.resnet50(backbone_path)
+        self.layer0 = nn.Sequential(resnet50.conv1, resnet50.bn1, resnet50.relu)
         #self.layer1 = nn.Sequential(resnet50.maxpool, resnet50.layer1)
         #self.layer2 = resnet50.layer2
         #self.layer3 = resnet50.layer3
@@ -245,10 +245,10 @@ class SAM_ResNet(nn.Module):
 
         # channel reduction
         # Conv+BN+Relu
-        self.cbr1 = BasicConv2d(256, 128, 3, 1, padding=1, flag=1)
-        self.cbr2 = BasicConv2d(512, 128, 3, 1, padding=1, flag=1)
-        self.cbr3 = BasicConv2d(1024, 256, 3, 1, padding=1, flag=1)
-        self.cbr4 = BasicConv2d(2048, 512, 3, 1, padding=1, flag=1)
+        self.cbr1 = BasicConv2d(64, 128, 3, 1, padding=1, flag=1)
+        self.cbr2 = BasicConv2d(128, 128, 3, 1, padding=1, flag=1)
+        self.cbr3 = BasicConv2d(320, 256, 3, 1, padding=1, flag=1)
+        self.cbr4 = BasicConv2d(512, 512, 3, 1, padding=1, flag=1)
 
         # channel reduction2
         self.cbr0_1 = BasicConv2d(64, 64, 3, padding=1, flag=1)
@@ -306,19 +306,19 @@ class SAM_ResNet(nn.Module):
     def forward(self, x):
         # ----------------------------------  backbone  --------------------------------------
         pvt = self.backbone(x)
-        layer0_pvt = x
+        #layer0_pvt = x
         layer1_pvt = pvt[0]  # 64x176x176
         layer2_pvt = pvt[1]  # 128x88x88
         layer3_pvt = pvt[2]  # 320x44x44
         layer4_pvt = pvt[3]  # 512x22x22
 
-        #layer0 = self.layer0(x)  # [-1, 64, h/2, w/2]
+        layer0 = self.layer0(x)  # [-1, 64, h/2, w/2]
         #layer1 = self.layer1(layer0)  # [-1, 256, h/4, w/4]
         #layer2 = self.layer2(layer1)  # [-1, 512, h/8, w/8]
         #layer3 = self.layer3(layer2)  # [-1, 1024, h/16, w/16]
         #layer4 = self.layer4(layer3)  # [-1, 2048, h/32, w/32]
 
-        x0_1 = layer0_pvt  # 64 x 176 x 176
+        x0_1 = layer0  # 64 x 176 x 176
         x1_1 = layer1_pvt  # 256 x 88 x 88
         x2_1 = layer2_pvt  # 512 x 44 x 44
         x3_1 = layer3_pvt  # 1024 x 22 x 22
@@ -326,6 +326,7 @@ class SAM_ResNet(nn.Module):
 
         # ------------------------------stage1: base network-----------------------------------
         # backbone 特征降维
+        # RuntimeError: Given groups=1, weight of size [128, 256, 3, 3], expected input[16, 64, 112, 112] to have 256 channels, but got 64 channels instead
         x1_1 = self.cbr1(x1_1)  # 128 x 88 x 88
         x2_1 = self.cbr2(x2_1)  # 128 x 44 x 44
         x3_1 = self.cbr3(x3_1)  # 256 x 22 x 22
