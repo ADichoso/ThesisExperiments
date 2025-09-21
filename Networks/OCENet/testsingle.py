@@ -17,7 +17,7 @@ import matplotlib.pyplot as plt
 plt.rcParams.update({'figure.figsize':(7,5), 'figure.dpi':100})
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--testsize', type=int, default=480, help='testing size')
+parser.add_argument('--testsize', type=int, default=704, help='testing size')
 parser.add_argument('--langevin_step_num_des', type=int, default=10, help='number of langevin steps for ebm')
 parser.add_argument('-langevin_step_size_des', type=float, default=0.026,help='step size of EBM langevin')
 parser.add_argument('--energy_form', default='identity', help='tanh | sigmoid | identity | softplus')

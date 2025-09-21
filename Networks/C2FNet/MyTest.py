@@ -8,7 +8,7 @@ from utils.dataloader import test_dataset
 import time
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--testsize', type=int, default=352, help='testing size')
+parser.add_argument('--testsize', type=int, default=704, help='testing size')
 parser.add_argument('--pth_path', type=str, default='./Checkpoints/C2FNet-39.pth')
 
 for _data_name in ['ACOD-12K']: #'CAMO','CHAMELEON','COD10K'

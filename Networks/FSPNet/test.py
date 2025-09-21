@@ -9,7 +9,7 @@ from imageio import imwrite
 import time
 if __name__ =='__main__':
     batch_size = 1
-    net = FSPNet_model.Model(None, img_size=384).cuda()
+    net = FSPNet_model.Model(None, img_size=704).cuda()
 
     ckpt=['FSPNet_best_0.01137.pth']
 
@@ -39,7 +39,7 @@ if __name__ =='__main__':
                 os.mkdir(result_save_root)
             if not os.path.exists(os.path.join(result_save_root, Dir.split("/")[-1])):
                 os.mkdir(os.path.join(result_save_root, Dir.split("/")[-1]))
-            Dataset = dataset.TestDataset(Dir, 384)
+            Dataset = dataset.TestDataset(Dir, 704)
             Dataloader = DataLoader(Dataset, batch_size=batch_size, num_workers=batch_size*2)
             count=0
             for data in Dataloader:

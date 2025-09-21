@@ -40,15 +40,15 @@ ckpt_path = './Checkpoints'
 exp_name = 'PFNet'
 
 args = {
-    'epoch_num': 45,
-    'train_batch_size': 16,
+    'epoch_num': 100,
+    'train_batch_size': 4,
     'last_epoch': 0,
     'lr': 1e-3,
     'lr_decay': 0.9,
     'weight_decay': 5e-4,
     'momentum': 0.9,
     'snapshot': '',
-    'scale': 416,
+    'scale': 704,
     'save_point': [i for i in range (5, 50, 5)],
     'poly_train': True,
     'optimizer': 'SGD'

@@ -1,0 +1,11 @@
+Network,Plant,S,FWB,E,MAE
+PreyNet_w_PVT,bean,0.779,0.555,0.904,0.004
+PreyNet_w_PVT,cucumber,0.845,0.771,0.959,0.007
+PreyNet_w_PVT,kiwi,0.902,0.866,0.988,0.007
+PreyNet_w_PVT,loquat,0.843,0.779,0.985,0.005
+PreyNet_w_PVT,peach,0.859,0.758,0.966,0.002
+PreyNet_w_PVT,pepper,0.757,0.578,0.916,0.013
+PreyNet_w_PVT,plum,0.812,0.669,0.944,0.019
+PreyNet_w_PVT,tomato,0.858,0.793,0.966,0.01
+PreyNet_w_PVT,watermelon,0.933,0.9,0.987,0.002
+PreyNet_w_PVT,zucchini,0.877,0.822,0.985,0.006

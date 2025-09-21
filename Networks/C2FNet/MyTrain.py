@@ -67,13 +67,13 @@ def train(train_loader, model, optimizer, epoch):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--epoch', type=int,
-                        default=25, help='epoch number')
+                        default=100, help='epoch number')
     parser.add_argument('--lr', type=float,
                         default=1e-4, help='learning rate')
     parser.add_argument('--batchsize', type=int,
-                        default=32, help='training batch size')
+                        default=4, help='training batch size')
     parser.add_argument('--trainsize', type=int,
-                        default=352, help='training dataset size')
+                        default=704, help='training dataset size')
     parser.add_argument('--clip', type=float,
                         default=0.5, help='gradient clipping margin')
     parser.add_argument('--dataset', type=str,

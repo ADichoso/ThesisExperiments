@@ -1,0 +1,11 @@
+Network,Plant,S,FWB,E,MAE
+SINet_V2_w_PVT,bean,0.718,0.526,0.958,0.005
+SINet_V2_w_PVT,cucumber,0.816,0.742,0.964,0.009
+SINet_V2_w_PVT,kiwi,0.873,0.831,0.983,0.01
+SINet_V2_w_PVT,loquat,0.768,0.672,0.969,0.009
+SINet_V2_w_PVT,peach,0.794,0.663,0.963,0.004
+SINet_V2_w_PVT,pepper,0.733,0.554,0.947,0.017
+SINet_V2_w_PVT,plum,0.757,0.594,0.961,0.029
+SINet_V2_w_PVT,tomato,0.848,0.775,0.972,0.012
+SINet_V2_w_PVT,watermelon,0.909,0.845,0.984,0.003
+SINet_V2_w_PVT,zucchini,0.849,0.782,0.979,0.008

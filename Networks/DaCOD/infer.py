@@ -20,7 +20,7 @@ results_path = './Results'
 check_mkdir(results_path)
 exp_name = 'DaCOD'
 args = {
-    'scale': 448,
+    'scale': 704,
     'save_results': True
 }
 

@@ -30,7 +30,7 @@ results_path = './Results/PFNet'
 check_mkdir(results_path)
 exp_name = 'PFNet'
 args = {
-    'scale': 416,
+    'scale': 704,
     'save_results': True
 }
 

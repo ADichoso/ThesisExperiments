@@ -28,10 +28,10 @@ import utils.loss as loss
 
 import argparse
 parser = argparse.ArgumentParser()
-parser.add_argument('--epoch', type=int, default=60)
-parser.add_argument('--lr', type=float, default=1e-3)
-parser.add_argument('--batchsize', type=int, default=10)
-parser.add_argument('--trainsize', type=int, default=448)
+parser.add_argument('--epoch', type=int, default=100)
+parser.add_argument('--lr', type=float, default=1e-4)
+parser.add_argument('--batchsize', type=int, default=4)
+parser.add_argument('--trainsize', type=int, default=704)
 parser.add_argument('--dataset', type=str, default='ACOD-12K')
 
 opt = parser.parse_args()

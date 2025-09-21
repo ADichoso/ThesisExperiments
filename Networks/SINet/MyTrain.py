@@ -14,9 +14,9 @@ if __name__ == "__main__":
                         help='epoch number, default=30')
     parser.add_argument('--lr', type=float, default=1e-4,
                         help='init learning rate, try `lr=1e-4`')
-    parser.add_argument('--batchsize', type=int, default=6,
+    parser.add_argument('--batchsize', type=int, default=4,
                         help='training batch size (Note: ~500MB per img in GPU)')
-    parser.add_argument('--trainsize', type=int, default=352,
+    parser.add_argument('--trainsize', type=int, default=704,
                         help='the size of training image, try small resolutions for speed (like 256)')
     parser.add_argument('--clip', type=float, default=0.5,
                         help='gradient clipping margin')

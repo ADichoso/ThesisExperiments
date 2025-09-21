@@ -11,7 +11,7 @@ from Src.utils.trainer import eval_mae, numpy2tensor
 
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--testsize', type=int, default=1492, help='the snapshot input size')
+parser.add_argument('--testsize', type=int, default=704, help='the snapshot input size')
 parser.add_argument('--model_path', type=str,
                     default='./Networks/SINet/SINet_30.pth')
 parser.add_argument('--test_save', type=str,

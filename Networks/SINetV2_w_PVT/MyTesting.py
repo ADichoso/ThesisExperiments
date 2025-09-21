@@ -8,8 +8,8 @@ from lib.Network_Res2Net_GRA_NCD import Network
 from utils.data_val import test_dataset
 import imageio.v2 as imageio
 parser = argparse.ArgumentParser()
-parser.add_argument('--testsize', type=int, default=352, help='testing size')
-parser.add_argument('--pth_path', type=str, default='./Checkpoints/SINet_V2_w_PVT/Net_epoch_best.pth')
+parser.add_argument('--testsize', type=int, default=704, help='testing size')
+parser.add_argument('--pth_path', type=str, default='./snapshot/SINet_V2/Net_epoch_best.pth')
 opt = parser.parse_args()
 
 for _data_name in ['ACOD-12K']:

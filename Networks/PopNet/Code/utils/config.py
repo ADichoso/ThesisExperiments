@@ -2,7 +2,7 @@
 import warnings
 class DefaultConfig(object):
         
-    testsize     = 352
+    testsize     = 704
     gpu_id        = 0
     
     test_path     = '/raid/Tao/RGBD/Dataset/RGBD1010/TestDataset/'

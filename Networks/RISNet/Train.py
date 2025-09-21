@@ -75,15 +75,15 @@ def train(train_loader, model, optim, epoch, opt, total_step, writer):
 if __name__ == "__main__":
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('--epoch', type=int, default=45, help='epoch number')
+    parser.add_argument('--epoch', type=int, default=100, help='epoch number')
     parser.add_argument('--lr', type=float, default=1e-4, help='learning rate')
     parser.add_argument('--optimizer', type=str, default='SGD', help='choosing optimizer Adam')
     parser.add_argument('--augmentation', default=False, help='choose to do random flip rotation')
     parser.add_argument('--batchsize', type=int, default=4, help='training batch size')
-    parser.add_argument('--trainsize', type=int, default=448, help='training dataset size')
+    parser.add_argument('--trainsize', type=int, default=704, help='training dataset size')
     parser.add_argument('--clip', type=float, default=0.5, help='gradient clipping margin')
     parser.add_argument('--decay_rate', type=float, default=0.1, help='decay rate of learning rate')
-    parser.add_argument('--decay_epoch', type=int, default=5, help='every n epochs decay learning rate')
+    parser.add_argument('--decay_epoch', type=int, default=50, help='every n epochs decay learning rate')
     parser.add_argument('--train_path', type=str, default='./Datasets/ACOD-12K/Train', help='path to train dataset')
     parser.add_argument('--save_path', type=str, default='./Checkpoints/', help='path to save your model')
     parser.add_argument('--epoch_save', type=int, default=5, help='every n epochs to save model')
