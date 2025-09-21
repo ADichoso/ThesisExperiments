@@ -2,3 +2,4 @@ Results/
 Backbones/
 Datasets/
 *.pth
+*.local
