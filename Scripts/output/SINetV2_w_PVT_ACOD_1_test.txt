@@ -1,0 +1,776 @@
+acod_eval_averages.csv
+acod_eval_results.csv
+acod_results_C2FNet.csv
+acod_results_DaCOD.csv
+acod_results_FSPNet.csv
+acod_results_HitNet.csv
+acod_results_OCENet.csv
+acod_results_PFNet.csv
+acod_results_PopNet.csv
+acod_results_PreyNet.csv
+acod_results_RISNet.csv
+acod_results_RISNet_NoDepth.csv
+acod_results_SINet.csv
+acod_results_SINet_V2.csv
+acod_results_ZoomNet.csv
+Backbones
+Checkpoints
+Datasets
+Logs
+Networks
+py_sod_metrics
+Results
+results-bean.png
+results-bean-top.png
+results-cucumber.png
+results-cucumber-top.png
+results-general.png
+results-kiwi.png
+results-kiwi-top.png
+results-loquat.png
+results-loquat-top.png
+results-peach.png
+results-peach-top.png
+results-pepper.png
+results-pepper-top.png
+results-plum.png
+results-plum-top.png
+results-tomato.png
+results-tomato-top.png
+results-top.png
+results-watermelon.png
+results-watermelon-top.png
+results-zucchini.png
+results-zucchini-top.png
+RISNetTesting.ipynb
+Scripts
+CUDA_DEVICE=/dev/nvidia/0
+Sun Sep 21 11:29:17 2025       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 470.239.06   Driver Version: 470.239.06   CUDA Version: 11.4     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  Tesla P40           Off  | 00000000:82:00.0 Off |                    0 |
+| N/A   30C    P0    47W / 250W |      0MiB / 22919MiB |      1%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|  No running processes found                                                 |
++-----------------------------------------------------------------------------+
+Module load: anaconda/3-2023.07-2
+conda 23.7.4
+/home/aaron.dichoso/.conda/envs/TrainingApex/lib/python3.9/site-packages/requests/__init__.py:86: RequestsDependencyWarning: Unable to find acceptable character detection dependency (chardet or charset_normalizer).
+  warnings.warn(
+/home/aaron.dichoso/.conda/envs/TrainingApex/lib/python3.9/site-packages/timm/models/layers/__init__.py:48: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+/home/aaron.dichoso/.conda/envs/TrainingApex/lib/python3.9/site-packages/timm/models/registry.py:4: FutureWarning: Importing from timm.models.registry is deprecated, please import via timm.models
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.models", FutureWarning)
+/scratch1/aaron.dichoso/Networks/SINetV2_w_PVT/lib/pvt.py:388: UserWarning: Overwriting pvt_v2_b0 in registry with lib.pvt.pvt_v2_b0. This is because the name being registered conflicts with an existing name. Please check if this is not expected.
+  class pvt_v2_b0(PyramidVisionTransformerImpr):
+/scratch1/aaron.dichoso/Networks/SINetV2_w_PVT/lib/pvt.py:398: UserWarning: Overwriting pvt_v2_b1 in registry with lib.pvt.pvt_v2_b1. This is because the name being registered conflicts with an existing name. Please check if this is not expected.
+  class pvt_v2_b1(PyramidVisionTransformerImpr):
+/scratch1/aaron.dichoso/Networks/SINetV2_w_PVT/lib/pvt.py:406: UserWarning: Overwriting pvt_v2_b2 in registry with lib.pvt.pvt_v2_b2. This is because the name being registered conflicts with an existing name. Please check if this is not expected.
+  class pvt_v2_b2(PyramidVisionTransformerImpr):
+/scratch1/aaron.dichoso/Networks/SINetV2_w_PVT/lib/pvt.py:414: UserWarning: Overwriting pvt_v2_b3 in registry with lib.pvt.pvt_v2_b3. This is because the name being registered conflicts with an existing name. Please check if this is not expected.
+  class pvt_v2_b3(PyramidVisionTransformerImpr):
+/scratch1/aaron.dichoso/Networks/SINetV2_w_PVT/lib/pvt.py:422: UserWarning: Overwriting pvt_v2_b4 in registry with lib.pvt.pvt_v2_b4. This is because the name being registered conflicts with an existing name. Please check if this is not expected.
+  class pvt_v2_b4(PyramidVisionTransformerImpr):
+/scratch1/aaron.dichoso/Networks/SINetV2_w_PVT/lib/pvt.py:431: UserWarning: Overwriting pvt_v2_b5 in registry with lib.pvt.pvt_v2_b5. This is because the name being registered conflicts with an existing name. Please check if this is not expected.
+  class pvt_v2_b5(PyramidVisionTransformerImpr):
+/home/aaron.dichoso/.conda/envs/TrainingApex/lib/python3.9/site-packages/torch/nn/functional.py:3631: UserWarning: Default upsampling behavior when mode=bilinear is changed to align_corners=False since 0.4.0. Please specify align_corners=True if the old behavior is desired. See the documentation of nn.Upsample for details.
+  warnings.warn(
+/home/aaron.dichoso/.conda/envs/TrainingApex/lib/python3.9/site-packages/torch/nn/functional.py:3679: UserWarning: The default behavior for interpolate/upsample with float scale_factor changed in 1.6.0 to align with other frameworks/libraries, and now uses scale_factor directly, instead of relying on the computed output size. If you wish to restore the old behavior, please set recompute_scale_factor=True. See the documentation of nn.Upsample for details. 
+  warnings.warn(
+/home/aaron.dichoso/.conda/envs/TrainingApex/lib/python3.9/site-packages/torch/nn/functional.py:3509: UserWarning: nn.functional.upsample is deprecated. Use nn.functional.interpolate instead.
+  warnings.warn("nn.functional.upsample is deprecated. Use nn.functional.interpolate instead.")
+> ACOD-12K - bean_left_00045.png
+> ACOD-12K - bean_left_00047.png
+> ACOD-12K - bean_left_00048.png
+> ACOD-12K - bean_left_00049.png
+> ACOD-12K - bean_left_00050.png
+> ACOD-12K - bean_left_00051.png
+> ACOD-12K - bean_left_00052.png
+> ACOD-12K - bean_left_00053.png
+> ACOD-12K - bean_left_00054.png
+> ACOD-12K - bean_left_00055.png
+> ACOD-12K - cucumber_left_00401.png
+> ACOD-12K - cucumber_left_00402.png
+> ACOD-12K - cucumber_left_00403.png
+> ACOD-12K - cucumber_left_00404.png
+> ACOD-12K - cucumber_left_00405.png
+> ACOD-12K - cucumber_left_00406.png
+> ACOD-12K - cucumber_left_00407.png
+> ACOD-12K - cucumber_left_00408.png
+> ACOD-12K - cucumber_left_00409.png
+> ACOD-12K - cucumber_left_00410.png
+> ACOD-12K - cucumber_left_00411.png
+> ACOD-12K - cucumber_left_00412.png
+> ACOD-12K - cucumber_left_00413.png
+> ACOD-12K - cucumber_left_00414.png
+> ACOD-12K - cucumber_left_00415.png
+> ACOD-12K - cucumber_left_00416.png
+> ACOD-12K - cucumber_left_00417.png
+> ACOD-12K - cucumber_left_00418.png
+> ACOD-12K - cucumber_left_00419.png
+> ACOD-12K - cucumber_left_00420.png
+> ACOD-12K - cucumber_left_00421.png
+> ACOD-12K - cucumber_left_00422.png
+> ACOD-12K - cucumber_left_00423.png
+> ACOD-12K - cucumber_left_00424.png
+> ACOD-12K - cucumber_left_00425.png
+> ACOD-12K - cucumber_left_00426.png
+> ACOD-12K - cucumber_left_00427.png
+> ACOD-12K - cucumber_left_00428.png
+> ACOD-12K - cucumber_left_00429.png
+> ACOD-12K - cucumber_left_00430.png
+> ACOD-12K - cucumber_left_00431.png
+> ACOD-12K - cucumber_left_00432.png
+> ACOD-12K - cucumber_left_00433.png
+> ACOD-12K - cucumber_left_00434.png
+> ACOD-12K - cucumber_left_00435.png
+> ACOD-12K - cucumber_left_00436.png
+> ACOD-12K - cucumber_left_00437.png
+> ACOD-12K - cucumber_left_00438.png
+> ACOD-12K - cucumber_left_00439.png
+> ACOD-12K - cucumber_left_00440.png
+> ACOD-12K - cucumber_left_00441.png
+> ACOD-12K - cucumber_left_00442.png
+> ACOD-12K - cucumber_left_00443.png
+> ACOD-12K - cucumber_left_00444.png
+> ACOD-12K - cucumber_left_00445.png
+> ACOD-12K - cucumber_left_00446.png
+> ACOD-12K - cucumber_left_00447.png
+> ACOD-12K - cucumber_left_00448.png
+> ACOD-12K - cucumber_left_00449.png
+> ACOD-12K - cucumber_left_00450.png
+> ACOD-12K - cucumber_left_00451.png
+> ACOD-12K - cucumber_left_00452.png
+> ACOD-12K - cucumber_left_00453.png
+> ACOD-12K - cucumber_left_00454.png
+> ACOD-12K - cucumber_left_00455.png
+> ACOD-12K - cucumber_left_00456.png
+> ACOD-12K - cucumber_left_00457.png
+> ACOD-12K - cucumber_left_00458.png
+> ACOD-12K - cucumber_left_00459.png
+> ACOD-12K - cucumber_left_00460.png
+> ACOD-12K - cucumber_left_00461.png
+> ACOD-12K - cucumber_left_00462.png
+> ACOD-12K - cucumber_left_00463.png
+> ACOD-12K - cucumber_left_00464.png
+> ACOD-12K - cucumber_left_00465.png
+> ACOD-12K - cucumber_left_00466.png
+> ACOD-12K - cucumber_left_00467.png
+> ACOD-12K - cucumber_left_00468.png
+> ACOD-12K - cucumber_left_00469.png
+> ACOD-12K - cucumber_left_00470.png
+> ACOD-12K - cucumber_left_00471.png
+> ACOD-12K - cucumber_left_00472.png
+> ACOD-12K - cucumber_left_00473.png
+> ACOD-12K - cucumber_left_00474.png
+> ACOD-12K - cucumber_left_00475.png
+> ACOD-12K - cucumber_left_00476.png
+> ACOD-12K - cucumber_left_00477.png
+> ACOD-12K - cucumber_left_00478.png
+> ACOD-12K - cucumber_left_00479.png
+> ACOD-12K - cucumber_left_00480.png
+> ACOD-12K - cucumber_left_00481.png
+> ACOD-12K - cucumber_left_00482.png
+> ACOD-12K - cucumber_left_00483.png
+> ACOD-12K - cucumber_left_00484.png
+> ACOD-12K - cucumber_left_00485.png
+> ACOD-12K - cucumber_left_00486.png
+> ACOD-12K - cucumber_left_00487.png
+> ACOD-12K - cucumber_left_00488.png
+> ACOD-12K - cucumber_left_00489.png
+> ACOD-12K - cucumber_left_00490.png
+> ACOD-12K - cucumber_left_00491.png
+> ACOD-12K - cucumber_left_00492.png
+> ACOD-12K - cucumber_left_00493.png
+> ACOD-12K - cucumber_left_00494.png
+> ACOD-12K - cucumber_left_00495.png
+> ACOD-12K - cucumber_left_00496.png
+> ACOD-12K - cucumber_left_00497.png
+> ACOD-12K - cucumber_left_00498.png
+> ACOD-12K - cucumber_left_00499.png
+> ACOD-12K - cucumber_left_00500.png
+> ACOD-12K - cucumber_left_00501.png
+> ACOD-12K - cucumber_left_00502.png
+> ACOD-12K - cucumber_left_00503.png
+> ACOD-12K - cucumber_left_00504.png
+> ACOD-12K - cucumber_left_00505.png
+> ACOD-12K - cucumber_left_00506.png
+> ACOD-12K - cucumber_left_00507.png
+> ACOD-12K - cucumber_left_00508.png
+> ACOD-12K - cucumber_left_00509.png
+> ACOD-12K - cucumber_left_00510.png
+> ACOD-12K - cucumber_left_00511.png
+> ACOD-12K - cucumber_left_00512.png
+> ACOD-12K - cucumber_left_00513.png
+> ACOD-12K - cucumber_left_00514.png
+> ACOD-12K - cucumber_left_00515.png
+> ACOD-12K - cucumber_left_00516.png
+> ACOD-12K - cucumber_left_00517.png
+> ACOD-12K - cucumber_left_00518.png
+> ACOD-12K - cucumber_left_00519.png
+> ACOD-12K - cucumber_left_00520.png
+> ACOD-12K - cucumber_left_00521.png
+> ACOD-12K - cucumber_left_00522.png
+> ACOD-12K - cucumber_left_00523.png
+> ACOD-12K - cucumber_left_00524.png
+> ACOD-12K - cucumber_left_00525.png
+> ACOD-12K - cucumber_left_00526.png
+> ACOD-12K - cucumber_left_00527.png
+> ACOD-12K - cucumber_left_00528.png
+> ACOD-12K - cucumber_left_00529.png
+> ACOD-12K - cucumber_left_00530.png
+> ACOD-12K - cucumber_left_00531.png
+> ACOD-12K - cucumber_left_00532.png
+> ACOD-12K - cucumber_left_00533.png
+> ACOD-12K - cucumber_left_00534.png
+> ACOD-12K - cucumber_left_00535.png
+> ACOD-12K - cucumber_left_00536.png
+> ACOD-12K - cucumber_left_00537.png
+> ACOD-12K - cucumber_left_00538.png
+> ACOD-12K - kiwi_fruit_left_00280.png
+> ACOD-12K - kiwi_fruit_left_00281.png
+> ACOD-12K - kiwi_fruit_left_00282.png
+> ACOD-12K - kiwi_fruit_left_00283.png
+> ACOD-12K - kiwi_fruit_left_00284.png
+> ACOD-12K - kiwi_fruit_left_00285.png
+> ACOD-12K - kiwi_fruit_left_00286.png
+> ACOD-12K - kiwi_fruit_left_00287.png
+> ACOD-12K - kiwi_fruit_left_00288.png
+> ACOD-12K - kiwi_fruit_left_00289.png
+> ACOD-12K - kiwi_fruit_left_00290.png
+> ACOD-12K - kiwi_fruit_left_00291.png
+> ACOD-12K - kiwi_fruit_left_00292.png
+> ACOD-12K - kiwi_fruit_left_00293.png
+> ACOD-12K - kiwi_fruit_left_00294.png
+> ACOD-12K - kiwi_fruit_left_00295.png
+> ACOD-12K - kiwi_fruit_left_00296.png
+> ACOD-12K - kiwi_fruit_left_00297.png
+> ACOD-12K - kiwi_fruit_left_00298.png
+> ACOD-12K - kiwi_fruit_left_00299.png
+> ACOD-12K - kiwi_fruit_left_00300.png
+> ACOD-12K - kiwi_fruit_left_00301.png
+> ACOD-12K - kiwi_fruit_left_00302.png
+> ACOD-12K - kiwi_fruit_left_00424.png
+> ACOD-12K - kiwi_fruit_left_00425.png
+> ACOD-12K - kiwi_fruit_left_00426.png
+> ACOD-12K - kiwi_fruit_left_00427.png
+> ACOD-12K - kiwi_fruit_left_00428.png
+> ACOD-12K - kiwi_fruit_left_00429.png
+> ACOD-12K - kiwi_fruit_left_00430.png
+> ACOD-12K - kiwi_fruit_left_00431.png
+> ACOD-12K - kiwi_fruit_left_00432.png
+> ACOD-12K - kiwi_fruit_left_00433.png
+> ACOD-12K - kiwi_fruit_left_00434.png
+> ACOD-12K - kiwi_fruit_left_00435.png
+> ACOD-12K - kiwi_fruit_left_00436.png
+> ACOD-12K - kiwi_fruit_left_00437.png
+> ACOD-12K - kiwi_fruit_left_00438.png
+> ACOD-12K - kiwi_fruit_left_00439.png
+> ACOD-12K - kiwi_fruit_left_00440.png
+> ACOD-12K - kiwi_fruit_left_00441.png
+> ACOD-12K - kiwi_fruit_left_00442.png
+> ACOD-12K - kiwi_fruit_left_00443.png
+> ACOD-12K - kiwi_fruit_left_00444.png
+> ACOD-12K - kiwi_fruit_left_00445.png
+> ACOD-12K - kiwi_fruit_left_00446.png
+> ACOD-12K - kiwi_fruit_left_00447.png
+> ACOD-12K - kiwi_fruit_left_00448.png
+> ACOD-12K - kiwi_fruit_left_00449.png
+> ACOD-12K - kiwi_fruit_left_00450.png
+> ACOD-12K - kiwi_fruit_left_00451.png
+> ACOD-12K - kiwi_fruit_left_00452.png
+> ACOD-12K - kiwi_fruit_left_00453.png
+> ACOD-12K - kiwi_fruit_left_00454.png
+> ACOD-12K - kiwi_fruit_left_00455.png
+> ACOD-12K - kiwi_fruit_left_00456.png
+> ACOD-12K - kiwi_fruit_left_00457.png
+> ACOD-12K - kiwi_fruit_left_00458.png
+> ACOD-12K - kiwi_fruit_left_00459.png
+> ACOD-12K - kiwi_fruit_left_00460.png
+> ACOD-12K - kiwi_fruit_left_00461.png
+> ACOD-12K - kiwi_fruit_left_00462.png
+> ACOD-12K - kiwi_fruit_left_00463.png
+> ACOD-12K - kiwi_fruit_left_00464.png
+> ACOD-12K - kiwi_fruit_left_00465.png
+> ACOD-12K - kiwi_fruit_left_00466.png
+> ACOD-12K - kiwi_fruit_left_00467.png
+> ACOD-12K - kiwi_fruit_left_00468.png
+> ACOD-12K - kiwi_fruit_left_00469.png
+> ACOD-12K - kiwi_fruit_left_00470.png
+> ACOD-12K - kiwi_fruit_left_00471.png
+> ACOD-12K - kiwi_fruit_left_00472.png
+> ACOD-12K - kiwi_fruit_left_00473.png
+> ACOD-12K - kiwi_fruit_left_00474.png
+> ACOD-12K - kiwi_fruit_left_00475.png
+> ACOD-12K - kiwi_fruit_left_00476.png
+> ACOD-12K - kiwi_fruit_left_00477.png
+> ACOD-12K - kiwi_fruit_left_00478.png
+> ACOD-12K - kiwi_fruit_left_00479.png
+> ACOD-12K - kiwi_fruit_left_00480.png
+> ACOD-12K - kiwi_fruit_left_00481.png
+> ACOD-12K - kiwi_fruit_left_00482.png
+> ACOD-12K - kiwi_fruit_left_00483.png
+> ACOD-12K - kiwi_fruit_left_00484.png
+> ACOD-12K - kiwi_fruit_left_00485.png
+> ACOD-12K - kiwi_fruit_left_00486.png
+> ACOD-12K - kiwi_fruit_left_00487.png
+> ACOD-12K - kiwi_fruit_left_00488.png
+> ACOD-12K - kiwi_fruit_left_00489.png
+> ACOD-12K - kiwi_fruit_left_00490.png
+> ACOD-12K - kiwi_fruit_left_00491.png
+> ACOD-12K - kiwi_fruit_left_00492.png
+> ACOD-12K - kiwi_fruit_left_00493.png
+> ACOD-12K - kiwi_fruit_left_00494.png
+> ACOD-12K - kiwi_fruit_left_00495.png
+> ACOD-12K - kiwi_fruit_left_00496.png
+> ACOD-12K - kiwi_fruit_left_00497.png
+> ACOD-12K - kiwi_fruit_left_00498.png
+> ACOD-12K - kiwi_fruit_left_00499.png
+> ACOD-12K - kiwi_fruit_left_00500.png
+> ACOD-12K - kiwi_fruit_left_00501.png
+> ACOD-12K - kiwi_fruit_left_00502.png
+> ACOD-12K - kiwi_fruit_left_00503.png
+> ACOD-12K - kiwi_fruit_left_00504.png
+> ACOD-12K - kiwi_fruit_left_00505.png
+> ACOD-12K - kiwi_fruit_left_00506.png
+> ACOD-12K - kiwi_fruit_left_00507.png
+> ACOD-12K - kiwi_fruit_left_00508.png
+> ACOD-12K - kiwi_fruit_left_00509.png
+> ACOD-12K - kiwi_fruit_left_00510.png
+> ACOD-12K - kiwi_fruit_left_00511.png
+> ACOD-12K - kiwi_fruit_left_00512.png
+> ACOD-12K - kiwi_fruit_left_00513.png
+> ACOD-12K - kiwi_fruit_left_00514.png
+> ACOD-12K - kiwi_fruit_left_00515.png
+> ACOD-12K - kiwi_fruit_left_00516.png
+> ACOD-12K - kiwi_fruit_left_00517.png
+> ACOD-12K - kiwi_fruit_left_00518.png
+> ACOD-12K - kiwi_fruit_left_00519.png
+> ACOD-12K - kiwi_fruit_left_00520.png
+> ACOD-12K - kiwi_fruit_left_00521.png
+> ACOD-12K - kiwi_fruit_left_00522.png
+> ACOD-12K - kiwi_fruit_left_00523.png
+> ACOD-12K - kiwi_fruit_left_00524.png
+> ACOD-12K - kiwi_fruit_left_00525.png
+> ACOD-12K - kiwi_fruit_left_00526.png
+> ACOD-12K - kiwi_fruit_left_00527.png
+> ACOD-12K - kiwi_fruit_left_00528.png
+> ACOD-12K - kiwi_fruit_left_00529.png
+> ACOD-12K - kiwi_fruit_left_00530.png
+> ACOD-12K - kiwi_fruit_left_00531.png
+> ACOD-12K - kiwi_fruit_left_00532.png
+> ACOD-12K - kiwi_fruit_left_00533.png
+> ACOD-12K - kiwi_fruit_left_00534.png
+> ACOD-12K - kiwi_fruit_left_00535.png
+> ACOD-12K - kiwi_fruit_left_00536.png
+> ACOD-12K - kiwi_fruit_left_00537.png
+> ACOD-12K - kiwi_fruit_left_00538.png
+> ACOD-12K - loquat_left_00143.png
+> ACOD-12K - loquat_left_00144.png
+> ACOD-12K - loquat_left_00145.png
+> ACOD-12K - loquat_left_00146.png
+> ACOD-12K - loquat_left_00147.png
+> ACOD-12K - loquat_left_00148.png
+> ACOD-12K - loquat_left_00149.png
+> ACOD-12K - loquat_left_00150.png
+> ACOD-12K - loquat_left_00151.png
+> ACOD-12K - loquat_left_00152.png
+> ACOD-12K - loquat_left_00153.png
+> ACOD-12K - loquat_left_00154.png
+> ACOD-12K - loquat_left_00155.png
+> ACOD-12K - loquat_left_00156.png
+> ACOD-12K - loquat_left_00157.png
+> ACOD-12K - loquat_left_00158.png
+> ACOD-12K - loquat_left_00159.png
+> ACOD-12K - loquat_left_00160.png
+> ACOD-12K - loquat_left_00161.png
+> ACOD-12K - loquat_left_00162.png
+> ACOD-12K - loquat_left_00163.png
+> ACOD-12K - loquat_left_00164.png
+> ACOD-12K - loquat_left_00165.png
+> ACOD-12K - loquat_left_00166.png
+> ACOD-12K - loquat_left_00167.png
+> ACOD-12K - loquat_left_00168.png
+> ACOD-12K - loquat_left_00169.png
+> ACOD-12K - loquat_left_00170.png
+> ACOD-12K - loquat_left_00171.png
+> ACOD-12K - loquat_left_00172.png
+> ACOD-12K - loquat_left_00173.png
+> ACOD-12K - loquat_left_00174.png
+> ACOD-12K - peach_left_00001.png
+> ACOD-12K - peach_left_00005.png
+> ACOD-12K - peach_left_00006.png
+> ACOD-12K - peach_left_00007.png
+> ACOD-12K - peach_left_00008.png
+> ACOD-12K - peach_left_00009.png
+> ACOD-12K - peach_left_00010.png
+> ACOD-12K - peach_left_00011.png
+> ACOD-12K - peach_left_00012.png
+> ACOD-12K - peach_left_00013.png
+> ACOD-12K - peach_left_00014.png
+> ACOD-12K - peach_left_00015.png
+> ACOD-12K - peach_left_00016.png
+> ACOD-12K - peach_left_00017.png
+> ACOD-12K - peach_left_00018.png
+> ACOD-12K - peach_left_00019.png
+> ACOD-12K - peach_left_00020.png
+> ACOD-12K - peach_left_00021.png
+> ACOD-12K - peach_left_00022.png
+> ACOD-12K - peach_left_00023.png
+> ACOD-12K - peach_left_00024.png
+> ACOD-12K - peach_left_00025.png
+> ACOD-12K - peach_left_00026.png
+> ACOD-12K - peach_left_00027.png
+> ACOD-12K - peach_left_00028.png
+> ACOD-12K - peach_left_00029.png
+> ACOD-12K - peach_left_00030.png
+> ACOD-12K - peach_left_00031.png
+> ACOD-12K - peach_left_00032.png
+> ACOD-12K - peach_left_00033.png
+> ACOD-12K - peach_left_00034.png
+> ACOD-12K - peach_left_00035.png
+> ACOD-12K - peach_left_00036.png
+> ACOD-12K - peach_left_00037.png
+> ACOD-12K - peach_left_00038.png
+> ACOD-12K - peach_left_00039.png
+> ACOD-12K - peach_left_00040.png
+> ACOD-12K - peach_left_00041.png
+> ACOD-12K - peach_left_00042.png
+> ACOD-12K - peach_left_00043.png
+> ACOD-12K - peach_left_00044.png
+> ACOD-12K - peach_left_00045.png
+> ACOD-12K - peach_left_00046.png
+> ACOD-12K - peach_left_00047.png
+> ACOD-12K - peach_left_00048.png
+> ACOD-12K - peach_left_00049.png
+> ACOD-12K - peach_left_00050.png
+> ACOD-12K - peach_left_00051.png
+> ACOD-12K - peach_left_00052.png
+> ACOD-12K - peach_left_00053.png
+> ACOD-12K - peach_left_00054.png
+> ACOD-12K - peach_left_00055.png
+> ACOD-12K - peach_left_00056.png
+> ACOD-12K - peach_left_00057.png
+> ACOD-12K - peach_left_00058.png
+> ACOD-12K - peach_left_00059.png
+> ACOD-12K - peach_left_00060.png
+> ACOD-12K - peach_left_00061.png
+> ACOD-12K - peach_left_00062.png
+> ACOD-12K - peach_left_00063.png
+> ACOD-12K - peach_left_00064.png
+> ACOD-12K - peach_left_00065.png
+> ACOD-12K - peach_left_00066.png
+> ACOD-12K - peach_left_00241.png
+> ACOD-12K - peach_left_00242.png
+> ACOD-12K - peach_left_00243.png
+> ACOD-12K - peach_left_00244.png
+> ACOD-12K - peach_left_00245.png
+> ACOD-12K - peach_left_00246.png
+> ACOD-12K - peach_left_00247.png
+> ACOD-12K - peach_left_00248.png
+> ACOD-12K - peach_left_00249.png
+> ACOD-12K - peach_left_00250.png
+> ACOD-12K - peach_left_00251.png
+> ACOD-12K - peach_left_00252.png
+> ACOD-12K - peach_left_00253.png
+> ACOD-12K - peach_left_00254.png
+> ACOD-12K - peach_left_00255.png
+> ACOD-12K - peach_left_00256.png
+> ACOD-12K - peach_left_00257.png
+> ACOD-12K - peach_left_00258.png
+> ACOD-12K - peach_left_00259.png
+> ACOD-12K - peach_left_00260.png
+> ACOD-12K - peach_left_00261.png
+> ACOD-12K - peach_left_00262.png
+> ACOD-12K - peach_left_00263.png
+> ACOD-12K - peach_left_00264.png
+> ACOD-12K - peach_left_00265.png
+> ACOD-12K - peach_left_00266.png
+> ACOD-12K - peach_left_00267.png
+> ACOD-12K - peach_left_00268.png
+> ACOD-12K - peach_left_00269.png
+> ACOD-12K - peach_left_00270.png
+> ACOD-12K - peach_left_00271.png
+> ACOD-12K - peach_left_00272.png
+> ACOD-12K - peach_left_00273.png
+> ACOD-12K - peach_left_00274.png
+> ACOD-12K - peach_left_00275.png
+> ACOD-12K - peach_left_00276.png
+> ACOD-12K - peach_left_00277.png
+> ACOD-12K - peach_left_00278.png
+> ACOD-12K - peach_left_00279.png
+> ACOD-12K - peach_left_00280.png
+> ACOD-12K - peach_left_00281.png
+> ACOD-12K - peach_left_00282.png
+> ACOD-12K - peach_left_00283.png
+> ACOD-12K - peach_left_00284.png
+> ACOD-12K - peach_left_00285.png
+> ACOD-12K - peach_left_00286.png
+> ACOD-12K - peach_left_00287.png
+> ACOD-12K - peach_left_00288.png
+> ACOD-12K - peach_left_00289.png
+> ACOD-12K - peach_left_00290.png
+> ACOD-12K - peach_left_00291.png
+> ACOD-12K - peach_left_00292.png
+> ACOD-12K - peach_left_00293.png
+> ACOD-12K - peach_left_00294.png
+> ACOD-12K - peach_left_00295.png
+> ACOD-12K - peach_left_00296.png
+> ACOD-12K - pepper_left_00726.png
+> ACOD-12K - pepper_left_00727.png
+> ACOD-12K - pepper_left_00728.png
+> ACOD-12K - pepper_left_00729.png
+> ACOD-12K - pepper_left_00730.png
+> ACOD-12K - pepper_left_00731.png
+> ACOD-12K - pepper_left_00732.png
+> ACOD-12K - pepper_left_00733.png
+> ACOD-12K - pepper_left_00734.png
+> ACOD-12K - pepper_left_00735.png
+> ACOD-12K - pepper_left_00736.png
+> ACOD-12K - pepper_left_00737.png
+> ACOD-12K - pepper_left_00738.png
+> ACOD-12K - pepper_left_00739.png
+> ACOD-12K - pepper_left_00740.png
+> ACOD-12K - pepper_left_00741.png
+> ACOD-12K - pepper_left_00742.png
+> ACOD-12K - pepper_left_00743.png
+> ACOD-12K - pepper_left_00744.png
+> ACOD-12K - pepper_left_00745.png
+> ACOD-12K - pepper_left_00746.png
+> ACOD-12K - pepper_left_00747.png
+> ACOD-12K - pepper_left_00748.png
+> ACOD-12K - pepper_left_00749.png
+> ACOD-12K - pepper_left_00750.png
+> ACOD-12K - pepper_left_00751.png
+> ACOD-12K - pepper_left_00752.png
+> ACOD-12K - pepper_left_00753.png
+> ACOD-12K - pepper_left_00754.png
+> ACOD-12K - pepper_left_00755.png
+> ACOD-12K - pepper_left_00756.png
+> ACOD-12K - pepper_left_00757.png
+> ACOD-12K - pepper_left_00758.png
+> ACOD-12K - pepper_left_00759.png
+> ACOD-12K - pepper_left_00760.png
+> ACOD-12K - pepper_left_00761.png
+> ACOD-12K - pepper_left_00762.png
+> ACOD-12K - pepper_left_00763.png
+> ACOD-12K - pepper_left_00764.png
+> ACOD-12K - pepper_left_00765.png
+> ACOD-12K - pepper_left_00766.png
+> ACOD-12K - pepper_left_00767.png
+> ACOD-12K - pepper_left_00768.png
+> ACOD-12K - pepper_left_00769.png
+> ACOD-12K - pepper_left_00770.png
+> ACOD-12K - pepper_left_00771.png
+> ACOD-12K - pepper_left_00772.png
+> ACOD-12K - pepper_left_00773.png
+> ACOD-12K - pepper_left_00774.png
+> ACOD-12K - pepper_left_00775.png
+> ACOD-12K - pepper_left_00776.png
+> ACOD-12K - pepper_left_00777.png
+> ACOD-12K - pepper_left_00778.png
+> ACOD-12K - pepper_left_00779.png
+> ACOD-12K - pepper_left_00780.png
+> ACOD-12K - pepper_left_00781.png
+> ACOD-12K - pepper_left_00782.png
+> ACOD-12K - pepper_left_00783.png
+> ACOD-12K - pepper_left_00784.png
+> ACOD-12K - pepper_left_00785.png
+> ACOD-12K - pepper_left_00786.png
+> ACOD-12K - pepper_left_00787.png
+> ACOD-12K - pepper_left_00788.png
+> ACOD-12K - pepper_left_00789.png
+> ACOD-12K - pepper_left_00790.png
+> ACOD-12K - pepper_left_00791.png
+> ACOD-12K - pepper_left_00792.png
+> ACOD-12K - pepper_left_00793.png
+> ACOD-12K - pepper_left_00794.png
+> ACOD-12K - pepper_left_00795.png
+> ACOD-12K - pepper_left_00796.png
+> ACOD-12K - pepper_left_00797.png
+> ACOD-12K - pepper_left_00798.png
+> ACOD-12K - pepper_left_00799.png
+> ACOD-12K - pepper_left_00800.png
+> ACOD-12K - pepper_left_00801.png
+> ACOD-12K - pepper_left_00802.png
+> ACOD-12K - pepper_left_00803.png
+> ACOD-12K - pepper_left_00804.png
+> ACOD-12K - pepper_left_00805.png
+> ACOD-12K - pepper_left_00806.png
+> ACOD-12K - pepper_left_00807.png
+> ACOD-12K - pepper_left_00808.png
+> ACOD-12K - pepper_left_00809.png
+> ACOD-12K - pepper_left_00810.png
+> ACOD-12K - pepper_left_00811.png
+> ACOD-12K - pepper_left_00812.png
+> ACOD-12K - pepper_left_00813.png
+> ACOD-12K - pepper_left_00814.png
+> ACOD-12K - pepper_left_00815.png
+> ACOD-12K - pepper_left_00816.png
+> ACOD-12K - pepper_left_00817.png
+> ACOD-12K - pepper_left_00818.png
+> ACOD-12K - pepper_left_00819.png
+> ACOD-12K - pepper_left_00820.png
+> ACOD-12K - pepper_left_00907.png
+> ACOD-12K - pepper_left_00908.png
+> ACOD-12K - pepper_left_00909.png
+> ACOD-12K - pepper_left_00910.png
+> ACOD-12K - pepper_left_00911.png
+> ACOD-12K - pepper_left_00912.png
+> ACOD-12K - pepper_left_00913.png
+> ACOD-12K - pepper_left_00914.png
+> ACOD-12K - pepper_left_00915.png
+> ACOD-12K - pepper_left_00916.png
+> ACOD-12K - pepper_left_00917.png
+> ACOD-12K - pepper_left_00918.png
+> ACOD-12K - pepper_left_00919.png
+> ACOD-12K - pepper_left_00920.png
+> ACOD-12K - pepper_left_00921.png
+> ACOD-12K - pepper_left_00922.png
+> ACOD-12K - pepper_left_00923.png
+> ACOD-12K - pepper_left_00924.png
+> ACOD-12K - pepper_left_00925.png
+> ACOD-12K - pepper_left_00926.png
+> ACOD-12K - pepper_left_00927.png
+> ACOD-12K - pepper_left_00928.png
+> ACOD-12K - pepper_left_00929.png
+> ACOD-12K - pepper_left_00930.png
+> ACOD-12K - pepper_left_00931.png
+> ACOD-12K - pepper_left_00932.png
+> ACOD-12K - pepper_left_00933.png
+> ACOD-12K - pepper_left_00934.png
+> ACOD-12K - pepper_left_00935.png
+> ACOD-12K - pepper_left_00936.png
+> ACOD-12K - pepper_left_00937.png
+> ACOD-12K - pepper_left_00938.png
+> ACOD-12K - pepper_left_00939.png
+> ACOD-12K - pepper_left_00940.png
+> ACOD-12K - pepper_left_00941.png
+> ACOD-12K - pepper_left_00942.png
+> ACOD-12K - pepper_left_00943.png
+> ACOD-12K - pepper_left_00944.png
+> ACOD-12K - pepper_left_00945.png
+> ACOD-12K - pepper_left_00946.png
+> ACOD-12K - pepper_left_00947.png
+> ACOD-12K - pepper_left_00948.png
+> ACOD-12K - pepper_left_00949.png
+> ACOD-12K - pepper_left_00950.png
+> ACOD-12K - pepper_left_00951.png
+> ACOD-12K - pepper_left_00952.png
+> ACOD-12K - pepper_left_00953.png
+> ACOD-12K - pepper_left_00954.png
+> ACOD-12K - pepper_left_00955.png
+> ACOD-12K - pepper_left_00956.png
+> ACOD-12K - pepper_left_00957.png
+> ACOD-12K - pepper_left_00958.png
+> ACOD-12K - pepper_left_00959.png
+> ACOD-12K - pepper_left_00960.png
+> ACOD-12K - pepper_left_00961.png
+> ACOD-12K - pepper_left_00962.png
+> ACOD-12K - pepper_left_00963.png
+> ACOD-12K - pepper_left_00964.png
+> ACOD-12K - pepper_left_00965.png
+> ACOD-12K - pepper_left_00966.png
+> ACOD-12K - pepper_left_00967.png
+> ACOD-12K - pepper_left_00968.png
+> ACOD-12K - pepper_left_00969.png
+> ACOD-12K - pepper_left_00970.png
+> ACOD-12K - pepper_left_00971.png
+> ACOD-12K - pepper_left_00972.png
+> ACOD-12K - pepper_left_00973.png
+> ACOD-12K - pepper_left_00974.png
+> ACOD-12K - pepper_left_00975.png
+> ACOD-12K - pepper_left_00976.png
+> ACOD-12K - pepper_left_00977.png
+> ACOD-12K - pepper_left_00978.png
+> ACOD-12K - pepper_left_00979.png
+> ACOD-12K - pepper_left_00980.png
+> ACOD-12K - pepper_left_00981.png
+> ACOD-12K - pepper_left_00982.png
+> ACOD-12K - pepper_left_00983.png
+> ACOD-12K - pepper_left_00984.png
+> ACOD-12K - pepper_left_00985.png
+> ACOD-12K - pepper_left_00986.png
+> ACOD-12K - pepper_left_00987.png
+> ACOD-12K - pepper_left_00988.png
+> ACOD-12K - pepper_left_00989.png
+> ACOD-12K - pepper_left_00990.png
+> ACOD-12K - pepper_left_00991.png
+> ACOD-12K - pepper_left_00992.png
+> ACOD-12K - pepper_left_00993.png
+> ACOD-12K - pepper_left_00994.png
+> ACOD-12K - pepper_left_00995.png
+> ACOD-12K - pepper_left_00996.png
+> ACOD-12K - pepper_left_00997.png
+> ACOD-12K - pepper_left_00998.png
+> ACOD-12K - pepper_left_00999.png
+> ACOD-12K - pepper_left_01000.png
+> ACOD-12K - pepper_left_01001.png
+> ACOD-12K - pepper_left_01002.png
+> ACOD-12K - pepper_left_01003.png
+> ACOD-12K - pepper_left_01004.png
+> ACOD-12K - pepper_left_01005.png
+> ACOD-12K - pepper_left_01006.png
+> ACOD-12K - pepper_left_01007.png
+> ACOD-12K - pepper_left_01008.png
+> ACOD-12K - pepper_left_01009.png
+> ACOD-12K - pepper_left_01010.png
+> ACOD-12K - pepper_left_01011.png
+> ACOD-12K - pepper_left_01012.png
+> ACOD-12K - pepper_left_01013.png
+> ACOD-12K - plum_left_00136.png
+> ACOD-12K - plum_left_00137.png
+> ACOD-12K - plum_left_00138.png
+> ACOD-12K - plum_left_00139.png
+> ACOD-12K - plum_left_00140.png
+> ACOD-12K - plum_left_00141.png
+> ACOD-12K - plum_left_00142.png
+> ACOD-12K - plum_left_00143.png
+> ACOD-12K - plum_left_00144.png
+> ACOD-12K - plum_left_00145.png
+> ACOD-12K - plum_left_00146.png
+> ACOD-12K - plum_left_00147.png
+> ACOD-12K - plum_left_00148.png
+> ACOD-12K - plum_left_00149.png
+> ACOD-12K - plum_left_00150.png
+> ACOD-12K - plum_left_00151.png
+> ACOD-12K - plum_left_00152.png
+> ACOD-12K - plum_left_00153.png
+> ACOD-12K - plum_left_00154.png
+> ACOD-12K - plum_left_00155.png
+> ACOD-12K - plum_left_00156.png
+> ACOD-12K - plum_left_00157.png
+> ACOD-12K - plum_left_00158.png
+> ACOD-12K - plum_left_00159.png
+> ACOD-12K - plum_left_00160.png
+> ACOD-12K - plum_left_00161.png
+> ACOD-12K - plum_left_00162.png
+> ACOD-12K - plum_left_00163.png
+> ACOD-12K - plum_left_00164.png
+> ACOD-12K - plum_left_00165.png
+> ACOD-12K - plum_left_00166.png
+> ACOD-12K - plum_left_00167.png
+> ACOD-12K - plum_left_00168.png
+> ACOD-12K - plum_left_00169.png
+> ACOD-12K - plum_left_00170.png
+> ACOD-12K - plum_left_00171.png
+> ACOD-12K - plum_left_00172.png
+> ACOD-12K - plum_left_00173.png
+> ACOD-12K - plum_left_00174.png
+> ACOD-12K - plum_left_00175.png
+> ACOD-12K - plum_left_00176.png
+> ACOD-12K - plum_left_00177.png
+> ACOD-12K - plum_left_00178.png
+> ACOD-12K - plum_left_00179.png

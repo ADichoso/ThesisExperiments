@@ -14,13 +14,13 @@ import cv2
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--testsize', type=int, default=448, help='testing size')
-parser.add_argument('--pth_path', type=str, default='./Checkpoints/PreyNet/Net_epoch_best.pth')
+parser.add_argument('--pth_path', type=str, default='./Checkpoints/PreyNet_w_PVT/Net_epoch_best.pth')
 opt = parser.parse_args()
 
 for _data_name in ['ACOD-12K']:
     # 'CHAMELEON', 'CAMO', 'COD10K', 'NC4K'
     data_path = './Datasets/{}/Test'.format(_data_name)
-    save_path = './Results/PreyNet/{}/'.format(_data_name)
+    save_path = './Results/PreyNet_w_PVT/{}/'.format(_data_name)
     model = SAM_ResNet()
     # Set cuda device to cpu if no gpu is available
     if torch.cuda.is_available():

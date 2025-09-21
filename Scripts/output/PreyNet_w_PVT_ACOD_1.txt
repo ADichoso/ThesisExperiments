@@ -1,0 +1,777 @@
+acod_eval_averages.csv
+acod_eval_results.csv
+acod_results_C2FNet.csv
+acod_results_DaCOD.csv
+acod_results_FSPNet.csv
+acod_results_HitNet.csv
+acod_results_OCENet.csv
+acod_results_PFNet.csv
+acod_results_PopNet.csv
+acod_results_PreyNet.csv
+acod_results_RISNet.csv
+acod_results_RISNet_NoDepth.csv
+acod_results_SINet.csv
+acod_results_SINet_V2.csv
+acod_results_ZoomNet.csv
+Backbones
+Checkpoints
+Datasets
+Logs
+Networks
+py_sod_metrics
+Results
+results-bean.png
+results-bean-top.png
+results-cucumber.png
+results-cucumber-top.png
+results-general.png
+results-kiwi.png
+results-kiwi-top.png
+results-loquat.png
+results-loquat-top.png
+results-peach.png
+results-peach-top.png
+results-pepper.png
+results-pepper-top.png
+results-plum.png
+results-plum-top.png
+results-tomato.png
+results-tomato-top.png
+results-top.png
+results-watermelon.png
+results-watermelon-top.png
+results-zucchini.png
+results-zucchini-top.png
+RISNetTesting.ipynb
+Scripts
+CUDA_DEVICE=/dev/nvidia/0
+Sun Sep 21 11:28:28 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.124.06             Driver Version: 570.124.06     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA A100-SXM4-80GB          Off |   00000000:48:00.0 Off |                    0 |
+| N/A   29C    P0             59W /  400W |       1MiB /  81920MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+Module load: anaconda/3-2023.07-2
+conda 23.7.4
+/home/aaron.dichoso/.conda/envs/TrainingApex/lib/python3.9/site-packages/requests/__init__.py:86: RequestsDependencyWarning: Unable to find acceptable character detection dependency (chardet or charset_normalizer).
+  warnings.warn(
+/home/aaron.dichoso/.conda/envs/TrainingApex/lib/python3.9/site-packages/timm/models/layers/__init__.py:48: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+/home/aaron.dichoso/.conda/envs/TrainingApex/lib/python3.9/site-packages/timm/models/registry.py:4: FutureWarning: Importing from timm.models.registry is deprecated, please import via timm.models
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.models", FutureWarning)
+/scratch1/aaron.dichoso/Networks/PreyNet_w_PVT/lib/pvt.py:388: UserWarning: Overwriting pvt_v2_b0 in registry with lib.pvt.pvt_v2_b0. This is because the name being registered conflicts with an existing name. Please check if this is not expected.
+  class pvt_v2_b0(PyramidVisionTransformerImpr):
+/scratch1/aaron.dichoso/Networks/PreyNet_w_PVT/lib/pvt.py:398: UserWarning: Overwriting pvt_v2_b1 in registry with lib.pvt.pvt_v2_b1. This is because the name being registered conflicts with an existing name. Please check if this is not expected.
+  class pvt_v2_b1(PyramidVisionTransformerImpr):
+/scratch1/aaron.dichoso/Networks/PreyNet_w_PVT/lib/pvt.py:406: UserWarning: Overwriting pvt_v2_b2 in registry with lib.pvt.pvt_v2_b2. This is because the name being registered conflicts with an existing name. Please check if this is not expected.
+  class pvt_v2_b2(PyramidVisionTransformerImpr):
+/scratch1/aaron.dichoso/Networks/PreyNet_w_PVT/lib/pvt.py:414: UserWarning: Overwriting pvt_v2_b3 in registry with lib.pvt.pvt_v2_b3. This is because the name being registered conflicts with an existing name. Please check if this is not expected.
+  class pvt_v2_b3(PyramidVisionTransformerImpr):
+/scratch1/aaron.dichoso/Networks/PreyNet_w_PVT/lib/pvt.py:422: UserWarning: Overwriting pvt_v2_b4 in registry with lib.pvt.pvt_v2_b4. This is because the name being registered conflicts with an existing name. Please check if this is not expected.
+  class pvt_v2_b4(PyramidVisionTransformerImpr):
+/scratch1/aaron.dichoso/Networks/PreyNet_w_PVT/lib/pvt.py:431: UserWarning: Overwriting pvt_v2_b5 in registry with lib.pvt.pvt_v2_b5. This is because the name being registered conflicts with an existing name. Please check if this is not expected.
+  class pvt_v2_b5(PyramidVisionTransformerImpr):
+/home/aaron.dichoso/.conda/envs/TrainingApex/lib/python3.9/site-packages/torch/nn/functional.py:3509: UserWarning: nn.functional.upsample is deprecated. Use nn.functional.interpolate instead.
+  warnings.warn("nn.functional.upsample is deprecated. Use nn.functional.interpolate instead.")
+/home/aaron.dichoso/.conda/envs/TrainingApex/lib/python3.9/site-packages/torch/nn/functional.py:3631: UserWarning: Default upsampling behavior when mode=bilinear is changed to align_corners=False since 0.4.0. Please specify align_corners=True if the old behavior is desired. See the documentation of nn.Upsample for details.
+  warnings.warn(
+From ./Backbones/resnet50-19c8e357.pth Load resnet50 Weights Succeed!
+> ACOD-12K - bean_left_00045.png: 7.831549858560585 fps
+> ACOD-12K - bean_left_00047.png: 13.059695358134785 fps
+> ACOD-12K - bean_left_00048.png: 22.271626178149475 fps
+> ACOD-12K - bean_left_00049.png: 22.871451473940212 fps
+> ACOD-12K - bean_left_00050.png: 23.99144287144287 fps
+> ACOD-12K - bean_left_00051.png: 24.10339457396861 fps
+> ACOD-12K - bean_left_00052.png: 24.27933685282949 fps
+> ACOD-12K - bean_left_00053.png: 23.96553418583656 fps
+> ACOD-12K - bean_left_00054.png: 23.918930170226112 fps
+> ACOD-12K - bean_left_00055.png: 22.57162230521682 fps
+> ACOD-12K - cucumber_left_00401.png: 23.04423359027751 fps
+> ACOD-12K - cucumber_left_00402.png: 24.00737225901356 fps
+> ACOD-12K - cucumber_left_00403.png: 23.782087047243202 fps
+> ACOD-12K - cucumber_left_00404.png: 24.056253369581427 fps
+> ACOD-12K - cucumber_left_00405.png: 22.613241319818847 fps
+> ACOD-12K - cucumber_left_00406.png: 23.241004044993627 fps
+> ACOD-12K - cucumber_left_00407.png: 23.97197185755028 fps
+> ACOD-12K - cucumber_left_00408.png: 23.940091324200914 fps
+> ACOD-12K - cucumber_left_00409.png: 23.921658539367495 fps
+> ACOD-12K - cucumber_left_00410.png: 23.77588572076413 fps
+> ACOD-12K - cucumber_left_00411.png: 23.62282811329575 fps
+> ACOD-12K - cucumber_left_00412.png: 23.756762880057998 fps
+> ACOD-12K - cucumber_left_00413.png: 23.926707663521547 fps
+> ACOD-12K - cucumber_left_00414.png: 23.70828599368051 fps
+> ACOD-12K - cucumber_left_00415.png: 23.65093435283238 fps
+> ACOD-12K - cucumber_left_00416.png: 23.445618938483467 fps
+> ACOD-12K - cucumber_left_00417.png: 24.03585059197029 fps
+> ACOD-12K - cucumber_left_00418.png: 23.94063791410763 fps
+> ACOD-12K - cucumber_left_00419.png: 23.945148233359784 fps
+> ACOD-12K - cucumber_left_00420.png: 23.811790353347263 fps
+> ACOD-12K - cucumber_left_00421.png: 23.965397251664143 fps
+> ACOD-12K - cucumber_left_00422.png: 23.16335220212619 fps
+> ACOD-12K - cucumber_left_00423.png: 22.738038186726804 fps
+> ACOD-12K - cucumber_left_00424.png: 22.542386181024707 fps
+> ACOD-12K - cucumber_left_00425.png: 22.41660654064252 fps
+> ACOD-12K - cucumber_left_00426.png: 22.170383487062928 fps
+> ACOD-12K - cucumber_left_00427.png: 23.069837026769854 fps
+> ACOD-12K - cucumber_left_00428.png: 22.56130215645457 fps
+> ACOD-12K - cucumber_left_00429.png: 22.39757350506766 fps
+> ACOD-12K - cucumber_left_00430.png: 21.964306661080855 fps
+> ACOD-12K - cucumber_left_00431.png: 22.25248425620865 fps
+> ACOD-12K - cucumber_left_00432.png: 22.82651689551394 fps
+> ACOD-12K - cucumber_left_00433.png: 21.62960059820024 fps
+> ACOD-12K - cucumber_left_00434.png: 22.517093282941076 fps
+> ACOD-12K - cucumber_left_00435.png: 22.626171955074607 fps
+> ACOD-12K - cucumber_left_00436.png: 22.067734722331835 fps
+> ACOD-12K - cucumber_left_00437.png: 21.814996853334165 fps
+> ACOD-12K - cucumber_left_00438.png: 21.124673885671115 fps
+> ACOD-12K - cucumber_left_00439.png: 22.05114401076716 fps
+> ACOD-12K - cucumber_left_00440.png: 22.511654867779107 fps
+> ACOD-12K - cucumber_left_00441.png: 22.81918979793913 fps
+> ACOD-12K - cucumber_left_00442.png: 21.749386819603107 fps
+> ACOD-12K - cucumber_left_00443.png: 22.270680125097567 fps
+> ACOD-12K - cucumber_left_00444.png: 22.46282709054102 fps
+> ACOD-12K - cucumber_left_00445.png: 22.600934362892755 fps
+> ACOD-12K - cucumber_left_00446.png: 21.97385751033388 fps
+> ACOD-12K - cucumber_left_00447.png: 22.219123801451502 fps
+> ACOD-12K - cucumber_left_00448.png: 21.58896438130533 fps
+> ACOD-12K - cucumber_left_00449.png: 22.23667566177679 fps
+> ACOD-12K - cucumber_left_00450.png: 21.64936150884184 fps
+> ACOD-12K - cucumber_left_00451.png: 22.707877882267592 fps
+> ACOD-12K - cucumber_left_00452.png: 21.737551308097352 fps
+> ACOD-12K - cucumber_left_00453.png: 21.846357381335583 fps
+> ACOD-12K - cucumber_left_00454.png: 22.296133278048885 fps
+> ACOD-12K - cucumber_left_00455.png: 22.82539889853937 fps
+> ACOD-12K - cucumber_left_00456.png: 21.39023382716679 fps
+> ACOD-12K - cucumber_left_00457.png: 22.47895898986001 fps
+> ACOD-12K - cucumber_left_00458.png: 22.392551305870544 fps
+> ACOD-12K - cucumber_left_00459.png: 21.720328318790294 fps
+> ACOD-12K - cucumber_left_00460.png: 20.78157639177914 fps
+> ACOD-12K - cucumber_left_00461.png: 22.48245327215519 fps
+> ACOD-12K - cucumber_left_00462.png: 22.41313269493844 fps
+> ACOD-12K - cucumber_left_00463.png: 22.313094826439688 fps
+> ACOD-12K - cucumber_left_00464.png: 22.415648130828636 fps
+> ACOD-12K - cucumber_left_00465.png: 22.150479258535555 fps
+> ACOD-12K - cucumber_left_00466.png: 22.259451886131572 fps
+> ACOD-12K - cucumber_left_00467.png: 21.658975894904263 fps
+> ACOD-12K - cucumber_left_00468.png: 22.290919526790745 fps
+> ACOD-12K - cucumber_left_00469.png: 22.668482608037703 fps
+> ACOD-12K - cucumber_left_00470.png: 21.509361586469673 fps
+> ACOD-12K - cucumber_left_00471.png: 22.277304184791557 fps
+> ACOD-12K - cucumber_left_00472.png: 22.425355817658822 fps
+> ACOD-12K - cucumber_left_00473.png: 22.65219997731704 fps
+> ACOD-12K - cucumber_left_00474.png: 21.991485077913634 fps
+> ACOD-12K - cucumber_left_00475.png: 22.04813019754618 fps
+> ACOD-12K - cucumber_left_00476.png: 22.436512054605465 fps
+> ACOD-12K - cucumber_left_00477.png: 21.680807621331873 fps
+> ACOD-12K - cucumber_left_00478.png: 22.617143350157455 fps
+> ACOD-12K - cucumber_left_00479.png: 22.49221892126685 fps
+> ACOD-12K - cucumber_left_00480.png: 21.978463295901737 fps
+> ACOD-12K - cucumber_left_00481.png: 22.43843252641434 fps
+> ACOD-12K - cucumber_left_00482.png: 23.533757890307196 fps
+> ACOD-12K - cucumber_left_00483.png: 22.37451389370476 fps
+> ACOD-12K - cucumber_left_00484.png: 22.330201085017915 fps
+> ACOD-12K - cucumber_left_00485.png: 22.078073019749862 fps
+> ACOD-12K - cucumber_left_00486.png: 22.121973217158317 fps
+> ACOD-12K - cucumber_left_00487.png: 22.364015420134685 fps
+> ACOD-12K - cucumber_left_00488.png: 21.8180607573866 fps
+> ACOD-12K - cucumber_left_00489.png: 22.613241319818847 fps
+> ACOD-12K - cucumber_left_00490.png: 21.557119141478257 fps
+> ACOD-12K - cucumber_left_00491.png: 22.636795889619886 fps
+> ACOD-12K - cucumber_left_00492.png: 22.387292369443614 fps
+> ACOD-12K - cucumber_left_00493.png: 22.510567499973167 fps
+> ACOD-12K - cucumber_left_00494.png: 22.965122263712917 fps
+> ACOD-12K - cucumber_left_00495.png: 21.918509189533808 fps
+> ACOD-12K - cucumber_left_00496.png: 22.193846072439612 fps
+> ACOD-12K - cucumber_left_00497.png: 22.628125033718533 fps
+> ACOD-12K - cucumber_left_00498.png: 21.886484483847234 fps
+> ACOD-12K - cucumber_left_00499.png: 22.505011482411522 fps
+> ACOD-12K - cucumber_left_00500.png: 22.32711051491294 fps
+> ACOD-12K - cucumber_left_00501.png: 22.746300062366117 fps
+> ACOD-12K - cucumber_left_00502.png: 21.87769408917357 fps
+> ACOD-12K - cucumber_left_00503.png: 22.43699214173759 fps
+> ACOD-12K - cucumber_left_00504.png: 22.524106672967662 fps
+> ACOD-12K - cucumber_left_00505.png: 22.131544927367994 fps
+> ACOD-12K - cucumber_left_00506.png: 22.197252270369823 fps
+> ACOD-12K - cucumber_left_00507.png: 22.539115481756138 fps
+> ACOD-12K - cucumber_left_00508.png: 21.76710778971405 fps
+> ACOD-12K - cucumber_left_00509.png: 22.37523005766779 fps
+> ACOD-12K - cucumber_left_00510.png: 22.52918806265174 fps
+> ACOD-12K - cucumber_left_00511.png: 21.704929570176255 fps
+> ACOD-12K - cucumber_left_00512.png: 22.568707424426677 fps
+> ACOD-12K - cucumber_left_00513.png: 22.591439143806657 fps
+> ACOD-12K - cucumber_left_00514.png: 21.685964086840976 fps
+> ACOD-12K - cucumber_left_00515.png: 22.10693202900995 fps
+> ACOD-12K - cucumber_left_00516.png: 22.405829153244976 fps
+> ACOD-12K - cucumber_left_00517.png: 21.728992684999067 fps
+> ACOD-12K - cucumber_left_00518.png: 22.09936088264583 fps
+> ACOD-12K - cucumber_left_00519.png: 22.35269289391501 fps
+> ACOD-12K - cucumber_left_00520.png: 22.390519151207794 fps
+> ACOD-12K - cucumber_left_00521.png: 21.725278538907393 fps
+> ACOD-12K - cucumber_left_00522.png: 22.2462289169407 fps
+> ACOD-12K - cucumber_left_00523.png: 22.88155805897275 fps
+> ACOD-12K - cucumber_left_00524.png: 21.466428509281485 fps
+> ACOD-12K - cucumber_left_00525.png: 22.194198389264585 fps
+> ACOD-12K - cucumber_left_00526.png: 22.198897016015497 fps
+> ACOD-12K - cucumber_left_00527.png: 22.32532788281383 fps
+> ACOD-12K - cucumber_left_00528.png: 22.328180230824923 fps
+> ACOD-12K - cucumber_left_00529.png: 21.720328318790294 fps
+> ACOD-12K - cucumber_left_00530.png: 22.052999074619333 fps
+> ACOD-12K - cucumber_left_00531.png: 22.266542087828082 fps
+> ACOD-12K - cucumber_left_00532.png: 22.015148095465545 fps
+> ACOD-12K - cucumber_left_00533.png: 22.375946267478273 fps
+> ACOD-12K - cucumber_left_00534.png: 22.46078216119825 fps
+> ACOD-12K - cucumber_left_00535.png: 21.57530490784607 fps
+> ACOD-12K - cucumber_left_00536.png: 22.57879125552451 fps
+> ACOD-12K - cucumber_left_00537.png: 22.200424498091877 fps
+> ACOD-12K - cucumber_left_00538.png: 23.65867196137271 fps
+> ACOD-12K - kiwi_fruit_left_00280.png: 21.905230447839145 fps
+> ACOD-12K - kiwi_fruit_left_00281.png: 22.581465589180635 fps
+> ACOD-12K - kiwi_fruit_left_00282.png: 21.03441289455472 fps
+> ACOD-12K - kiwi_fruit_left_00283.png: 23.038790688477047 fps
+> ACOD-12K - kiwi_fruit_left_00284.png: 22.19490305647278 fps
+> ACOD-12K - kiwi_fruit_left_00285.png: 22.651221316743083 fps
+> ACOD-12K - kiwi_fruit_left_00286.png: 22.88243188687274 fps
+> ACOD-12K - kiwi_fruit_left_00287.png: 21.77049724903976 fps
+> ACOD-12K - kiwi_fruit_left_00288.png: 22.746423419417116 fps
+> ACOD-12K - kiwi_fruit_left_00289.png: 22.879436183327698 fps
+> ACOD-12K - kiwi_fruit_left_00290.png: 21.632947365706475 fps
+> ACOD-12K - kiwi_fruit_left_00291.png: 22.393627301800866 fps
+> ACOD-12K - kiwi_fruit_left_00292.png: 21.183139564246826 fps
+> ACOD-12K - kiwi_fruit_left_00293.png: 22.04337931940612 fps
+> ACOD-12K - kiwi_fruit_left_00294.png: 22.29838542469657 fps
+> ACOD-12K - kiwi_fruit_left_00295.png: 21.175653297790703 fps
+> ACOD-12K - kiwi_fruit_left_00296.png: 21.38281851411908 fps
+> ACOD-12K - kiwi_fruit_left_00297.png: 22.733847888301103 fps
+> ACOD-12K - kiwi_fruit_left_00298.png: 21.836234902124115 fps
+> ACOD-12K - kiwi_fruit_left_00299.png: 22.67301652512825 fps
+> ACOD-12K - kiwi_fruit_left_00300.png: 21.76755965664345 fps
+> ACOD-12K - kiwi_fruit_left_00301.png: 21.995060122815204 fps
+> ACOD-12K - kiwi_fruit_left_00302.png: 22.67130077565471 fps
+> ACOD-12K - kiwi_fruit_left_00424.png: 22.056594149168337 fps
+> ACOD-12K - kiwi_fruit_left_00425.png: 22.602639477924416 fps
+> ACOD-12K - kiwi_fruit_left_00426.png: 23.069710136956164 fps
+> ACOD-12K - kiwi_fruit_left_00427.png: 21.867884589316066 fps
+> ACOD-12K - kiwi_fruit_left_00428.png: 22.731753318194382 fps
+> ACOD-12K - kiwi_fruit_left_00429.png: 22.98059885488864 fps
+> ACOD-12K - kiwi_fruit_left_00430.png: 22.62556168713824 fps
+> ACOD-12K - kiwi_fruit_left_00431.png: 22.412773393039398 fps
+> ACOD-12K - kiwi_fruit_left_00432.png: 22.80380579568314 fps
+> ACOD-12K - kiwi_fruit_left_00433.png: 22.34638109699246 fps
+> ACOD-12K - kiwi_fruit_left_00434.png: 22.67951421557495 fps
+> ACOD-12K - kiwi_fruit_left_00435.png: 22.295896236444822 fps
+> ACOD-12K - kiwi_fruit_left_00436.png: 23.19409406364918 fps
+> ACOD-12K - kiwi_fruit_left_00437.png: 22.395899188381033 fps
+> ACOD-12K - kiwi_fruit_left_00438.png: 22.21888839446528 fps
+> ACOD-12K - kiwi_fruit_left_00439.png: 22.979088025333237 fps
+> ACOD-12K - kiwi_fruit_left_00440.png: 22.116723967011875 fps
+> ACOD-12K - kiwi_fruit_left_00441.png: 22.183633747990182 fps
+> ACOD-12K - kiwi_fruit_left_00442.png: 21.75299639550865 fps
+> ACOD-12K - kiwi_fruit_left_00443.png: 22.34245291059405 fps
+> ACOD-12K - kiwi_fruit_left_00444.png: 22.423437583533815 fps
+> ACOD-12K - kiwi_fruit_left_00445.png: 22.625195542177774 fps
+> ACOD-12K - kiwi_fruit_left_00446.png: 22.096101063633633 fps
+> ACOD-12K - kiwi_fruit_left_00447.png: 22.57538847414568 fps
+> ACOD-12K - kiwi_fruit_left_00448.png: 22.361392340951863 fps
+> ACOD-12K - kiwi_fruit_left_00449.png: 23.154017709276392 fps
+> ACOD-12K - kiwi_fruit_left_00450.png: 22.58693779079786 fps
+> ACOD-12K - kiwi_fruit_left_00451.png: 22.320338026969782 fps
+> ACOD-12K - kiwi_fruit_left_00452.png: 22.214181302035886 fps
+> ACOD-12K - kiwi_fruit_left_00453.png: 23.08151686413489 fps
+> ACOD-12K - kiwi_fruit_left_00454.png: 21.75186827434202 fps
+> ACOD-12K - kiwi_fruit_left_00455.png: 22.090398693843156 fps
+> ACOD-12K - kiwi_fruit_left_00456.png: 22.47558623054829 fps
+> ACOD-12K - kiwi_fruit_left_00457.png: 22.87644126405812 fps
+> ACOD-12K - kiwi_fruit_left_00458.png: 21.656627408053783 fps
+> ACOD-12K - kiwi_fruit_left_00459.png: 22.318675237324932 fps
+> ACOD-12K - kiwi_fruit_left_00460.png: 22.222066809716814 fps
+> ACOD-12K - kiwi_fruit_left_00461.png: 22.86608987673705 fps
+> ACOD-12K - kiwi_fruit_left_00462.png: 21.287209314128525 fps
+> ACOD-12K - kiwi_fruit_left_00463.png: 21.847950535741262 fps
+> ACOD-12K - kiwi_fruit_left_00464.png: 22.583654151612887 fps
+> ACOD-12K - kiwi_fruit_left_00465.png: 21.851934438528307 fps
+> ACOD-12K - kiwi_fruit_left_00466.png: 22.21594622795913 fps
+> ACOD-12K - kiwi_fruit_left_00467.png: 22.685156740151008 fps
+> ACOD-12K - kiwi_fruit_left_00468.png: 21.75547867401825 fps
+> ACOD-12K - kiwi_fruit_left_00469.png: 22.03018031503921 fps
+> ACOD-12K - kiwi_fruit_left_00470.png: 22.00255995971211 fps
+> ACOD-12K - kiwi_fruit_left_00471.png: 22.79897156586164 fps
+> ACOD-12K - kiwi_fruit_left_00472.png: 21.890482453393457 fps
+> ACOD-12K - kiwi_fruit_left_00473.png: 22.272454040505952 fps
+> ACOD-12K - kiwi_fruit_left_00474.png: 23.01161470134801 fps
+> ACOD-12K - kiwi_fruit_left_00475.png: 21.768463446786868 fps
+> ACOD-12K - kiwi_fruit_left_00476.png: 22.160778159953928 fps
+> ACOD-12K - kiwi_fruit_left_00477.png: 22.444676330984144 fps
+> ACOD-12K - kiwi_fruit_left_00478.png: 23.03701913570754 fps
+> ACOD-12K - kiwi_fruit_left_00479.png: 22.14591803330623 fps
+> ACOD-12K - kiwi_fruit_left_00480.png: 22.502838135093086 fps
+> ACOD-12K - kiwi_fruit_left_00481.png: 21.95970680628272 fps
+> ACOD-12K - kiwi_fruit_left_00482.png: 22.503683275835243 fps
+> ACOD-12K - kiwi_fruit_left_00483.png: 22.274819700687207 fps
+> ACOD-12K - kiwi_fruit_left_00484.png: 22.986140263384318 fps
+> ACOD-12K - kiwi_fruit_left_00485.png: 21.43351951310498 fps
+> ACOD-12K - kiwi_fruit_left_00486.png: 21.71459338565719 fps
+> ACOD-12K - kiwi_fruit_left_00487.png: 22.35054886496856 fps
+> ACOD-12K - kiwi_fruit_left_00488.png: 23.016160629523743 fps
+> ACOD-12K - kiwi_fruit_left_00489.png: 21.60909638895615 fps
+> ACOD-12K - kiwi_fruit_left_00490.png: 21.210884835367118 fps
+> ACOD-12K - kiwi_fruit_left_00491.png: 22.302060956675245 fps
+> ACOD-12K - kiwi_fruit_left_00492.png: 21.42311935602501 fps
+> ACOD-12K - kiwi_fruit_left_00493.png: 22.157968418995093 fps
+> ACOD-12K - kiwi_fruit_left_00494.png: 22.411336300634247 fps
+> ACOD-12K - kiwi_fruit_left_00495.png: 22.06355568881805 fps
+> ACOD-12K - kiwi_fruit_left_00496.png: 22.291630349284635 fps
+> ACOD-12K - kiwi_fruit_left_00497.png: 22.475224923507252 fps
+> ACOD-12K - kiwi_fruit_left_00498.png: 21.989986211380067 fps
+> ACOD-12K - kiwi_fruit_left_00499.png: 22.35781640627082 fps
+> ACOD-12K - kiwi_fruit_left_00500.png: 22.940377936390735 fps
+> ACOD-12K - kiwi_fruit_left_00501.png: 22.21594622795913 fps
+> ACOD-12K - kiwi_fruit_left_00502.png: 22.466677379613262 fps
+> ACOD-12K - kiwi_fruit_left_00503.png: 22.866463860085265 fps
+> ACOD-12K - kiwi_fruit_left_00504.png: 21.646791666021542 fps
+> ACOD-12K - kiwi_fruit_left_00505.png: 21.607203939912218 fps
+> ACOD-12K - kiwi_fruit_left_00506.png: 22.2744648196239 fps
+> ACOD-12K - kiwi_fruit_left_00507.png: 21.43231476750128 fps
+> ACOD-12K - kiwi_fruit_left_00508.png: 21.699651816709693 fps
+> ACOD-12K - kiwi_fruit_left_00509.png: 22.705542262594328 fps
+> ACOD-12K - kiwi_fruit_left_00510.png: 22.855000599396245 fps
+> ACOD-12K - kiwi_fruit_left_00511.png: 21.906832200813742 fps
+> ACOD-12K - kiwi_fruit_left_00512.png: 22.454649606509985 fps
+> ACOD-12K - kiwi_fruit_left_00513.png: 22.259924425763174 fps
+> ACOD-12K - kiwi_fruit_left_00514.png: 21.983762336797856 fps
+> ACOD-12K - kiwi_fruit_left_00515.png: 21.284400690145134 fps
+> ACOD-12K - kiwi_fruit_left_00516.png: 21.03061603104724 fps
+> ACOD-12K - kiwi_fruit_left_00517.png: 22.464511429612013 fps
+> ACOD-12K - kiwi_fruit_left_00518.png: 22.04245255750645 fps
+> ACOD-12K - kiwi_fruit_left_00519.png: 22.278014139192972 fps
+> ACOD-12K - kiwi_fruit_left_00520.png: 22.35710135657365 fps
+> ACOD-12K - kiwi_fruit_left_00521.png: 21.600749842924387 fps
+> ACOD-12K - kiwi_fruit_left_00522.png: 21.769593290011834 fps
+> ACOD-12K - kiwi_fruit_left_00523.png: 22.477754316766525 fps
+> ACOD-12K - kiwi_fruit_left_00524.png: 22.604588495885228 fps
+> ACOD-12K - kiwi_fruit_left_00525.png: 21.887169746338053 fps
+> ACOD-12K - kiwi_fruit_left_00526.png: 21.69931502597107 fps
+> ACOD-12K - kiwi_fruit_left_00527.png: 21.373774434864142 fps
+> ACOD-12K - kiwi_fruit_left_00528.png: 22.051491811466576 fps
+> ACOD-12K - kiwi_fruit_left_00529.png: 21.747356959531277 fps
+> ACOD-12K - kiwi_fruit_left_00530.png: 22.567614538215274 fps
+> ACOD-12K - kiwi_fruit_left_00531.png: 22.016072562739158 fps
+> ACOD-12K - kiwi_fruit_left_00532.png: 22.052999074619333 fps
+> ACOD-12K - kiwi_fruit_left_00533.png: 21.600304874908588 fps
+> ACOD-12K - kiwi_fruit_left_00534.png: 22.455130470163716 fps
+> ACOD-12K - kiwi_fruit_left_00535.png: 21.51300226706195 fps
+> ACOD-12K - kiwi_fruit_left_00536.png: 22.367116216317108 fps
+> ACOD-12K - kiwi_fruit_left_00537.png: 22.752716403660568 fps
+> ACOD-12K - kiwi_fruit_left_00538.png: 21.651820190381795 fps
+> ACOD-12K - loquat_left_00143.png: 22.286181868417977 fps
+> ACOD-12K - loquat_left_00144.png: 23.038031418213777 fps
+> ACOD-12K - loquat_left_00145.png: 21.548591274326462 fps
+> ACOD-12K - loquat_left_00146.png: 21.967872874209785 fps
+> ACOD-12K - loquat_left_00147.png: 22.755308644654463 fps
+> ACOD-12K - loquat_left_00148.png: 21.948330446522483 fps
+> ACOD-12K - loquat_left_00149.png: 22.427993925523495 fps
+> ACOD-12K - loquat_left_00150.png: 21.493158968157175 fps
+> ACOD-12K - loquat_left_00151.png: 22.338764053920183 fps
+> ACOD-12K - loquat_left_00152.png: 21.486002325688613 fps
+> ACOD-12K - loquat_left_00153.png: 22.080165089124964 fps
+> ACOD-12K - loquat_left_00154.png: 22.53003518384229 fps
+> ACOD-12K - loquat_left_00155.png: 21.634509545006733 fps
+> ACOD-12K - loquat_left_00156.png: 22.51769771349729 fps
+> ACOD-12K - loquat_left_00157.png: 22.41025860226544 fps
+> ACOD-12K - loquat_left_00158.png: 21.772983523500038 fps
+> ACOD-12K - loquat_left_00159.png: 22.091445847225074 fps
+> ACOD-12K - loquat_left_00160.png: 22.69632740082575 fps
+> ACOD-12K - loquat_left_00161.png: 22.256498967912425 fps
+> ACOD-12K - loquat_left_00162.png: 22.625805790362342 fps
+> ACOD-12K - loquat_left_00163.png: 22.19513795548594 fps
+> ACOD-12K - loquat_left_00164.png: 21.92653001479437 fps
+> ACOD-12K - loquat_left_00165.png: 22.527736003093715 fps
+> ACOD-12K - loquat_left_00166.png: 22.22194907441747 fps
+> ACOD-12K - loquat_left_00167.png: 22.507668365978 fps
+> ACOD-12K - loquat_left_00168.png: 22.298503971334092 fps
+> ACOD-12K - loquat_left_00169.png: 21.81817425184276 fps
+> ACOD-12K - loquat_left_00170.png: 22.318912763534584 fps
+> ACOD-12K - loquat_left_00171.png: 22.306568100834973 fps
+> ACOD-12K - loquat_left_00172.png: 22.1993669881125 fps
+> ACOD-12K - loquat_left_00173.png: 22.032031853256502 fps
+> ACOD-12K - loquat_left_00174.png: 22.32615974236819 fps
+> ACOD-12K - peach_left_00001.png: 22.611412706541955 fps
+> ACOD-12K - peach_left_00005.png: 22.65207764012054 fps
+> ACOD-12K - peach_left_00006.png: 21.561108512267968 fps
+> ACOD-12K - peach_left_00007.png: 22.58474859192091 fps
+> ACOD-12K - peach_left_00008.png: 22.18774102424393 fps
+> ACOD-12K - peach_left_00009.png: 22.249061087653036 fps
+> ACOD-12K - peach_left_00010.png: 21.87096336853083 fps
+> ACOD-12K - peach_left_00011.png: 22.781511053174732 fps
+> ACOD-12K - peach_left_00012.png: 21.729780697437068 fps
+> ACOD-12K - peach_left_00013.png: 21.978693635863443 fps
+> ACOD-12K - peach_left_00014.png: 22.37296236237945 fps
+> ACOD-12K - peach_left_00015.png: 22.454168763450646 fps
+> ACOD-12K - peach_left_00016.png: 22.87681558608728 fps
+> ACOD-12K - peach_left_00017.png: 21.819536277422007 fps
+> ACOD-12K - peach_left_00018.png: 22.948285295340643 fps
+> ACOD-12K - peach_left_00019.png: 22.2857082133407 fps
+> ACOD-12K - peach_left_00020.png: 22.617753164045016 fps
+> ACOD-12K - peach_left_00021.png: 22.399965820364653 fps
+> ACOD-12K - peach_left_00022.png: 22.631055283973797 fps
+> ACOD-12K - peach_left_00023.png: 22.03816729718369 fps
+> ACOD-12K - peach_left_00024.png: 22.476911122424372 fps
+> ACOD-12K - peach_left_00025.png: 21.304509483222773 fps
+> ACOD-12K - peach_left_00026.png: 21.764961677970412 fps
+> ACOD-12K - peach_left_00027.png: 22.66431790426992 fps
+> ACOD-12K - peach_left_00028.png: 22.26890649223777 fps
+> ACOD-12K - peach_left_00029.png: 23.071106001683177 fps
+> ACOD-12K - peach_left_00030.png: 22.14147556906964 fps
+> ACOD-12K - peach_left_00031.png: 22.24563897212867 fps
+> ACOD-12K - peach_left_00032.png: 21.976966203824993 fps
+> ACOD-12K - peach_left_00033.png: 22.57769739250264 fps
+> ACOD-12K - peach_left_00034.png: 21.997367220319603 fps
+> ACOD-12K - peach_left_00035.png: 22.185159130218608 fps
+> ACOD-12K - peach_left_00036.png: 23.177304023960303 fps
+> ACOD-12K - peach_left_00037.png: 22.266660296124055 fps
+> ACOD-12K - peach_left_00038.png: 21.900884013095716 fps
+> ACOD-12K - peach_left_00039.png: 21.637411333797623 fps
+> ACOD-12K - peach_left_00040.png: 21.921143956181794 fps
+> ACOD-12K - peach_left_00041.png: 22.537298836678218 fps
+> ACOD-12K - peach_left_00042.png: 21.783613096227356 fps
+> ACOD-12K - peach_left_00043.png: 22.024396263370424 fps
+> ACOD-12K - peach_left_00044.png: 21.744087426254833 fps
+> ACOD-12K - peach_left_00045.png: 22.052999074619333 fps
+> ACOD-12K - peach_left_00046.png: 22.988155983667205 fps
+> ACOD-12K - peach_left_00047.png: 22.364969419694038 fps
+> ACOD-12K - peach_left_00048.png: 22.999501000740274 fps
+> ACOD-12K - peach_left_00049.png: 22.175189273780823 fps
+> ACOD-12K - peach_left_00050.png: 22.366400571651017 fps
+> ACOD-12K - peach_left_00051.png: 22.341143822008213 fps
+> ACOD-12K - peach_left_00052.png: 22.255554199542612 fps
+> ACOD-12K - peach_left_00053.png: 22.151649106129025 fps
+> ACOD-12K - peach_left_00054.png: 22.53984222179231 fps
+> ACOD-12K - peach_left_00055.png: 22.146502700790435 fps
+> ACOD-12K - peach_left_00056.png: 22.930846149220113 fps
+> ACOD-12K - peach_left_00057.png: 22.339002007914484 fps
+> ACOD-12K - peach_left_00058.png: 22.951801427133038 fps
+> ACOD-12K - peach_left_00059.png: 21.920685690394063 fps
+> ACOD-12K - peach_left_00060.png: 21.032725230420525 fps
+> ACOD-12K - peach_left_00061.png: 21.891624998695157 fps
+> ACOD-12K - peach_left_00062.png: 22.273636807782992 fps
+> ACOD-12K - peach_left_00063.png: 22.569557520219114 fps
+> ACOD-12K - peach_left_00064.png: 22.776686270357157 fps
+> ACOD-12K - peach_left_00065.png: 21.71627981630001 fps
+> ACOD-12K - peach_left_00066.png: 21.81148009859697 fps
+> ACOD-12K - peach_left_00241.png: 23.057281702838797 fps
+> ACOD-12K - peach_left_00242.png: 21.745214740465773 fps
+> ACOD-12K - peach_left_00243.png: 22.523380947266674 fps
+> ACOD-12K - peach_left_00244.png: 22.226541675719503 fps
+> ACOD-12K - peach_left_00245.png: 22.147672128377486 fps
+> ACOD-12K - peach_left_00246.png: 22.930971516046142 fps
+> ACOD-12K - peach_left_00247.png: 21.728542417837456 fps
+> ACOD-12K - peach_left_00248.png: 21.804903408263844 fps
+> ACOD-12K - peach_left_00249.png: 21.852959105521197 fps
+> ACOD-12K - peach_left_00250.png: 22.865715905621702 fps
+> ACOD-12K - peach_left_00251.png: 22.81782424911733 fps
+> ACOD-12K - peach_left_00252.png: 23.163991826365493 fps
+> ACOD-12K - peach_left_00253.png: 21.826689702545742 fps
+> ACOD-12K - peach_left_00254.png: 21.85056836533753 fps
+> ACOD-12K - peach_left_00255.png: 22.731014150304304 fps
+> ACOD-12K - peach_left_00256.png: 22.27612102800512 fps
+> ACOD-12K - peach_left_00257.png: 23.058295766904894 fps
+> ACOD-12K - peach_left_00258.png: 21.75717146147382 fps
+> ACOD-12K - peach_left_00259.png: 22.189384360633362 fps
+> ACOD-12K - peach_left_00260.png: 22.696818671298775 fps
+> ACOD-12K - peach_left_00261.png: 22.5829245836676 fps
+> ACOD-12K - peach_left_00262.png: 22.653178722461963 fps
+> ACOD-12K - peach_left_00263.png: 22.979339816463497 fps
+> ACOD-12K - peach_left_00264.png: 22.20524331879209 fps
+> ACOD-12K - peach_left_00265.png: 22.09505346889322 fps
+> ACOD-12K - peach_left_00266.png: 22.33174669094549 fps
+> ACOD-12K - peach_left_00267.png: 22.721778606021864 fps
+> ACOD-12K - peach_left_00268.png: 22.406427625112183 fps
+> ACOD-12K - peach_left_00269.png: 22.631055283973797 fps
+> ACOD-12K - peach_left_00270.png: 22.918817312998957 fps
+> ACOD-12K - peach_left_00271.png: 22.94903866145782 fps
+> ACOD-12K - peach_left_00272.png: 22.016188126607528 fps
+> ACOD-12K - peach_left_00273.png: 21.995867551891592 fps
+> ACOD-12K - peach_left_00274.png: 22.739270921432134 fps
+> ACOD-12K - peach_left_00275.png: 22.094704292720444 fps
+> ACOD-12K - peach_left_00276.png: 22.493425145333248 fps
+> ACOD-12K - peach_left_00277.png: 22.19513795548594 fps
+> ACOD-12K - peach_left_00278.png: 21.829416050796294 fps
+> ACOD-12K - peach_left_00279.png: 22.35984262882366 fps
+> ACOD-12K - peach_left_00280.png: 22.289734923367984 fps
+> ACOD-12K - peach_left_00281.png: 21.774452952628163 fps
+> ACOD-12K - peach_left_00282.png: 22.440113208960415 fps
+> ACOD-12K - peach_left_00283.png: 21.881803005008347 fps
+> ACOD-12K - peach_left_00284.png: 21.918165571012008 fps
+> ACOD-12K - peach_left_00285.png: 22.023586738498054 fps
+> ACOD-12K - peach_left_00286.png: 22.05021659586996 fps
+> ACOD-12K - peach_left_00287.png: 22.133413543991853 fps
+> ACOD-12K - peach_left_00288.png: 22.426794708643904 fps
+> ACOD-12K - peach_left_00289.png: 21.911409928900174 fps
+> ACOD-12K - peach_left_00290.png: 22.644128555772106 fps
+> ACOD-12K - peach_left_00291.png: 22.02081167637948 fps
+> ACOD-12K - peach_left_00292.png: 22.24009501993722 fps
+> ACOD-12K - peach_left_00293.png: 23.28241622212724 fps
+> ACOD-12K - peach_left_00294.png: 22.307517205433406 fps
+> ACOD-12K - peach_left_00295.png: 21.8523898342173 fps
+> ACOD-12K - peach_left_00296.png: 22.53160857793631 fps
+> ACOD-12K - pepper_left_00726.png: 22.30395847956948 fps
+> ACOD-12K - pepper_left_00727.png: 22.530398255283032 fps
+> ACOD-12K - pepper_left_00728.png: 23.193837544307858 fps
+> ACOD-12K - pepper_left_00729.png: 21.88637027760384 fps
+> ACOD-12K - pepper_left_00730.png: 22.041294214710998 fps
+> ACOD-12K - pepper_left_00731.png: 22.313450939501628 fps
+> ACOD-12K - pepper_left_00732.png: 22.666522556797304 fps
+> ACOD-12K - pepper_left_00733.png: 22.968266224200907 fps
+> ACOD-12K - pepper_left_00734.png: 22.932225259704758 fps
+> ACOD-12K - pepper_left_00735.png: 21.849202462936145 fps
+> ACOD-12K - pepper_left_00736.png: 22.491012826562567 fps
+> ACOD-12K - pepper_left_00737.png: 22.049057436943425 fps
+> ACOD-12K - pepper_left_00738.png: 22.891423706242563 fps
+> ACOD-12K - pepper_left_00739.png: 23.028924077043023 fps
+> ACOD-12K - pepper_left_00740.png: 21.854211606798597 fps
+> ACOD-12K - pepper_left_00741.png: 21.373774434864142 fps
+> ACOD-12K - pepper_left_00742.png: 21.077434106384583 fps
+> ACOD-12K - pepper_left_00743.png: 21.881803005008347 fps
+> ACOD-12K - pepper_left_00744.png: 22.52870402200069 fps
+> ACOD-12K - pepper_left_00745.png: 22.86135381294729 fps
+> ACOD-12K - pepper_left_00746.png: 22.184924442375742 fps
+> ACOD-12K - pepper_left_00747.png: 22.005099524673934 fps
+> ACOD-12K - pepper_left_00748.png: 21.633170520365375 fps
+> ACOD-12K - pepper_left_00749.png: 22.49644127159507 fps
+> ACOD-12K - pepper_left_00750.png: 22.173899711876505 fps
+> ACOD-12K - pepper_left_00751.png: 22.744326531497578 fps
+> ACOD-12K - pepper_left_00752.png: 21.560332685644966 fps
+> ACOD-12K - pepper_left_00753.png: 22.17366526218961 fps
+> ACOD-12K - pepper_left_00754.png: 21.976045017761898 fps
+> ACOD-12K - pepper_left_00755.png: 22.95142464718983 fps
+> ACOD-12K - pepper_left_00756.png: 22.706525622841305 fps
+> ACOD-12K - pepper_left_00757.png: 22.18163933385866 fps
+> ACOD-12K - pepper_left_00758.png: 22.063671751709627 fps
+> ACOD-12K - pepper_left_00759.png: 22.599838353359555 fps
+> ACOD-12K - pepper_left_00760.png: 22.507547584933807 fps
+> ACOD-12K - pepper_left_00761.png: 22.256380867479596 fps
+> ACOD-12K - pepper_left_00762.png: 22.4886010251571 fps
+> ACOD-12K - pepper_left_00763.png: 23.07212128213168 fps
+> ACOD-12K - pepper_left_00764.png: 22.80256605414809 fps
+> ACOD-12K - pepper_left_00765.png: 21.640983834933675 fps
+> ACOD-12K - pepper_left_00766.png: 22.11882336810353 fps
+> ACOD-12K - pepper_left_00767.png: 22.559603272357613 fps
+> ACOD-12K - pepper_left_00768.png: 22.13434797063744 fps
+> ACOD-12K - pepper_left_00769.png: 22.688960894942685 fps
+> ACOD-12K - pepper_left_00770.png: 22.512621505133943 fps
+> ACOD-12K - pepper_left_00771.png: 21.16795865633075 fps
+> ACOD-12K - pepper_left_00772.png: 22.040251810280502 fps
+> ACOD-12K - pepper_left_00773.png: 22.1954903133285 fps
+> ACOD-12K - pepper_left_00774.png: 22.337574359984874 fps
+> ACOD-12K - pepper_left_00775.png: 22.14147556906964 fps
+> ACOD-12K - pepper_left_00776.png: 22.527252024835114 fps
+> ACOD-12K - pepper_left_00777.png: 21.858767367444575 fps
+> ACOD-12K - pepper_left_00778.png: 21.851934438528307 fps
+> ACOD-12K - pepper_left_00779.png: 22.409061281188226 fps
+> ACOD-12K - pepper_left_00780.png: 22.55087019403956 fps
+> ACOD-12K - pepper_left_00781.png: 22.06077054569362 fps
+> ACOD-12K - pepper_left_00782.png: 22.612631749198048 fps
+> ACOD-12K - pepper_left_00783.png: 22.538388788582235 fps
+> ACOD-12K - pepper_left_00784.png: 22.225834998118838 fps
+> ACOD-12K - pepper_left_00785.png: 22.135983407132187 fps
+> ACOD-12K - pepper_left_00786.png: 21.900884013095716 fps
+> ACOD-12K - pepper_left_00787.png: 22.71341153025528 fps
+> ACOD-12K - pepper_left_00788.png: 22.166985529611974 fps
+> ACOD-12K - pepper_left_00789.png: 22.35698218607081 fps
+> ACOD-12K - pepper_left_00790.png: 22.66713503639773 fps
+> ACOD-12K - pepper_left_00791.png: 21.472912507039368 fps
+> ACOD-12K - pepper_left_00792.png: 22.07110231745564 fps
+> ACOD-12K - pepper_left_00793.png: 21.951317035897276 fps
+> ACOD-12K - pepper_left_00794.png: 22.496803261102766 fps
+> ACOD-12K - pepper_left_00795.png: 22.715379699533162 fps
+> ACOD-12K - pepper_left_00796.png: 22.788194897205198 fps
+> ACOD-12K - pepper_left_00797.png: 21.829984125744918 fps
+> ACOD-12K - pepper_left_00798.png: 22.6140947739024 fps
+> ACOD-12K - pepper_left_00799.png: 21.955798444255997 fps
+> ACOD-12K - pepper_left_00800.png: 22.684665974385602 fps
+> ACOD-12K - pepper_left_00801.png: 22.874195589101458 fps
+> ACOD-12K - pepper_left_00802.png: 21.441846912015052 fps
+> ACOD-12K - pepper_left_00803.png: 22.20971141117289 fps
+> ACOD-12K - pepper_left_00804.png: 22.32794250731967 fps
+> ACOD-12K - pepper_left_00805.png: 22.432912055880323 fps
+> ACOD-12K - pepper_left_00806.png: 22.84404649085542 fps
+> ACOD-12K - pepper_left_00807.png: 22.614704423404575 fps
+> ACOD-12K - pepper_left_00808.png: 22.552689027734463 fps
+> ACOD-12K - pepper_left_00809.png: 22.20830024038716 fps
+> ACOD-12K - pepper_left_00810.png: 22.41253386483988 fps
+> ACOD-12K - pepper_left_00811.png: 22.86783523703078 fps
+> ACOD-12K - pepper_left_00812.png: 22.313807063930753 fps
+> ACOD-12K - pepper_left_00813.png: 22.493545774855605 fps
+> ACOD-12K - pepper_left_00814.png: 22.755061739111564 fps
+> ACOD-12K - pepper_left_00815.png: 21.924925380156086 fps
+> ACOD-12K - pepper_left_00816.png: 22.253664903409966 fps
+> ACOD-12K - pepper_left_00817.png: 21.916333120839386 fps
+> ACOD-12K - pepper_left_00818.png: 22.28689238878616 fps
+> ACOD-12K - pepper_left_00819.png: 22.896297226331562 fps
+> ACOD-12K - pepper_left_00820.png: 21.697294501060473 fps
+> ACOD-12K - pepper_left_00907.png: 21.790290152479415 fps
+> ACOD-12K - pepper_left_00908.png: 22.497165262260175 fps
+> ACOD-12K - pepper_left_00909.png: 22.069940961661914 fps
+> ACOD-12K - pepper_left_00910.png: 22.613241319818847 fps
+> ACOD-12K - pepper_left_00911.png: 22.088188362675037 fps
+> ACOD-12K - pepper_left_00912.png: 22.14381348594598 fps
+> ACOD-12K - pepper_left_00913.png: 21.624805370234792 fps
+> ACOD-12K - pepper_left_00914.png: 21.857286536908205 fps
+> ACOD-12K - pepper_left_00915.png: 22.515884519169862 fps
+> ACOD-12K - pepper_left_00916.png: 22.381677596998916 fps
+> ACOD-12K - pepper_left_00917.png: 22.74333989447942 fps
+> ACOD-12K - pepper_left_00918.png: 22.78287225894763 fps
+> ACOD-12K - pepper_left_00919.png: 21.862071481811597 fps
+> ACOD-12K - pepper_left_00920.png: 21.873130436596508 fps
+> ACOD-12K - pepper_left_00921.png: 22.139956187811766 fps
+> ACOD-12K - pepper_left_00922.png: 22.601908682836402 fps
+> ACOD-12K - pepper_left_00923.png: 22.161246519393647 fps
+> ACOD-12K - pepper_left_00924.png: 22.437472249415567 fps
+> ACOD-12K - pepper_left_00925.png: 23.26330443656855 fps
+> ACOD-12K - pepper_left_00926.png: 21.943048471056006 fps
+> ACOD-12K - pepper_left_00927.png: 22.49016863722888 fps
+> ACOD-12K - pepper_left_00928.png: 22.063671751709627 fps
+> ACOD-12K - pepper_left_00929.png: 22.768649505466467 fps
+> ACOD-12K - pepper_left_00930.png: 22.63349773897277 fps
+> ACOD-12K - pepper_left_00931.png: 22.86746120882356 fps
+> ACOD-12K - pepper_left_00932.png: 22.013183860267876 fps
+> ACOD-12K - pepper_left_00933.png: 22.043263469906872 fps
+> ACOD-12K - pepper_left_00934.png: 22.394583829441885 fps
+> ACOD-12K - pepper_left_00935.png: 22.107048548704192 fps
+> ACOD-12K - pepper_left_00936.png: 22.50996345213625 fps
+> ACOD-12K - pepper_left_00937.png: 21.560111031150406 fps
+> ACOD-12K - pepper_left_00938.png: 22.630811067466656 fps
+> ACOD-12K - pepper_left_00939.png: 23.028165456961204 fps
+> ACOD-12K - pepper_left_00940.png: 21.724378331062987 fps
+> ACOD-12K - pepper_left_00941.png: 22.209123401551455 fps
+> ACOD-12K - pepper_left_00942.png: 22.48606919031357 fps
+> ACOD-12K - pepper_left_00943.png: 22.672771402161164 fps
+> ACOD-12K - pepper_left_00944.png: 22.792529113525088 fps
+> ACOD-12K - pepper_left_00945.png: 22.679391583170666 fps
+> ACOD-12K - pepper_left_00946.png: 22.08830468486687 fps
+> ACOD-12K - pepper_left_00947.png: 22.244577150312377 fps
+> ACOD-12K - pepper_left_00948.png: 22.03573586352914 fps
+> ACOD-12K - pepper_left_00949.png: 22.655625955394232 fps
+> ACOD-12K - pepper_left_00950.png: 22.39912845188061 fps
+> ACOD-12K - pepper_left_00951.png: 23.17384650235092 fps
+> ACOD-12K - pepper_left_00952.png: 22.1993669881125 fps
+> ACOD-12K - pepper_left_00953.png: 21.939490312591538 fps
+> ACOD-12K - pepper_left_00954.png: 22.284997768473847 fps
+> ACOD-12K - pepper_left_00955.png: 22.466436697876716 fps
+> ACOD-12K - pepper_left_00956.png: 22.410737566522045 fps
+> ACOD-12K - pepper_left_00957.png: 23.066538345203067 fps
+> ACOD-12K - pepper_left_00958.png: 23.139966235973034 fps
+> ACOD-12K - pepper_left_00959.png: 22.407265539439592 fps
+> ACOD-12K - pepper_left_00960.png: 22.26016070310261 fps
+> ACOD-12K - pepper_left_00961.png: 22.906175590361972 fps
+> ACOD-12K - pepper_left_00962.png: 22.138787574885857 fps
+> ACOD-12K - pepper_left_00963.png: 23.036766078980612 fps
+> ACOD-12K - pepper_left_00964.png: 21.788252650608044 fps
+> ACOD-12K - pepper_left_00965.png: 22.178120654191275 fps
+> ACOD-12K - pepper_left_00966.png: 22.000828774200993 fps
+> ACOD-12K - pepper_left_00967.png: 22.740133915259293 fps
+> ACOD-12K - pepper_left_00968.png: 22.358769877019686 fps
+> ACOD-12K - pepper_left_00969.png: 23.21887490173935 fps
+> ACOD-12K - pepper_left_00970.png: 21.834870791079275 fps
+> ACOD-12K - pepper_left_00971.png: 22.159490273565865 fps
+> ACOD-12K - pepper_left_00972.png: 22.07888655517479 fps
+> ACOD-12K - pepper_left_00973.png: 22.39243175714995 fps
+> ACOD-12K - pepper_left_00974.png: 22.664807789990164 fps
+> ACOD-12K - pepper_left_00975.png: 22.350072469946287 fps
+> ACOD-12K - pepper_left_00976.png: 22.09796369958642 fps
+> ACOD-12K - pepper_left_00977.png: 22.415408541180117 fps
+> ACOD-12K - pepper_left_00978.png: 22.25260231529132 fps
+> ACOD-12K - pepper_left_00979.png: 22.506822925889555 fps
+> ACOD-12K - pepper_left_00980.png: 22.78287225894763 fps
+> ACOD-12K - pepper_left_00981.png: 22.51733505126966 fps
+> ACOD-12K - pepper_left_00982.png: 22.629712158407294 fps
+> ACOD-12K - pepper_left_00983.png: 21.978002630462008 fps
+> ACOD-12K - pepper_left_00984.png: 22.09761443142544 fps
+> ACOD-12K - pepper_left_00985.png: 22.530156206355688 fps
+> ACOD-12K - pepper_left_00986.png: 22.324733735369417 fps
+> ACOD-12K - pepper_left_00987.png: 23.0132560793609 fps
+> ACOD-12K - pepper_left_00988.png: 22.406906425625575 fps
+> ACOD-12K - pepper_left_00989.png: 21.912898102482654 fps
+> ACOD-12K - pepper_left_00990.png: 22.181522026548205 fps
+> ACOD-12K - pepper_left_00991.png: 22.648530436144306 fps
+> ACOD-12K - pepper_left_00992.png: 22.56409373587829 fps
+> ACOD-12K - pepper_left_00993.png: 22.871825632692236 fps
+> ACOD-12K - pepper_left_00994.png: 22.737545130267907 fps
+> ACOD-12K - pepper_left_00995.png: 23.82003941323126 fps
+> ACOD-12K - pepper_left_00996.png: 24.034197829400508 fps
+> ACOD-12K - pepper_left_00997.png: 24.097301458717546 fps
+> ACOD-12K - pepper_left_00998.png: 24.013419975381446 fps
+> ACOD-12K - pepper_left_00999.png: 23.747212990380643 fps
+> ACOD-12K - pepper_left_01000.png: 24.053080394776835 fps
+> ACOD-12K - pepper_left_01001.png: 24.20060699077974 fps
+> ACOD-12K - pepper_left_01002.png: 23.853906832050868 fps
+> ACOD-12K - pepper_left_01003.png: 23.968136232463785 fps
+> ACOD-12K - pepper_left_01004.png: 24.29114833090092 fps
+> ACOD-12K - pepper_left_01005.png: 23.66588049427298 fps
+> ACOD-12K - pepper_left_01006.png: 24.18832539417077 fps
+> ACOD-12K - pepper_left_01007.png: 24.18246811651023 fps
+> ACOD-12K - pepper_left_01008.png: 23.686997379597 fps
+> ACOD-12K - pepper_left_01009.png: 24.034748725001432 fps
+> ACOD-12K - pepper_left_01010.png: 24.245092372077966 fps
+> ACOD-12K - pepper_left_01011.png: 23.771169486242172 fps
+> ACOD-12K - pepper_left_01012.png: 23.990482291571336 fps
+> ACOD-12K - pepper_left_01013.png: 24.202701688988395 fps
+> ACOD-12K - plum_left_00136.png: 23.691680270225998 fps
+> ACOD-12K - plum_left_00137.png: 23.776020497820404 fps
+> ACOD-12K - plum_left_00138.png: 24.128908294933527 fps
+> ACOD-12K - plum_left_00139.png: 23.898351053525236 fps
+> ACOD-12K - plum_left_00140.png: 24.265852078126446 fps
+> ACOD-12K - plum_left_00141.png: 24.178564840435342 fps
+> ACOD-12K - plum_left_00142.png: 24.287350531283476 fps
+> ACOD-12K - plum_left_00143.png: 23.65093435283238 fps
+> ACOD-12K - plum_left_00144.png: 24.28917895322037 fps
+> ACOD-12K - plum_left_00145.png: 24.06936800968673 fps
+> ACOD-12K - plum_left_00146.png: 23.583909674662348 fps
+> ACOD-12K - plum_left_00147.png: 24.23290560020337 fps
+> ACOD-12K - plum_left_00148.png: 24.23682644246049 fps
+> ACOD-12K - plum_left_00149.png: 23.43225864120628 fps
+> ACOD-12K - plum_left_00150.png: 23.94829279433596 fps
+> ACOD-12K - plum_left_00151.png: 24.21290106565989 fps
+> ACOD-12K - plum_left_00152.png: 24.20940716070903 fps
+> ACOD-12K - plum_left_00153.png: 23.742373725652246 fps
+> ACOD-12K - plum_left_00154.png: 24.17410549612689 fps
+> ACOD-12K - plum_left_00155.png: 23.990070638030144 fps
+> ACOD-12K - plum_left_00156.png: 23.60992963692654 fps
+> ACOD-12K - plum_left_00157.png: 23.885966161153096 fps
+> ACOD-12K - plum_left_00158.png: 23.988698561583117 fps
+> ACOD-12K - plum_left_00159.png: 23.993776028557047 fps
+> ACOD-12K - plum_left_00160.png: 23.856620386433313 fps
+> ACOD-12K - plum_left_00161.png: 24.058599149922276 fps
+> ACOD-12K - plum_left_00162.png: 24.192231822533945 fps
+> ACOD-12K - plum_left_00163.png: 23.736864742501414 fps
+> ACOD-12K - plum_left_00164.png: 24.005860805860806 fps
+> ACOD-12K - plum_left_00165.png: 24.340486774451886 fps
+> ACOD-12K - plum_left_00166.png: 23.704400311966634 fps
+> ACOD-12K - plum_left_00167.png: 24.244531791907516 fps
+> ACOD-12K - plum_left_00168.png: 24.06398237501291 fps
+> ACOD-12K - plum_left_00169.png: 24.260799148562043 fps
+> ACOD-12K - plum_left_00170.png: 23.568801977972576 fps
+> ACOD-12K - plum_left_00171.png: 22.63997279513767 fps
+> ACOD-12K - plum_left_00172.png: 21.84897482913819 fps
+> ACOD-12K - plum_left_00173.png: 23.066665200127588 fps
+> ACOD-12K - plum_left_00174.png: 22.580736162629815 fps
+> ACOD-12K - plum_left_00175.png: 22.290919526790745 fps
+> ACOD-12K - plum_left_00176.png: 22.414330451139875 fps
+> ACOD-12K - plum_left_00177.png: 21.935359705457817 fps
+> ACOD-12K - plum_left_00178.png: 22.23809044107121 fps
+> ACOD-12K - plum_left_00179.png: 22.435911974580893 fps
+> ACOD-12K - plum_left_00180.png: 22.210887523829697 fps
+> ACOD-12K - plum_left_00181.png: 21.929166710236007 fps
