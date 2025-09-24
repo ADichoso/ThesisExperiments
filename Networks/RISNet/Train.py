@@ -85,11 +85,8 @@ if __name__ == "__main__":
     parser.add_argument('--decay_rate', type=float, default=0.1, help='decay rate of learning rate')
     parser.add_argument('--decay_epoch', type=int, default=50, help='every n epochs decay learning rate')
     parser.add_argument('--train_path', type=str, default='./Datasets/ACOD-12K/Train', help='path to train dataset')
-    parser.add_argument('--save_path', type=str, default='./Checkpoints/', help='path to save your model')
+    parser.add_argument('--save_path', type=str, default='./Checkpoints/RISNet/', help='path to save your model')
     parser.add_argument('--epoch_save', type=int, default=5, help='every n epochs to save model')
-    parser.add_argument('--has_depth', dest="depth", action="store_true", help='training data has depth images')
-    parser.add_argument('--no_depth', dest="depth", action="store_false", help='training data has no depth images')
-    parser.set_defaults(depth=True)
 
     opt = parser.parse_args()
 
@@ -108,12 +105,9 @@ if __name__ == "__main__":
 
     train_image_root = '{}/Imgs/'.format(opt.train_path)
     train_gt_root = '{}/GT/'.format(opt.train_path)
-
-    if opt.depth:
-        train_depth_root = '{}/Depth/'.format(opt.train_path)
-        train_loader = get_loader(train_image_root, train_gt_root, train_depth_root, batch_size=opt.batchsize, image_size=opt.trainsize, num_workers=20)
-    else:
-        train_loader = get_loader(train_image_root, train_gt_root, None, batch_size=opt.batchsize, image_size=opt.trainsize, num_workers=20)
+    train_depth_root = '{}/Depth/'.format(opt.train_path)
+    
+    train_loader = get_loader(train_image_root, train_gt_root, train_depth_root, batch_size=opt.batchsize, image_size=opt.trainsize, num_workers=20)
 
     
 

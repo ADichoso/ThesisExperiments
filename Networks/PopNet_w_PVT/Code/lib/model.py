@@ -240,9 +240,10 @@ class PopNet(nn.Module):
         ###############################################
         self.layer_cat = nn.Conv2d(4, 3, kernel_size=1)
         self.layer_deps = self.backbone
-        self.depths_conv_4 = nn.Sequential(BasicConv2d(2048, 1024, 3, padding=1), self.relu)
-        self.depths_conv_3 = nn.Sequential(BasicConv2d(1024, 512, 3, padding=1), self.relu)
-        self.depths_conv_2 = nn.Sequential(BasicConv2d(512, 256, 3, padding=1), self.relu)
+        self.layer0_deps = Res2Net_model(ind)
+        self.depths_conv_4 = nn.Sequential(BasicConv2d(1024, 320, 3, padding=1), self.relu)
+        self.depths_conv_3 = nn.Sequential(BasicConv2d(640, 128, 3, padding=1), self.relu)
+        self.depths_conv_2 = nn.Sequential(BasicConv2d(256, 64, 3, padding=1), self.relu)
         self.depths_conv_1 = nn.Sequential(BasicConv2d(256, 64, 3, padding=1), self.relu)
         self.depths_conv_0 = nn.Sequential(BasicConv2d(64, 1, 3, padding=1), self.relu)        
 
@@ -254,7 +255,7 @@ class PopNet(nn.Module):
         
         # Backbone model
         self.layer_rgb = self.backbone
-        
+        self.layer0_rgb = Res2Net_model(ind)
         self.layer_dep0 = nn.Conv2d(1, 3, kernel_size=1)        
         self.layer_dep = self.backbone
 
@@ -345,23 +346,28 @@ class PopNet(nn.Module):
         ####################################################
         
         rgb_depth = self.layer_cat(torch.cat([depths,imgs],dim=1))
-        deps_0, deps_1, deps_2, deps_3, deps_4 =  self.layer_deps(rgb_depth)
+        deps_0 = self.layer0_deps(rgb_depth)[0]
+        deps_1, deps_2, deps_3, deps_4 =  self.layer_deps(rgb_depth)
+        # 64, 128, 320, 512
 
-        x4 =  self.depths_conv_4( self.depth_upsample_2(deps_4)) + deps_3
-        x3 =  self.depths_conv_3( self.depth_upsample_2(x4))  + deps_2
-        x2 =  self.depths_conv_2( self.depth_upsample_2(x3))  + deps_1
-        x1 =  self.depths_conv_1(x2)  + deps_0
+        x4 =  self.depths_conv_4(self.depth_upsample_2(deps_4)) + deps_3
+        x3 =  self.depths_conv_3(self.depth_upsample_2(x4))  + deps_2
+        x2 =  self.depths_conv_2(self.depth_upsample_2(x3))  + deps_1
+        x1 =  self.depths_conv_1(x2) + deps_0
         x0_1 =  self.depths_conv_0(x1)
         x0_2 =  self.depth_upsample_4(x0_1)
 
-        img_0, img_1, img_2, img_3, img_4 = self.layer_rgb(imgs)
-        dep_0, dep_1, dep_2, dep_3, dep_4 = self.layer_dep(self.layer_dep0(x0_2))
+        img_0 = self.layer0_rgb(imgs)[0]
+        img_1, img_2, img_3, img_4 = self.layer_rgb(imgs)
+
+        dep_0 = self.layer0_dep(self.layer_dep0(x0_2))[0]
+        dep_1, dep_2, dep_3, dep_4 = self.layer_dep(self.layer_dep0(x0_2))
 
         ####################################################
         ## fusion
         ####################################################
-        ful_0 = self.fu_0(img_0, dep_0)
-        ful_1 = self.fu_1(img_1, dep_1, ful_0)
+        ful_0 = self.fu_0(img_0, dep_0) # 64
+        ful_1 = self.fu_1(img_1, dep_1, ful_0) # 64, 64, 64
         ful_2 = self.fu_2(img_2, dep_2, self.pool_fu_1(ful_1))
         ful_3 = self.fu_3(img_3, dep_3, self.pool_fu_2(ful_2))
         ful_4 = self.fu_4(img_4, dep_4, self.pool_fu_3(ful_3))
