@@ -3,7 +3,7 @@ import torch.nn as nn
 import torchvision.models as models
 from torch.nn import functional as F
 from Code.lib.res2net_v1b_base import Res2Net_model
-from pvt import pvt_v2_b2
+from Code.lib.pvt import pvt_v2_b2
 import os
 
 def maxpool():
