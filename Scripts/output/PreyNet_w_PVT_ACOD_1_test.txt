@@ -1,0 +1,91 @@
+acod_eval_averages.csv
+acod_eval_results.csv
+acod_results_C2FNet.csv
+acod_results_DaCOD.csv
+acod_results_FSPNet.csv
+acod_results_HitNet.csv
+acod_results_OCENet.csv
+acod_results_PFNet.csv
+acod_results_PopNet.csv
+acod_results_PreyNet.csv
+acod_results_PreyNet_w_PVT.csv
+acod_results_RISNet.csv
+acod_results_RISNet_NoDepth.csv
+acod_results_SINet.csv
+acod_results_SINet_V2.csv
+acod_results_SINet_V2_w_PVT.csv
+acod_results_ZoomNet.csv
+Backbones
+Checkpoints
+Datasets
+Logs
+Networks
+PreyNet-aug-comp.png
+py_sod_metrics
+Results
+results-bean.png
+results-bean-top.png
+results-cucumber.png
+results-cucumber-top.png
+results-general.png
+results-kiwi.png
+results-kiwi-top.png
+results-loquat.png
+results-loquat-top.png
+results-peach.png
+results-peach-top.png
+results-pepper.png
+results-pepper-top.png
+results-plum.png
+results-plum-top.png
+results-tomato.png
+results-tomato-top.png
+results-top.png
+results-watermelon.png
+results-watermelon-top.png
+results-zucchini.png
+results-zucchini-top.png
+RISNetTesting.ipynb
+Scripts
+SINetV2-aug-comp.png
+CUDA_DEVICE=/dev/nvidia/0
+Wed Sep 24 13:35:02 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.124.06             Driver Version: 570.124.06     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA A100-SXM4-80GB          Off |   00000000:E0:00.0 Off |                    0 |
+| N/A   30C    P0             59W /  400W |       1MiB /  81920MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+Module load: anaconda/3-2023.07-2
+conda 23.7.4
+/home/aaron.dichoso/.conda/envs/TrainingApex/lib/python3.9/site-packages/requests/__init__.py:86: RequestsDependencyWarning: Unable to find acceptable character detection dependency (chardet or charset_normalizer).
+  warnings.warn(
+/home/aaron.dichoso/.conda/envs/TrainingApex/lib/python3.9/site-packages/timm/models/layers/__init__.py:48: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+/home/aaron.dichoso/.conda/envs/TrainingApex/lib/python3.9/site-packages/timm/models/registry.py:4: FutureWarning: Importing from timm.models.registry is deprecated, please import via timm.models
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.models", FutureWarning)
+/scratch1/aaron.dichoso/Networks/PreyNet_w_PVT/lib/pvt.py:388: UserWarning: Overwriting pvt_v2_b0 in registry with lib.pvt.pvt_v2_b0. This is because the name being registered conflicts with an existing name. Please check if this is not expected.
+  class pvt_v2_b0(PyramidVisionTransformerImpr):
+/scratch1/aaron.dichoso/Networks/PreyNet_w_PVT/lib/pvt.py:398: UserWarning: Overwriting pvt_v2_b1 in registry with lib.pvt.pvt_v2_b1. This is because the name being registered conflicts with an existing name. Please check if this is not expected.
+  class pvt_v2_b1(PyramidVisionTransformerImpr):
+/scratch1/aaron.dichoso/Networks/PreyNet_w_PVT/lib/pvt.py:406: UserWarning: Overwriting pvt_v2_b2 in registry with lib.pvt.pvt_v2_b2. This is because the name being registered conflicts with an existing name. Please check if this is not expected.
+  class pvt_v2_b2(PyramidVisionTransformerImpr):
+/scratch1/aaron.dichoso/Networks/PreyNet_w_PVT/lib/pvt.py:414: UserWarning: Overwriting pvt_v2_b3 in registry with lib.pvt.pvt_v2_b3. This is because the name being registered conflicts with an existing name. Please check if this is not expected.
+  class pvt_v2_b3(PyramidVisionTransformerImpr):
+/scratch1/aaron.dichoso/Networks/PreyNet_w_PVT/lib/pvt.py:422: UserWarning: Overwriting pvt_v2_b4 in registry with lib.pvt.pvt_v2_b4. This is because the name being registered conflicts with an existing name. Please check if this is not expected.
+  class pvt_v2_b4(PyramidVisionTransformerImpr):
+/scratch1/aaron.dichoso/Networks/PreyNet_w_PVT/lib/pvt.py:431: UserWarning: Overwriting pvt_v2_b5 in registry with lib.pvt.pvt_v2_b5. This is because the name being registered conflicts with an existing name. Please check if this is not expected.
+  class pvt_v2_b5(PyramidVisionTransformerImpr):
