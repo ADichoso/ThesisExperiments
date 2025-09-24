@@ -3,7 +3,6 @@ import torch.nn.functional as F
 import numpy as np
 import os, argparse
 from scipy import misc
-import cv2
 from lib.Network_Res2Net_GRA_NCD import Network
 from utils.data_val import test_dataset
 import imageio.v2 as imageio
