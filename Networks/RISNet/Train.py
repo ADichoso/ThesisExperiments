@@ -107,7 +107,7 @@ if __name__ == "__main__":
     train_gt_root = '{}/GT/'.format(opt.train_path)
     train_depth_root = '{}/Depth/'.format(opt.train_path)
 
-    train_loader = get_loader(train_image_root, train_gt_root, train_depth_root, batch_size=opt.batchsize, image_size=opt.trainsize, num_workers=20)
+    train_loader = get_loader(train_image_root, train_gt_root, train_depth_root, batch_size=opt.batchsize, image_size=opt.trainsize, num_workers=8)
 
     total_step = len(train_loader)
 
