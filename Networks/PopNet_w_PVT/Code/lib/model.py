@@ -264,16 +264,16 @@ class PopNet(nn.Module):
         ###############################################
         self.fu_0 = CIM0(64, 64)  #
 
-        self.fu_1 = CIM(256, 128)  # MixedFusion_Block_IMfusion
+        self.fu_1 = CIM(64, 128)  # MixedFusion_Block_IMfusion (64 channels, 64 channels, 3rd param = 128 / 2 = 64 channels)
         self.pool_fu_1 = maxpool()
 
-        self.fu_2 = CIM(512, 256)
+        self.fu_2 = CIM(128, 256) # (3rd param = 256 / 2 = 128 channels)
         self.pool_fu_2 = maxpool()
 
-        self.fu_3 = CIM(1024, 512)
+        self.fu_3 = CIM(320, 512)
         self.pool_fu_3 = maxpool()
 
-        self.fu_4 = CIM(2048, 1024)
+        self.fu_4 = CIM(512, 1024)
         self.pool_fu_4 = maxpool()
 
         ###############################################
@@ -281,53 +281,53 @@ class PopNet(nn.Module):
         ###############################################
 
         ## rgb
-        self.rgb_conv_4 = nn.Sequential(BasicConv2d(2048, 256, 3, padding=1), self.relu)
-        self.rgb_gcm_4 = GCM(2048, channel)
+        #self.rgb_conv_4 = nn.Sequential(BasicConv2d(2048, 256, 3, padding=1), self.relu)
+        self.rgb_gcm_4 = GCM(512, channel)
 
-        self.rgb_conv_3 = nn.Sequential(BasicConv2d(1024 + 32, 256, 3, padding=1), self.relu)
-        self.rgb_gcm_3 = GCM(1024 + 32, channel)
+        #self.rgb_conv_3 = nn.Sequential(BasicConv2d(1024 + 32, 256, 3, padding=1), self.relu)
+        self.rgb_gcm_3 = GCM(320 + 32, channel)
 
-        self.rgb_conv_2 = nn.Sequential(BasicConv2d(512 + 32, 128, 3, padding=1), self.relu)
-        self.rgb_gcm_2 = GCM(512 + 32, channel)
+        #self.rgb_conv_2 = nn.Sequential(BasicConv2d(512 + 32, 128, 3, padding=1), self.relu)
+        self.rgb_gcm_2 = GCM(128 + 32, channel)
 
-        self.rgb_conv_1 = nn.Sequential(BasicConv2d(256 + 32, 128, 3, padding=1), self.relu)
-        self.rgb_gcm_1 = GCM(256 + 32, channel)
+        #self.rgb_conv_1 = nn.Sequential(BasicConv2d(256 + 32, 128, 3, padding=1), self.relu)
+        self.rgb_gcm_1 = GCM(64 + 32, channel)
 
-        self.rgb_conv_0 = nn.Sequential(BasicConv2d(64 + 32, 64, 3, padding=1), self.relu)
+        #self.rgb_conv_0 = nn.Sequential(BasicConv2d(64 + 32, 64, 3, padding=1), self.relu)
         self.rgb_gcm_0 = GCM(64 + 32, channel)
         self.rgb_conv_out = nn.Conv2d(channel, 1, 1)
 
         ## depth
-        self.dep_conv_4 = nn.Sequential(BasicConv2d(2048, 256, 3, padding=1), self.relu)
-        self.dep_gcm_4 = GCM(2048, channel)
+        #self.dep_conv_4 = nn.Sequential(BasicConv2d(2048, 256, 3, padding=1), self.relu)
+        self.dep_gcm_4 = GCM(512, channel)
 
-        self.dep_conv_3 = nn.Sequential(BasicConv2d(1024 + 32, 256, 3, padding=1), self.relu)
-        self.dep_gcm_3 = GCM(1024 + 32, channel)
+        #self.dep_conv_3 = nn.Sequential(BasicConv2d(1024 + 32, 256, 3, padding=1), self.relu)
+        self.dep_gcm_3 = GCM(320 + 32, channel)
 
-        self.dep_conv_2 = nn.Sequential(BasicConv2d(512 + 32, 128, 3, padding=1), self.relu)
-        self.dep_gcm_2 = GCM(512 + 32, channel)
+        #self.dep_conv_2 = nn.Sequential(BasicConv2d(512 + 32, 128, 3, padding=1), self.relu)
+        self.dep_gcm_2 = GCM(128 + 32, channel)
 
-        self.dep_conv_1 = nn.Sequential(BasicConv2d(256 + 32, 128, 3, padding=1), self.relu)
-        self.dep_gcm_1 = GCM(256 + 32, channel)
+        #self.dep_conv_1 = nn.Sequential(BasicConv2d(256 + 32, 128, 3, padding=1), self.relu)
+        self.dep_gcm_1 = GCM(64 + 32, channel)
 
-        self.dep_conv_0 = nn.Sequential(BasicConv2d(64 + 32, 64, 3, padding=1), self.relu)
+        #self.dep_conv_0 = nn.Sequential(BasicConv2d(64 + 32, 64, 3, padding=1), self.relu)
         self.dep_gcm_0 = GCM(64 + 32, channel)
         self.dep_conv_out = nn.Conv2d(channel, 1, 1)
 
         ## fusion
-        self.ful_conv_4 = nn.Sequential(BasicConv2d(2048, 256, 3, padding=1), self.relu)
+        #self.ful_conv_4 = nn.Sequential(BasicConv2d(2048, 256, 3, padding=1), self.relu)
         self.ful_gcm_4 = GCM(1024, channel)
 
-        self.ful_conv_3 = nn.Sequential(BasicConv2d(1024 + 32 * 3, 256, 3, padding=1), self.relu)
+        #self.ful_conv_3 = nn.Sequential(BasicConv2d(1024 + 32 * 3, 256, 3, padding=1), self.relu)
         self.ful_gcm_3 = GCM(512 + 32, channel)
 
-        self.ful_conv_2 = nn.Sequential(BasicConv2d(512 + 32 * 3, 128, 3, padding=1), self.relu)
+        #self.ful_conv_2 = nn.Sequential(BasicConv2d(512 + 32 * 3, 128, 3, padding=1), self.relu)
         self.ful_gcm_2 = GCM(256 + 32, channel)
 
-        self.ful_conv_1 = nn.Sequential(BasicConv2d(256 + 32 * 3, 128, 3, padding=1), self.relu)
+        #self.ful_conv_1 = nn.Sequential(BasicConv2d(256 + 32 * 3, 128, 3, padding=1), self.relu)
         self.ful_gcm_1 = GCM(128 + 32, channel)
 
-        self.ful_conv_0 = nn.Sequential(BasicConv2d(128 + 32 * 3, 64, 3, padding=1), self.relu)
+        #self.ful_conv_0 = nn.Sequential(BasicConv2d(128 + 32 * 3, 64, 3, padding=1), self.relu)
         self.ful_gcm_0 = GCM(64 + 32, channel)
         self.ful_conv_out = nn.Conv2d(channel, 1, 1)
         self.ful_conv_out1 = nn.Conv2d(channel, 1, 1)
@@ -366,20 +366,20 @@ class PopNet(nn.Module):
         ####################################################
         ## fusion
         ####################################################
-        ful_0 = self.fu_0(img_0, dep_0) # 64
-        ful_1 = self.fu_1(img_1, dep_1, ful_0) # 64, 64, 64
-        ful_2 = self.fu_2(img_2, dep_2, self.pool_fu_1(ful_1))
-        ful_3 = self.fu_3(img_3, dep_3, self.pool_fu_2(ful_2))
-        ful_4 = self.fu_4(img_4, dep_4, self.pool_fu_3(ful_3))
+        ful_0 = self.fu_0(img_0, dep_0) # 64 -> 64
+        ful_1 = self.fu_1(img_1, dep_1, ful_0) # 64 -> 128
+        ful_2 = self.fu_2(img_2, dep_2, self.pool_fu_1(ful_1)) # 128 -> 256
+        ful_3 = self.fu_3(img_3, dep_3, self.pool_fu_2(ful_2)) # 320 -> 512
+        ful_4 = self.fu_4(img_4, dep_4, self.pool_fu_3(ful_3)) # 512 -> 1024
 
         ####################################################
         ## decoder rgb
         ####################################################
         #
-        x_rgb_42 = self.rgb_gcm_4(img_4)
+        x_rgb_42 = self.rgb_gcm_4(img_4) # 512 -> 32
 
         x_rgb_3_cat = torch.cat([img_3, self.upsample_2(x_rgb_42)], dim=1)
-        x_rgb_32 = self.rgb_gcm_3(x_rgb_3_cat)
+        x_rgb_32 = self.rgb_gcm_3(x_rgb_3_cat) # 320 + 32 -> 32
 
         x_rgb_2_cat = torch.cat([img_2, self.upsample_2(x_rgb_32)], dim=1)
         x_rgb_22 = self.rgb_gcm_2(x_rgb_2_cat)
@@ -414,21 +414,21 @@ class PopNet(nn.Module):
         ## decoder fusion
         ####################################################
         #
-        x_ful_42 = self.ful_gcm_4(ful_4)
+        x_ful_42 = self.ful_gcm_4(ful_4) # 1024 -> 32
 
         x_ful_3_cat = torch.cat(
             [ful_3, self.ful_layer3(self.upsample_2(x_ful_42), self.upsample_2(x_rgb_42), self.upsample_2(x_dep_42))],
-            dim=1)
+            dim=1) # 512 + 32 -> 32
         x_ful_32 = self.ful_gcm_3(x_ful_3_cat)
 
         x_ful_2_cat = torch.cat(
             [ful_2, self.ful_layer2(self.upsample_2(x_ful_32), self.upsample_2(x_rgb_32), self.upsample_2(x_dep_32))],
-            dim=1)
+            dim=1) # 256 + 32 -> 32
         x_ful_22 = self.ful_gcm_2(x_ful_2_cat)
 
         x_ful_1_cat = torch.cat(
             [ful_1, self.ful_layer1(self.upsample_2(x_ful_22), self.upsample_2(x_rgb_22), self.upsample_2(x_dep_22))],
-            dim=1)
+            dim=1) # 128 + 32 -> 32
         x_ful_12 = self.ful_gcm_1(x_ful_1_cat)
 
         x_ful_0_cat = torch.cat([ful_0, self.ful_layer0(x_ful_12, x_rgb_12, x_dep_12)], dim=1)
