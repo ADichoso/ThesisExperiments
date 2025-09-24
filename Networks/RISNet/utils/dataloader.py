@@ -106,6 +106,9 @@ class CamImgTrain(data.Dataset):
         self.depth_transform = transforms.Compose([
             transforms.Resize((self.image_size, self.image_size)),
             transforms.ToTensor()])
+        
+        print("Depth Root:", depth_root)
+        print("Depth Images:", len(self.depths))
 
     def __getitem__(self, index):
         image = self.rgb_loader(self.images[index])
