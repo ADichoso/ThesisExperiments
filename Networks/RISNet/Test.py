@@ -17,7 +17,7 @@ opt = parser.parse_args()
 
 for _data_name in ['ACOD-12K']:
     data_path = opt.test_path + '{}/Test/'.format(_data_name)
-    save_path = './Results/{}/'.format(_data_name)
+    save_path = './Results/RISNet/{}/'.format(_data_name)
     model = RISNet()
     model.load_state_dict(torch.load(opt.pth_path, map_location="cuda:0"))
     model.cuda()
