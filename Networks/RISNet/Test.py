@@ -12,7 +12,7 @@ from utils.dataloader import test_dataset
 parser = argparse.ArgumentParser()
 parser.add_argument('--testsize', type=int, default=704, help='testing size default 704')
 parser.add_argument('--pth_path', type=str, default='./Checkpoints/RISNet/100_RISNet.pth', help='path to load your model checkpoint')
-parser.add_argument('--test_path', type=str, default='./Datasets', help='path to test dataset')
+parser.add_argument('--test_path', type=str, default='./Datasets/', help='path to test dataset')
 opt = parser.parse_args()
 
 for _data_name in ['ACOD-12K']:
