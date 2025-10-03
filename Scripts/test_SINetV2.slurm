@@ -7,7 +7,7 @@
 #SBATCH --job-name="TEST-SINetV2-ACOD-1"
 #SBATCH --cpus-per-task=8
 #SBATCH --mem-per-cpu=4GB
-#SBATCH --output="Logs/Test/SINetV2_ACOD_1_test.txt"
+#SBATCH --output="./output/SINetV2_ACOD_1_test.txt"
 #SBATCH --mail-user=aaron_gabrielle_dichoso@dlsu.edu.ph
 #SBATCH --mail-type=END
 

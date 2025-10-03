@@ -7,7 +7,7 @@
 #SBATCH --job-name="HitNet-ACOD-1"
 #SBATCH --cpus-per-task=8
 #SBATCH --mem-per-cpu=4GB
-#SBATCH --output="Logs/Train/HitNet_ACOD_1.txt"
+#SBATCH --output="./output/HitNet_ACOD_1.txt"
 #SBATCH --mail-user=aaron_gabrielle_dichoso@dlsu.edu.ph
 #SBATCH --mail-type=END
 

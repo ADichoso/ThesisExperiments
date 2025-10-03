@@ -1,0 +1,217 @@
+Backbones
+Checkpoints
+Data
+Datasets
+Figures
+Logs
+Networks
+py_sod_metrics
+Results
+RISNetTesting.ipynb
+Scripts
+CUDA_DEVICE=/dev/nvidia/0
+Thu Sep 25 17:35:31 2025       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 470.239.06   Driver Version: 470.239.06   CUDA Version: 11.4     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  Tesla P40           Off  | 00000000:82:00.0 Off |                    0 |
+| N/A   32C    P0    47W / 250W |      0MiB / 22919MiB |      1%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|  No running processes found                                                 |
++-----------------------------------------------------------------------------+
+Module load: anaconda/3-2023.07-2
+conda 23.7.4
+model paramters 25726695
+AdamW (
+Parameter Group 0
+    amsgrad: False
+    betas: (0.9, 0.999)
+    eps: 1e-08
+    lr: 0.0001
+    weight_decay: 0.0001
+)
+False
+no augmentation
+#################### Start Training ####################
+2025-09-25 17:38:43.213666 Epoch [001/100], Step [0020/1150],  lateral-5: 1.5480]
+2025-09-25 17:39:27.329403 Epoch [001/100], Step [0040/1150],  lateral-5: 1.5315]
+2025-09-25 17:40:11.423312 Epoch [001/100], Step [0060/1150],  lateral-5: 1.5068]
+2025-09-25 17:40:55.505037 Epoch [001/100], Step [0080/1150],  lateral-5: 1.4930]
+2025-09-25 17:41:39.567459 Epoch [001/100], Step [0100/1150],  lateral-5: 1.4860]
+2025-09-25 17:42:23.694188 Epoch [001/100], Step [0120/1150],  lateral-5: 1.4760]
+2025-09-25 17:43:07.756166 Epoch [001/100], Step [0140/1150],  lateral-5: 1.4662]
+2025-09-25 17:43:51.882846 Epoch [001/100], Step [0160/1150],  lateral-5: 1.4516]
+2025-09-25 17:44:35.998102 Epoch [001/100], Step [0180/1150],  lateral-5: 1.4331]
+2025-09-25 17:45:20.088905 Epoch [001/100], Step [0200/1150],  lateral-5: 1.4242]
+2025-09-25 17:46:04.166320 Epoch [001/100], Step [0220/1150],  lateral-5: 1.3953]
+2025-09-25 17:46:48.218221 Epoch [001/100], Step [0240/1150],  lateral-5: 1.3688]
+2025-09-25 17:47:32.291107 Epoch [001/100], Step [0260/1150],  lateral-5: 1.3517]
+2025-09-25 17:48:16.368678 Epoch [001/100], Step [0280/1150],  lateral-5: 1.3298]
+2025-09-25 17:49:00.468546 Epoch [001/100], Step [0300/1150],  lateral-5: 1.3097]
+2025-09-25 17:49:44.587827 Epoch [001/100], Step [0320/1150],  lateral-5: 1.2929]
+2025-09-25 17:50:28.687470 Epoch [001/100], Step [0340/1150],  lateral-5: 1.2784]
+2025-09-25 17:51:12.840805 Epoch [001/100], Step [0360/1150],  lateral-5: 1.2668]
+2025-09-25 17:51:56.931673 Epoch [001/100], Step [0380/1150],  lateral-5: 1.2492]
+2025-09-25 17:52:41.047303 Epoch [001/100], Step [0400/1150],  lateral-5: 1.2208]
+2025-09-25 17:53:25.111083 Epoch [001/100], Step [0420/1150],  lateral-5: 1.2092]
+2025-09-25 17:54:09.194584 Epoch [001/100], Step [0440/1150],  lateral-5: 1.1861]
+2025-09-25 17:54:53.253276 Epoch [001/100], Step [0460/1150],  lateral-5: 1.1740]
+2025-09-25 17:55:37.293377 Epoch [001/100], Step [0480/1150],  lateral-5: 1.1833]
+2025-09-25 17:56:21.406615 Epoch [001/100], Step [0500/1150],  lateral-5: 1.1654]
+2025-09-25 17:57:05.449313 Epoch [001/100], Step [0520/1150],  lateral-5: 1.1447]
+2025-09-25 17:57:49.539078 Epoch [001/100], Step [0540/1150],  lateral-5: 1.1324]
+2025-09-25 17:58:33.633893 Epoch [001/100], Step [0560/1150],  lateral-5: 1.1234]
+2025-09-25 17:59:17.773988 Epoch [001/100], Step [0580/1150],  lateral-5: 1.1242]
+2025-09-25 18:00:01.893458 Epoch [001/100], Step [0600/1150],  lateral-5: 1.1047]
+2025-09-25 18:00:46.006683 Epoch [001/100], Step [0620/1150],  lateral-5: 1.0771]
+2025-09-25 18:01:30.104070 Epoch [001/100], Step [0640/1150],  lateral-5: 1.0750]
+2025-09-25 18:02:14.184057 Epoch [001/100], Step [0660/1150],  lateral-5: 1.0698]
+2025-09-25 18:02:58.313736 Epoch [001/100], Step [0680/1150],  lateral-5: 1.0496]
+2025-09-25 18:03:42.440265 Epoch [001/100], Step [0700/1150],  lateral-5: 1.0380]
+2025-09-25 18:04:26.531581 Epoch [001/100], Step [0720/1150],  lateral-5: 1.0342]
+2025-09-25 18:05:10.582189 Epoch [001/100], Step [0740/1150],  lateral-5: 1.0271]
+2025-09-25 18:05:54.688407 Epoch [001/100], Step [0760/1150],  lateral-5: 1.0140]
+2025-09-25 18:06:38.788474 Epoch [001/100], Step [0780/1150],  lateral-5: 0.9937]
+2025-09-25 18:07:22.855576 Epoch [001/100], Step [0800/1150],  lateral-5: 0.9878]
+2025-09-25 18:08:06.974316 Epoch [001/100], Step [0820/1150],  lateral-5: 0.9917]
+2025-09-25 18:08:51.060066 Epoch [001/100], Step [0840/1150],  lateral-5: 0.9727]
+2025-09-25 18:09:35.162900 Epoch [001/100], Step [0860/1150],  lateral-5: 0.9556]
+2025-09-25 18:10:19.185149 Epoch [001/100], Step [0880/1150],  lateral-5: 0.9519]
+2025-09-25 18:11:03.284910 Epoch [001/100], Step [0900/1150],  lateral-5: 0.9328]
+2025-09-25 18:11:47.343034 Epoch [001/100], Step [0920/1150],  lateral-5: 0.9223]
+2025-09-25 18:12:31.453042 Epoch [001/100], Step [0940/1150],  lateral-5: 0.9230]
+2025-09-25 18:13:15.476677 Epoch [001/100], Step [0960/1150],  lateral-5: 0.9111]
+2025-09-25 18:13:59.557440 Epoch [001/100], Step [0980/1150],  lateral-5: 0.9200]
+2025-09-25 18:14:43.643001 Epoch [001/100], Step [1000/1150],  lateral-5: 0.9090]
+2025-09-25 18:15:27.782000 Epoch [001/100], Step [1020/1150],  lateral-5: 0.8825]
+2025-09-25 18:16:11.905824 Epoch [001/100], Step [1040/1150],  lateral-5: 0.8801]
+2025-09-25 18:16:55.974974 Epoch [001/100], Step [1060/1150],  lateral-5: 0.8724]
+2025-09-25 18:17:40.116198 Epoch [001/100], Step [1080/1150],  lateral-5: 0.8474]
+2025-09-25 18:18:24.201566 Epoch [001/100], Step [1100/1150],  lateral-5: 0.8328]
+2025-09-25 18:19:08.229466 Epoch [001/100], Step [1120/1150],  lateral-5: 0.8349]
+2025-09-25 18:19:52.340565 Epoch [001/100], Step [1140/1150],  lateral-5: 0.8206]
+2025-09-25 18:20:13.749129 Epoch [001/100], Step [1150/1150],  lateral-5: 0.8059]
+Epoch: 1, MAE: 0.03100307367442437, bestMAE: 1, bestEpoch: 0.
+/home/aaron.dichoso/.conda/envs/Training36/lib/python3.6/site-packages/torch/nn/functional.py:3635: UserWarning: Default upsampling behavior when mode=bilinear is changed to align_corners=False since 0.4.0. Please specify align_corners=True if the old behavior is desired. See the documentation of nn.Upsample for details.
+  "See the documentation of nn.Upsample for details.".format(mode)
+/home/aaron.dichoso/.conda/envs/Training36/lib/python3.6/site-packages/torch/nn/functional.py:3680: UserWarning: The default behavior for interpolate/upsample with float scale_factor changed in 1.6.0 to align with other frameworks/libraries, and now uses scale_factor directly, instead of relying on the computed output size. If you wish to restore the old behavior, please set recompute_scale_factor=True. See the documentation of nn.Upsample for details. 
+  "The default behavior for interpolate/upsample with float scale_factor changed "
+/home/aaron.dichoso/.conda/envs/Training36/lib/python3.6/site-packages/torch/nn/_reduction.py:42: UserWarning: size_average and reduce args will be deprecated, please use reduction='mean' instead.
+  warnings.warn(warning.format(ret))
+/home/aaron.dichoso/.conda/envs/Training36/lib/python3.6/site-packages/torch/nn/functional.py:3509: UserWarning: nn.functional.upsample is deprecated. Use nn.functional.interpolate instead.
+  warnings.warn("nn.functional.upsample is deprecated. Use nn.functional.interpolate instead.")
+2025-09-25 18:27:59.193819 Epoch [002/100], Step [0020/1150],  lateral-5: 0.7950]
+2025-09-25 18:28:43.292735 Epoch [002/100], Step [0040/1150],  lateral-5: 0.7853]
+2025-09-25 18:29:27.385981 Epoch [002/100], Step [0060/1150],  lateral-5: 0.7718]
+2025-09-25 18:30:11.527856 Epoch [002/100], Step [0080/1150],  lateral-5: 0.7741]
+2025-09-25 18:30:55.655903 Epoch [002/100], Step [0100/1150],  lateral-5: 0.7900]
+2025-09-25 18:31:39.721829 Epoch [002/100], Step [0120/1150],  lateral-5: 0.7913]
+2025-09-25 18:32:23.833389 Epoch [002/100], Step [0140/1150],  lateral-5: 0.7820]
+2025-09-25 18:33:07.854936 Epoch [002/100], Step [0160/1150],  lateral-5: 0.7589]
+2025-09-25 18:33:51.913140 Epoch [002/100], Step [0180/1150],  lateral-5: 0.7499]
+2025-09-25 18:34:36.013599 Epoch [002/100], Step [0200/1150],  lateral-5: 0.7421]
+2025-09-25 18:35:20.094802 Epoch [002/100], Step [0220/1150],  lateral-5: 0.7354]
+2025-09-25 18:36:04.176902 Epoch [002/100], Step [0240/1150],  lateral-5: 0.7421]
+2025-09-25 18:36:48.319244 Epoch [002/100], Step [0260/1150],  lateral-5: 0.7086]
+2025-09-25 18:37:32.395869 Epoch [002/100], Step [0280/1150],  lateral-5: 0.6953]
+2025-09-25 18:38:16.439089 Epoch [002/100], Step [0300/1150],  lateral-5: 0.6955]
+2025-09-25 18:39:00.589475 Epoch [002/100], Step [0320/1150],  lateral-5: 0.6887]
+2025-09-25 18:39:44.747842 Epoch [002/100], Step [0340/1150],  lateral-5: 0.6868]
+2025-09-25 18:40:28.844270 Epoch [002/100], Step [0360/1150],  lateral-5: 0.6644]
+2025-09-25 18:41:12.905422 Epoch [002/100], Step [0380/1150],  lateral-5: 0.6584]
+2025-09-25 18:41:56.924494 Epoch [002/100], Step [0400/1150],  lateral-5: 0.6611]
+2025-09-25 18:42:41.035842 Epoch [002/100], Step [0420/1150],  lateral-5: 0.6581]
+2025-09-25 18:43:25.115495 Epoch [002/100], Step [0440/1150],  lateral-5: 0.6645]
+2025-09-25 18:44:09.171448 Epoch [002/100], Step [0460/1150],  lateral-5: 0.6680]
+2025-09-25 18:44:53.307665 Epoch [002/100], Step [0480/1150],  lateral-5: 0.6454]
+2025-09-25 18:45:37.384442 Epoch [002/100], Step [0500/1150],  lateral-5: 0.6404]
+2025-09-25 18:46:21.502268 Epoch [002/100], Step [0520/1150],  lateral-5: 0.6449]
+2025-09-25 18:47:05.619168 Epoch [002/100], Step [0540/1150],  lateral-5: 0.6304]
+2025-09-25 18:47:49.729957 Epoch [002/100], Step [0560/1150],  lateral-5: 0.6369]
+2025-09-25 18:48:33.862640 Epoch [002/100], Step [0580/1150],  lateral-5: 0.6373]
+2025-09-25 18:49:17.987805 Epoch [002/100], Step [0600/1150],  lateral-5: 0.6070]
+2025-09-25 18:50:02.104215 Epoch [002/100], Step [0620/1150],  lateral-5: 0.5908]
+2025-09-25 18:50:46.200589 Epoch [002/100], Step [0640/1150],  lateral-5: 0.5868]
+2025-09-25 18:51:30.294053 Epoch [002/100], Step [0660/1150],  lateral-5: 0.5895]
+2025-09-25 18:52:14.392483 Epoch [002/100], Step [0680/1150],  lateral-5: 0.6088]
+2025-09-25 18:52:58.468645 Epoch [002/100], Step [0700/1150],  lateral-5: 0.5992]
+2025-09-25 18:53:42.564310 Epoch [002/100], Step [0720/1150],  lateral-5: 0.5655]
+2025-09-25 18:54:26.722729 Epoch [002/100], Step [0740/1150],  lateral-5: 0.5507]
+2025-09-25 18:55:10.868010 Epoch [002/100], Step [0760/1150],  lateral-5: 0.5546]
+2025-09-25 18:55:54.920112 Epoch [002/100], Step [0780/1150],  lateral-5: 0.5401]
+2025-09-25 18:56:39.026988 Epoch [002/100], Step [0800/1150],  lateral-5: 0.5253]
+2025-09-25 18:57:23.108690 Epoch [002/100], Step [0820/1150],  lateral-5: 0.5282]
+2025-09-25 18:58:07.237720 Epoch [002/100], Step [0840/1150],  lateral-5: 0.5162]
+2025-09-25 18:58:51.353083 Epoch [002/100], Step [0860/1150],  lateral-5: 0.5256]
+2025-09-25 18:59:35.447754 Epoch [002/100], Step [0880/1150],  lateral-5: 0.5549]
+2025-09-25 19:00:19.567661 Epoch [002/100], Step [0900/1150],  lateral-5: 0.5487]
+2025-09-25 19:01:03.681462 Epoch [002/100], Step [0920/1150],  lateral-5: 0.5278]
+2025-09-25 19:01:47.793512 Epoch [002/100], Step [0940/1150],  lateral-5: 0.5204]
+2025-09-25 19:02:31.890375 Epoch [002/100], Step [0960/1150],  lateral-5: 0.5260]
+2025-09-25 19:03:15.990030 Epoch [002/100], Step [0980/1150],  lateral-5: 0.5216]
+2025-09-25 19:04:00.118892 Epoch [002/100], Step [1000/1150],  lateral-5: 0.5310]
+2025-09-25 19:04:44.217759 Epoch [002/100], Step [1020/1150],  lateral-5: 0.5142]
+2025-09-25 19:05:28.375500 Epoch [002/100], Step [1040/1150],  lateral-5: 0.4821]
+2025-09-25 19:06:12.504584 Epoch [002/100], Step [1060/1150],  lateral-5: 0.5059]
+2025-09-25 19:06:56.675963 Epoch [002/100], Step [1080/1150],  lateral-5: 0.5066]
+2025-09-25 19:07:40.762292 Epoch [002/100], Step [1100/1150],  lateral-5: 0.4778]
+2025-09-25 19:08:24.905509 Epoch [002/100], Step [1120/1150],  lateral-5: 0.4925]
+2025-09-25 19:09:08.971700 Epoch [002/100], Step [1140/1150],  lateral-5: 0.4920]
+2025-09-25 19:09:30.365607 Epoch [002/100], Step [1150/1150],  lateral-5: 0.4895]
+Epoch: 2, MAE: 0.010695993953722897, bestMAE: 0.03100307367442437, bestEpoch: 0.
+Save state_dict successfully! Best epoch:2.
+2025-09-25 19:16:00.599056 Epoch [003/100], Step [0020/1150],  lateral-5: 0.5049]
+2025-09-25 19:16:44.689686 Epoch [003/100], Step [0040/1150],  lateral-5: 0.4912]
+2025-09-25 19:17:28.831002 Epoch [003/100], Step [0060/1150],  lateral-5: 0.4838]
+2025-09-25 19:18:12.951246 Epoch [003/100], Step [0080/1150],  lateral-5: 0.4916]
+2025-09-25 19:18:57.038011 Epoch [003/100], Step [0100/1150],  lateral-5: 0.4893]
+2025-09-25 19:19:41.182474 Epoch [003/100], Step [0120/1150],  lateral-5: 0.4843]
+2025-09-25 19:20:25.282878 Epoch [003/100], Step [0140/1150],  lateral-5: 0.4760]
+2025-09-25 19:21:09.384507 Epoch [003/100], Step [0160/1150],  lateral-5: 0.4611]
+2025-09-25 19:21:53.478549 Epoch [003/100], Step [0180/1150],  lateral-5: 0.4471]
+2025-09-25 19:22:37.629667 Epoch [003/100], Step [0200/1150],  lateral-5: 0.4375]
+2025-09-25 19:23:21.772116 Epoch [003/100], Step [0220/1150],  lateral-5: 0.4480]
+2025-09-25 19:24:05.898710 Epoch [003/100], Step [0240/1150],  lateral-5: 0.4517]
+2025-09-25 19:24:49.979704 Epoch [003/100], Step [0260/1150],  lateral-5: 0.4408]
+2025-09-25 19:25:34.054755 Epoch [003/100], Step [0280/1150],  lateral-5: 0.4370]
+2025-09-25 19:26:18.203525 Epoch [003/100], Step [0300/1150],  lateral-5: 0.4341]
+2025-09-25 19:27:02.326784 Epoch [003/100], Step [0320/1150],  lateral-5: 0.4360]
+2025-09-25 19:27:46.432683 Epoch [003/100], Step [0340/1150],  lateral-5: 0.4357]
+2025-09-25 19:28:30.575103 Epoch [003/100], Step [0360/1150],  lateral-5: 0.4338]
+2025-09-25 19:29:14.633513 Epoch [003/100], Step [0380/1150],  lateral-5: 0.4334]
+2025-09-25 19:29:58.729333 Epoch [003/100], Step [0400/1150],  lateral-5: 0.4312]
+2025-09-25 19:30:42.790839 Epoch [003/100], Step [0420/1150],  lateral-5: 0.4372]
+2025-09-25 19:31:26.904084 Epoch [003/100], Step [0440/1150],  lateral-5: 0.4477]
+2025-09-25 19:32:11.021500 Epoch [003/100], Step [0460/1150],  lateral-5: 0.4270]
+2025-09-25 19:32:55.106316 Epoch [003/100], Step [0480/1150],  lateral-5: 0.3966]
+2025-09-25 19:33:39.244596 Epoch [003/100], Step [0500/1150],  lateral-5: 0.4161]
+2025-09-25 19:34:23.359551 Epoch [003/100], Step [0520/1150],  lateral-5: 0.4291]
+2025-09-25 19:35:07.462124 Epoch [003/100], Step [0540/1150],  lateral-5: 0.4173]
+Traceback (most recent call last):
+  File "Networks/HitNet/Train.py", line 218, in <module>
+    train(train_loader, model, optimizer, epoch, opt.save_path)
+  File "Networks/HitNet/Train.py", line 126, in train
+    optimizer.step()
+  File "/home/aaron.dichoso/.conda/envs/Training36/lib/python3.6/site-packages/torch/optim/optimizer.py", line 88, in wrapper
+    return func(*args, **kwargs)
+  File "/home/aaron.dichoso/.conda/envs/Training36/lib/python3.6/site-packages/torch/autograd/grad_mode.py", line 28, in decorate_context
+    return func(*args, **kwargs)
+  File "/home/aaron.dichoso/.conda/envs/Training36/lib/python3.6/site-packages/torch/optim/adamw.py", line 148, in step
+    eps=group['eps'])
+  File "/home/aaron.dichoso/.conda/envs/Training36/lib/python3.6/site-packages/torch/optim/_functional.py", line 143, in adamw
+    param.addcdiv_(exp_avg, denom, value=-step_size)
+RuntimeError: CUDA error: uncorrectable ECC error encountered
+CUDA kernel errors might be asynchronously reported at some other API call,so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1.
+srun: error: saliksik-gpu-02: task 0: Exited with exit code 1

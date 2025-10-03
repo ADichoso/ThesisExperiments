@@ -1,0 +1,53 @@
+Backbones
+Checkpoints
+Data
+Datasets
+Figures
+Logs
+Networks
+py_sod_metrics
+Results
+RISNetTesting.ipynb
+Scripts
+CUDA_DEVICE=/dev/nvidia/0
+Fri Oct  3 09:00:17 2025       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 470.239.06   Driver Version: 470.239.06   CUDA Version: 11.4     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  Tesla P40           Off  | 00000000:82:00.0 Off |                    0 |
+| N/A   34C    P0    47W / 250W |      0MiB / 22919MiB |      1%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|  No running processes found                                                 |
++-----------------------------------------------------------------------------+
+Module load: anaconda/3-2023.07-2
+conda 23.7.4
+USE GPU 0
+Random Seed:  1024
+Traceback (most recent call last):
+  File "/scratch1/aaron.dichoso/Networks/PreyNet/trainnew.py", line 283, in <module>
+    model = SAM_ResNet().cuda()
+  File "/scratch1/aaron.dichoso/Networks/PreyNet/model/B_TwoStage_P66_20_SC_emb_att.py", line 229, in __init__
+    resnet50 = resnet.resnet50(backbone_path)
+  File "/scratch1/aaron.dichoso/Networks/PreyNet/backbone/resnet/resnet.py", line 272, in resnet50
+    return _resnet('resnet50', Bottleneck, [3, 4, 6, 3], backbone_path, pretrained, **kwargs)
+  File "/scratch1/aaron.dichoso/Networks/PreyNet/backbone/resnet/resnet.py", line 234, in _resnet
+    state_dict = torch.load(backbone_path, weights_only=False)
+  File "/home/aaron.dichoso/.conda/envs/TrainingApex/lib/python3.9/site-packages/torch/serialization.py", line 608, in load
+    return _legacy_load(opened_file, map_location, pickle_module, **pickle_load_args)
+  File "/home/aaron.dichoso/.conda/envs/TrainingApex/lib/python3.9/site-packages/torch/serialization.py", line 762, in _legacy_load
+    return legacy_load(f)
+  File "/home/aaron.dichoso/.conda/envs/TrainingApex/lib/python3.9/site-packages/torch/serialization.py", line 689, in legacy_load
+    num_storages = pickle_module.load(f, **pickle_load_args)
+TypeError: 'weights_only' is an invalid keyword argument for load()
+srun: error: saliksik-gpu-06: task 0: Exited with exit code 1

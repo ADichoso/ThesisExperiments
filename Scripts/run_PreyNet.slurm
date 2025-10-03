@@ -7,7 +7,7 @@
 #SBATCH --job-name="PreyNet-ACOD-1"
 #SBATCH --cpus-per-task=8
 #SBATCH --mem-per-cpu=4GB
-#SBATCH --output="Logs/Train/PreyNet_ACOD_1.txt"
+#SBATCH --output="./output/PreyNet_ACOD_1.txt"
 #SBATCH --mail-user=aaron_gabrielle_dichoso@dlsu.edu.ph
 #SBATCH --mail-type=END
 
