@@ -241,10 +241,10 @@ class PopNet(nn.Module):
         self.layer_cat = nn.Conv2d(4, 3, kernel_size=1)
         self.layer_deps = self.backbone
         self.layer0_deps = Res2Net_model(ind)
-        self.depths_conv_4 = nn.Sequential(BasicConv2d(1024, 320, 3, padding=1), self.relu)
-        self.depths_conv_3 = nn.Sequential(BasicConv2d(640, 128, 3, padding=1), self.relu)
-        self.depths_conv_2 = nn.Sequential(BasicConv2d(256, 64, 3, padding=1), self.relu)
-        self.depths_conv_1 = nn.Sequential(BasicConv2d(256, 64, 3, padding=1), self.relu)
+        self.depths_conv_4 = nn.Sequential(BasicConv2d(512, 320, 3, padding=1), self.relu)
+        self.depths_conv_3 = nn.Sequential(BasicConv2d(320, 128, 3, padding=1), self.relu)
+        self.depths_conv_2 = nn.Sequential(BasicConv2d(128, 64, 3, padding=1), self.relu)
+        self.depths_conv_1 = nn.Sequential(BasicConv2d(64, 64, 3, padding=1), self.relu)
         self.depths_conv_0 = nn.Sequential(BasicConv2d(64, 1, 3, padding=1), self.relu)        
 
 
@@ -344,18 +344,18 @@ class PopNet(nn.Module):
         ####################################################
         
         rgb_depth = self.layer_cat(torch.cat([depths,imgs],dim=1))
-        deps_0 = self.layer0_deps(rgb_depth)[0]
+        deps_0 = self.layer0_deps(rgb_depth)[0] # 64
         deps_1, deps_2, deps_3, deps_4 =  self.layer_deps(rgb_depth)
         # 64, 128, 320, 512
 
-        x4 =  self.depths_conv_4(self.depth_upsample_2(deps_4)) + deps_3
-        x3 =  self.depths_conv_3(self.depth_upsample_2(x4))  + deps_2
-        x2 =  self.depths_conv_2(self.depth_upsample_2(x3))  + deps_1
-        x1 =  self.depths_conv_1(x2) + deps_0
+        x4 =  self.depths_conv_4(self.depth_upsample_2(deps_4)) + deps_3 # 512 -> 320
+        x3 =  self.depths_conv_3(self.depth_upsample_2(x4))  + deps_2 # 320 -> 128
+        x2 =  self.depths_conv_2(self.depth_upsample_2(x3))  + deps_1 # 128 -> 64
+        x1 =  self.depths_conv_1(x2) + deps_0 # 64 -> 64
         x0_1 =  self.depths_conv_0(x1)
         x0_2 =  self.depth_upsample_4(x0_1)
 
-        img_0 = self.layer0_rgb(imgs)[0]
+        img_0 = self.layer0_rgb(imgs)[0] # 64
         img_1, img_2, img_3, img_4 = self.layer_rgb(imgs)
 
         dep_0 = self.layer0_dep(self.layer_dep0(x0_2))[0]
