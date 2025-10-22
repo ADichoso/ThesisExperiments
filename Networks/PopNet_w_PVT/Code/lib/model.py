@@ -339,8 +339,6 @@ class PopNet(nn.Module):
         self.ful_layer0 = MFA(channel)
 
     def forward(self, imgs, depths):
-
-
         ####################################################
         ##  depthsub encoder-decoder
         ####################################################
