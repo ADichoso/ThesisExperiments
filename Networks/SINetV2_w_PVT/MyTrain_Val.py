@@ -148,6 +148,7 @@ if __name__ == '__main__':
     parser.add_argument('--decay_rate', type=float, default=0.1, help='decay rate of learning rate')
     parser.add_argument('--decay_epoch', type=int, default=50, help='every n epochs decay learning rate')
     parser.add_argument('--load', type=str, default=None, help='train from checkpoints')
+    parser.add_argument('--load_epoch', type=int, default=None, help='epoch of loaded checkpoints')
     parser.add_argument('--gpu_id', type=str, default='0', help='train use gpu')
     parser.add_argument('--train_root', type=str, default='./Datasets/ACOD-12K/Train/',
                         help='the training rgb images root')
@@ -170,9 +171,10 @@ if __name__ == '__main__':
     # build the model
     model = Network(channel=32).cuda()
 
-    if opt.load is not None:
+    if opt.load is not None and opt.load_epoch is not None and opt.load_epoch > 0 and opt.load_epoch < opt.epoch:
         model.load_state_dict(torch.load(opt.load))
         print('load model from ', opt.load)
+        opt.epoch -= opt.load_epoch
 
     optimizer = torch.optim.Adam(model.parameters(), opt.lr)
 
