@@ -358,7 +358,7 @@ class PopNet(nn.Module):
         img_0 = self.layer0_rgb(imgs)[0] # 64
         img_1, img_2, img_3, img_4 = self.layer_rgb(imgs)
 
-        dep_0 = self.layer0_dep(self.layer_dep0(x0_2))[0]
+        dep_0 = self.layer0_deps(self.layer_dep0(x0_2))[0]
         dep_1, dep_2, dep_3, dep_4 = self.layer_dep(self.layer_dep0(x0_2))
 
         ####################################################
