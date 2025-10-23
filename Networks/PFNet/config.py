@@ -13,10 +13,10 @@ import os
 
 backbone_path = './Backbones/resnet50-19c8e357.pth'
 
-datasets_root = './Datasets'
+datasets_root = './Datasets/'
 
-cod_training_root = os.path.join(datasets_root, 'train')
-acod_training_root = os.path.join(datasets_root, 'ACOD-12K/Train')
+cod_training_root = os.path.join(datasets_root, 'Train')
+acod_training_root = os.path.join(datasets_root, '/ACOD-12K/Train')
 
 chameleon_path = os.path.join(datasets_root, 'test/CHAMELEON')
 camo_path = os.path.join(datasets_root, 'test/CAMO')
