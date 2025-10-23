@@ -60,7 +60,7 @@ def main(args):
         builtins.print = print_pass
        
     ### model ###
-    net = FSPNet_model.Model(args.pretrain, img_size=384)
+    net = FSPNet_model.Model(args.pretrain, img_size=704)
     net = torch.nn.SyncBatchNorm.convert_sync_batchnorm(net)
     if args.distributed:
         # For multiprocessing distributed, DistributedDataParallel constructor
