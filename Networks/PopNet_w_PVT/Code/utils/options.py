@@ -12,7 +12,7 @@ parser.add_argument('--decay_rate',  type=float, default=0.1,   help='decay rate
 parser.add_argument('--decay_epoch', type=int,   default=60,    help='every n epochs decay learning rate')
 #parser.add_argument('--load',        type=str,   default='./SPNet_epoch_best.pth',  help='train from checkpoints') # if continue learning from previous stage
 parser.add_argument('--load',        type=str,   default='',  help='train from checkpoints')
-
+parser.add_argument('--load_epoch_num',        type=int,   default=0,  help='epoch number of loaded model')
 parser.add_argument('--gpu_id',      type=str,   default='1',   help='train use gpu')
 
 parser.add_argument('--rgb_label_root',      type=str, default='./Datasets/ACOD-12K/Train/Imgs/',           help='the training rgb images root')

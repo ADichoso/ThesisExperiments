@@ -25,7 +25,8 @@ cudnn.benchmark = True  # Enable to improve performance if input size is constan
 
 # Build the model
 model = PopNet(32, 50).to(device)
-if (opt.load is not None) and opt.load != '':
+load_number = opt.load_epoch_num
+if (opt.load is not None) and opt.load != '' and opt.load_epoch_num > 0:
     model.load_state_dict(torch.load(opt.load))
     print('Loaded model from', opt.load)
 
@@ -185,7 +186,7 @@ def val(test_loader, model, epoch, save_path):
 if __name__ == '__main__':
     print("Start training...")
 
-    for epoch in range(1, opt.epoch):
+    for epoch in range(load_number, opt.epoch):
         cur_lr = adjust_lr(optimizer, opt.lr, epoch, opt.decay_rate, opt.decay_epoch)
         writer.add_scalar('learning_rate', cur_lr, global_step=epoch)
 

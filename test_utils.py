@@ -109,7 +109,7 @@ def overlay_masks(img, gt, pred=None, alpha=0.8, darken_bg=0.6):
         overlay[fn] = [255, 165, 0, int(192*alpha)]      # FN: orange
         overlay[fp] = [255, 0, 255, int(192*alpha)]      # FP: magenta
     else:
-        overlay[gt] = [255, 165, 0, int(192*alpha)]      # GT only: orange
+        overlay[gt] = [65, 105, 225, int(192*alpha)]      # GT only: orange
 
     return img.astype(np.uint8), overlay
 
@@ -169,22 +169,24 @@ wspace=0.05, hspace=0.05,
         fig.suptitle(title, fontsize=title_fontsize, y=1.20)
 
     # Create legend patches
-    tp_patch = mpatches.Patch(color=(0/255, 1, 1), label='TP (True Positive)')       # Cyan
+    gt_patch = mpatches.Patch(color=(65/255, 105/255, 225/255), label='GT (Ground Truth)')       # Blue (GT)
+    tp_patch = mpatches.Patch(color=(0, 1, 1), label='TP (True Positive)')       # Cyan
     fn_patch = mpatches.Patch(color=(1, 165/255, 0), label='FN (False Negative)')     # Orange
     fp_patch = mpatches.Patch(color=(1, 0, 1), label='FP (False Positive)')           # Magenta
 
-    # Place legend outside the right of the figure
+    # Add horizontal legend below all subplots
     fig.legend(
-        handles=[tp_patch, fn_patch, fp_patch],
-        loc='center left',
-        bbox_to_anchor=(1.02, 0.5),    # move outside the figure
+        handles=[gt_patch, tp_patch, fn_patch, fp_patch],
+        loc='center',
+        bbox_to_anchor=(0.5, -0.03),   # slightly below the figure
+        ncol=4,                        # one row, three columns
         fontsize=label_fontsize - 2,
         frameon=True,
         title="Mask Legend",
         title_fontsize=label_fontsize - 2
     )
 
-    plt.subplots_adjust(right=0.85)  # leave space for the legend
+    plt.subplots_adjust(bottom=0.04)   # leave space for the legend
 
 
     if save_path:
