@@ -55,9 +55,6 @@ def main(cfg):
             scio.savemat('res.mat', {'test_res':test_res})  
             
             
-            
-            
-            
 #            
 #    for thread in threads:
 #        print(thread.run())
