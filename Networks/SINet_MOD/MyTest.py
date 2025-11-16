@@ -3,6 +3,7 @@ import torch.nn.functional as F
 import numpy as np
 import os
 import argparse
+import imageio.v2 as imageio
 from scipy import misc  # NOTES: pip install scipy == 1.2.2 (prerequisite!)
 from Src.SINet import SINet_ResNet50
 from Src.utils.Dataloader import test_dataset
@@ -10,18 +11,18 @@ from Src.utils.trainer import eval_mae, numpy2tensor
 
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--testsize', type=int, default=352, help='the snapshot input size')
+parser.add_argument('--testsize', type=int, default=704, help='the snapshot input size')
 parser.add_argument('--model_path', type=str,
-                    default='./Snapshot/2020-CVPR-SINet/SINet_40.pth')
+                    default='./Networks/SINet/SINet_30.pth')
 parser.add_argument('--test_save', type=str,
-                    default='./Result/2020-CVPR-SINet-New/')
+                    default='./Results/SINet/')
 opt = parser.parse_args()
 
 model = SINet_ResNet50().cuda()
 model.load_state_dict(torch.load(opt.model_path))
 model.eval()
 
-for dataset in ['COD10K']:
+for dataset in ['ACOD-12K']:
     save_path = opt.test_save + dataset + '/'
     os.makedirs(save_path, exist_ok=True)
     # NOTES:
@@ -29,10 +30,11 @@ for dataset in ['COD10K']:
     #  you just modify the params (i.e., `image_root=your_test_img_path` and `gt_root=your_test_img_path`)
     #  with the same filepath. We recover the original size according to the shape of grouth-truth, and thus,
     #  the grouth-truth map is unnecessary actually.
-    test_loader = test_dataset(image_root='./Dataset/TestDataset/{}/Image/'.format(dataset),
-                               gt_root='./Dataset/TestDataset/{}/GT/'.format(dataset),
+    test_loader = test_dataset(image_root='./Datasets/{}/Test/Imgs/'.format(dataset),
+                               gt_root='./Datasets/{}/Test/GT/'.format(dataset),
                                testsize=opt.testsize)
-    img_count = 1
+    print(test_loader.size)
+    img_count = 0
     for iteration in range(test_loader.size):
         # load data
         image, gt, name = test_loader.load_data()
@@ -46,8 +48,7 @@ for dataset in ['COD10K']:
         cam = cam.sigmoid().data.cpu().numpy().squeeze()
         # normalize
         cam = (cam - cam.min()) / (cam.max() - cam.min() + 1e-8)
-        misc.imsave(save_path+name, cam)
-        # evaluate
+        imageio.imwrite(save_path + name, (cam * 255).astype(np.uint8))        # evaluate
         mae = eval_mae(numpy2tensor(cam), numpy2tensor(gt))
         # coarse score
         print('[Eval-Test] Dataset: {}, Image: {} ({}/{}), MAE: {}'.format(dataset, name, img_count,

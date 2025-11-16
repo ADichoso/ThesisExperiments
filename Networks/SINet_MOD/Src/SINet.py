@@ -3,6 +3,7 @@ import torch.nn as nn
 import torchvision.models as models
 from .SearchAttention import SA
 from Src.backbone.ResNet import ResNet_2Branch
+import torch.nn.functional as F
 
 
 class BasicConv2d(nn.Module):
@@ -70,7 +71,7 @@ class PDC_SM(nn.Module):
         super(PDC_SM, self).__init__()
         self.relu = nn.ReLU(True)
 
-        self.upsample = nn.Upsample(scale_factor=2, mode='bilinear', align_corners=True)
+        #self.upsample = nn.Upsample(scale_factor=2, mode='bilinear', align_corners=True)
         self.conv_upsample1 = BasicConv2d(channel, channel, 3, padding=1)
         self.conv_upsample2 = BasicConv2d(channel, channel, 3, padding=1)
         self.conv_upsample3 = BasicConv2d(channel, channel, 3, padding=1)
@@ -85,13 +86,25 @@ class PDC_SM(nn.Module):
     def forward(self, x1, x2, x3, x4):
         # print x1.shape, x2.shape, x3.shape, x4.shape
         x1_1 = x1
-        x2_1 = self.conv_upsample1(self.upsample(x1)) * x2
-        x3_1 = self.conv_upsample2(self.upsample(self.upsample(x1))) * self.conv_upsample3(self.upsample(x2)) * x3
 
-        x2_2 = torch.cat((x2_1, self.conv_upsample4(self.upsample(x1_1))), 1)
+        # x2_1: upsample x1 to x2's size, then conv, then elementwise multiply with x2
+        x1_up_x2 = F.interpolate(x1, size=x2.shape[2:], mode='bilinear', align_corners=True)
+        x2_1 = self.conv_upsample1(x1_up_x2) * x2
+
+        # x3_1: upsample x1 twice to x3's size, x2 once to x3's size, then apply convs and multiply
+        x1_up_x3 = F.interpolate(x1, size=x3.shape[2:], mode='bilinear', align_corners=True)
+        x2_up_x3 = F.interpolate(x2, size=x3.shape[2:], mode='bilinear', align_corners=True)
+        x3_1 = self.conv_upsample2(x1_up_x3) * self.conv_upsample3(x2_up_x3) * x3
+
+        # x2_2: concat x2_1 and upsampled x1_1 to x2_1 size, then conv
+        x1_1_up_x2 = F.interpolate(x1_1, size=x2_1.shape[2:], mode='bilinear', align_corners=True)
+        x2_2 = torch.cat((x2_1, self.conv_upsample4(x1_1_up_x2)), dim=1)
         x2_2 = self.conv_concat2(x2_2)
 
-        x3_2 = torch.cat((x3_1, self.conv_upsample5(self.upsample(x2_2)), x4), 1)
+        # x3_2: concat x3_1, upsampled x2_2 to x3_1 size, and x4
+        x2_2_up_x3 = F.interpolate(x2_2, size=x3_1.shape[2:], mode='bilinear', align_corners=True)
+        x4 = F.interpolate(x4, size=x3_1.shape[2:], mode='bilinear', align_corners=False)
+        x3_2 = torch.cat((x3_1, self.conv_upsample5(x2_2_up_x3), x4), dim=1)
         x3_2 = self.conv_concat3(x3_2)
 
         x = self.conv4(x3_2)
@@ -106,7 +119,6 @@ class PDC_IM(nn.Module):
         super(PDC_IM, self).__init__()
         self.relu = nn.ReLU(True)
 
-        self.upsample = nn.Upsample(scale_factor=2, mode='bilinear', align_corners=True)
         self.conv_upsample1 = BasicConv2d(channel, channel, 3, padding=1)
         self.conv_upsample2 = BasicConv2d(channel, channel, 3, padding=1)
         self.conv_upsample3 = BasicConv2d(channel, channel, 3, padding=1)
@@ -120,12 +132,24 @@ class PDC_IM(nn.Module):
 
     def forward(self, x1, x2, x3):
         x1_1 = x1
-        x2_1 = self.conv_upsample1(self.upsample(x1)) * x2
-        x3_1 = self.conv_upsample2(self.upsample(self.upsample(x1))) * self.conv_upsample3(self.upsample(x2)) * x3
 
-        x2_2 = torch.cat((x2_1, self.conv_upsample4(self.upsample(x1_1))), 1)
+        # Upsample x1 to x2's size and apply conv then elementwise multiply with x2
+        x1_up_x2 = F.interpolate(x1, size=x2.shape[2:], mode='bilinear', align_corners=True)
+        x2_1 = self.conv_upsample1(x1_up_x2) * x2
+
+        # Upsample x1 twice and x2 once to x3's size, then apply convs and multiply with x3
+        x1_up_x3 = F.interpolate(x1, size=x3.shape[2:], mode='bilinear', align_corners=True)
+        x2_up_x3 = F.interpolate(x2, size=x3.shape[2:], mode='bilinear', align_corners=True)
+        x3_1 = self.conv_upsample2(x1_up_x3) * self.conv_upsample3(x2_up_x3) * x3
+
+        # Concatenate x2_1 and upsampled x1_1 to x2_1's size
+        x1_1_up_x2 = F.interpolate(x1_1, size=x2_1.shape[2:], mode='bilinear', align_corners=True)
+        x2_2 = torch.cat((x2_1, self.conv_upsample4(x1_1_up_x2)), dim=1)
         x2_2 = self.conv_concat2(x2_2)
-        x3_2 = torch.cat((x3_1, self.conv_upsample5(self.upsample(x2_2))), 1)
+
+        # Concatenate x3_1 and upsampled x2_2 to x3_1's size
+        x2_2_up_x3 = F.interpolate(x2_2, size=x3_1.shape[2:], mode='bilinear', align_corners=True)
+        x3_2 = torch.cat((x3_1, self.conv_upsample5(x2_2_up_x3)), dim=1)
 
         x3_2 = self.conv_concat3(x3_2)
         x = self.conv4(x3_2)
@@ -134,8 +158,13 @@ class PDC_IM(nn.Module):
         return x
 
 
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+from torchvision import models
+
 class SINet_ResNet50(nn.Module):
-    # resnet based encoder decoder
+    # ResNet-based encoder-decoder
     def __init__(self, channel=32, opt=None):
         super(SINet_ResNet50, self).__init__()
 
@@ -153,8 +182,6 @@ class SINet_ResNet50(nn.Module):
         self.rf4_im = RF(2048, channel)
         self.pdc_im = PDC_IM(channel)
 
-        self.upsample_2 = nn.Upsample(scale_factor=2, mode='bilinear', align_corners=True)
-        self.upsample_8 = nn.Upsample(scale_factor=8, mode='bilinear', align_corners=True)
         self.SA = SA()
 
         if self.training:
@@ -162,29 +189,29 @@ class SINet_ResNet50(nn.Module):
 
     def forward(self, x):
         # ---- feature abstraction -----
-        # - head
         x0 = self.resnet.conv1(x)
         x0 = self.resnet.bn1(x0)
         x0 = self.resnet.relu(x0)
-        # - low-level features
-        x0 = self.resnet.maxpool(x0)    # (BS, 64, 88, 88)
-        x1 = self.resnet.layer1(x0)     # (BS, 256, 88, 88)
-        x2 = self.resnet.layer2(x1)     # (BS, 512, 44, 44)
+        x0 = self.resnet.maxpool(x0)         # (BS, 64, 88, 88)
+        x1 = self.resnet.layer1(x0)          # (BS, 256, 88, 88)
+        x2 = self.resnet.layer2(x1)          # (BS, 512, 44, 44)
 
         # ---- Stage-1: Search Module (SM) ----
-        x01 = torch.cat((x0, x1), dim=1)        # (BS, 64+256, 88, 88)
-        x01_down = self.downSample(x01)         # (BS, 320, 44, 44)
-        x01_sm_rf = self.rf_low_sm(x01_down)    # (BS, 32, 44, 44)
+        x01 = torch.cat((x0, x1), dim=1)     # (BS, 320, 88, 88)
+        x01_down = self.downSample(x01)      # (BS, 320, 44, 44)
+        x01_sm_rf = self.rf_low_sm(x01_down) # (BS, 32, 44, 44)
 
-        x2_sm = x2                              # (512, 44, 44)
-        x3_sm = self.resnet.layer3_1(x2_sm)     # (1024, 22, 22)
-        x4_sm = self.resnet.layer4_1(x3_sm)     # (2048, 11, 11)
+        x2_sm = x2
+        x3_sm = self.resnet.layer3_1(x2_sm)  # (1024, 22, 22)
+        x4_sm = self.resnet.layer4_1(x3_sm)  # (2048, 11, 11)
 
-        x2_sm_cat = torch.cat((x2_sm,
-                               self.upsample_2(x3_sm),
-                               self.upsample_2(self.upsample_2(x4_sm))), dim=1)   # 3584 channels
-        x3_sm_cat = torch.cat((x3_sm,
-                               self.upsample_2(x4_sm)), dim=1)                    # 3072 channels
+        # Resize for concat using F.interpolate
+        x3_sm_up = F.interpolate(x3_sm, size=x2_sm.shape[2:], mode='bilinear', align_corners=True)
+        x4_sm_up2 = F.interpolate(x4_sm, size=x2_sm.shape[2:], mode='bilinear', align_corners=True)
+        x4_sm_up = F.interpolate(x4_sm, size=x3_sm.shape[2:], mode='bilinear', align_corners=True)
+
+        x2_sm_cat = torch.cat((x2_sm, x3_sm_up, x4_sm_up2), dim=1)  # 3584 channels
+        x3_sm_cat = torch.cat((x3_sm, x4_sm_up), dim=1)             # 3072 channels
 
         x2_sm_rf = self.rf2_sm(x2_sm_cat)
         x3_sm_rf = self.rf3_sm(x3_sm_cat)
@@ -192,20 +219,24 @@ class SINet_ResNet50(nn.Module):
         camouflage_map_sm = self.pdc_sm(x4_sm_rf, x3_sm_rf, x2_sm_rf, x01_sm_rf)
 
         # ---- Switcher: Search Attention (SA) ----
-        x2_sa = self.SA(camouflage_map_sm.sigmoid(), x2)    # (512, 44, 44)
+        x2_sa = self.SA(camouflage_map_sm.sigmoid(), x2)           # (512, 44, 44)
 
         # ---- Stage-2: Identification Module (IM) ----
-        x3_im = self.resnet.layer3_2(x2_sa)                 # (1024, 22, 22)
-        x4_im = self.resnet.layer4_2(x3_im)                 # (2048, 11, 11)
+        x3_im = self.resnet.layer3_2(x2_sa)                        # (1024, 22, 22)
+        x4_im = self.resnet.layer4_2(x3_im)                        # (2048, 11, 11)
 
         x2_im_rf = self.rf2_im(x2_sa)
         x3_im_rf = self.rf3_im(x3_im)
         x4_im_rf = self.rf4_im(x4_im)
-        # - decoder
+
         camouflage_map_im = self.pdc_im(x4_im_rf, x3_im_rf, x2_im_rf)
 
         # ---- output ----
-        return self.upsample_8(camouflage_map_sm), self.upsample_8(camouflage_map_im)
+        out_size = x.shape[2:]  # Original input size
+        return (
+            F.interpolate(camouflage_map_sm, size=out_size, mode='bilinear', align_corners=True),
+            F.interpolate(camouflage_map_im, size=out_size, mode='bilinear', align_corners=True)
+        )
 
     def initialize_weights(self):
         resnet50 = models.resnet50(pretrained=True)
@@ -213,18 +244,15 @@ class SINet_ResNet50(nn.Module):
         all_params = {}
 
         for k, v in self.resnet.state_dict().items():
-            if k in pretrained_dict.keys():
-                v = pretrained_dict[k]
-                all_params[k] = v
+            if k in pretrained_dict:
+                all_params[k] = pretrained_dict[k]
             elif '_1' in k:
-                name = k.split('_1')[0] + k.split('_1')[1]
-                v = pretrained_dict[name]
-                all_params[k] = v
+                base = k.replace('_1', '')
+                all_params[k] = pretrained_dict[base]
             elif '_2' in k:
-                name = k.split('_2')[0] + k.split('_2')[1]
-                v = pretrained_dict[name]
-                all_params[k] = v
-        assert len(all_params.keys()) == len(self.resnet.state_dict().keys())
+                base = k.replace('_2', '')
+                all_params[k] = pretrained_dict[base]
 
+        assert len(all_params) == len(self.resnet.state_dict())
         self.resnet.load_state_dict(all_params)
         print('[INFO] initialize weights from resnet50')
