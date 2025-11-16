@@ -26,7 +26,7 @@ if __name__ == "__main__":
                         help='choose which gpu you use')
     parser.add_argument('--save_epoch', type=int, default=10,
                         help='every N epochs save your trained snapshot')
-    parser.add_argument('--save_model', type=str, default='./Snapshot/2020-CVPR-SINet/')
+    parser.add_argument('--save_model', type=str, default='./Checkpoints/SINet/')
     parser.add_argument('--train_img_dir', type=str, default='./Datasets/ACOD-12K/Imgs/')
     parser.add_argument('--train_gt_dir', type=str, default='./Dataset/ACOD-12K/GT/')
     opt = parser.parse_args()
