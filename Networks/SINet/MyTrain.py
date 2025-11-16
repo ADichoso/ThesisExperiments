@@ -8,13 +8,13 @@ from apex import amp
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument('--epoch', type=int, default=40,
+    parser.add_argument('--epoch', type=int, default=100,
                         help='epoch number, default=30')
     parser.add_argument('--lr', type=float, default=1e-4,
                         help='init learning rate, try `lr=1e-4`')
-    parser.add_argument('--batchsize', type=int, default=36,
+    parser.add_argument('--batchsize', type=int, default=4,
                         help='training batch size (Note: ~500MB per img in GPU)')
-    parser.add_argument('--trainsize', type=int, default=352,
+    parser.add_argument('--trainsize', type=int, default=704,
                         help='the size of training image, try small resolutions for speed (like 256)')
     parser.add_argument('--clip', type=float, default=0.5,
                         help='gradient clipping margin')
@@ -27,8 +27,8 @@ if __name__ == "__main__":
     parser.add_argument('--save_epoch', type=int, default=10,
                         help='every N epochs save your trained snapshot')
     parser.add_argument('--save_model', type=str, default='./Snapshot/2020-CVPR-SINet/')
-    parser.add_argument('--train_img_dir', type=str, default='./Dataset/TrainDataset/Image/')
-    parser.add_argument('--train_gt_dir', type=str, default='./Dataset/TrainDataset/GT/')
+    parser.add_argument('--train_img_dir', type=str, default='./Datasets/ACOD-12K/Imgs/')
+    parser.add_argument('--train_gt_dir', type=str, default='./Dataset/ACOD-12K/GT/')
     opt = parser.parse_args()
 
     torch.cuda.set_device(opt.gpu)
