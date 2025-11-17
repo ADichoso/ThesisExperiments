@@ -62,12 +62,12 @@ def main(cfg):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     
-    gt_path       = '../COD-TestDataset/'
-    sal_path      = './test_maps/'
-    test_datasets = ['CHAMELEON', 'COD10K', 'NC4K'] 
+    gt_path       = './Datasets/'
+    sal_path      = './Results/'
+    test_datasets = ['ACOD-12K'] 
 
     
-    parser.add_argument('--methods',  type=str,  default=['SPNet'])
+    parser.add_argument('--methods',  type=str,  default=['PopNet'])
     parser.add_argument('--datasets', type=str,  default=test_datasets)
     parser.add_argument('--gt_dir',   type=str,  default=gt_path)
     parser.add_argument('--root_dir', type=str,  default=sal_path)

@@ -12,7 +12,7 @@ from Code.utils.data import test_dataset
 parser = argparse.ArgumentParser()
 parser.add_argument('--testsize', type=int, default=704, help='testing size')
 parser.add_argument('--gpu_id',   type=str, default='0', help='select gpu id')
-parser.add_argument('--test_path',type=str, default='../COD-TestDataset/',help='test dataset path')
+parser.add_argument('--test_path',type=str, default='./Datasets/',help='test dataset path')
 opt = parser.parse_args()
 
 dataset_path = opt.test_path
@@ -28,25 +28,25 @@ model = PopNet(32,50)
 model.cuda()
 
 #model.load_state_dict(torch.load('./Checkpoint/SPNet/SPNet_epoch_best.pth'))
-model.load_state_dict(torch.load('new.pth'))
+model.load_state_dict(torch.load('PopNet_epoch_100.pth'))
 
 model.eval()
 
 #test
-test_datasets = ['CAMO','CHAMELEON', 'COD10K', 'NC4K'] 
+test_datasets = ['ACOD-12K'] 
 
 #test_datasets = ['STERE'] 
 
 
 for dataset in test_datasets:
-    save_path = './test_maps/SPNet/' + dataset + '/'
+    save_path = './Results/PopNet_epoch_100/' + dataset + '/'
 
     if not os.path.exists(save_path):
         os.makedirs(save_path)
 
     image_root  = dataset_path + dataset + '/Imgs/'
     gt_root     = dataset_path + dataset + '/GT/'
-    depth_root  = dataset_path + dataset + '/depth/'
+    depth_root  = dataset_path + dataset + '/Depth/'
     test_loader = test_dataset(image_root, gt_root,depth_root, opt.testsize)
     for i in range(test_loader.size):
         image, gt,depth, name, image_for_post = test_loader.load_data()
