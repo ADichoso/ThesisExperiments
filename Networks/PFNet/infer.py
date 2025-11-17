@@ -26,7 +26,7 @@ torch.manual_seed(2021)
 device_ids = [0]
 torch.cuda.set_device(device_ids[0])
 
-results_path = './Results/PFNet'
+results_path = './Results/PFNet/'
 check_mkdir(results_path)
 exp_name = 'PFNet'
 args = {
