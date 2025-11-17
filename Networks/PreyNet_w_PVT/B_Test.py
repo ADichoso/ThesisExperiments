@@ -13,7 +13,7 @@ from utils.data_val import test_dataset
 import cv2
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--testsize', type=int, default=448, help='testing size')
+parser.add_argument('--testsize', type=int, default=704, help='testing size')
 parser.add_argument('--pth_path', type=str, default='./Checkpoints/PreyNet_w_PVT/Net_epoch_best.pth')
 opt = parser.parse_args()
 
