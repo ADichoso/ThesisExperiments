@@ -57,7 +57,7 @@ def train(train_loader, model, optimizer, epoch):
             print(log_text)
             with open("./Logs/Train/C2F-log-{}.txt".format(opt.dataset), 'w', encoding="utf-8") as file:
                 file.write(log_text + "\n")
-    save_path = 'Checkpoints/{}/{}'.format(opt.train_save, opt.dataset)
+    save_path = 'Checkpoints/{}/{}/'.format(opt.train_save, opt.dataset)
     os.makedirs(save_path, exist_ok=True)
     if (epoch+1) % 5 == 0:
         torch.save(model.state_dict(), save_path + 'C2FNet-%d.pth' % epoch)
