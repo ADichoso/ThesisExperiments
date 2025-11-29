@@ -5,6 +5,7 @@ from Src.utils.Dataloader import get_loader
 from Src.utils.trainer import trainer, adjust_lr
 from apex import amp
 
+from torch.cuda.amp import GradScaler
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -22,13 +23,13 @@ if __name__ == "__main__":
                         help='decay rate of learning rate per decay step')
     parser.add_argument('--decay_epoch', type=int, default=30,
                         help='every N epochs decay lr')
-    parser.add_argument('--gpu', type=int, default=1,
+    parser.add_argument('--gpu', type=int, default=0,
                         help='choose which gpu you use')
     parser.add_argument('--save_epoch', type=int, default=10,
                         help='every N epochs save your trained snapshot')
     parser.add_argument('--save_model', type=str, default='./Checkpoints/SINet/')
-    parser.add_argument('--train_img_dir', type=str, default='./Datasets/ACOD-12K/Imgs/')
-    parser.add_argument('--train_gt_dir', type=str, default='./Dataset/ACOD-12K/GT/')
+    parser.add_argument('--train_img_dir', type=str, default='./Datasets/ACOD-12K/Train/Imgs/')
+    parser.add_argument('--train_gt_dir', type=str, default='./Datasets/ACOD-12K/Train/GT/')
     opt = parser.parse_args()
 
     torch.cuda.set_device(opt.gpu)
@@ -40,7 +41,9 @@ if __name__ == "__main__":
     optimizer = torch.optim.Adam(model_SINet.parameters(), opt.lr)
     LogitsBCE = torch.nn.BCEWithLogitsLoss()
 
-    net, optimizer = amp.initialize(model_SINet, optimizer, opt_level='O1')     # NOTES: Ox not 0x
+    #net, optimizer = amp.initialize(model_SINet, optimizer, opt_level='O1')     # NOTES: Ox not 0x
+    scaler = GradScaler()
+
 
     train_loader = get_loader(opt.train_img_dir, opt.train_gt_dir, batchsize=opt.batchsize,
                               trainsize=opt.trainsize, num_workers=12)
@@ -52,6 +55,11 @@ if __name__ == "__main__":
 
     for epoch_iter in range(1, opt.epoch):
         adjust_lr(optimizer, epoch_iter, opt.decay_rate, opt.decay_epoch)
-        trainer(train_loader=train_loader, model=model_SINet,
-                optimizer=optimizer, epoch=epoch_iter,
-                opt=opt, loss_func=LogitsBCE, total_step=total_step)
+        trainer(train_loader=train_loader, 
+                model=model_SINet,
+                optimizer=optimizer, 
+                epoch=epoch_iter,
+                opt=opt, 
+                loss_func=LogitsBCE, 
+                total_step=total_step,
+                scaler=scaler)

@@ -4,6 +4,7 @@ from datetime import datetime
 import os
 from apex import amp
 import torch.nn.functional as F
+from torch.cuda.amp import autocast
 
 
 def eval_mae(y_pred, y):
@@ -44,7 +45,7 @@ def adjust_lr(optimizer, epoch, decay_rate=0.1, decay_epoch=30):
         param_group['lr'] *= decay
 
 
-def trainer(train_loader, model, optimizer, epoch, opt, loss_func, total_step):
+def trainer(train_loader, model, optimizer, epoch, opt, loss_func, total_step, scaler):
     """
     Training iteration
     :param train_loader:
@@ -60,19 +61,20 @@ def trainer(train_loader, model, optimizer, epoch, opt, loss_func, total_step):
     for step, data_pack in enumerate(train_loader):
         optimizer.zero_grad()
         images, gts = data_pack
-        images = Variable(images).cuda()
-        gts = Variable(gts).cuda()
+        images = images.cuda()
+        gts = gts.cuda()
 
-        cam_sm, cam_im = model(images)
-        loss_sm = loss_func(cam_sm, gts)
-        loss_im = loss_func(cam_im, gts)
-        loss_total = loss_sm + loss_im
+        # ---- Forward pass with autocast ----
+        with autocast():
+            cam_sm, cam_im = model(images)
+            loss_sm = loss_func(cam_sm, gts)
+            loss_im = loss_func(cam_im, gts)
+            loss_total = loss_sm + loss_im
 
-        with amp.scale_loss(loss_total, optimizer) as scale_loss:
-            scale_loss.backward()
 
-        # clip_gradient(optimizer, opt.clip)
-        optimizer.step()
+        scaler.scale(loss_total).backward()
+        scaler.step(optimizer)
+        scaler.update()
 
         if step % 10 == 0 or step == total_step:
             print('[{}] => [Epoch Num: {:03d}/{:03d}] => [Global Step: {:04d}/{:04d}] => [Loss_s: {:.4f} Loss_i: {:0.4f}]'.
