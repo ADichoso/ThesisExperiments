@@ -39,7 +39,7 @@ test_datasets = ['ACOD-12K']
 
 
 for dataset in test_datasets:
-    save_path = './Results/PopNet/' + dataset + '/'
+    save_path = './Results/PopNet/' + dataset + '/Test/'
 
     if not os.path.exists(save_path):
         os.makedirs(save_path)
