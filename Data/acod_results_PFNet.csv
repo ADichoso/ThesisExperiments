@@ -1,0 +1,12 @@
+Network,Class,S,FWB,E,MAE,Plant
+PFNet,AVERAGE,0.838,0.746,0.965,0.009,
+PFNet,,0.632,0.359,0.86,0.007,bean
+PFNet,,0.815,0.707,0.958,0.009,cucumber
+PFNet,,0.89,0.851,0.986,0.008,kiwi
+PFNet,,0.839,0.765,0.988,0.006,loquat
+PFNet,,0.845,0.748,0.974,0.003,peach
+PFNet,,0.731,0.533,0.916,0.015,pepper
+PFNet,,0.788,0.629,0.943,0.022,plum
+PFNet,,0.856,0.785,0.969,0.011,tomato
+PFNet,,0.909,0.858,0.975,0.003,watermelon
+PFNet,,0.862,0.799,0.982,0.007,zucchini

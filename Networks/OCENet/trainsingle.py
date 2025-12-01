@@ -31,7 +31,7 @@ def train():
     if args.load_oce is not None and args.load_cod is not None:
         COD_Net.load_state_dict(torch.load(args.load_cod))
         OCE_Net.load_state_dict(torch.load(args.load_oce))
-        print('load model from ', args.load)
+        print('load model from ', args.load_oce)
     
     COD_Net_params = COD_Net.parameters()
     COD_Net_optimiser = torch.optim.Adam(COD_Net_params, args.lr_gen, betas=[args.beta_gen, 0.999])
