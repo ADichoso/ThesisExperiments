@@ -39,14 +39,14 @@ test_datasets = ['ACOD-12K']
 
 
 for dataset in test_datasets:
-    save_path = './Results/PopNet/' + dataset + '/Test/'
+    save_path = './Results/PopNet/' + dataset + '/'
 
     if not os.path.exists(save_path):
         os.makedirs(save_path)
 
-    image_root  = dataset_path + dataset + '/Imgs/'
-    gt_root     = dataset_path + dataset + '/GT/'
-    depth_root  = dataset_path + dataset + '/Depth/'
+    image_root  = dataset_path + dataset + '/Test/Imgs/'
+    gt_root     = dataset_path + dataset + '/Test/GT/'
+    depth_root  = dataset_path + dataset + '/Test/Depth/'
     test_loader = test_dataset(image_root, gt_root,depth_root, opt.testsize)
     for i in range(test_loader.size):
         image, gt,depth, name, image_for_post = test_loader.load_data()
