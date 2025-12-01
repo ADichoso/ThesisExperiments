@@ -1,0 +1,12 @@
+Network,Class,S,FWB,E,MAE,Plant
+C2FNet,AVERAGE,0.803,0.678,0.932,0.01,
+C2FNet,,0.586,0.231,0.674,0.006,bean
+C2FNet,,0.758,0.588,0.895,0.012,cucumber
+C2FNet,,0.875,0.821,0.98,0.009,kiwi
+C2FNet,,0.766,0.688,0.968,0.006,loquat
+C2FNet,,0.749,0.54,0.87,0.004,peach
+C2FNet,,0.695,0.458,0.85,0.016,pepper
+C2FNet,,0.749,0.564,0.909,0.024,plum
+C2FNet,,0.819,0.722,0.95,0.013,tomato
+C2FNet,,0.927,0.885,0.986,0.002,watermelon
+C2FNet,,0.842,0.76,0.971,0.008,zucchini
