@@ -28,7 +28,7 @@ model = PopNet(32,50)
 model.cuda()
 
 #model.load_state_dict(torch.load('./Checkpoint/SPNet/SPNet_epoch_best.pth'))
-model.load_state_dict(torch.load('PopNet_epoch_100.pth'))
+model.load_state_dict(torch.load('./Checkpoints/PopNetwPVT/PopNet_epoch_100.pth'))
 
 model.eval()
 
@@ -39,14 +39,14 @@ test_datasets = ['ACOD-12K']
 
 
 for dataset in test_datasets:
-    save_path = './Results/PopNet_epoch_100/' + dataset + '/'
+    save_path = './Results/PopNetwPVT/' + dataset + '/'
 
     if not os.path.exists(save_path):
         os.makedirs(save_path)
 
-    image_root  = dataset_path + dataset + '/Imgs/'
-    gt_root     = dataset_path + dataset + '/GT/'
-    depth_root  = dataset_path + dataset + '/Depth/'
+    image_root  = dataset_path + dataset + '/Test/Imgs/'
+    gt_root     = dataset_path + dataset + '/Test/GT/'
+    depth_root  = dataset_path + dataset + '/Test/Depth/'
     test_loader = test_dataset(image_root, gt_root,depth_root, opt.testsize)
     for i in range(test_loader.size):
         image, gt,depth, name, image_for_post = test_loader.load_data()
