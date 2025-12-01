@@ -63,6 +63,8 @@ for dataset in test_datasets:
         res     = (res - res.min()) / (res.max() - res.min() + 1e-8)
         
         print('save img to: ',save_path+name)
-        cv2.imwrite(save_path+name,res*255)
+
+        res = (res * 255).astype(np.uint8)
+        cv2.imwrite(save_path+name,res)
 
     print('Test Done!')
