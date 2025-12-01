@@ -41,4 +41,5 @@ for _data_name in ['ACOD-12K']:
         print('> {} - {}'.format(_data_name, name))
         # misc.imsave(save_path+name, res)
         # If `mics` not works in your environment, please comment it and then use CV2
-        cv2.imwrite(save_path+name,res*255)
+        res = (res * 255).astype(np.uint8)
+        cv2.imwrite(save_path+name,res)
