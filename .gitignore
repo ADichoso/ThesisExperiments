@@ -3,3 +3,9 @@ Backbones/
 Datasets/
 *.pth
 *.local
+Checkpoints/E100/Checkpoints/PFNet_2025-10-23 18%3A50%3A39.118288.txt
+Checkpoints/E100/Checkpoints/PFNet_2025-11-03 09%3A20%3A38.616854.txt
+Checkpoints/E100/Checkpoints/PFNet_2025-11-17 17%3A35%3A00.757639.txt
+Checkpoints/E100/Checkpoints/RISNet/SummaryWriter/events.out.tfevents.1762070191.saliksik-gpu-09.coare.local.1754367.0
+Checkpoints/E100/Checkpoints/RISNet_NoDepth/RISNet_NoDepth85_RISNet.pth.filepart
+Checkpoints/E100/Checkpoints/RISNet_NoDepth/SummaryWriter/events.out.tfevents.1761313171.saliksik-gpu-09.coare.local.574990.0

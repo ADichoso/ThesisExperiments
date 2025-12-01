@@ -28,7 +28,7 @@ model = PopNet(32,50)
 model.cuda()
 
 #model.load_state_dict(torch.load('./Checkpoint/SPNet/SPNet_epoch_best.pth'))
-model.load_state_dict(torch.load('PopNet_epoch_100.pth'))
+model.load_state_dict(torch.load('./Checkpoints/PopNet/PopNet_epoch_100.pth'))
 
 model.eval()
 
