@@ -46,6 +46,7 @@ for _data_name in ['ACOD-12K']: #'CAMO','CHAMELEON','COD10K'
         inference_times[i] = end_time - start_time
         print('> {} - {}: {} fps'.format(_data_name, name, 1 / inference_times[i]))
 
+        res = (res * 255).astype(np.uint8)
         misc.imsave(save_path+name, res)
 
     test_fps = [1 / time for time in inference_times]
