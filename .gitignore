@@ -2993,3 +2993,20 @@ E100/PopNet/ACOD-12K/bean_left_00049.png
 E100/PopNet/ACOD-12K/bean_left_00048.png
 E100/PopNet/ACOD-12K/bean_left_00047.png
 E100/PopNet/ACOD-12K/bean_left_00045.png
+Checkpoints/E100/PFNet_2025-10-23 18%3A50%3A39.118288.txt
+Checkpoints/E100/PFNet_2025-11-03 09%3A20%3A38.616854.txt
+Checkpoints/E100/PFNet_2025-11-17 17%3A35%3A00.757639.txt
+Checkpoints/E100/RISNet/SummaryWriter/events.out.tfevents.1762070191.saliksik-gpu-09.coare.local.1754367.0
+Checkpoints/E100/RISNet_NoDepth/RISNet_NoDepth85_RISNet.pth.filepart
+Checkpoints/E100/RISNet_NoDepth/SummaryWriter/events.out.tfevents.1761313171.saliksik-gpu-09.coare.local.574990.0
+Networks/C2FNet/lib/__pycache__/C2FNet.cpython-314.pyc
+Networks/C2FNet/lib/__pycache__/Res2Net_v1b.cpython-314.pyc
+Networks/C2FNet/utils/__pycache__/dataloader.cpython-314.pyc
+Networks/C2FNet/utils/__pycache__/tensor_ops.cpython-314.pyc
+py_sod_metrics/__pycache__/__init__.cpython-313.pyc
+py_sod_metrics/__pycache__/fmeasurev2.cpython-313.pyc
+py_sod_metrics/__pycache__/multiscale_iou.cpython-313.pyc
+py_sod_metrics/__pycache__/sod_metrics.cpython-313.pyc
+py_sod_metrics/__pycache__/utils.cpython-313.pyc
+__pycache__/test_utils.cpython-313.pyc
+__pycache__/test_utils.cpython-313.pyc

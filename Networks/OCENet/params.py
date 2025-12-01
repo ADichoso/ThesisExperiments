@@ -34,3 +34,6 @@ parser.add_argument('--test_datasets', default=['ACOD-12K'],
                     help='collection of testing dataset')
 parser.add_argument('--eval_save_path', default='/students/u6617221/COD-master/train_val/')
 parser.add_argument('--seed', type=int, default=1, help='random seed')
+parser.add_argument('--load_oce',        type=str,   default='./Checkpoints/OCENet/OCE_Model_80.pth',  help='train from checkpoints')
+parser.add_argument('--load_cod',        type=str,   default='./Checkpoints/OCENet/COD_Model_80.pth',  help='train from checkpoints')
+parser.add_argument('--load_epoch_num',        type=int,   default=80,  help='epoch number of loaded model')

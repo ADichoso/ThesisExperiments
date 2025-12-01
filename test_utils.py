@@ -5,10 +5,11 @@ from PIL import Image, ImageEnhance
 import os
 import matplotlib.patches as mpatches
 
-hide_title = True
+hide_title = False
 
 img_root = "Datasets/ACOD-12K/Test/Imgs/"
 gt_root = "Datasets/ACOD-12K/Test/GT/"
+pred_root = "Results/E100/"
 figures_root = "Figures/"
 data_root = "Data/"
 
@@ -42,8 +43,8 @@ def display_images(images=3, image_files=None, title=None, save_path=None,
     for i in range(images):
         file_name = random_imgs[i]
         img = Image.open(os.path.join(img_root, file_name))
-        gt = Image.open(os.path.join(gt_root, file_name))
-        preds = [Image.open(os.path.join(pred_root, file_name)) for pred_root in pred_network_roots]
+        gt = Image.open(os.path.join(gt_root, file_name.replace(".jpg", ".png")))
+        preds = [Image.open(os.path.join(pred_root, file_name.replace(".jpg", ".png"))) for pred_root in pred_network_roots]
         imgs = [img, gt] + preds
 
         for j, im in enumerate(imgs):
@@ -66,7 +67,7 @@ def display_images(images=3, image_files=None, title=None, save_path=None,
                 )
 
     if title and not hide_title:
-        fig.suptitle(title, fontsize=title_fontsize, y=1.20)
+        fig.suptitle(title, fontsize=title_fontsize, y=1.1)
 
     if save_path:
         fig.savefig(os.path.join(figures_root, save_path), dpi=100, bbox_inches='tight')
@@ -136,8 +137,8 @@ wspace=0.05, hspace=0.05,
     for i in range(images):
         file_name = random_imgs[i]
         img = Image.open(os.path.join(img_root, file_name))
-        gt = Image.open(os.path.join(gt_root, file_name))
-        preds = [Image.open(os.path.join(pred_root, file_name)) for pred_root in pred_network_roots]
+        gt = Image.open(os.path.join(gt_root, file_name.replace(".jpg", ".png")))
+        preds = [Image.open(os.path.join(pred_root, file_name.replace(".jpg", ".png"))) for pred_root in pred_network_roots]
 
         # One GT overlay + preds
         imgs = [None] + preds  
@@ -166,7 +167,7 @@ wspace=0.05, hspace=0.05,
                 )
 
     if title and not hide_title:
-        fig.suptitle(title, fontsize=title_fontsize, y=1.20)
+        fig.suptitle(title, fontsize=title_fontsize, y=1.1)
 
     # Create legend patches
     gt_patch = mpatches.Patch(color=(65/255, 105/255, 225/255), label='GT (Ground Truth)')       # Blue (GT)

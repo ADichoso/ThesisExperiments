@@ -2,14 +2,14 @@ import os, argparse
 import torch
 import torch.nn.functional as F
 import numpy as np
-from scipy import misc
+import cv2
 from lib.C2FNet import C2FNet
 from utils.dataloader import test_dataset
 import time
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--testsize', type=int, default=704, help='testing size')
-parser.add_argument('--pth_path', type=str, default='./Checkpoints/C2FNet/C2FNet-99.pth')
+parser.add_argument('--pth_path', type=str, default='./Checkpoints/E100/Checkpoints/C2FNet/C2FNet-99.pth')
 
 for _data_name in ['ACOD-12K']: #'CAMO','CHAMELEON','COD10K'
     data_path = './Datasets/{}/Test/'.format(_data_name)
@@ -47,7 +47,7 @@ for _data_name in ['ACOD-12K']: #'CAMO','CHAMELEON','COD10K'
         print('> {} - {}: {} fps'.format(_data_name, name, 1 / inference_times[i]))
 
         res = (res * 255).astype(np.uint8)
-        misc.imsave(save_path+name, res)
+        cv2.imwrite(save_path+name, res)
 
     test_fps = [1 / time for time in inference_times]
 

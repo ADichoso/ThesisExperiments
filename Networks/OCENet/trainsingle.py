@@ -25,10 +25,17 @@ def train():
 
     # Models
     COD_Net = Generator(channel=args.gen_reduced_channel).to(device)
+    OCE_Net = FCDiscriminator().to(device)
+
+
+    if args.load_oce is not None and args.load_cod is not None:
+        COD_Net.load_state_dict(torch.load(args.load_cod))
+        OCE_Net.load_state_dict(torch.load(args.load_oce))
+        print('load model from ', args.load)
+    
     COD_Net_params = COD_Net.parameters()
     COD_Net_optimiser = torch.optim.Adam(COD_Net_params, args.lr_gen, betas=[args.beta_gen, 0.999])
 
-    OCE_Net = FCDiscriminator().to(device)
     OCE_Net_params = OCE_Net.parameters()
     OCE_Net_optimiser = torch.optim.Adam(OCE_Net_params, args.lr_dis, betas=[args.beta_dis, 0.999])
 
@@ -43,8 +50,13 @@ def train():
     size_rates = [0.50, 0.75, 1, 1.25]
 
     print("Ikou!")
+    
+    start = 1
 
-    for epoch in range(1, args.epoch + 1):
+    if args.load_epoch_num > 0:
+        start = args.load_epoch_num
+
+    for epoch in range(start, args.epoch + 1):
         COD_Net_scheduler.step()
         COD_Net.train()
         OCE_Net.train()
