@@ -23,6 +23,6 @@ conda -V
 
 conda activate TrainingApex
 
-srun python Networks/ZoomNet/main.py 
+srun python Networks/ZoomNet/main.py --model-name=ZoomNet --config=Networks/ZoomNet/configs/zoomnet/cod_zoomnet.py --datasets-info=Networks/ZoomNet/configs/_base_/dataset/dataset_configs.json
 
 conda deactivate

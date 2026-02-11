@@ -6,7 +6,7 @@ import os
 import os.path
 import shutil
 from itertools import chain
-import datetime
+
 import numpy as np
 import torch
 from tqdm import tqdm
@@ -16,10 +16,10 @@ from utils import builder, configurator, io, misc, ops, pipeline, recorder
 
 def parse_config():
     parser = argparse.ArgumentParser("Training and evaluation script")
-    parser.add_argument("--config", default="./Networks/ZoomNet/configs/zoomnet/cod_zoomnet.py", type=str)
-    parser.add_argument("--datasets-info", default="./Networks//ZoomNet/configs/_base_/dataset/dataset_configs.json", type=str)
-    parser.add_argument("--model-name", type=str, default="ZoomNet")
-    parser.add_argument("--batch-size", type=int, default=4)
+    parser.add_argument("--config", default="./configs/zoomnet/zoomnet.py", type=str)
+    parser.add_argument("--datasets-info", default="./configs/_base_/dataset/dataset_configs.json", type=str)
+    parser.add_argument("--model-name", type=str)
+    parser.add_argument("--batch-size", type=int)
     parser.add_argument("--load-from", type=str)
     parser.add_argument("--resume-from", type=str)
     parser.add_argument("--info", type=str)
@@ -240,7 +240,6 @@ def training(model, cfg) -> pipeline.ModelEma:
             ):
                 msg = " | ".join(
                     [
-                        f"T:{datetime.datetime.now()}",
                         f"I:{curr_iter}:{cfg.train.num_iters} {batch_idx}/{cfg.epoch_length} {curr_epoch}/{cfg.train.num_epochs}",
                         f"Lr:{optimizer.lr_string()}",
                         f"M:{loss_recorder.avg:.5f}/C:{item_loss:.5f}",

@@ -1,0 +1,12 @@
+Network,Class,S,FWB,E,MAE,Plant
+RISNet,AVERAGE,0.859,0.792,0.975,0.008,
+RISNet,,0.753,0.639,0.926,0.004,bean
+RISNet,,0.853,0.797,0.97,0.007,cucumber
+RISNet,,0.908,0.881,0.986,0.007,kiwi
+RISNet,,0.853,0.807,0.987,0.005,loquat
+RISNet,,0.869,0.797,0.986,0.002,peach
+RISNet,,0.775,0.626,0.954,0.014,pepper
+RISNet,,0.816,0.686,0.963,0.021,plum
+RISNet,,0.864,0.805,0.975,0.01,tomato
+RISNet,,0.925,0.893,0.974,0.003,watermelon
+RISNet,,0.874,0.826,0.984,0.006,zucchini

@@ -260,17 +260,6 @@
       "suffix": ".png"
     }
   },
-  "acod12k_camo_tr": {
-    "root": "./ACOD-12K/Train",
-    "image": {
-      "path": "Imgs",
-      "suffix": ".png"
-    },
-    "mask": {
-      "path": "GT",
-      "suffix": ".png"
-    }
-  },
   "camo_te": {
     "root": "/home/lart/Datasets/Saliency/COD/Test/CAMO",
     "image": {
@@ -321,6 +310,10 @@
     "mask": {
       "path": "Mask",
       "suffix": ".png"
+    },
+    "edge": {
+      "path": "Edge",
+      "suffix": ".png"
     }
   },
   "nc4k": {
@@ -335,6 +328,36 @@
     },
     "instance": {
       "path": "Instance",
+      "suffix": ".png"
+    }
+  },
+    "acod12k_tr": {
+    "root": "/Datasets/ACOD-12K/Train",
+    "image": {
+      "path": "Image",
+      "suffix": ".png"
+    },
+    "depth": {
+      "path": "Depth",
+      "suffix": ".png"
+    },
+    "mask": {
+      "path": "GT",
+      "suffix": ".png"
+    }
+  },
+    "acod12k_te": {
+    "root": "/Datasets/ACOD-12K/Test",
+    "image": {
+      "path": "Image",
+      "suffix": "png"
+    },
+    "depth": {
+      "path": "Depth",
+      "suffix": ".png"
+    },
+    "mask": {
+      "path": "GT",
       "suffix": ".png"
     }
   }

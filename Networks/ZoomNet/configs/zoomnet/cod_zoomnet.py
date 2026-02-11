@@ -10,12 +10,12 @@ use_custom_worker_init = False
 model_name = "ZoomNet"
 
 train = dict(
-    batch_size=4,
-    num_workers=2,
+    batch_size=8,
+    num_workers=4,
     use_amp=True,
-    num_epochs=45,
+    num_epochs=40,
     epoch_based=True,
-    lr=1e-4,
+    lr=0.05,
     optimizer=dict(
         mode="sgd",
         set_to_none=True,
@@ -50,14 +50,14 @@ test = dict(
 datasets = dict(
     train=dict(
         dataset_type="msi_cod_tr",
-        shape=dict(h=448, w=448),
-        path=["acod12k_camo_tr"],
+        shape=dict(h=384, w=384),
+        path=["acod12k_tr"],
         interp_cfg=dict(),
     ),
     test=dict(
         dataset_type="msi_cod_te",
-        shape=dict(h=448, w=448),
-        path=["camo_te", "chameleon", "cpd1k_te", "cod10k_te", "nc4k"],
+        shape=dict(h=384, w=384),
+        path=["acod12k_te"],
         interp_cfg=dict(),
     ),
 )

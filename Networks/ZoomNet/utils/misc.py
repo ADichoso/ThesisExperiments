@@ -52,11 +52,11 @@ def construct_path(output_dir: str, exp_name: str) -> dict:
     final_full_model_path = os.path.join(pth_path, "checkpoint_final.pth")
     final_state_path = os.path.join(pth_path, "state_final.pth")
 
-    tr_log_path = os.path.join(pth_log_path, f"tr_{str(datetime.now())[:10]}.txt")
-    te_log_path = os.path.join(pth_log_path, f"te_{str(datetime.now())[:10]}.txt")
-    trans_log_path = os.path.join(pth_log_path, f"trans_{str(datetime.now())[:10]}.txt")
-    cfg_copy_path = os.path.join(pth_log_path, f"cfg_{str(datetime.now())}.py")
-    trainer_copy_path = os.path.join(pth_log_path, f"trainer_{str(datetime.now())}.txt")
+    tr_log_path = os.path.join(pth_log_path, f"tr.txt")
+    te_log_path = os.path.join(pth_log_path, f"te.txt")
+    trans_log_path = os.path.join(pth_log_path, f"trans.txt")
+    cfg_copy_path = os.path.join(pth_log_path, f"cfg.py")
+    trainer_copy_path = os.path.join(pth_log_path, f"trainer.txt")
     excel_path = os.path.join(pth_log_path, f"results.xlsx")
 
     path_config = {
