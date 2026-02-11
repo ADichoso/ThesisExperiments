@@ -334,7 +334,7 @@
     "acod12k_tr": {
     "root": "/Datasets/ACOD-12K/Train",
     "image": {
-      "path": "Image",
+      "path": "Imgs",
       "suffix": ".png"
     },
     "depth": {
@@ -349,7 +349,7 @@
     "acod12k_te": {
     "root": "/Datasets/ACOD-12K/Test",
     "image": {
-      "path": "Image",
+      "path": "Imgs",
       "suffix": "png"
     },
     "depth": {
