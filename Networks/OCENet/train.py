@@ -51,7 +51,7 @@ def train():
     OCE_Net_params = OCE_Net.parameters()
     OCE_Net_optimiser = torch.optim.Adam(OCE_Net_params, args.lr_dis, betas=[args.beta_dis, 0.999])
 
-    torch.distributed.barrier()
+    #torch.distributed.barrier()
 
     # Set up the dataset and the dataloader
     #train_dataset = SalObjDataset(args.train_image_root, args.train_gt_root, trainsize=args.trainsize)
