@@ -15,14 +15,10 @@ from utils import AvgMeter, setup
 from params import parser
 from loss import make_confidence_label, uncertainty_aware_structure_loss
 
-print("CuDNN", torch.backends.cudnn.version())
-print("TORCH", torch.__version__) 
-print("CUDA", torch.version.cuda)
+
 def train():
     # Load the arguments
     args = parser.parse_args()
-    print(args.local_rank)
-
     # print(args)
     setup(args.seed)
 
@@ -42,13 +38,13 @@ def train():
     # Load models
     COD_Net = Generator(channel=args.gen_reduced_channel).to(device)
     COD_Net = torch.nn.SyncBatchNorm.convert_sync_batchnorm(COD_Net)
-    COD_Net = DistributedDataParallel(COD_Net, device_ids=[args.local_rank], find_unused_parameters=False)
+    COD_Net = DistributedDataParallel(COD_Net, device_ids=[args.local_rank], find_unused_parameters=True)
     COD_Net_params = COD_Net.parameters()
     COD_Net_optimiser = torch.optim.Adam(COD_Net_params, args.lr_gen, betas=[args.beta_gen, 0.999])
 
     OCE_Net = FCDiscriminator().to(device)
     OCE_Net = torch.nn.SyncBatchNorm.convert_sync_batchnorm(OCE_Net)
-    OCE_Net = DistributedDataParallel(OCE_Net, device_ids=[args.local_rank], find_unused_parameters=False)
+    OCE_Net = DistributedDataParallel(OCE_Net, device_ids=[args.local_rank], find_unused_parameters=True)
     OCE_Net_params = OCE_Net.parameters()
     OCE_Net_optimiser = torch.optim.Adam(OCE_Net_params, args.lr_dis, betas=[args.beta_dis, 0.999])
 

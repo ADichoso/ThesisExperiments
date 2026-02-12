@@ -90,7 +90,7 @@ class Classifier_Module(nn.Module):
     def forward(self, x):
         out = self.conv2d_list[0](x)
         for i in range(len(self.conv2d_list)-1):
-            out = out + self.conv2d_list[i+1](x)
+            out += self.conv2d_list[i+1](x)
         return out
 
 ## Channel Attention (CA) Layer
@@ -102,7 +102,7 @@ class CALayer(nn.Module):
         # feature channel downscale and upscale --> channel weight
         self.conv_du = nn.Sequential(
                 nn.Conv2d(channel, channel // reduction, 1, padding=0, bias=True),
-                nn.ReLU(inplace=False),
+                nn.ReLU(inplace=True),
                 nn.Conv2d(channel // reduction, channel, 1, padding=0, bias=True),
                 nn.Sigmoid()
         )
@@ -119,7 +119,7 @@ class RCAB(nn.Module):
     # output: B*C*H*W
     def __init__(
         self, n_feat, kernel_size=3, reduction=16,
-        bias=True, bn=False, act=nn.ReLU(inplace=False), res_scale=1):
+        bias=True, bn=False, act=nn.ReLU(True), res_scale=1):
 
         super(RCAB, self).__init__()
         modules_body = []
@@ -137,7 +137,7 @@ class RCAB(nn.Module):
     def forward(self, x):
         res = self.body(x)
         #res = self.body(x).mul(self.res_scale)
-        res = res + x
+        res += x
         return res
 
 class Saliency_feat_encoder(nn.Module):
@@ -145,7 +145,7 @@ class Saliency_feat_encoder(nn.Module):
     def __init__(self, channel=32):
         super(Saliency_feat_encoder, self).__init__()
         self.resnet = B2_ResNet()
-        self.relu = nn.ReLU(inplace=False)
+        self.relu = nn.ReLU(inplace=True)
         self.upsample = nn.Upsample(scale_factor=8, mode='bilinear', align_corners=True)
         self.dropout = nn.Dropout(0.3)
         self.layer5 = self._make_pred_layer(Classifier_Module, [6, 12, 18, 24], [6, 12, 18, 24], channel, 2048)

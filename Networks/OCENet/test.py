@@ -9,7 +9,6 @@ from data import test_dataset
 from PIL import ImageFile
 from collections import OrderedDict
 ImageFile.LOAD_TRUNCATED_IMAGES = True
-import time
 
 import matplotlib as mpl
 mpl.use('Agg')
@@ -23,11 +22,11 @@ parser.add_argument('-langevin_step_size_des', type=float, default=0.026,help='s
 parser.add_argument('--energy_form', default='identity', help='tanh | sigmoid | identity | softplus')
 opt = parser.parse_args()
 
-dataset_path = './Datasets/'
+dataset_path = './data/test/'
 
 # Create the COD-Network and load the weights
 COD_Net = Generator(channel=32).cuda()
-state_dict = torch.load('./Checkpoints/OCENet/COD_Model_50.pth')
+state_dict = torch.load('./checkpoint/S2/COD_Model_50.pth')
 new_state_dict = OrderedDict()
 # for k, v in state_dict.items():
 #     name = k[7:]
@@ -38,23 +37,23 @@ COD_Net.eval()
 # Create the OCE-Network and load the weights
 OCE_Net = FCDiscriminator().cuda()
 OCE_Net = torch.nn.DataParallel(OCE_Net, device_ids=[0])
-OCE_Net.load_state_dict(torch.load('./Checkpoints/OCENet/OCE_Model_50.pth'))
+OCE_Net.load_state_dict(torch.load('./checkpoint/S2/OCE_Model_50_0.pth'))
 OCE_Net.eval()
 
 # 4 COD test datasets
-test_datasets = ['ACOD-12K']
+test_datasets = ['CAMO', 'CHAMELEON', 'COD10K', 'NC4K']
 
 # Iterate over the test datasets
 for dataset in test_datasets:
-    save_path = './Results/OCENet/' + dataset + '/'
+    save_path = './results/' + dataset + '/'
     if not os.path.exists(save_path):
         os.makedirs(save_path)
 
-    confi_path = './Results/OCENet/confidences/' + dataset + '/'
+    confi_path = './confidences/' + dataset + '/'
     if not os.path.exists(confi_path):
         os.makedirs(confi_path)
 
-    image_root = dataset_path + dataset + '/Test/Imgs/'
+    image_root = dataset_path + dataset + '/Imgs/'
     test_loader = test_dataset(image_root, opt.testsize)
 
     for i in range(test_loader.size):

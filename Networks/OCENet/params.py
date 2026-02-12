@@ -2,14 +2,14 @@ import argparse
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--local_rank', type=int, default=0)
-parser.add_argument('--epoch', type=int, default=100, help='epoch number')
+parser.add_argument('--epoch', type=int, default=50, help='epoch number')
 parser.add_argument('--lr_gen', type=float, default=2.5e-5, help='learning rate for generator')
 parser.add_argument('--lr_dis', type=float, default=1e-5, help='learning rate')
 parser.add_argument('--lr_des', type=float, default=2.5e-5, help='learning rate for descriptor')
-parser.add_argument('--batchsize', type=int, default=4, help='training batch size')
+parser.add_argument('--batchsize', type=int, default=7, help='training batch size')
 parser.add_argument('--batchsize_test', type=int, default=1, help='test batch size')
-parser.add_argument('--trainsize', type=int, default=704, help='training dataset size')
-parser.add_argument('--testsize', type=int, default=704, help='testing size')
+parser.add_argument('--trainsize', type=int, default=480, help='training dataset size')
+parser.add_argument('--testsize', type=int, default=480, help='testing size')
 parser.add_argument('--clip', type=float, default=0.5, help='gradient clipping margin')
 parser.add_argument('--decay_rate', type=float, default=0.1, help='decay rate of learning rate')
 parser.add_argument('--decay_epoch', type=int, default=20, help='every n epochs decay learning rate')
@@ -26,14 +26,11 @@ parser.add_argument('--train_gt_root', default='./Datasets/ACOD-12K/Train/GT/',
                     help='training ground truth root directory')
 parser.add_argument('--train_bd_root', default='/students/u6617221/COD-master/dataset/train/Edge/',
                     help='training boundary label root directory')
-parser.add_argument('--test_dataset_root', default='./datasets/ACOD-12K/Test/',
+parser.add_argument('--test_dataset_root', default='./Datasets/ACOD-12K/Test/',
                     help='testing image root directory')
-parser.add_argument('--model_save_path', default='./Checkpoints/', help='directory where training model is saved to')
-parser.add_argument('--experiment_name', default='OCENet', help='name of the experiment where model checkpoints are saved to')
+parser.add_argument('--model_save_path', default='./Checkpoints/OCENet/', help='directory where training model is saved to')
+parser.add_argument('--experiment_name', default='S1', help='name of the experiment where model checkpoints are saved to')
 parser.add_argument('--test_datasets', default=['ACOD-12K'],
                     help='collection of testing dataset')
-parser.add_argument('--eval_save_path', default='/students/u6617221/COD-master/train_val/')
+parser.add_argument('--eval_save_path', default='./Results/')
 parser.add_argument('--seed', type=int, default=1, help='random seed')
-parser.add_argument('--load_oce',        type=str,   default='./Checkpoints/OCENet/OCE_Model_80.pth',  help='train from checkpoints')
-parser.add_argument('--load_cod',        type=str,   default='./Checkpoints/OCENet/COD_Model_80.pth',  help='train from checkpoints')
-parser.add_argument('--load_epoch_num',        type=int,   default=80,  help='epoch number of loaded model')

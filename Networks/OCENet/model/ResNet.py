@@ -20,7 +20,7 @@ class BasicBlock(nn.Module):
         super(BasicBlock, self).__init__()
         self.conv1 = conv3x3(inplanes, planes, stride)
         self.bn1 = nn.BatchNorm2d(planes)
-        self.relu = nn.ReLU(inplace=False)
+        self.relu = nn.ReLU(inplace=True)
         self.conv2 = conv3x3(planes, planes)
         self.bn2 = nn.BatchNorm2d(planes)
         self.downsample = downsample
@@ -39,7 +39,7 @@ class BasicBlock(nn.Module):
         if self.downsample is not None:
             residual = self.downsample(x)
 
-        out = out + residual
+        out += residual
         out = self.relu(out)
 
         return out
@@ -57,7 +57,7 @@ class Bottleneck(nn.Module):
         self.bn2 = nn.BatchNorm2d(planes)
         self.conv3 = nn.Conv2d(planes, planes * 4, kernel_size=1, bias=False)
         self.bn3 = nn.BatchNorm2d(planes * 4)
-        self.relu = nn.ReLU(inplace=False)
+        self.relu = nn.ReLU(inplace=True)
         self.downsample = downsample
         self.stride = stride
 
@@ -78,7 +78,7 @@ class Bottleneck(nn.Module):
         if self.downsample is not None:
             residual = self.downsample(x)
 
-        out = out + residual
+        out += residual
         out = self.relu(out)
 
         return out
@@ -94,7 +94,7 @@ class B2_ResNet(nn.Module):
         self.conv1 = nn.Conv2d(3, 64, kernel_size=7, stride=2, padding=3,
                                bias=False)
         self.bn1 = nn.BatchNorm2d(64)
-        self.relu = nn.ReLU(inplace=False)
+        self.relu = nn.ReLU(inplace=True)
         self.maxpool = nn.MaxPool2d(kernel_size=3, stride=2, padding=1)
         self.layer1 = self._make_layer(Bottleneck, 64, 3)
         self.layer2 = self._make_layer(Bottleneck, 128, 4, stride=2)
@@ -149,7 +149,7 @@ class B2_ResNet(nn.Module):
 
 
 class residualUnit(nn.Module):
-    def __init__(self, in_size, out_size, kernel_size=3,stride=1, padding=1, activation=None):
+    def __init__(self, in_size, out_size, kernel_size=3,stride=1, padding=1, activation=F.relu):
         super(residualUnit, self).__init__()
         self.conv1 = nn.Conv2d(in_size, out_size, kernel_size, stride=1, padding=1)
         init.xavier_uniform(self.conv1.weight, gain = np.sqrt(2.0)) #or gain=1
@@ -157,7 +157,7 @@ class residualUnit(nn.Module):
         self.conv2 = nn.Conv2d(out_size, out_size, kernel_size, stride=1, padding=1)
         init.xavier_uniform(self.conv2.weight, gain = np.sqrt(2.0)) #or gain=1
         init.constant(self.conv2.bias, 0)
-        self.activation = nn.ReLU(inplace=False) if activation is None else activation
+        self.activation = activation
         self.bn1 = nn.BatchNorm2d(out_size)
         self.bn2 = nn.BatchNorm2d(out_size)
         self.in_size = in_size
@@ -177,7 +177,7 @@ class residualUnit(nn.Module):
 
 
 class UNetUpResBlock(nn.Module):
-    def __init__(self, in_size, out_size, kernel_size=3, activation=None, space_dropout=False):
+    def __init__(self, in_size, out_size, kernel_size=3, activation=F.relu, space_dropout=False):
         super(UNetUpResBlock, self).__init__()
         self.up = nn.ConvTranspose2d(in_size, out_size, 2, stride=2)
         self.bnup = nn.BatchNorm2d(out_size)
@@ -185,7 +185,7 @@ class UNetUpResBlock(nn.Module):
         init.xavier_uniform(self.up.weight, gain = np.sqrt(2.0))
         init.constant(self.up.bias,0)
 
-        self.activation = nn.ReLU(inplace=False) if activation is None else activation
+        self.activation = activation
 
         self.resUnit = residualUnit(in_size, out_size, kernel_size = kernel_size)
 
@@ -214,7 +214,7 @@ class UNetConvBlock(nn.Module):
         self.conv2 = nn.Conv2d(out_size, out_size, kernel_size=3, stride=1, padding=1, padding_mode='replicate')
         self.bn = nn.BatchNorm2d(out_size)
         self.bn2 = nn.BatchNorm2d(out_size)
-        self.activation = nn.LeakyReLU(negative_slope=0.2, inplace=False)
+        self.activation = nn.LeakyReLU(negative_slope=0.2, inplace=True)
         self.dropout = nn.Dropout(p=0.5)
 
         init.kaiming_normal_(self.conv.weight)
@@ -222,7 +222,6 @@ class UNetConvBlock(nn.Module):
 
     def forward(self, x):
         out = self.activation(self.bn(self.conv(x)))
-        out = out.clone() #To Prevent Batch Norm inplace modifications
         out = self.activation(self.bn2(self.conv2(out)))
         out = self.dropout(out)
         return out
@@ -238,7 +237,7 @@ class UNetUpBlock(nn.Module):
         self.bn1 = nn.BatchNorm2d(out_size)
         self.bn2_1 = nn.BatchNorm2d(out_size)
         self.bn2_2 = nn.BatchNorm2d(out_size)
-        self.activation = nn.LeakyReLU(negative_slope=0.2, inplace=False)
+        self.activation = nn.LeakyReLU(negative_slope=0.2, inplace=True)
         self.dropout_1 = nn.Dropout(p=0.5)
         self.dropout_2 = nn.Dropout(p=0.5)
         # self.interpolate = F.interpolate(scale_factor=2, mode='bilinear', align_corners=True)
@@ -258,14 +257,8 @@ class UNetUpBlock(nn.Module):
         out = self.activation(self.bn1(self.conv1(x)))
         out = self.dropout_1(out)
         out = torch.cat([out, u], dim=1)
-        out = self.conv2_1(out)
-        #out = out.clone() #To Prevent Batch Norm inplace modifications
-        out = self.bn2_1(out)
-        out = self.activation(out)
-        out = self.conv2_2(out)
-        #out = out.clone() #To Prevent Batch Norm inplace modifications
-        out = self.bn2_2(out)
-        out = self.activation(out)
+        out = self.activation(self.bn2_1(self.conv2_1(out)))
+        out = self.activation(self.bn2_2(self.conv2_2(out)))
         out = self.dropout_2(out)
 
         # crop1 = self.center_crop(bridge, up.size()[2])
