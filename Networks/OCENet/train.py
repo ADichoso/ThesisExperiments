@@ -25,35 +25,40 @@ def train():
     torch.autograd.set_detect_anomaly(True)
 
     # Set up the distributed data parallel
-    torch.cuda.set_device(args.local_rank)
-    device = torch.device(f'cuda:{args.local_rank}')
+    #torch.cuda.set_device(args.local_rank)
+    #device = torch.device(f'cuda:{args.local_rank}')
 
-    torch.distributed.init_process_group(backend='nccl', init_method='env://')
+    #torch.distributed.init_process_group(backend='nccl', init_method='env://')
 
-    n_gpu = torch.cuda.device_count()
-    world_size = torch.distributed.get_world_size()
+    #n_gpu = torch.cuda.device_count()
+    #world_size = torch.distributed.get_world_size()
 
-    torch.distributed.barrier()
+    #torch.distributed.barrier()
+
+    #REPLACE DDP with single GPU
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     # Load models
     COD_Net = Generator(channel=args.gen_reduced_channel).to(device)
-    COD_Net = torch.nn.SyncBatchNorm.convert_sync_batchnorm(COD_Net)
-    COD_Net = DistributedDataParallel(COD_Net, device_ids=[args.local_rank], find_unused_parameters=True)
+    #COD_Net = torch.nn.SyncBatchNorm.convert_sync_batchnorm(COD_Net)
+    #COD_Net = DistributedDataParallel(COD_Net, device_ids=[args.local_rank], find_unused_parameters=True)
     COD_Net_params = COD_Net.parameters()
     COD_Net_optimiser = torch.optim.Adam(COD_Net_params, args.lr_gen, betas=[args.beta_gen, 0.999])
 
     OCE_Net = FCDiscriminator().to(device)
-    OCE_Net = torch.nn.SyncBatchNorm.convert_sync_batchnorm(OCE_Net)
-    OCE_Net = DistributedDataParallel(OCE_Net, device_ids=[args.local_rank], find_unused_parameters=True)
+    #OCE_Net = torch.nn.SyncBatchNorm.convert_sync_batchnorm(OCE_Net)
+    #OCE_Net = DistributedDataParallel(OCE_Net, device_ids=[args.local_rank], find_unused_parameters=True)
     OCE_Net_params = OCE_Net.parameters()
     OCE_Net_optimiser = torch.optim.Adam(OCE_Net_params, args.lr_dis, betas=[args.beta_dis, 0.999])
 
     torch.distributed.barrier()
 
     # Set up the dataset and the dataloader
-    train_dataset = SalObjDataset(args.train_image_root, args.train_gt_root, trainsize=args.trainsize)
-    train_sampler = DistributedSampler(train_dataset, num_replicas=n_gpu, rank=args.local_rank)
-    train_loader = get_loader(args.train_image_root, args.train_gt_root, batchsize=args.batchsize, trainsize=args.trainsize, sampler=train_sampler)
+    #train_dataset = SalObjDataset(args.train_image_root, args.train_gt_root, trainsize=args.trainsize)
+    #train_sampler = DistributedSampler(train_dataset, num_replicas=n_gpu, rank=args.local_rank)
+    #train_loader = get_loader(args.train_image_root, args.train_gt_root, batchsize=args.batchsize, trainsize=args.trainsize, sampler=train_sampler)
+    train_loader = get_loader(args.train_image_root, args.train_gt_root, batchsize=args.batchsize, trainsize=args.trainsize,sampler=None)
+
     train_step = len(train_loader)
 
     # Set up the learning rate scheduler
@@ -70,7 +75,7 @@ def train():
     print("Ikou!")
 
     for epoch in range(1, (args.epoch + 1)):
-        train_sampler.set_epoch(epoch)
+        #train_sampler.set_epoch(epoch)
         COD_Net_scheduler.step()
         COD_Net.train()
         OCE_Net.train()
@@ -83,7 +88,7 @@ def train():
                OCE_Net_optimiser.param_groups[0]['lr']))
 
         for i, pack in enumerate(train_loader, start=1):
-            torch.distributed.barrier()
+            #torch.distributed.barrier()
 
             for rate in size_rates:
                 COD_Net_optimiser.zero_grad()
@@ -91,8 +96,8 @@ def train():
 
                 # Get the images and gts from the batch
                 images, gts = pack
-                images = Variable(images).cuda()
-                gts = Variable(gts).cuda()
+                images = images.to(device)
+                gts = gts.to(device)
 
                 # Format the size of images and gts
                 trainsize = int(round(args.trainsize * rate / 32) * 32)
@@ -127,7 +132,7 @@ def train():
                 OCE_loss.backward()
                 OCE_Net_optimiser.step()
 
-                torch.distributed.barrier()
+                #torch.distributed.barrier()
 
                 # Compute structure loss for the COD-Net
                 struct_loss1 = uncertainty_aware_structure_loss(pred=init_pred, mask=gts, confi_map=confi_init_pred.detach(), epoch=epoch)
@@ -138,34 +143,33 @@ def train():
                 COD_loss.backward()
                 COD_Net_optimiser.step()
 
-                torch.distributed.barrier()
+                #torch.distributed.barrier()
 
                 # Update the loss record
                 if rate == 1:
                     loss_record_COD.update(COD_loss.data, args.batchsize)
                     loss_record_OCE.update(OCE_loss.data, args.batchsize)
 
-                torch.distributed.barrier()
+                #torch.distributed.barrier()
 
             if i % 10 == 0 or i == train_step:
                 print('{} Epoch [{:03d}/{:03d}], Step [{:04d}/{:04d}], COD Loss: {:.4f}, OCE Loss: {:.4f}'.
                        format(datetime.now(), epoch, args.epoch, i, train_step, loss_record_COD.show(), loss_record_OCE.show()))
 
-            torch.distributed.barrier()
+            #torch.distributed.barrier()
 
         if not os.path.exists(args.model_save_path):
-            if torch.distributed.get_rank() == 0:
-                os.makedirs(args.model_save_path)
+            os.makedirs(args.model_save_path, exist_ok=True)
 
-        torch.distributed.barrier()
+        #torch.distributed.barrier()
 
         if epoch % 10 == 0:
-            torch.save(COD_Net.state_dict(), args.model_save_path + args.experiment_name + '/' + 'COD_Model' + '_%d' % epoch + '_%d' % torch.distributed.get_rank() + '.pth')
-            torch.save(OCE_Net.state_dict(), args.model_save_path + args.experiment_name + '/' + 'OCE_Model' + '_%d' % epoch + '_%d' % torch.distributed.get_rank() + '.pth')
+            torch.save(COD_Net.state_dict(), args.model_save_path + args.experiment_name + '/' + 'COD_Model' + '_%d' % epoch + '.pth')
+            torch.save(OCE_Net.state_dict(), args.model_save_path + args.experiment_name + '/' + 'OCE_Model' + '_%d' % epoch + '.pth')
             print("Successfully save the trained models to {}".format(args.model_save_path))
 
-    torch.distributed.barrier()
-    torch.distributed.destroy_process_group()
+    #torch.distributed.barrier()
+    #torch.distributed.destroy_process_group()
 
 if __name__ == "__main__":
     train()
