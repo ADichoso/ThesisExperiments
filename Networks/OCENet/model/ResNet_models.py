@@ -8,9 +8,6 @@ import torch.nn.functional as F
 from model.HolisticAttention import HA
 from utils import gradient_x, gradient_y, normalise
 
-
-
-
 class FCDiscriminator(nn.Module):
     def __init__(self, ndf = 16):
         super(FCDiscriminator, self).__init__()

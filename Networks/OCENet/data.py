@@ -225,7 +225,7 @@ class SalObjDataset(data.Dataset):
 
 
 # dataloader for training
-def get_loader(image_root, gt_root, batchsize, trainsize, sampler, shuffle=True, num_workers=12, pin_memory=True):
+def get_loader(image_root, gt_root, batchsize, trainsize, sampler, shuffle=True, num_workers=4, pin_memory=True):
     dataset = SalObjDataset(image_root, gt_root, trainsize)
     data_loader = data.DataLoader(dataset=dataset,
                                   batch_size=batchsize,
@@ -235,7 +235,7 @@ def get_loader(image_root, gt_root, batchsize, trainsize, sampler, shuffle=True,
                                   pin_memory=pin_memory)
     return data_loader
 
-def get_loader_standard(image_root, gt_root, batchsize, trainsize, shuffle=True, num_workers=12, pin_memory=True):
+def get_loader_standard(image_root, gt_root, batchsize, trainsize, shuffle=True, num_workers=4, pin_memory=True):
     dataset = SalObjDataset(image_root, gt_root, trainsize)
     data_loader = data.DataLoader(dataset=dataset,
                                   batch_size=batchsize,

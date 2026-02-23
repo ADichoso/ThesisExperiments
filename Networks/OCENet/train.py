@@ -4,8 +4,6 @@ import torch.optim
 from torch.optim import lr_scheduler
 from torch.autograd import Variable
 import torch.nn.functional as F
-from torch.nn.parallel import DistributedDataParallel
-from torch.utils.data.distributed import DistributedSampler
 from datetime import datetime
 
 
@@ -57,7 +55,7 @@ def train():
     #train_dataset = SalObjDataset(args.train_image_root, args.train_gt_root, trainsize=args.trainsize)
     #train_sampler = DistributedSampler(train_dataset, num_replicas=n_gpu, rank=args.local_rank)
     #train_loader = get_loader(args.train_image_root, args.train_gt_root, batchsize=args.batchsize, trainsize=args.trainsize, sampler=train_sampler)
-    train_loader = get_loader(args.train_image_root, args.train_gt_root, batchsize=args.batchsize, trainsize=args.trainsize,sampler=None)
+    train_loader = get_loader(args.train_image_root, args.train_gt_root, batchsize=args.batchsize, trainsize=args.trainsize, sampler=None)
 
     train_step = len(train_loader)
 
@@ -96,8 +94,8 @@ def train():
 
                 # Get the images and gts from the batch
                 images, gts = pack
-                images = images.to(device)
-                gts = gts.to(device)
+                images = Variable(images).to(device)
+                gts = Variable(gts).to(device)
 
                 # Format the size of images and gts
                 trainsize = int(round(args.trainsize * rate / 32) * 32)
