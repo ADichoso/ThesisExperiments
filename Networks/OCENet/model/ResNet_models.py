@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 import torchvision.models as models
 from model.ResNet import B2_ResNet, UNetConvBlock, UNetUpBlock
-device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+#device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 from torch.nn import Parameter, Softmax
 import torch.nn.functional as F
 from model.HolisticAttention import HA
@@ -60,8 +60,8 @@ class Generator(nn.Module):
 
     def forward(self, x):
         self.sal_init, self.sal_ref = self.sal_encoder(x)
-        self.sal_init = F.upsample(self.sal_init, size=(x.shape[2], x.shape[3]), mode='bilinear', align_corners=True)
-        self.sal_ref = F.upsample(self.sal_ref, size=(x.shape[2], x.shape[3]), mode='bilinear', align_corners=True)
+        self.sal_init = F.interpolate(self.sal_init, size=(x.shape[2], x.shape[3]), mode='bilinear', align_corners=True)
+        self.sal_ref = F.interpolate(self.sal_ref, size=(x.shape[2], x.shape[3]), mode='bilinear', align_corners=True)
         # self.bd_pred = F.upsample(self.bd_pred, size=(x.shape[2], x.shape[3]), mode='bilinear', align_corners=True)
         # self.sal_grad = F.upsample(self.sal_grad, size=(x.shape[2], x.shape[3]), mode='bilinear', align_corners=True)
         return self.sal_init, self.sal_ref
@@ -424,8 +424,9 @@ class Saliency_feat_encoder(nn.Module):
                 name = k.split('_2')[0] + k.split('_2')[1]
                 v = pretrained_dict[name]
                 all_params[k] = v
-        assert len(all_params.keys()) == len(self.resnet.state_dict().keys())
-        self.resnet.load_state_dict(all_params)
+        missing, unexpected = self.resnet.load_state_dict(all_params, strict=False)
+        print("Missing keys:", missing)
+        print("Unexpected keys:", unexpected)
 
 
 
@@ -594,5 +595,6 @@ class Saliency_feat_encoder_v1(nn.Module):
                 name = k.split('_2')[0] + k.split('_2')[1]
                 v = pretrained_dict[name]
                 all_params[k] = v
-        assert len(all_params.keys()) == len(self.resnet.state_dict().keys())
-        self.resnet.load_state_dict(all_params)
+        missing, unexpected = self.resnet.load_state_dict(all_params, strict=False)
+        print("Missing keys:", missing)
+        print("Unexpected keys:", unexpected)

@@ -2,7 +2,6 @@ import torch.nn as nn
 import math
 import torch
 import torch.nn.functional as F
-from torch.autograd import Variable
 import torch.nn.init as init
 import numpy as np
 
@@ -171,6 +170,8 @@ class residualUnit(nn.Module):
         out2 = self.activation(self.bn2(self.conv2(out1)))
         if self.in_size!=self.out_size:
             bridge = self.activation(self.bnX(self.convX(x)))
+        else:
+            bridge = x
         output = torch.add(out2, bridge)
 
         return output

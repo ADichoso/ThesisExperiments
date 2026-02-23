@@ -29,10 +29,10 @@ class HA(nn.Module):
         super(HA, self).__init__()
         gaussian_kernel = np.float32(gkern(31, 4))
         gaussian_kernel = gaussian_kernel[np.newaxis, np.newaxis, ...]
-        self.gaussian_kernel = Parameter(torch.from_numpy(gaussian_kernel))
+        self.register_buffer("gaussian_kernel", torch.from_numpy(gaussian_kernel).float())
 
     def forward(self, attention, x):
-        soft_attention = F.conv2d(attention, self.gaussian_kernel, padding=15)
+        soft_attention = F.conv2d(attention, self.gaussian_kernel.to(attention.dtype), padding=15)
         soft_attention = min_max_norm(soft_attention)
         x = torch.mul(x, soft_attention.max(attention))
         return x

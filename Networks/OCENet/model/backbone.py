@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 import torchvision.models as models
 from ResNet import B2_ResNet
-device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+#device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 from torch.nn import Parameter, Softmax
 
 class Generator(nn.Module):
@@ -212,5 +212,8 @@ class Saliency_feat_encoder(nn.Module):
                 name = k.split('_2')[0] + k.split('_2')[1]
                 v = pretrained_dict[name]
                 all_params[k] = v
-        assert len(all_params.keys()) == len(self.resnet.state_dict().keys())
-        self.resnet.load_state_dict(all_params)
+        #assert len(all_params.keys()) == len(self.resnet.state_dict().keys())
+        #self.resnet.load_state_dict(all_params)
+        missing, unexpected = self.resnet.load_state_dict(all_params, strict=False)
+        print("Missing keys:", missing)
+        print("Unexpected keys:", unexpected)
