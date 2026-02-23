@@ -23,10 +23,11 @@ parser.add_argument('--energy_form', default='identity', help='tanh | sigmoid | 
 opt = parser.parse_args()
 
 dataset_path = './data/test/'
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 # Create the COD-Network and load the weights
-COD_Net = Generator(channel=32).cuda()
-state_dict = torch.load('./checkpoint/S2/COD_Model_50.pth')
+COD_Net = Generator(channel=32).to(device)
+state_dict = torch.load('./checkpoint/S2/COD_Model_50.pth', map_location=device)
 new_state_dict = OrderedDict()
 # for k, v in state_dict.items():
 #     name = k[7:]
@@ -35,9 +36,8 @@ COD_Net.load_state_dict(state_dict)
 COD_Net.eval()
 
 # Create the OCE-Network and load the weights
-OCE_Net = FCDiscriminator().cuda()
-OCE_Net = torch.nn.DataParallel(OCE_Net, device_ids=[0])
-OCE_Net.load_state_dict(torch.load('./checkpoint/S2/OCE_Model_50_0.pth'))
+OCE_Net = FCDiscriminator().to(device)
+OCE_Net.load_state_dict(torch.load('./checkpoint/S2/OCE_Model_50_0.pth', map_location=device))
 OCE_Net.eval()
 
 # 4 COD test datasets
@@ -58,28 +58,29 @@ for dataset in test_datasets:
 
     for i in range(test_loader.size):
         image, HH, WW, name = test_loader.load_data()
-        image = image.cuda()
+        image = image.to(device)
 
-        # Compute COD prediction
-        _, COD_pred = COD_Net.forward(image)
+        with torch.no_grad():
+            # Compute COD prediction
+            _, COD_pred = COD_Net.forward(image)
 
-        # Uncomment this section of codes if you want to produce confidence map.
-        # Compute confidence map prediction
-        OCE_input = torch.cat((COD_pred, image), dim=1)
-        confi_pred = torch.sigmoid(OCE_Net.forward(OCE_input))
-        confi = F.interpolate(confi_pred, size=[WW, HH], mode='bilinear', align_corners=False)
-        confi = confi.sigmoid().data.cpu().numpy().squeeze()
-        confi = (confi - confi.min()) / (confi.max() - confi.min())
-        confi *= 255.0
-        confi = confi.astype(np.uint8)
-        confi = cv2.applyColorMap(confi, cv2.COLORMAP_JET)
+            # Uncomment this section of codes if you want to produce confidence map.
+            # Compute confidence map prediction
+            OCE_input = torch.cat((COD_pred, image), dim=1)
+            confi_pred = torch.sigmoid(OCE_Net.forward(OCE_input))
+            confi = F.interpolate(confi_pred, size=[WW, HH], mode='bilinear', align_corners=False)
+            confi = confi.sigmoid().cpu().numpy().squeeze()
+            confi = (confi - confi.min()) / (confi.max() - confi.min())
+            confi *= 255.0
+            confi = confi.astype(np.uint8)
+            confi = cv2.applyColorMap(confi, cv2.COLORMAP_JET)
 
-        res = COD_pred
-        res = F.upsample(res, size=[WW,HH], mode='bilinear', align_corners=False)
-        res = res.sigmoid().data.cpu().numpy().squeeze()
-        res *= 255.0
-        res = res.astype(np.uint8)
+            res = COD_pred
+            res = F.interpolate(res, size=[WW,HH], mode='bilinear', align_corners=False)
+            res = res.sigmoid().cpu().numpy().squeeze()
+            res *= 255.0
+            res = res.astype(np.uint8)
 
-        # Save COD prediction and confidence map prediction
-        cv2.imwrite(save_path + name, res)
-        cv2.imwrite(confi_path + name, confi)
+            # Save COD prediction and confidence map prediction
+            cv2.imwrite(save_path + name, res)
+            cv2.imwrite(confi_path + name, confi)
