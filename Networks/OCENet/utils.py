@@ -80,7 +80,8 @@ class AvgMeter(object):
         #print(c)
         #d = torch.mean(torch.stack(c))
         #print(d)
-        return torch.mean(torch.stack(c))
+        c_tensors = [torch.tensor(x) for x in c]
+        return torch.mean(torch.stack(c_tensors))
 
 # def save_mask_prediction_example(mask, pred, iter):
 # 	plt.imshow(pred[0,:,:],cmap='Greys')
