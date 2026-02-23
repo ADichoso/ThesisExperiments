@@ -30,7 +30,7 @@ if __name__ == "__main__":
     parser.add_argument('--train_gt_dir', type=str, default='./Datasets/ACOD-12K/Train/GT/')
     opt = parser.parse_args()
 
-    torch.cuda.set_device(opt.gpu)
+    #torch.cuda.set_device(opt.gpu)
 
     # TIPS: you also can use deeper network for better performance like channel=64
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
