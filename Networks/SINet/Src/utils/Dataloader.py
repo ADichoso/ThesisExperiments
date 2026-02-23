@@ -10,7 +10,7 @@ import torch
 class CamObjDataset(data.Dataset):
     def __init__(self, image_root, gt_root, trainsize):
         self.trainsize = trainsize
-        self.images = [image_root + f for f in os.listdir(image_root) if f.endswith('.jpg')]
+        self.images = [image_root + f for f in os.listdir(image_root) if f.endswith('.jpg') or f.endswith('.png')]
         self.gts = [gt_root + f for f in os.listdir(gt_root) if f.endswith('.jpg')
                     or f.endswith('.png')]
         self.images = sorted(self.images)
@@ -74,7 +74,7 @@ class test_dataset:
     """load test dataset (batchsize=1)"""
     def __init__(self, image_root, gt_root, testsize):
         self.testsize = testsize
-        self.images = [image_root + f for f in os.listdir(image_root) if f.endswith('.jpg')]
+        self.images = [image_root + f for f in os.listdir(image_root) if f.endswith('.jpg') or f.endswith('.png')]
         self.gts = [gt_root + f for f in os.listdir(gt_root) if f.endswith('.jpg') or f.endswith('.png')]
         self.images = sorted(self.images)
         self.gts = sorted(self.gts)

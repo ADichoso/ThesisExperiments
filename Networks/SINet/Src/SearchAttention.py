@@ -35,7 +35,7 @@ class SA(nn.Module):
         super(SA, self).__init__()
         gaussian_kernel = np.float32(_get_kernel(31, 4))
         gaussian_kernel = gaussian_kernel[np.newaxis, np.newaxis, ...]
-        self.gaussian_kernel = Parameter(torch.from_numpy(gaussian_kernel))
+        self.register_buffer('gaussian_kernel', torch.from_numpy(gaussian_kernel))
 
     def forward(self, attention, x):
         soft_attention = F.conv2d(attention, self.gaussian_kernel, padding=15)
