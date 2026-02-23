@@ -2,7 +2,6 @@ import os
 import torch
 import torch.optim
 from torch.optim import lr_scheduler
-from torch.autograd import Variable
 import torch.nn.functional as F
 from datetime import datetime
 
@@ -74,7 +73,6 @@ def train():
 
     for epoch in range(1, (args.epoch + 1)):
         #train_sampler.set_epoch(epoch)
-        COD_Net_scheduler.step()
         COD_Net.train()
         OCE_Net.train()
 
@@ -94,8 +92,8 @@ def train():
 
                 # Get the images and gts from the batch
                 images, gts = pack
-                images = Variable(images).to(device)
-                gts = Variable(gts).to(device)
+                images = images.to(device)
+                gts = gts.to(device)
 
                 # Format the size of images and gts
                 trainsize = int(round(args.trainsize * rate / 32) * 32)
@@ -140,13 +138,13 @@ def train():
                 # Backpropagate loss through the COD-Net
                 COD_loss.backward()
                 COD_Net_optimiser.step()
-
+                
                 #torch.distributed.barrier()
 
                 # Update the loss record
                 if rate == 1:
-                    loss_record_COD.update(COD_loss.data, args.batchsize)
-                    loss_record_OCE.update(OCE_loss.data, args.batchsize)
+                    loss_record_COD.update(COD_loss.item(), args.batchsize)
+                    loss_record_OCE.update(OCE_loss.item(), args.batchsize)
 
                 #torch.distributed.barrier()
 
@@ -155,6 +153,8 @@ def train():
                        format(datetime.now(), epoch, args.epoch, i, train_step, loss_record_COD.show(), loss_record_OCE.show()))
 
             #torch.distributed.barrier()
+        
+        COD_Net_scheduler.step()
 
         if not os.path.exists(args.model_save_path):
             os.makedirs(args.model_save_path, exist_ok=True)
