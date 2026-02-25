@@ -162,8 +162,8 @@ def train():
         #torch.distributed.barrier()
 
         if epoch % 10 == 0:
-            torch.save(COD_Net.state_dict(), args.model_save_path + args.experiment_name + '/' + 'COD_Model' + '_%d' % epoch + '.pth')
-            torch.save(OCE_Net.state_dict(), args.model_save_path + args.experiment_name + '/' + 'OCE_Model' + '_%d' % epoch + '.pth')
+            torch.save(COD_Net.state_dict(), args.model_save_path + '/' + 'COD_Model' + '_%d' % epoch + '.pth')
+            torch.save(OCE_Net.state_dict(), args.model_save_path + '/' + 'OCE_Model' + '_%d' % epoch + '.pth')
             print("Successfully save the trained models to {}".format(args.model_save_path))
 
     #torch.distributed.barrier()
