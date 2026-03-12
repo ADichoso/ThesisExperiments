@@ -25,7 +25,6 @@ import math
 #
 #
 
-
 def set_rand_seed(seed=1024):
     print("Random Seed: ", seed)
     random.seed(seed)
