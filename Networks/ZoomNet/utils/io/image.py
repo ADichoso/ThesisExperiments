@@ -34,7 +34,6 @@ def read_gray_array(path, div_255=False, to_normalize=False, thr=-1, dtype=np.fl
 
 
 def read_color_array(path: str):
-    assert path.endswith(".jpg") or path.endswith(".png")
     bgr_array = cv2.imread(path, cv2.IMREAD_COLOR)
     assert bgr_array is not None, f"Image Not Found: {path}"
     rgb_array = cv2.cvtColor(bgr_array, cv2.COLOR_BGR2RGB)

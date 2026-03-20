@@ -9,17 +9,17 @@ import numpy as np
 import torch
 from tqdm import tqdm
 
-from utils import builder, configurator, io, misc, ops, pipeline, recorder
+from utils import builder, configurator, io, misc, ops, pipeline
 
 
 def parse_config():
     parser = argparse.ArgumentParser("Training and evaluation script")
-    parser.add_argument("--config", default="./configs/zoomnet/zoomnet.py", type=str)
-    parser.add_argument("--datasets-info", default="./configs/_base_/dataset/dataset_configs.json", type=str)
-    parser.add_argument("--model-name", type=str)
+    parser.add_argument("--config", default="Networks/ZoomNet/configs/zoomnet/cod_zoomnet.py", type=str)
+    parser.add_argument("--datasets-info", default="Networks/ZoomNet/configs/_base_/dataset/dataset_configs.json", type=str)
+    parser.add_argument("--model-name", default="ZoomNet", type=str)
     parser.add_argument("--batch-size", type=int)
-    parser.add_argument("--load-from", type=str)
-    parser.add_argument("--save-path", type=str)
+    parser.add_argument("--load-from", default="Networks/ZoomNet/output/ZoomNet_BS4_LR0.0001_E45_H448_W448_OPMsgd_OPGMfinetune_SCf3_AMP/pth/state_final.pth", type=str)
+    parser.add_argument("--save-path", default="Results/ZoomNet/ACOD-12K", type=str)
     parser.add_argument("--minmax-results", action="store_true")
     parser.add_argument("--info", type=str)
     args = parser.parse_args()
@@ -70,7 +70,7 @@ def test_once(
     to_minmax=False,
 ):
     model.is_training = False
-    cal_total_seg_metrics = recorder.CalTotalMetric()
+    #cal_total_seg_metrics = recorder.CalTotalMetric()
 
     pgr_bar = enumerate(data_loader)
     if show_bar:
@@ -103,9 +103,9 @@ def test_once(
                 ops.save_array_as_image(data_array=pred, save_name=os.path.basename(mask_path), save_dir=save_path)
 
             pred = (pred * 255).astype(np.uint8)
-            cal_total_seg_metrics.step(pred, mask_array, mask_path)
-    fixed_seg_results = cal_total_seg_metrics.get_results()
-    return fixed_seg_results
+            #cal_total_seg_metrics.step(pred, mask_array, mask_path)
+    #fixed_seg_results = cal_total_seg_metrics.get_results()
+    #return fixed_seg_results
 
 
 @torch.no_grad()
@@ -115,7 +115,7 @@ def testing(model, cfg):
         if cfg.save_path:
             pred_save_path = os.path.join(cfg.save_path, data_name)
             print(f"Results will be saved into {pred_save_path}")
-        seg_results = test_once(
+        test_once(
             model=model,
             save_path=pred_save_path,
             data_loader=loader,
@@ -124,7 +124,7 @@ def testing(model, cfg):
             show_bar=cfg.test.get("show_bar", False),
             to_minmax=cfg.test.get("to_minmax", False),
         )
-        print(f"Results on the testset({data_name}): {misc.mapping_to_str(data_path)}\n{seg_results}")
+        print(f"Results on the testset({data_name}): {misc.mapping_to_str(data_path)}")
 
 
 def main():
@@ -135,7 +135,7 @@ def main():
     )
     io.load_weight(model=model, load_path=cfg.load_from)
 
-    model.device = "cuda:0"
+    model.device = "cpu"
     model.to(model.device)
     model.eval()
 

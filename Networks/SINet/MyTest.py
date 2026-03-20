@@ -3,10 +3,12 @@ import torch.nn.functional as F
 import numpy as np
 import os
 import argparse
-from scipy import misc  # NOTES: pip install scipy == 1.2.2 (prerequisite!)
 from Src.SINet import SINet_ResNet50
 from Src.utils.Dataloader import test_dataset
 from Src.utils.trainer import eval_mae, numpy2tensor
+
+import imageio
+device = "cpu"
 
 
 parser = argparse.ArgumentParser()
@@ -17,7 +19,7 @@ parser.add_argument('--test_save', type=str,
                     default='./Result/SINet/')
 opt = parser.parse_args()
 
-model = SINet_ResNet50().cuda()
+model = SINet_ResNet50().to(device)
 model.load_state_dict(torch.load(opt.model_path))
 model.eval()
 
@@ -38,7 +40,7 @@ for dataset in ['ACOD-12K']:
         image, gt, name = test_loader.load_data()
         gt = np.asarray(gt, np.float32)
         gt /= (gt.max() + 1e-8)
-        image = image.cuda()
+        image = image.to(device)
         # inference
         _, cam = model(image)
         # reshape and squeeze
@@ -46,12 +48,13 @@ for dataset in ['ACOD-12K']:
         cam = cam.sigmoid().data.cpu().numpy().squeeze()
         # normalize
         cam = (cam - cam.min()) / (cam.max() - cam.min() + 1e-8)
-        misc.imsave(save_path+name, cam)
+        cam = (cam * 255).astype(np.uint8)
+        imageio.imwrite(save_path+name, cam)
         # evaluate
-        mae = eval_mae(numpy2tensor(cam), numpy2tensor(gt))
+        #mae = eval_mae(numpy2tensor(cam), numpy2tensor(gt))
         # coarse score
-        print('[Eval-Test] Dataset: {}, Image: {} ({}/{}), MAE: {}'.format(dataset, name, img_count,
-                                                                           test_loader.size, mae))
+        print('[Eval-Test] Dataset: {}, Image: {} ({}/{})'.format(dataset, name, img_count,
+                                                                           test_loader.size))
         img_count += 1
 
 print("\n[Congratulations! Testing Done]")

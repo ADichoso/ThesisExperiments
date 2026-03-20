@@ -350,7 +350,7 @@
     "root": "./Datasets/ACOD-12K/Test",
     "image": {
       "path": "Imgs",
-      "suffix": "png"
+      "suffix": ".png"
     },
     "depth": {
       "path": "Depth",

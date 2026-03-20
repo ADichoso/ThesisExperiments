@@ -22,12 +22,12 @@ parser.add_argument('-langevin_step_size_des', type=float, default=0.026,help='s
 parser.add_argument('--energy_form', default='identity', help='tanh | sigmoid | identity | softplus')
 opt = parser.parse_args()
 
-dataset_path = './data/test/'
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+dataset_path = './Datasets/'
+device = "cpu"
 
 # Create the COD-Network and load the weights
 COD_Net = Generator(channel=32).to(device)
-state_dict = torch.load('./checkpoint/S2/COD_Model_50.pth', map_location=device)
+state_dict = torch.load('./Checkpoints/OCENet/COD_Model_50.pth', map_location=device)
 new_state_dict = OrderedDict()
 # for k, v in state_dict.items():
 #     name = k[7:]
@@ -37,23 +37,23 @@ COD_Net.eval()
 
 # Create the OCE-Network and load the weights
 OCE_Net = FCDiscriminator().to(device)
-OCE_Net.load_state_dict(torch.load('./checkpoint/S2/OCE_Model_50_0.pth', map_location=device))
+OCE_Net.load_state_dict(torch.load('./Checkpoints/OCENet/OCE_Model_50.pth', map_location=device))
 OCE_Net.eval()
 
 # 4 COD test datasets
-test_datasets = ['CAMO', 'CHAMELEON', 'COD10K', 'NC4K']
+test_datasets = ['ACOD-12K']
 
 # Iterate over the test datasets
 for dataset in test_datasets:
-    save_path = './results/' + dataset + '/'
+    save_path = './Results/OCENet/' + dataset + '/'
     if not os.path.exists(save_path):
         os.makedirs(save_path)
 
-    confi_path = './confidences/' + dataset + '/'
+    confi_path = './Results/OCENet/' + dataset + '/confidences/'
     if not os.path.exists(confi_path):
         os.makedirs(confi_path)
 
-    image_root = dataset_path + dataset + '/Imgs/'
+    image_root = dataset_path + dataset + '/Test/Imgs/'
     test_loader = test_dataset(image_root, opt.testsize)
 
     for i in range(test_loader.size):
