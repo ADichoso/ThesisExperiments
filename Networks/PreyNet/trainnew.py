@@ -242,7 +242,7 @@ def val(test_loader, model, epoch, save_path, writer):
         return mae
 
 
-if __name__ == '__main__':
+if __name__ == '__main__': 
     import argparse
 
     parser = argparse.ArgumentParser()
