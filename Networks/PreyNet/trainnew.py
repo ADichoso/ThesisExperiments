@@ -148,7 +148,15 @@ def train(train_loader, model, optimizer, scaler, epoch, save_path, writer):
         scaler.scale(loss).backward()
 
         clip_gradient(optimizer, opt.clip)
-        scaler.step(optimizer)
+
+        try:
+            scaler.step(optimizer)
+        except RuntimeError as e:
+            if "CUDA error" in str(e):
+                logging.warning(f'CUDA error at epoch {epoch} step {i}, skipping step: {e}')
+                optimizer.zero_grad()
+            else:
+                raise  # re-raise anything unrelated
         scaler.update()
 
         step += 1
