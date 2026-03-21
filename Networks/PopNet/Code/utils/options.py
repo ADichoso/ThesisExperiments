@@ -5,7 +5,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--epoch',       type=int,   default=100,   help='epoch number')
 parser.add_argument('--lr',          type=float, default=1e-4,  help='learning rate')
 parser.add_argument('--batchsize',   type=int,   default=4,    help='training batch size')
-parser.add_argument('--trainsize',   type=int,   default=704,   help='training dataset size')
+parser.add_argument('--trainsize',   type=int,   default=352,   help='training dataset size')
 parser.add_argument('--clip',        type=float, default=0.5,   help='gradient clipping margin')
 parser.add_argument('--lw',          type=float, default=0.001, help='weight')
 parser.add_argument('--decay_rate',  type=float, default=0.1,   help='decay rate of learning rate')
@@ -13,7 +13,7 @@ parser.add_argument('--decay_epoch', type=int,   default=60,    help='every n ep
 #parser.add_argument('--load',        type=str,   default='./SPNet_epoch_best.pth',  help='train from checkpoints') # if continue learning from previous stage
 parser.add_argument('--load',        type=str,   default='',  help='train from checkpoints')
 
-parser.add_argument('--gpu_id',      type=str,   default='1',   help='train use gpu')
+parser.add_argument('--gpu_id',      type=str,   default='0',   help='train use gpu')
 
 parser.add_argument('--rgb_label_root',      type=str, default='./Datasets/ACOD-12K/Train/Imgs/',           help='the training rgb images root')
 parser.add_argument('--depth_label_root',    type=str, default='./Datasets/ACOD-12K/Train/Depth/',         help='the training depth images root')
