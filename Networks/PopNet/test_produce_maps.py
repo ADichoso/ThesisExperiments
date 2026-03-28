@@ -18,10 +18,9 @@ opt = parser.parse_args()
 dataset_path = opt.test_path
 
 #set device for test
-if opt.gpu_id=='0':
-    os.environ["CUDA_VISIBLE_DEVICES"] = "0"
-    print('USE GPU 0')
- 
+
+
+device = 'cpu'
 
 #load the model
 model = PopNet(32,50)
