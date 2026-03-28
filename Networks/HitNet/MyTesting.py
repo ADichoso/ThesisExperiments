@@ -15,7 +15,7 @@ opt = parser.parse_args()
 # for _data_name in ['CAMO', 'COD10K', 'CHAMELEON',NC4K]:
 for _data_name in ['ACOD-12K']:
     data_path = './Datasets/{}/Test'.format(_data_name)
-    save_path = '/Results/HitNet/{}/'.format(_data_name)
+    save_path = './Results/HitNet/{}/'.format(_data_name)
     model = Hitnet()
     model.load_state_dict(torch.load(opt.pth_path))
     model.cuda()
