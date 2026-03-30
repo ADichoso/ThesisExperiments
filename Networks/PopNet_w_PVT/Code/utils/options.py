@@ -24,7 +24,7 @@ parser.add_argument('--val_rgb_root',        type=str, default='./Datasets/ACOD-
 parser.add_argument('--val_depth_root',      type=str, default='./Datasets/ACOD-12K/Test/Depth/',    help='the test depth images root')
 parser.add_argument('--val_gt_root',         type=str, default='./Datasets/ACOD-12K/Test/GT/',       help='the test gt images root')
 
-parser.add_argument('--save_path',           type=str, default='./Checkpoints/PopNet/',    help='the path to save models and logs')
+parser.add_argument('--save_path',           type=str, default='./Checkpoints/PopNetwPVT/',    help='the path to save models and logs')
 
 opt = parser.parse_args()
 

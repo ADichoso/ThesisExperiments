@@ -386,7 +386,7 @@ def display_images3(
         # ---------- CROP LABEL IN DEDICATED COLUMN ----------
         mid_row = crop_idx * images + images // 2
         axes[mid_row, 0].text(
-            .8, 1, crop.upper(),
+            .9, 1, crop.upper(),
             fontsize=label_fontsize,
             rotation=90,
             ha="center",
