@@ -84,8 +84,9 @@ def randomPeper(img):
 
 # dataset for training
 class PolypObjDataset(data.Dataset):
-    def __init__(self, image_root, gt_root, trainsize):
+    def __init__(self, image_root, gt_root, trainsize, zoom_scales=(0.5, 1.0, 1.5)):
         self.trainsize = trainsize
+        self.zoom_scales = tuple(zoom_scales)
         # get filenames
         self.images = [image_root + f for f in os.listdir(image_root) if f.endswith('.jpg') or f.endswith('.png')]
         self.gts = [gt_root + f for f in os.listdir(gt_root) if f.endswith('.jpg')
@@ -110,12 +111,16 @@ class PolypObjDataset(data.Dataset):
             transforms.Resize((self.trainsize, self.trainsize)),
             transforms.ToTensor()])
         # get size of dataset
-        self.size = len(self.images)
+        self.size = len(self.images) * len(self.zoom_scales)
 
     def __getitem__(self, index):
         # read imgs/gts/grads/depths
-        image = self.rgb_loader(self.images[index])
-        gt = self.binary_loader(self.gts[index])
+        base_index = index // len(self.zoom_scales)
+        scale = self.zoom_scales[index % len(self.zoom_scales)]
+        image = self.rgb_loader(self.images[base_index])
+        gt = self.binary_loader(self.gts[base_index])
+        image, gt = self.apply_zoom(image, gt, scale)
+
         # data augumentation
         image, gt = cv_random_flip(image, gt)
         image, gt = randomCrop(image, gt)
@@ -128,7 +133,33 @@ class PolypObjDataset(data.Dataset):
         gt = self.gt_transform(gt)
 
         return image, gt
+    
+    def apply_zoom(self, img, gt, scale):
+        if scale == 1.0:
+            return img, gt
 
+        width, height = img.size
+        scaled_width = max(1, int(round(width * scale)))
+        scaled_height = max(1, int(round(height * scale)))
+
+        scaled_img = img.resize((scaled_width, scaled_height), Image.BILINEAR)
+        scaled_gt = gt.resize((scaled_width, scaled_height), Image.NEAREST)
+
+        if scale > 1.0:
+            left = max(0, (scaled_width - width) // 2)
+            top = max(0, (scaled_height - height) // 2)
+            right = left + width
+            bottom = top + height
+            return scaled_img.crop((left, top, right, bottom)), scaled_gt.crop((left, top, right, bottom))
+
+        canvas_img = Image.new('RGB', (width, height), (0, 0, 0))
+        canvas_gt = Image.new('L', (width, height), 0)
+        paste_left = (width - scaled_width) // 2
+        paste_top = (height - scaled_height) // 2
+        canvas_img.paste(scaled_img, (paste_left, paste_top))
+        canvas_gt.paste(scaled_gt, (paste_left, paste_top))
+        return canvas_img, canvas_gt
+    
     def filter_files(self):
         assert len(self.images) == len(self.gts) and len(self.gts) == len(self.images)
         images = []
