@@ -3011,3 +3011,4 @@ py_sod_metrics/__pycache__/utils.cpython-313.pyc
 __pycache__/test_utils.cpython-313.pyc
 __pycache__/test_utils.cpython-313.pyc
 *.csv
+/.idea
