@@ -2179,3 +2179,17 @@
 2025-09-22 23:57:54,220 CAMO-small: MAE:15.5920
 2025-09-22 23:57:54,221 CAMO: MAE:15.5920
 2025-09-22 23:57:54,221 Best CAMO: MAE:15.5891, correspond EPOCH:65 
+2026-03-31 23:19:21,778 Network-Train
+2026-03-31 23:19:21,782 Config: epoch: 100; lr: 0.0001; batchsize: 4; trainsize: 704; clip: 0.5; decay_rate: 0.1; load: None; save_path: ./Checkpoints/PreyNet/; decay_epoch: 50
+2026-03-31 23:19:21,782 Random Seed: 1024
+2026-03-31 23:19:21,816 lr:0.00009910
+2026-03-31 23:31:17,233 [Train Info]:Epoch [001/100], Step [0001/1150], loss_all: 6.2460, loss_stage2: 1.7343,loss_stage1_0: 1.7429, loss_stage1_1: 1.7427, loss_stage1_2: 1.6867,loss_stage1_3: 1.7412,E_score0: 0.4944, E_score1: 0.4628, E_score2: 0.4576, E_score3: 0.5217, loss_errmap0: 0.6940, loss_errmap1: 0.7005, loss_errmap2: 0.6976, loss_errmap3: 0.6916
+2026-03-31 23:39:41,247 [Train Info]:Epoch [001/100], Step [0020/1150], loss_all: 5.9558, loss_stage2: 1.4735,loss_stage1_0: 1.7180, loss_stage1_1: 1.7200, loss_stage1_2: 1.6621,loss_stage1_3: 1.7225,E_score0: 0.4976, E_score1: 0.4666, E_score2: 0.4689, E_score3: 0.5246, loss_errmap0: 0.6928, loss_errmap1: 0.6977, loss_errmap2: 0.6941, loss_errmap3: 0.6924
+2026-03-31 23:49:18,992 [Train Info]:Epoch [001/100], Step [0040/1150], loss_all: 5.8602, loss_stage2: 1.4095,loss_stage1_0: 1.6870, loss_stage1_1: 1.6888, loss_stage1_2: 1.6399,loss_stage1_3: 1.6924,E_score0: 0.5035, E_score1: 0.4747, E_score2: 0.4725, E_score3: 0.5198, loss_errmap0: 0.6927, loss_errmap1: 0.6952, loss_errmap2: 0.6930, loss_errmap3: 0.6931
+2026-03-31 23:55:25,816 Best CAMO: MAE:100.0000, correspond EPOCH:0
+2026-03-31 23:55:52,061 Network-Train
+2026-03-31 23:55:52,061 Config: epoch: 100; lr: 0.0001; batchsize: 4; trainsize: 704; clip: 0.5; decay_rate: 0.1; load: None; save_path: ./Checkpoints/PreyNet/; decay_epoch: 50
+2026-03-31 23:55:52,062 Random Seed: 1024
+2026-03-31 23:55:52,068 lr:0.00009910
+2026-04-01 00:06:39,406 [Train Info]:Epoch [001/100], Step [0001/3450], loss_all: 6.2526, loss_stage2: 1.7359,loss_stage1_0: 1.7476, loss_stage1_1: 1.7477, loss_stage1_2: 1.6910,loss_stage1_3: 1.7462,E_score0: 0.4945, E_score1: 0.4623, E_score2: 0.4587, E_score3: 0.5225, loss_errmap0: 0.6940, loss_errmap1: 0.7006, loss_errmap2: 0.6977, loss_errmap3: 0.6916
+2026-04-01 00:07:09,498 Best CAMO: MAE:100.0000, correspond EPOCH:0
