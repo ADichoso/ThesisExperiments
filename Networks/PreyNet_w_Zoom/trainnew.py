@@ -271,7 +271,7 @@ if __name__ == '__main__':
                         default='./Datasets/ACOD-12K/Test/',
                         help='the test rgb images root')
     parser.add_argument('--save_path', type=str,
-                        default='./Checkpoints/PreyNet/',
+                        default='./Checkpoints/PreyNet_w_Zoom/',
                         help='the path to save model and log')
     opt = parser.parse_args()
 
@@ -317,7 +317,7 @@ if __name__ == '__main__':
                                testsize=opt.trainsize, )
 
     total_step = len(train_loader)
-
+    print(total_step)
 
     # logging
     log_format = '%(asctime)s %(message)s'
