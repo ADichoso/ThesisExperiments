@@ -150,14 +150,19 @@ if __name__ == '__main__':
     parser.add_argument('--load', type=str, default=None, help='train from checkpoints')
     parser.add_argument('--load_epoch', type=int, default=None, help='epoch of loaded checkpoints')
     parser.add_argument('--gpu_id', type=str, default='0', help='train use gpu')
-    parser.add_argument('--train_root', type=str, default='./Datasets/ACOD-12K/Train/',
+    parser.add_argument('--dataset', type=str, default='ACOD-12K', help='Dataset')
+    parser.add_argument('--train_root', type=str, default='./Datasets/',
                         help='the training rgb images root')
-    parser.add_argument('--val_root', type=str, default='./Datasets/ACOD-12K/Test/',
+    parser.add_argument('--val_root', type=str, default='./Datasets/',
                         help='the test rgb images root')
     parser.add_argument('--save_path', type=str,
-                        default='./Checkpoints/SINet_V2_w_Zoom/',
+                        default='./Checkpoints/SINet_V2/',
                         help='the path to save model and log')
     opt = parser.parse_args()
+
+    opt.train_root = opt.train_root + opt.dataset + '/Train/'
+    opt.val_root = opt.val_root + opt.dataset + '/Test/'
+    opt.save_path = opt.save_path + opt.dataset + '/'
 
     # set the device for training
     if opt.gpu_id == '0':

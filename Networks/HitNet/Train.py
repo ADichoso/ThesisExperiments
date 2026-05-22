@@ -160,12 +160,16 @@ if __name__ == '__main__':
     parser.add_argument('--load', type=str, default=None, help='train from checkpoints')
     parser.add_argument('--decay_rate', type=float,default=0.1, help='decay rate of learning rate')
     parser.add_argument('--decay_epoch', type=int,default=50, help='every n epochs decay learning rate')
-    parser.add_argument('--train_path', type=str,default='./Datasets/ACOD-12K/Train',help='path to train dataset')
-    parser.add_argument('--test_path', type=str,default='./Datasets/ACOD-12K/Test',help='path to testing dataset')
+    parser.add_argument('--train_path', type=str,default='./Datasets/',help='path to train dataset')
+    parser.add_argument('--test_path', type=str,default='./Datasets/',help='path to testing dataset')
+    parser.add_argument('--dataset', type=str, default='ACOD-12K', help='path to train dataset')
     parser.add_argument('--save_path', type=str,default='./Checkpoints/HitNet/')
     parser.add_argument('--epoch_save', type=int,default=1, help='every n epochs to save model')
     opt = parser.parse_args()
 
+    opt.train_path = opt.train_path + opt.dataset + '/Train/'
+    opt.test_path = opt.test_path + opt.dataset + '/Test/'
+    opt.save_path = opt.save_path + opt.dataset + '/'
 
     if not os.path.exists(opt.save_path):
         os.makedirs(opt.save_path)

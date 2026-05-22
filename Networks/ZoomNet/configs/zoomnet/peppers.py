@@ -8,6 +8,7 @@ has_test = True
 deterministic = True
 use_custom_worker_init = False
 model_name = "ZoomNet"
+dataset = "Sweet_Pepper"
 
 train = dict(
     batch_size=8,
@@ -51,13 +52,13 @@ datasets = dict(
     train=dict(
         dataset_type="msi_cod_tr",
         shape=dict(h=384, w=384),
-        path=["acod12k_tr"],
+        path=["pepper_tr"],
         interp_cfg=dict(),
     ),
     test=dict(
         dataset_type="msi_cod_te",
         shape=dict(h=384, w=384),
-        path=["acod12k_te"],
+        path=["pepper_te"],
         interp_cfg=dict(),
     ),
 )

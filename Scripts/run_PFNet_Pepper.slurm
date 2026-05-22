@@ -4,10 +4,10 @@
 #SBATCH --gres=gpu:1
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
-#SBATCH --job-name="PFNet-ACOD-1"
+#SBATCH --job-name="PFNet-PEPPER-1"
 #SBATCH --cpus-per-task=8
-#SBATCH --mem-per-cpu=4GB
-#SBATCH --output="Logs/Train/PFNet_ACOD_1.txt"
+#SBATCH --mem-per-cpu=32G
+#SBATCH --output="./output/Pepper/PFNet.txt"
 #SBATCH --mail-user=aaron_gabrielle_dichoso@dlsu.edu.ph
 #SBATCH --mail-type=END
 
@@ -23,6 +23,6 @@ conda -V
 
 conda activate Training36
 
-srun python Networks/PFNet/train.py
+srun python Networks/PFNet/train.py --dataset="Sweet_Pepper"
 
 conda deactivate

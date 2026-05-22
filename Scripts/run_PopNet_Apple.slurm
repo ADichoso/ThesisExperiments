@@ -4,25 +4,24 @@
 #SBATCH --gres=gpu:1
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
-#SBATCH --job-name="OCENet-ACOD-1"
+#SBATCH --job-name="PopNet-APPLE-1"
 #SBATCH --cpus-per-task=8
-#SBATCH --mem-per-cpu=8GB
-#SBATCH --output="./output/OCENet_ACOD_1.txt"
+#SBATCH --mem-per-cpu=32G
+#SBATCH --output="./output/Apple/PopNet.txt"
 #SBATCH --mail-user=aaron_gabrielle_dichoso@dlsu.edu.ph
 #SBATCH --mail-type=END
 
 
 echo "CUDA_DEVICE=/dev/nvidia/$CUDA_VISIBLE_DEVICES"
 nvidia-smi
+nvcc --version
 
 cd ..
 
 module load anaconda
 conda init
-conda activate OCETraining
+conda activate base
 
-#srun torchrun --nproc_per_node=1 --master_port=3000 OCENet/train.py
-#srun python -m torch.distributed.launch --nproc_per_node=1 --master_port=3000 OCENet/train.py
-srun python Networks/OCENet/trainsingle.py
+srun python Networks/PopNet/train.py --dataset="PApple_RGB-D-Size"
 
 conda deactivate

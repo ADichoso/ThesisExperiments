@@ -40,7 +40,7 @@ cudnn.benchmark = True
 torch.manual_seed(2021)  
 device_ids = [3]         
 
-ckpt_path = './Checkpoints/Train/'     
+ckpt_path = './Checkpoints/'     
 exp_name = 'DaCOD'
 
 args = {
@@ -239,17 +239,17 @@ def train(net,optimizer):
 
         if epoch in args['save_point']:
             net.cpu()
-            torch.save(net.module.state_dict(), os.path.join(ckpt_path, exp_name, '%d.pth' % epoch))
+            torch.save(net.module.state_dict(), os.path.join(ckpt_path, exp_name, opt.dataset, '%d.pth' % epoch))
             net.cuda(device_ids[0])
         
         if (epoch >= 45 and epoch < args['epoch_num'])  :
             if epoch % 5 == 0 :
-                torch.save(net.module.state_dict(), os.path.join(ckpt_path, exp_name, '%d.pth' % epoch))
+                torch.save(net.module.state_dict(), os.path.join(ckpt_path, exp_name, opt.dataset, '%d.pth' % epoch))
 
 
         if epoch >= args['epoch_num']:
             net.cpu()
-            torch.save(net.module.state_dict(), os.path.join(ckpt_path, exp_name, '%d.pth' % epoch))
+            torch.save(net.module.state_dict(), os.path.join(ckpt_path, exp_name, opt.dataset, '%d.pth' % epoch))
             print("Total Training Time: {}".format(str(datetime.timedelta(seconds=int(time.time() - start_time)))))
             print(exp_name)
             print("Optimization Have Done!")

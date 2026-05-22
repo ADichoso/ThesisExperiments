@@ -142,22 +142,27 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--epoch', type=int, default=100, help='epoch number')
     parser.add_argument('--lr', type=float, default=1e-4, help='learning rate')
-    parser.add_argument('--batchsize', type=int, default=4, help='training batch size')
-    parser.add_argument('--trainsize', type=int, default=704, help='training dataset size')
+    parser.add_argument('--batchsize', type=int, default=36, help='training batch size')
+    parser.add_argument('--trainsize', type=int, default=352, help='training dataset size')
     parser.add_argument('--clip', type=float, default=0.5, help='gradient clipping margin')
     parser.add_argument('--decay_rate', type=float, default=0.1, help='decay rate of learning rate')
     parser.add_argument('--decay_epoch', type=int, default=50, help='every n epochs decay learning rate')
     parser.add_argument('--load', type=str, default=None, help='train from checkpoints')
     parser.add_argument('--load_epoch', type=int, default=None, help='epoch of loaded checkpoints')
     parser.add_argument('--gpu_id', type=str, default='0', help='train use gpu')
-    parser.add_argument('--train_root', type=str, default='./Datasets/ACOD-12K/Train/',
+    parser.add_argument('--dataset', type=str, default='ACOD-12K', help='Dataset')
+    parser.add_argument('--train_root', type=str, default='./Datasets/',
                         help='the training rgb images root')
-    parser.add_argument('--val_root', type=str, default='./Datasets/ACOD-12K/Test/',
+    parser.add_argument('--val_root', type=str, default='./Datasets/',
                         help='the test rgb images root')
     parser.add_argument('--save_path', type=str,
-                        default='./Checkpoints/SINet_V2_w_PVTZoom/',
+                        default='./Checkpoints/SINet_V2/',
                         help='the path to save model and log')
     opt = parser.parse_args()
+
+    opt.train_root = opt.train_root + opt.dataset + '/Train/'
+    opt.val_root = opt.val_root + opt.dataset + '/Test/'
+    opt.save_path = opt.save_path + opt.dataset + '/'
 
     # set the device for training
     if opt.gpu_id == '0':

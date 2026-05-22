@@ -1,13 +1,13 @@
 #!/bin/bash
-#SBATCH --partition="gpu"
-#SBATCH --qos="gpu-p40_default"
+#SBATCH --partition="gpu_a100"
+#SBATCH --qos="gpu-a100_default"
 #SBATCH --gres=gpu:1
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
-#SBATCH --job-name="FSPNet-ACOD-1"
+#SBATCH --job-name="ZoomNet-Apple-1"
 #SBATCH --cpus-per-task=8
-#SBATCH --mem-per-cpu=4GB
-#SBATCH --output="Logs/Train/FSPNet_ACOD_1.txt"
+#SBATCH --mem-per-cpu=32G
+#SBATCH --output="./output/ACOD/ZoomNet.txt"
 #SBATCH --mail-user=aaron_gabrielle_dichoso@dlsu.edu.ph
 #SBATCH --mail-type=END
 
@@ -21,8 +21,8 @@ module load anaconda
 source $(conda info --base)/etc/profile.d/conda.sh
 conda -V
 
-conda activate Training36
+conda activate TrainingApex
 
-srun python Networks/FSPNet/train.py
+srun python Networks/ZoomNet/main.py --config=Networks/ZoomNet/configs/zoomnet/apples.py --datasets-info=Networks/ZoomNet/configs/_base_/dataset/dataset_configs.json
 
 conda deactivate

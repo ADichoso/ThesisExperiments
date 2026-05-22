@@ -4,23 +4,25 @@
 #SBATCH --gres=gpu:1
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
-#SBATCH --job-name="C2FNet-ACOD-1"
+#SBATCH --job-name="FSPNet-APPLE-1"
 #SBATCH --cpus-per-task=8
-#SBATCH --mem-per-cpu=4GB
-#SBATCH --output="./output/C2FNet_ACOD_1.txt"
+#SBATCH --mem-per-cpu=32G
+#SBATCH --output="./output/Apple/FSPNet.txt"
 #SBATCH --mail-user=aaron_gabrielle_dichoso@dlsu.edu.ph
 #SBATCH --mail-type=END
 
-
+cd /home/aaron.dichoso/scratch1
+ls
 echo "CUDA_DEVICE=/dev/nvidia/$CUDA_VISIBLE_DEVICES"
 nvidia-smi
 
-cd ..
 
 module load anaconda
-conda init
+source $(conda info --base)/etc/profile.d/conda.sh
+conda -V
+
 conda activate Training36
 
-srun python Networks/C2FNet/MyTrain.py --dataset="ACOD-12K"
+srun python Networks/FSPNet/train.py --dataset="PApple_RGB-D-Size"
 
 conda deactivate

@@ -26,10 +26,14 @@ if __name__ == "__main__":
     parser.add_argument('--save_epoch', type=int, default=10,
                         help='every N epochs save your trained snapshot')
     parser.add_argument('--save_model', type=str, default='./Checkpoints/SINet/')
-    parser.add_argument('--train_img_dir', type=str, default='./Datasets/ACOD-12K/Train/Imgs/')
-    parser.add_argument('--train_gt_dir', type=str, default='./Datasets/ACOD-12K/Train/GT/')
+    parser.add_argument('--train_img_dir', type=str, default='./Datasets/')
+    parser.add_argument('--train_gt_dir', type=str, default='./Datasets/')
+    parser.add_argument('--dataset', type=str, default='ACOD-12K')
     opt = parser.parse_args()
 
+    opt.train_img_dir = opt.train_img_dir + opt.dataset + '/Train/Imgs/'
+    opt.train_gt_dir = opt.train_gt_dir + opt.dataset + '/Train/GT/'
+    opt.save_model = opt.save_model + opt.dataset + '/'
     #torch.cuda.set_device(opt.gpu)
 
     # TIPS: you also can use deeper network for better performance like channel=64

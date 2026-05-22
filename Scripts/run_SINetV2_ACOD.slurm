@@ -6,8 +6,8 @@
 #SBATCH --ntasks=1
 #SBATCH --job-name="SINetV2-ACOD-1"
 #SBATCH --cpus-per-task=8
-#SBATCH --mem-per-cpu=4GB
-#SBATCH --output="./output/SINetV2_ACOD_1.txt"
+#SBATCH --mem-per-cpu=32G
+#SBATCH --output="./output/ACOD/SINetV2.txt"
 #SBATCH --mail-user=aaron_gabrielle_dichoso@dlsu.edu.ph
 #SBATCH --mail-type=END
 
@@ -27,6 +27,6 @@ conda -V
 
 conda activate TrainingApex
 
-srun python Networks/SINetV2/MyTrain_Val.py
+srun python Networks/SINetV2/MyTrain_Val.py --dataset="ACOD-12K"
 
 conda deactivate

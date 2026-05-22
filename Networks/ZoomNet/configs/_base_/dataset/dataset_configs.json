@@ -360,5 +360,65 @@
       "path": "GT",
       "suffix": ".png"
     }
+  },
+    "papple_tr": {
+    "root": "./Datasets/PApple_RGB-D-Size/Train",
+    "image": {
+      "path": "Imgs",
+      "suffix": ".png"
+    },
+    "depth": {
+      "path": "Depth",
+      "suffix": ".png"
+    },
+    "mask": {
+      "path": "GT",
+      "suffix": ".png"
+    }
+  },
+    "papple_te": {
+    "root": "./Datasets/PApple_RGB-D-Size/Test",
+    "image": {
+      "path": "Imgs",
+      "suffix": ".png"
+    },
+    "depth": {
+      "path": "Depth",
+      "suffix": ".png"
+    },
+    "mask": {
+      "path": "GT",
+      "suffix": ".png"
+    }
+  },
+    "pepper_tr": {
+    "root": "./Datasets/Sweet_Pepper/Train",
+    "image": {
+      "path": "Imgs",
+      "suffix": ".png"
+    },
+    "depth": {
+      "path": "Depth",
+      "suffix": ".png"
+    },
+    "mask": {
+      "path": "GT",
+      "suffix": ".png"
+    }
+  },
+    "pepper_te": {
+    "root": "./Datasets/Sweet_Pepper/Test",
+    "image": {
+      "path": "Imgs",
+      "suffix": ".png"
+    },
+    "depth": {
+      "path": "Depth",
+      "suffix": ".png"
+    },
+    "mask": {
+      "path": "GT",
+      "suffix": ".png"
+    }
   }
 }

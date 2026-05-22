@@ -4,24 +4,21 @@
 #SBATCH --gres=gpu:1
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
-#SBATCH --job-name="HitNet-ACOD-1"
+#SBATCH --job-name="DaCOD-ACOD-1"
 #SBATCH --cpus-per-task=8
-#SBATCH --mem-per-cpu=4GB
-#SBATCH --output="./output/HitNet_ACOD_1.txt"
+#SBATCH --mem-per-cpu=32G
+#SBATCH --output="./output/ACOD/DaCOD.txt"
 #SBATCH --mail-user=aaron_gabrielle_dichoso@dlsu.edu.ph
 #SBATCH --mail-type=END
 
-cd /home/aaron.dichoso/scratch1
-ls
+
 echo "CUDA_DEVICE=/dev/nvidia/$CUDA_VISIBLE_DEVICES"
 nvidia-smi
 
-module load anaconda
-source $(conda info --base)/etc/profile.d/conda.sh
-conda -V
-
+module load anaconda/3-2024
+conda init
 conda activate Training36
 
-srun python Networks/HitNet/Train.py
+srun python Networks/DaCOD/train.py --dataset="ACOD-12K"
 
 conda deactivate

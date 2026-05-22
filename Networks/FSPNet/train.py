@@ -17,7 +17,8 @@ def parse_args():
     parser.add_argument('--batch_size_per_gpu', default=4, type=int, help='batch size per GPU')
     parser.add_argument("--resume", default=None)
     parser.add_argument('--gpu', default=1, type=int)
-    parser.add_argument('--path', type=str, default='./Datasets/ACOD-12K/Train', help='path to train dataset')
+    parser.add_argument('--path', type=str, default='./Datasets', help='path to train dataset')
+    parser.add_argument('--dataset', type=str, default='ACOD-12K', help='path to train dataset')
     parser.add_argument('--pretrain', type=str, help='path to pretrain model')
     parser.add_argument('--ft_for_MoCA', default=None, type=str, help='path to pretrain model')
     
@@ -106,7 +107,7 @@ def main(args):
 
     
     ### data ###
-    Dir = [args.path]
+    Dir = [os.path.join(args.path, args.dataset, "Train")]
     Dataset = dataset.TrainDataset(Dir)
     Datasampler = torch.utils.data.distributed.DistributedSampler(Dataset, shuffle=True)
     Dataloader = DataLoader(Dataset, batch_size=args.batch_size_per_gpu, num_workers=args.batch_size_per_gpu, collate_fn=dataset.my_collate_fn, sampler=Datasampler, drop_last=True)
@@ -138,7 +139,7 @@ def main(args):
             if count % 20 == 0 and args.rank == 0:
                 print("Epoch:{}, Iter:{}, all_loss:{:.5f}, main_loss:{:.5f}".format(curr_epoch, count, running_loss_all / count, running_loss_m / count))
         if args.rank == 0 and curr_epoch % 2 == 0:
-            ckpt_save_root = "./Checkpoints/FSPNet"
+            ckpt_save_root = os.path.join("./Checkpoints/FSPNet", args.dataset)
             if not os.path.exists(ckpt_save_root):
                 os.mkdir(ckpt_save_root)
             torch.save(net.state_dict(),

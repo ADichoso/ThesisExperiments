@@ -23,11 +23,11 @@ from tensorboardX import SummaryWriter
 from tqdm import tqdm
 
 import joint_transforms
-from config import acod_training_root
 from config import backbone_path
 from datasets import ImageFolder
 from misc import AvgMeter, check_mkdir
 from PFNet import PFNet
+import argparse
 
 import loss
 
@@ -54,11 +54,17 @@ args = {
     'optimizer': 'SGD'
 }
 
+parser = argparse.ArgumentParser()
+parser.add_argument('--dataset', type=str, default='ACOD-12K')
+opt = parser.parse_args()
+
+training_root = os.path.join('./Datasets/', opt.dataset, 'Train')
+
 print(torch.__version__)
 
 # Path.
 check_mkdir(ckpt_path)
-check_mkdir(os.path.join(ckpt_path, exp_name))
+check_mkdir(os.path.join(ckpt_path, exp_name, opt.dataset))
 vis_path = os.path.join("./Logs/Train", exp_name)
 check_mkdir(vis_path)
 log_path = os.path.join(ckpt_path, exp_name + "_" + str(datetime.datetime.now()) + '.txt')
@@ -77,7 +83,7 @@ img_transform = transforms.Compose([
 target_transform = transforms.ToTensor()
 
 # Prepare Data Set.
-train_set = ImageFolder(acod_training_root, joint_transform, img_transform, target_transform)
+train_set = ImageFolder(training_root, joint_transform, img_transform, target_transform)
 print("Train set: {}".format(train_set.__len__()))
 train_loader = DataLoader(train_set, batch_size=args['train_batch_size'], num_workers=16, shuffle=True)
 
@@ -121,7 +127,7 @@ def main():
 
     if len(args['snapshot']) > 0:
         print('Training Resumes From \'%s\'' % args['snapshot'])
-        net.load_state_dict(torch.load(os.path.join(ckpt_path, exp_name, args['snapshot'] + '.pth')))
+        net.load_state_dict(torch.load(os.path.join(ckpt_path, exp_name, opt.dataset,args['snapshot'] + '.pth')))
         total_epoch = (args['epoch_num'] - int(args['snapshot'])) * len(train_loader)
         print(total_epoch)
 
@@ -189,12 +195,12 @@ def train(net, optimizer):
 
         if epoch in args['save_point']:
             net.cpu()
-            torch.save(net.module.state_dict(), os.path.join(ckpt_path, exp_name, '%d.pth' % epoch))
+            torch.save(net.module.state_dict(), os.path.join(ckpt_path, exp_name, opt.dataset, '%d.pth' % epoch))
             net.cuda(device_ids[0])
 
         if epoch >= args['epoch_num']:
             net.cpu()
-            torch.save(net.module.state_dict(), os.path.join(ckpt_path, exp_name, '%d.pth' % epoch))
+            torch.save(net.module.state_dict(), os.path.join(ckpt_path, exp_name, opt.dataset, '%d.pth' % epoch))
             print("Total Training Time: {}".format(str(datetime.timedelta(seconds=int(time.time() - start_time)))))
             print(exp_name)
             print("Optimization Have Done!")

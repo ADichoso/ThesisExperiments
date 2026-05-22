@@ -1,13 +1,13 @@
 #!/bin/bash
-#SBATCH --partition="gpu"
-#SBATCH --qos="gpu-p40_default"
+#SBATCH --partition="gpu_a100"
+#SBATCH --qos="gpu-a100_default"
 #SBATCH --gres=gpu:1
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
-#SBATCH --job-name="DaCOD-ACOD-1"
+#SBATCH --job-name="RISNet-APPLE-1"
 #SBATCH --cpus-per-task=8
-#SBATCH --mem-per-cpu=4GB
-#SBATCH --output="Logs/Train/DaCOD_ACOD_1.txt"
+#SBATCH --mem-per-cpu=32G
+#SBATCH --output="./output/Apple/RISNet.txt"
 #SBATCH --mail-user=aaron_gabrielle_dichoso@dlsu.edu.ph
 #SBATCH --mail-type=END
 
@@ -17,8 +17,8 @@ nvidia-smi
 
 module load anaconda/3-2024
 conda init
-conda activate Training36
+conda activate RISNet
 
-srun python Networks/DaCOD/train.py --dataset="ACOD-12K"
+srun python Networks/RISNet/Train.py --dataset="PApple_RGB-D-Size"
 
 conda deactivate

@@ -14,17 +14,25 @@ parser.add_argument('--decay_epoch', type=int,   default=60,    help='every n ep
 parser.add_argument('--load',        type=str,   default='',  help='train from checkpoints')
 
 parser.add_argument('--gpu_id',      type=str,   default='0',   help='train use gpu')
+parser.add_argument('--dataset',      type=str,   default='ACOD-12K',   help='Dataset')
 
-parser.add_argument('--rgb_label_root',      type=str, default='./Datasets/ACOD-12K/Train/Imgs/',           help='the training rgb images root')
-parser.add_argument('--depth_label_root',    type=str, default='./Datasets/ACOD-12K/Train/Depth/',         help='the training depth images root')
-parser.add_argument('--gt_label_root',       type=str, default='./Datasets/ACOD-12K/Train/GT/',            help='the training gt images root')
+parser.add_argument('--rgb_label_root',      type=str, default='./Datasets/',           help='the training rgb images root')
+parser.add_argument('--depth_label_root',    type=str, default='./Datasets/',         help='the training depth images root')
+parser.add_argument('--gt_label_root',       type=str, default='./Datasets/',            help='the training gt images root')
 
 # or use other datasets for validation
-parser.add_argument('--val_rgb_root',        type=str, default='./Datasets/ACOD-12K/Test/Imgs/',      help='the test rgb images root')
-parser.add_argument('--val_depth_root',      type=str, default='./Datasets/ACOD-12K/Test/Depth/',    help='the test depth images root')
-parser.add_argument('--val_gt_root',         type=str, default='./Datasets/ACOD-12K/Test/GT/',       help='the test gt images root')
+parser.add_argument('--val_rgb_root',        type=str, default='./Datasets/',      help='the test rgb images root')
+parser.add_argument('--val_depth_root',      type=str, default='./Datasets/',    help='the test depth images root')
+parser.add_argument('--val_gt_root',         type=str, default='./Datasets/',       help='the test gt images root')
 
 parser.add_argument('--save_path',           type=str, default='./Checkpoints/PopNet/',    help='the path to save models and logs')
 
 opt = parser.parse_args()
 
+opt.rgb_label_root = opt.rgb_label_root + opt.dataset + '/Train/Imgs/'
+opt.depth_label_root = opt.depth_label_root + opt.dataset + '/Train/Depth/'
+opt.gt_label_root = opt.gt_label_root + opt.dataset + '/Train/Gts/'
+opt.val_rgb_root = opt.val_rgb_root + opt.dataset + '/Test/Imgs/'
+opt.val_depth_root = opt.val_depth_root + opt.dataset + '/Test/Depth/'
+opt.val_gt_root = opt.val_gt_root + opt.dataset + '/Test/Gts/'
+opt.save_path = opt.save_path + opt.dataset + '/'

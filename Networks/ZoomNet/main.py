@@ -16,9 +16,8 @@ from utils import builder, configurator, io, misc, ops, pipeline, recorder
 
 def parse_config():
     parser = argparse.ArgumentParser("Training and evaluation script")
-    parser.add_argument("--config", default="./configs/zoomnet/zoomnet.py", type=str)
+    parser.add_argument("--config", default="./configs/zoomnet/cod_zoomnet.py", type=str)
     parser.add_argument("--datasets-info", default="./configs/_base_/dataset/dataset_configs.json", type=str)
-    parser.add_argument("--model-name", type=str)
     parser.add_argument("--batch-size", type=int)
     parser.add_argument("--load-from", type=str)
     parser.add_argument("--resume-from", type=str)
@@ -28,8 +27,6 @@ def parse_config():
     config = configurator.Configurator.fromfile(args.config)
 
     config.use_ddp = False
-    if args.model_name is not None:
-        config.model_name = args.model_name
     if args.batch_size is not None:
         config.train.batch_size = args.batch_size
     if args.info is not None:
@@ -55,17 +52,17 @@ def parse_config():
     config.datasets.test.path = te_paths
 
     config.proj_root = os.path.dirname(os.path.abspath(__file__))
-    config.exp_name = misc.construct_exp_name(model_name=config.model_name, cfg=config)
+    config.exp_name = misc.construct_exp_name(model_name=config.dataset, cfg=config)
     if args.resume_from is not None:
         config.resume_from = args.resume_from
         resume_proj_root = os.sep.join(args.resume_from.split("/")[:-3])
         if resume_proj_root.startswith("./"):
             resume_proj_root = resume_proj_root[2:]
-        config.output_dir = os.path.join(config.proj_root, resume_proj_root)
+        config.output_dir = os.path.join("Checkpoints", "ZoomNet", config.dataset)
         config.exp_name = args.resume_from.split("/")[-3]
     else:
-        config.output_dir = os.path.join(config.proj_root, "output")
-    config.path = misc.construct_path(output_dir=config.output_dir, exp_name=config.exp_name)
+        config.output_dir = os.path.join("Checkpoints", "ZoomNet", config.dataset)
+    config.path = misc.construct_path(output_dir=config.output_dir)
     return config
 
 

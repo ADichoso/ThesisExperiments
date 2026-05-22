@@ -4,24 +4,21 @@
 #SBATCH --gres=gpu:1
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
-#SBATCH --job-name="PopNet-ACOD-1"
+#SBATCH --job-name="RISNet-ACOD-1"
 #SBATCH --cpus-per-task=8
-#SBATCH --mem-per-cpu=4GB
-#SBATCH --output="./output/PopNet_ACOD_1.txt"
+#SBATCH --mem-per-cpu=32G
+#SBATCH --output="./output/ACOD/RISNet.txt"
 #SBATCH --mail-user=aaron_gabrielle_dichoso@dlsu.edu.ph
 #SBATCH --mail-type=END
 
 
 echo "CUDA_DEVICE=/dev/nvidia/$CUDA_VISIBLE_DEVICES"
 nvidia-smi
-nvcc --version
 
-cd ..
-
-module load anaconda
+module load anaconda/3-2024
 conda init
-conda activate base
+conda activate RISNet
 
-srun python Networks/PopNet/train.py
+srun python Networks/RISNet/Train.py --dataset="ACOD-12K"
 
 conda deactivate

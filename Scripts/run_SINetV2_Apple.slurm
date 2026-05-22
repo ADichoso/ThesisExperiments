@@ -4,10 +4,10 @@
 #SBATCH --gres=gpu:1
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
-#SBATCH --job-name="SINet-ACOD-1"
+#SBATCH --job-name="SINetV2-APPLE-1"
 #SBATCH --cpus-per-task=8
-#SBATCH --mem-per-cpu=4GB
-#SBATCH --output="output/SINet_ACOD_1.txt"
+#SBATCH --mem-per-cpu=32G
+#SBATCH --output="./output/Apple/SINetV2.txt"
 #SBATCH --mail-user=aaron_gabrielle_dichoso@dlsu.edu.ph
 #SBATCH --mail-type=END
 
@@ -20,12 +20,13 @@ export CUDA_HOME=$HOME/cuda-11.3
 export PATH=$CUDA_HOME/bin:$PATH
 export LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
 
+
 module load anaconda
 source $(conda info --base)/etc/profile.d/conda.sh
 conda -V
 
 conda activate TrainingApex
 
-srun python Networks/SINet/MyTrain.py
+srun python Networks/SINetV2/MyTrain_Val.py --dataset="PApple_RGB-D-Size"
 
 conda deactivate

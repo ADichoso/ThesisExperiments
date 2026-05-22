@@ -43,8 +43,8 @@ def initialize_seed_cudnn(seed, deterministic):
     cudnn.deterministic = deterministic
 
 
-def construct_path(output_dir: str, exp_name: str) -> dict:
-    pth_log_path = os.path.join(output_dir, exp_name)
+def construct_path(output_dir: str) -> dict:
+    pth_log_path = os.path.join(output_dir)
     tb_path = os.path.join(pth_log_path, "tb")
     save_path = os.path.join(pth_log_path, "pre")
     pth_path = os.path.join(pth_log_path, "pth")
