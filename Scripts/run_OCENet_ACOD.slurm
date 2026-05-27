@@ -23,6 +23,6 @@ conda activate OCETraining
 
 #srun torchrun --nproc_per_node=1 --master_port=3000 OCENet/train.py
 #srun python -m torch.distributed.launch --nproc_per_node=1 --master_port=3000 OCENet/train.py
-srun python Networks/OCENet/trainsingle.py  --dataset="ACOD-12K"
+srun python Networks/OCENet/train.py  --dataset="ACOD-12K"
 
 conda deactivate
