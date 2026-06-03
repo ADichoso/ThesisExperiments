@@ -21,7 +21,7 @@ module load anaconda
 source $(conda info --base)/etc/profile.d/conda.sh
 conda -V
 
-conda activate TrainingApex
+conda activate ZoomNet
 
 srun python Networks/ZoomNet/main.py --config=Networks/ZoomNet/configs/zoomnet/apples.py --datasets-info=Networks/ZoomNet/configs/_base_/dataset/dataset_configs.json
 
