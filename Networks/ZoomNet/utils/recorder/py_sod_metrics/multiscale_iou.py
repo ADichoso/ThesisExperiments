@@ -1,7 +1,7 @@
 import numpy as np
 from scipy import ndimage
 
-from Networks.ZoomNet.utils.recorder.py_sod_metrics.utils import TYPE
+from utils.recorder.py_sod_metrics.utils import TYPE
 
 
 class MSIoU:
