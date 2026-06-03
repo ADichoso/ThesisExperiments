@@ -336,7 +336,8 @@ def main():
     else:
         model_ema = training(model=model, cfg=cfg)
 
-    if cfg.has_test:
+    '''
+        if cfg.has_test:
         if model_ema is not None:
             testing(model=model_ema.module, cfg=cfg)
             if cfg.train.ema.keep_original_test:
@@ -344,6 +345,8 @@ def main():
                 testing(model=model, cfg=cfg)
         else:
             testing(model=model, cfg=cfg)
+    '''
+
 
     cfg.tr_logger.record("End training...")
 
