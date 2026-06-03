@@ -3,7 +3,7 @@ import abc
 
 import numpy as np
 
-from .utils import TYPE, get_adaptive_threshold, prepare_data
+from utils import TYPE, get_adaptive_threshold, prepare_data
 
 
 class _BaseHandler:

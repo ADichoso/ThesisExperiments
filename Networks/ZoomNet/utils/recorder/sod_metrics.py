@@ -5,7 +5,7 @@ import numpy as np
 from scipy.ndimage import convolve
 from scipy.ndimage import distance_transform_edt as bwdist
 
-from .utils import EPS, TYPE, get_adaptive_threshold, prepare_data
+from utils import EPS, TYPE, get_adaptive_threshold, prepare_data
 
 
 class Fmeasure(object):
