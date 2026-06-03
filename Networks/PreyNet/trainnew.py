@@ -278,7 +278,7 @@ if __name__ == '__main__':
 
     opt.train_root = opt.train_root + opt.dataset + '/Train/'
     opt.val_root = opt.val_root + opt.dataset + '/Test/'
-    opt.val_root_2 = opt.val_root + opt.dataset + '/Test/'
+    opt.val_root_2 = opt.val_root_2 + opt.dataset + '/Test/'
     opt.save_path = opt.save_path + opt.dataset + '/'
     
     # set the device for training
