@@ -23,6 +23,6 @@ conda -V
 
 conda activate Training36
 
-srun python Networks/FSPNet/train.py --dataset="Sweet_Pepper"
+srun python Networks/FSPNet/trainsingle.py --dataset="Sweet_Pepper"
 
 conda deactivate

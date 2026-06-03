@@ -23,6 +23,6 @@ conda -V
 
 conda activate Training36
 
-srun python Networks/FSPNet/train.py --dataset="ACOD-12K"
+srun python Networks/FSPNet/trainsingle.py --dataset="ACOD-12K"
 
 conda deactivate

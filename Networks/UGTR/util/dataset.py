@@ -58,7 +58,7 @@ class SemData(Dataset):
         self.split = split
         self.data_list = make_dataset(split, data_root, data_list)
         self.transform = transform
-        self.name = 'ACOD-12K'
+        self.name = 'COD10K'
         self.kernel = np.ones((5, 5), np.uint8)
 
     def __len__(self):

@@ -23,6 +23,6 @@ conda -V
 
 conda activate Training36
 
-srun python Networks/FSPNet/train.py --dataset="PApple_RGB-D-Size"
+srun python Networks/FSPNet/trainsingle.py --dataset="PApple_RGB-D-Size"
 
 conda deactivate

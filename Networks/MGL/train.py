@@ -31,17 +31,20 @@ cv2.setNumThreads(0)
 from os.path import join, exists, isfile, realpath, dirname
 from os import makedirs, remove, chdir, environ
 from torch.utils.data import DataLoader, SubsetRandomSampler
-import math
-import faiss
-import h5py
 
 def get_parser():
     parser = argparse.ArgumentParser(description='PyTorch Semantic Segmentation')
-    parser.add_argument('--config', type=str, default='config/cod_resnet50.yaml', help='config file')
-    parser.add_argument('opts', help='see config/cod_resnet50.yaml for all options', default=None, nargs=argparse.REMAINDER)
+    parser.add_argument('--config', type=str, default='config/cod_mgl50.yaml', help='config file')
+    parser.add_argument('--dataset', type=str, default='ACOD-12K', help='dataset name')
+    parser.add_argument('opts', help='see config/cod_mgl50.yaml for all options', default=None, nargs=argparse.REMAINDER)
     args = parser.parse_args()
     assert args.config is not None
     cfg = config.load_cfg_from_cfg_file(args.config)
+
+    cfg.data_root = cfg.data_root + "/" + args.dataset + "/Train"
+    cfg.train_list = cfg.train_list + "/" + args.dataset + "/Train/train.lst"
+    cfg.val_list = cfg.val_list + "/" + args.dataset + "/Train/test.lst"
+
     if args.opts is not None:
         cfg = config.merge_cfg_from_list(cfg, args.opts)
     return cfg
@@ -69,7 +72,7 @@ def main_process():
 def check(args):
     assert args.classes == 1
     assert args.zoom_factor in [1, 2, 4, 8]
-    if args.arch == 'ugtr':
+    if args.arch == 'mgl':
         assert (args.train_h - 1) % 8 == 0 and (args.train_w - 1) % 8 == 0
     else:
         raise Exception('architecture not supported yet'.format(args.arch))
@@ -82,8 +85,10 @@ def main():
 
     save_folder = args.save_folder + '/tmp'
     gray_folder = os.path.join(save_folder, 'gray')
+    edge_folder = os.path.join(save_folder, 'edge')
     check_makedirs(save_folder)
     check_makedirs(gray_folder)
+    check_makedirs(edge_folder)
 
     if args.manual_seed is not None:
         random.seed(args.manual_seed)
@@ -103,12 +108,12 @@ def main():
         args.multiprocessing_distributed = False
     if args.multiprocessing_distributed:
         args.world_size = args.ngpus_per_node * args.world_size
-        mp.spawn(main_worker, nprocs=args.ngpus_per_node, args=(args.ngpus_per_node, args, gray_folder))
+        mp.spawn(main_worker, nprocs=args.ngpus_per_node, args=(args.ngpus_per_node, args, gray_folder, edge_folder))
     else:
-        main_worker(args.train_gpu, args.ngpus_per_node, args, gray_folder)
+        main_worker(args.train_gpu, args.ngpus_per_node, args, gray_folder, edge_folder)
 
 
-def main_worker(gpu, ngpus_per_node, argss, gray_folder):
+def main_worker(gpu, ngpus_per_node, argss, gray_folder, edge_folder):
     global args
     args = argss
     if args.sync_bn:
@@ -126,21 +131,19 @@ def main_worker(gpu, ngpus_per_node, argss, gray_folder):
             args.rank = args.rank * ngpus_per_node + gpu
         dist.init_process_group(backend=args.dist_backend, init_method=args.dist_url, world_size=args.world_size, rank=args.rank)
 
-    # criterion = nn.CrossEntropyLoss(ignore_index=args.ignore_label)
-    #criterion = structure_loss
     criterion = nn.BCEWithLogitsLoss(reduction='sum')
-    if args.arch == 'ugtr':
-        from model.ugtr import UGTRNet
-        model = UGTRNet(layers=args.layers, classes=args.classes, zoom_factor=args.zoom_factor, criterion=criterion, BatchNorm=BatchNorm, pretrained=False, dataset_name='COD10K', args=args)
+    if args.arch == 'mgl':
+        from model.mglnet import MGLNet
+        model = MGLNet(layers=args.layers, classes=args.classes, zoom_factor=args.zoom_factor, criterion=criterion, BatchNorm=BatchNorm, pretrained=False, args=args)
 
-        modules_ori = [model.layer0, model.layer1, model.layer2, model.layer3, model.layer4]
-        modules_new = [model.input_proj, model.position_encoding, model.transformer, model.pred]
+        modules_ori = [model.layer0, model.layer1, model.layer2, model.layer3, model.layer4, model.region_conv, model.edge_cat]
+        modules_new = [model.mutualnet0] #, model.mutualnet1]
+        # model.edge_cat, model.mutualnet0.edge_proj0, model.mutualnet0.edge_conv, model.mutualnet0.region_conv1, model.mutualnet0.region_conv2, model.mutualnet0.r2e, model.mutualnet0.e2r]
 
-        frozen_layers = []
+        frozen_layers = [] #[model.layer0, model.layer1, model.layer2, model.layer3, model.layer4]
         for l in frozen_layers:
             for p in l.parameters():
                 p.requires_grad = False
-
     params_list = []
     for module in modules_ori:
         params_list.append(dict(params=module.parameters(), lr=args.base_lr ))
@@ -249,7 +252,7 @@ def main_worker(gpu, ngpus_per_node, argss, gray_folder):
 
         # pdb.set_trace()
         if args.evaluate:
-            r_mae, e_mae = validate(val_loader, model, gray_folder, val_data.data_list)
+            r_mae, e_mae = validate(val_loader, model, gray_folder, edge_folder, val_data.data_list)
             if main_process():
                 writer.add_scalar('r_mae', r_mae)
                 writer.add_scalar('e_mae', e_mae)
@@ -265,17 +268,17 @@ def main_worker(gpu, ngpus_per_node, argss, gray_folder):
                     if main_process():
                         logger.info('Saving checkpoint to: ' +  filename)
                     torch.save({'epoch': epoch_log, 'state_dict': model.state_dict(), 'optimizer': optimizer.state_dict()}, filename)
-
-                    filename = args.save_path + '/' + date_str + '/train_epoch_' + str(epoch_log) + '_best.pth'
-                    #torch.save({'epoch': epoch_log, 'state_dict': model.state_dict(), 'optimizer': optimizer.state_dict()}, filename)
                 except IOError:
                     logger.info('error')
+                filename = args.save_path + '/' + date_str + '/train_best_' + str(epoch_log) + '.pth'
+                torch.save({'epoch': epoch_log, 'state_dict': model.state_dict(), 'optimizer': optimizer.state_dict()}, filename)
 
         if (epoch_log % args.save_freq == 0) and main_process():
             filename = args.save_path + '/' + date_str  + '/train_epoch_' + str(epoch_log) + '.pth'
             logger.info('Saving checkpoint to: ' + filename)
             torch.save({'epoch': epoch_log, 'state_dict': model.state_dict(), 'optimizer': optimizer.state_dict()}, filename)
 
+            '''
             if epoch_log / args.save_freq > 2:
                 deletename = args.save_path + '/' + date_str + '/train_epoch_' + str(epoch_log - args.save_freq * 2) + '.pth'
                 try:
@@ -283,6 +286,7 @@ def main_worker(gpu, ngpus_per_node, argss, gray_folder):
                         os.remove(deletename)
                 except IOError:
                     logger.info('error')
+            '''
 
 def train(train_loader, model, optimizer, epoch, data_list):
     batch_time = AverageMeter()
@@ -328,7 +332,8 @@ def train(train_loader, model, optimizer, epoch, data_list):
         target = target.unsqueeze(1).float() / 255.
         edge = edge.unsqueeze(1).float() / 255.
 
-        region, main_loss = model(input, target)
+        region, edge, main_loss = model(input, target, epoch, edge)
+        #output, main_loss, fg_assign, bg_assign, colors, h, w = model(input, target, epoch, edge)
 
         if not args.multiprocessing_distributed:
             main_loss = torch.mean(main_loss)
@@ -389,7 +394,7 @@ def train(train_loader, model, optimizer, epoch, data_list):
     return main_loss_meter.avg
 
 
-def validate(val_loader, model, gray_folder, data_list):
+def validate(val_loader, model, gray_folder, edge_folder, data_list):
     if main_process():
         logger.info('>>>>>>>>>>>>>>>> Start Evaluation >>>>>>>>>>>>>>>>')
     r_mae, e_mae = AverageMeter(), AverageMeter()
@@ -400,19 +405,34 @@ def validate(val_loader, model, gray_folder, data_list):
     for i, (input, target1, target2) in enumerate(val_loader):
         input = input.cuda(non_blocking=True)
         with torch.no_grad():
-            pred1, _, _ = model(input)
-        pred1 = torch.sigmoid(pred1.squeeze(1))
+            pred1, pred2 = model(input)
+        pred1, pred2 = torch.sigmoid(pred1.squeeze(1)), torch.sigmoid(pred2.squeeze(1))
  
         if args.zoom_factor != 8:
             pred1 = F.interpolate(pred1, size=target.size()[1:], mode='bilinear', align_corners=True)
+            pred2 = F.interpolate(pred2, size=target.size()[1:], mode='bilinear', align_corners=True)
 
-        pred1 = pred1.detach().cpu().numpy()
-        target1 = target1.numpy()
+        pred1, pred2 = pred1.detach().cpu().numpy(), pred2.detach().cpu().numpy()
+        target1, target2 = target1.numpy(), target2.numpy()
 
         for j in range(len(pred1)):
             pred1_j = np.uint8(pred1[j]*255)
+            pred2_j = np.uint8(pred2[j]*255)
+
+            '''
+            img_name =  'during_training.png'
+            cv2.imwrite(os.path.join(gray_folder, img_name), pred1_j)
+            cv2.imwrite(os.path.join(edge_folder, img_name), pred2_j)
+
+            pred1_j = cv2.imread(os.path.join(gray_folder, img_name), cv2.IMREAD_GRAYSCALE)
+            pred2_j = cv2.imread(os.path.join(edge_folder, img_name), cv2.IMREAD_GRAYSCALE)                        
+            '''
+
             if pred1_j is not None:
                 r_mae.update(calc_mae(pred1_j, target1[j]))
+
+            if pred2_j is not None:
+                e_mae.update(calc_mae(pred2_j, target2[j]))
 
             sync_idx += 1
 

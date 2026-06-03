@@ -1,15 +1,13 @@
 DATA:
-  data_root:  /raid/workspace/loc_toy/dataset/cod/
-  train_list: /raid/workspace/loc_toy/dataset/cod/COD_train/train.lst
-  val_list:   /raid/workspace/loc_toy/dataset/cod/COD10K_test/test.lst
+  data_root: ./Datasets/
+  train_list: ./Datasets/
+  val_list: ./Datasets/
   classes: 1
 
 TRAIN:
+  arch: mgl
   num_clusters: 32
-  mode: #cluster  # clustering before training
-  threads: 4
-  cacheBatchSize: 16
-  arch: ugtr
+  stage: 1 # 1: single stage learning, 2:recurrent learning
   layers: 50
   sync_bn: True  # adopt sync_bn or not
   train_h: 473
@@ -21,12 +19,12 @@ TRAIN:
   zoom_factor: 8  # zoom factor for final prediction during training, be in [1, 2, 4, 8]
   ignore_label: 0 # 255
   aux_weight: 0.4
-  train_gpu: [1, 2, 3, 4, 5]
+  train_gpu: [0]
   workers: 16  # data loader workers
-  batch_size: 20 #12  # batch size for training
+  batch_size: 3  # batch size for training
   batch_size_val: 36  # batch size for validation during training, memory and speed tradeoff
-  base_lr: 0.000000001
-  epochs: 1000 #500 #200 #50
+  base_lr: 0.00000001
+  epochs: 200
   start_epoch: 0
   power: 0.9
   momentum: 0.9
@@ -34,10 +32,10 @@ TRAIN:
   manual_seed:
   print_freq: 20
   save_freq: 5
-  save_path: model_file
-  weight:  pre_trained/resnet50_v1.pth
+  save_path: exp/model
+  weight: ./Backbones/resnet50_v1_MGL_UGTR.pth
   resume: 
-  evaluate:  True #False  # evaluate on validation set, extra gpu memory needed and small batch_size_val is recommend
+  evaluate:  False #False  # evaluate on validation set, extra gpu memory needed and small batch_size_val is recommend
 
 Distributed:
   dist_url: tcp://127.0.0.1:6789
@@ -51,10 +49,7 @@ Distributed:
   loss_scale:
 
 TEST:
-  test_list:  /raid/workspace/loc_toy/dataset/cod/COD10K_test/test.lst
-  #test_list: /raid/workspace/loc_toy/dataset/cod/CAMO_test/test.lst
-  #test_list: /raid/workspace/loc_toy/dataset/cod/CHAMELEON/test.lst
-  #test_list: /raid/workspace/loc_toy/dataset/cod/NC4K/test.lst
+  test_list: /raid/workspace/loc_toy/dataset/cod/COD10K_test/test.lst
   split: val  # split in [train, val and test]
   base_size: 473  # based size for scaling
   test_h: 473
@@ -64,8 +59,6 @@ TEST:
   has_prediction: False  # has prediction already or not
   index_start: 0  # evaluation start index in list
   index_step: 0  # evaluation step index in list, 0 means to end
-  test_gpu: [10]
-  model_path:  model_file/ugtr.pth
-  save_folder: result/  # results save folder
-  colors_path: data/voc2012/voc2012_colors.txt  # path of dataset colors
-  names_path: data/voc2012/voc2012_names.txt  # path of dataset category names
+  test_gpu: [0] 
+  model_path:  model_file/mgl_s.pth
+  save_folder: exp/result/  # results save folder
