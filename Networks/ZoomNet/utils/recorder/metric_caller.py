@@ -4,7 +4,7 @@
 # @GitHub  : https://github.com/lartpang
 
 import numpy as np
-from sod_metrics import Emeasure, Fmeasure, MAE, Smeasure, WeightedFmeasure
+from Networks.ZoomNet.utils.recorder.py_sod_metrics.sod_metrics import Emeasure, Fmeasure, MAE, Smeasure, WeightedFmeasure
 
 
 class CalTotalMetric(object):
