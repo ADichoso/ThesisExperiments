@@ -20,7 +20,7 @@ cd ..
 
 module load anaconda
 conda init
-conda activate base
+conda activate PopNet
 
 srun python Networks/PopNet/train.py --dataset="PApple_RGB-D-Size"
 
