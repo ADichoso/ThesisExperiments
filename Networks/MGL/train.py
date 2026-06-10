@@ -34,7 +34,7 @@ from torch.utils.data import DataLoader, SubsetRandomSampler
 
 def get_parser():
     parser = argparse.ArgumentParser(description='PyTorch Semantic Segmentation')
-    parser.add_argument('--config', type=str, default='config/cod_mgl50.yaml', help='config file')
+    parser.add_argument('--config', type=str, default='./Networks/MGL/config/cod_mgl50.yaml', help='config file')
     parser.add_argument('--dataset', type=str, default='ACOD-12K', help='dataset name')
     parser.add_argument('opts', help='see config/cod_mgl50.yaml for all options', default=None, nargs=argparse.REMAINDER)
     args = parser.parse_args()
