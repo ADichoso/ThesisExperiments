@@ -11,7 +11,7 @@ def _find_existing_dir(root, names):
     for name in names:
         path = os.path.join(root, name)
         if os.path.isdir(path):
-            return path
+            return path + "/"
     return None
 
 
