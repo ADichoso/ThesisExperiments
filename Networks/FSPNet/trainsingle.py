@@ -17,11 +17,12 @@ def parse_args():
     parser = argparse.ArgumentParser("FSPNet-Transformer Single-GPU Training")
 
     parser.add_argument('--gpu', default=0, type=int, help='GPU id to use')
-    parser.add_argument('--path', type=str, default='./Datasets/ACOD-12K/Train', help='train dataset path')
+    parser.add_argument('--path', type=str, default='./Datasets', help='train dataset path')
 
     parser.add_argument('--batch-size', default=4, type=int)
     parser.add_argument('--num-epochs', default=100, type=int)
     parser.add_argument('--num-workers', default=4, type=int)
+    parser.add_argument('--dataset', type=str, default='ACOD-12K', help='path to train dataset')
 
     parser.add_argument('--base-lr', default=1e-4, type=float)
     parser.add_argument('--save-dir', default='./Checkpoints/FSPNet', type=str)
@@ -189,7 +190,6 @@ def main(args):
                 print(f"[Epoch {epoch:03d}] Iter {count:04d} | "
                       f"Loss_all: {loss_all_sum/count:.5f} | Loss_main: {loss_main_sum/count:.5f}")
 
-        # ---------------------- SAVE MODEL ----------------------
         if epoch % args.save_epoch == 0:
             os.makedirs(args.save_dir, exist_ok=True)
             save_path = os.path.join(
@@ -207,8 +207,10 @@ def main(args):
     print(f"Training completed in {elapsed:.2f} minutes.")
 
 
-# ---------------------------------------------------------------------------
-
 if __name__ == '__main__':
     args = parse_args()
+
+    args.save_dir = os.path.join(args.save_dir, args.dataset)
+    args.path = os.path.join(args.path, args.dataset, "Train")
+    
     main(args)
