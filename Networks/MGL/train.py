@@ -2,7 +2,6 @@ import os
 import random
 import time
 import cv2
-import numpy as np
 import logging
 import argparse
 
@@ -18,6 +17,8 @@ import torch.distributed as dist
 import apex
 from tensorboardX import SummaryWriter
 
+
+import numpy as np
 import pdb
 
 import datetime
