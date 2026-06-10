@@ -4,7 +4,7 @@
 #SBATCH --gres=gpu:1
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
-#SBATCH --job-name="PreyNet-APPLE-1"
+#SBATCH --job-name="PreyNet-APPLE"
 #SBATCH --cpus-per-task=8
 #SBATCH --mem-per-cpu=32G
 #SBATCH --output="./output/Apple/PreyNet.txt"

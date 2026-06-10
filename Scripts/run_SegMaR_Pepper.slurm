@@ -4,25 +4,23 @@
 #SBATCH --gres=gpu:1
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
-#SBATCH --job-name="FSPNet-APPLE"
+#SBATCH --job-name="SegMaR-PEPPER"
 #SBATCH --cpus-per-task=8
 #SBATCH --mem-per-cpu=32G
-#SBATCH --output="./output/Apple/FSPNet.txt"
+#SBATCH --output="./output/Pepper/SegMaR.txt"
 #SBATCH --mail-user=aaron_gabrielle_dichoso@dlsu.edu.ph
 #SBATCH --mail-type=END
 
-cd /home/aaron.dichoso/scratch1
-ls
+
 echo "CUDA_DEVICE=/dev/nvidia/$CUDA_VISIBLE_DEVICES"
 nvidia-smi
 
+cd ..
 
 module load anaconda
-source $(conda info --base)/etc/profile.d/conda.sh
-conda -V
-
+conda init
 conda activate Training36
 
-srun python Networks/FSPNet/trainsingle.py --dataset="PApple_RGB-D-Size"
+srun python Networks/SegMaR/OurModule/train.py --dataset="Sweet_Pepper"
 
 conda deactivate

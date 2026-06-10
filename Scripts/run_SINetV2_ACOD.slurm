@@ -4,7 +4,7 @@
 #SBATCH --gres=gpu:1
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
-#SBATCH --job-name="SINetV2-ACOD-1"
+#SBATCH --job-name="SINetV2-ACOD"
 #SBATCH --cpus-per-task=8
 #SBATCH --mem-per-cpu=32G
 #SBATCH --output="./output/ACOD/SINetV2.txt"

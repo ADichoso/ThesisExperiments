@@ -4,7 +4,7 @@
 #SBATCH --gres=gpu:1
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
-#SBATCH --job-name="PopNet-ACOD-1"
+#SBATCH --job-name="PopNet-ACOD"
 #SBATCH --cpus-per-task=8
 #SBATCH --mem-per-cpu=32G
 #SBATCH --output="./output/ACOD/PopNet.txt"

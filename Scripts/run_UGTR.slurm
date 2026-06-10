@@ -4,7 +4,7 @@
 #SBATCH --gres=gpu:1
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
-#SBATCH --job-name="UGTR-ACOD-1"
+#SBATCH --job-name="UGTR-ACOD"
 #SBATCH --cpus-per-task=8
 #SBATCH --mem-per-cpu=4GB
 #SBATCH --output="output/UGTR_ACOD_1.txt"

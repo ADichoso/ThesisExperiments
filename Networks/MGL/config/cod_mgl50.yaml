@@ -32,7 +32,7 @@ TRAIN:
   manual_seed:
   print_freq: 20
   save_freq: 5
-  save_path: exp/model
+  save_path: ./Checkpoints/MGL/
   weight: ./Backbones/resnet50_v1_MGL_UGTR.pth
   resume: 
   evaluate:  False #False  # evaluate on validation set, extra gpu memory needed and small batch_size_val is recommend

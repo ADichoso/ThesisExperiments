@@ -4,7 +4,7 @@
 #SBATCH --gres=gpu:1
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
-#SBATCH --job-name="OCENet-ACOD-1"
+#SBATCH --job-name="OCENet-ACOD"
 #SBATCH --cpus-per-task=8
 #SBATCH --mem-per-cpu=8GB
 #SBATCH --output="output/OCENet_ACOD_1_TEST.txt"

@@ -4,7 +4,7 @@
 #SBATCH --gres=gpu:1
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
-#SBATCH --job-name="TEST-SINet-ACOD-1"
+#SBATCH --job-name="TEST-SINet-ACOD"
 #SBATCH --cpus-per-task=8
 #SBATCH --mem-per-cpu=4GB
 #SBATCH --output="output/SINet_ACOD_1_test.txt"

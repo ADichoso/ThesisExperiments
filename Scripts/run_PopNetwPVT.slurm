@@ -4,7 +4,7 @@
 #SBATCH --gres=gpu:1
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
-#SBATCH --job-name="PopNetwPVT-ACOD-1"
+#SBATCH --job-name="PopNetwPVT-ACOD"
 #SBATCH --cpus-per-task=8
 #SBATCH --mem-per-cpu=4GB
 #SBATCH --output="./output/PopNet_w_PVT_ACOD_1.txt"

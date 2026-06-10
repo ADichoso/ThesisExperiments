@@ -20,7 +20,6 @@ class CODataset(data.Dataset):
         # self.gts=self.read_files(gt_root)
 
         self.images = [image_root + f for f in os.listdir(image_root) if f.endswith('.jpg') or f.endswith('.png')]
-        
         self.gts = [gt_root + f for f in os.listdir(gt_root) if f.endswith('.png')]
         #
         self.images = sorted(self.images)

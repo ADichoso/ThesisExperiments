@@ -4,7 +4,7 @@
 #SBATCH --gres=gpu:1
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
-#SBATCH --job-name="RISNet-ACOD-TEST-1"
+#SBATCH --job-name="RISNet-ACOD-TEST"
 #SBATCH --cpus-per-task=8
 #SBATCH --mem-per-cpu=4GB
 #SBATCH --output="./output/RISNet_ACOD_TEST_1.txt"

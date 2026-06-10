@@ -24,6 +24,7 @@ parser.add_argument('--trainsize', type=int, default=352, help='training dataset
 parser.add_argument('--decay_rate', type=float, default=0.9, help='decay rate of learning rate')
 parser.add_argument('--decay_epoch', type=int, default=40, help='every n epochs decay learning rate')
 parser.add_argument('--feat_channel', type=int, default=32, help='reduced channel of saliency feat')
+parser.add_argument('--dataset', type=str, default='ACOD-12K', help='dataset name')
 opt = parser.parse_args()
 print('Generator Learning Rate: {}'.format(opt.lr_gen))
 # build models
@@ -32,12 +33,12 @@ generator.cuda()
 generator_params = generator.parameters()
 generator_optimizer = torch.optim.Adam(generator_params, opt.lr_gen)
 
-image_root = './datasets/train/Imgs/'
-gt_root = './datasets/train/GT/'
-fix_root = './datasets/train/DiscriminativeMask/'
+image_root = f'./Datasets/{opt.dataset}/Train/Imgs/'
+gt_root = f'./Datasets/{opt.dataset}/Train/GT/'
+fix_root = f'./Datasets/{opt.dataset}/Train/GT/'
 # or you can replace it with GT because the discriminative mask is not provided
 
-train_loader = get_loader(image_root, gt_root, fix_root,batchsize=opt.batchsize, trainsize=opt.trainsize)
+train_loader = get_loader(image_root, gt_root, fix_root, batchsize=opt.batchsize, trainsize=opt.trainsize)
 total_step = len(train_loader)
 
 CE = torch.nn.BCEWithLogitsLoss()
@@ -154,7 +155,7 @@ for epoch in range(1, (opt.epoch+1)):
 
     adjust_lr(generator_optimizer, opt.lr_gen, epoch, opt.decay_rate, opt.decay_epoch)
 
-    save_path = 'models/stage1/'
+    save_path = './Checkpoints/SegMaR/{}'.format(opt.dataset)
 
     if not os.path.exists(save_path):
         os.makedirs(save_path)

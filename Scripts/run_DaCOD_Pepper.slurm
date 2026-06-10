@@ -4,7 +4,7 @@
 #SBATCH --gres=gpu:1
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
-#SBATCH --job-name="DaCOD-PEPPER-1"
+#SBATCH --job-name="DaCOD-PEPPER"
 #SBATCH --cpus-per-task=8
 #SBATCH --mem-per-cpu=32G
 #SBATCH --output="./output/Pepper/DaCOD.txt"

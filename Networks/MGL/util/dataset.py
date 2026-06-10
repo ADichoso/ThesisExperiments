@@ -7,14 +7,6 @@ import torch
 from torch.utils.data import Dataset
 
 
-IMG_EXTENSIONS = ['.jpg', '.jpeg', '.png', '.ppm', '.bmp', '.pgm']
-
-
-def is_image_file(filename):
-    filename_lower = filename.lower()
-    return any(filename_lower.endswith(extension) for extension in IMG_EXTENSIONS)
-
-
 def _find_existing_dir(root, names):
     for name in names:
         path = os.path.join(root, name)
@@ -23,38 +15,12 @@ def _find_existing_dir(root, names):
     return None
 
 
-def _list_images(root):
-    return sorted(
-        os.path.join(root, f)
-        for f in os.listdir(root)
-        if is_image_file(f)
-    )
-
-def _stem(path):
-    return os.path.splitext(os.path.basename(path))[0]
-
-
-def _resolve_dataset_root(split, data_root=None, data_list=None):
-    split_dir_names = [split, split.capitalize()]
-    if split == 'val':
-        split_dir_names.extend(['Val', 'Valid', 'Validation', 'Test'])
-
-    candidates = []
-    for root in [data_list, data_root]:
-        if root is None:
-            continue
-        if os.path.isfile(root):
-            raise RuntimeError("MGL now builds datasets from folders, not .lst files: " + root + "\n")
-        candidates.append(root)
-        for split_dir_name in split_dir_names:
-            candidates.append(os.path.join(root, split_dir_name))
-
-    for root in candidates:
-        if os.path.isdir(root):
-            image_root = _find_existing_dir(root, ['Imgs', 'Image', 'images', 'Images'])
-            gt_root = _find_existing_dir(root, ['GT', 'Gt', 'gt', 'Mask', 'Masks', 'masks'])
-            if image_root is not None and (gt_root is not None or split == 'test'):
-                return image_root, gt_root
+def _resolve_dataset_root(data_root=None):
+    if os.path.isdir(data_root):
+        image_root = _find_existing_dir(data_root, ['Imgs', 'Image', 'images', 'Images'])
+        gt_root = _find_existing_dir(data_root, ['GT', 'Gt', 'gt', 'Mask', 'Masks', 'masks'])
+        if image_root is not None and gt_root is not None:
+            return image_root, gt_root
 
     raise RuntimeError(
         "Could not find an MGL dataset folder. Expected a folder containing "
@@ -62,43 +28,29 @@ def _resolve_dataset_root(split, data_root=None, data_list=None):
     )
 
 
-def make_dataset(split='train', data_root=None, data_list=None):
-    assert split in ['train', 'val', 'test']
-    image_root, gt_root = _resolve_dataset_root(split, data_root, data_list)
-    images = _list_images(image_root)
-    if not images:
-        raise RuntimeError("No image files found in: " + image_root + "\n")
+# RETURN A TUPLE (Image Path, GT Path)
+def make_dataset(split='train', data_root=None):
+    image_root, gt_root = _resolve_dataset_root(data_root)
+    
+    images = [image_root + f for f in os.listdir(image_root) if f.endswith('.jpg') or f.endswith('.png')]
+    gts = [gt_root + f for f in os.listdir(gt_root) if f.endswith('.png')]
 
     image_label_list = []
-    if gt_root is None:
-        for image_name in images:
-            image_label_list.append((image_name, image_name, None))
-        print("Totally {} samples in {} set.".format(len(image_label_list), split))
-        return image_label_list
 
-    gts = _list_images(gt_root)
-    gt_by_stem = {_stem(path): path for path in gts}
+    i = 0
+    for i in range(len(images)):
+        image_label_list.append((images[i], gts[i]))
 
-    for image_name in images:
-        name = _stem(image_name)
-        if name not in gt_by_stem:
-            raise RuntimeError("Missing GT for image: " + image_name + "\n")
-        label_name = gt_by_stem[name]
-        image_label_list.append((image_name, label_name, None))
-
-    print("Totally {} samples in {} set.".format(len(image_label_list), split))
-    print("Image root: {}".format(image_root))
-    print("GT root: {}".format(gt_root))
     return image_label_list
 
 
 class SemData(Dataset):
-    def __init__(self, split='train', data_root=None, data_list=None, transform=None):
+    def __init__(self, split='train', dataset=None, data_root=None, transform=None):
         print(data_root)
         self.split = split
-        self.data_list = make_dataset(split, data_root, data_list)
+        self.data_list = make_dataset(split, data_root)
         self.transform = transform
-        self.name = 'COD10K'
+        self.name = dataset
         self.kernel = np.ones((5, 5), np.uint8)
 
     def __len__(self):

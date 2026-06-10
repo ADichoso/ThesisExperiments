@@ -44,6 +44,7 @@ def get_parser():
     cfg.data_root = cfg.data_root + "/" + args.dataset + "/Train"
     cfg.train_list = cfg.train_list + "/" + args.dataset + "/Train/train.lst"
     cfg.val_list = cfg.val_list + "/" + args.dataset + "/Train/test.lst"
+    cfg.save_path = cfg.save_path + "/" + args.dataset + "/"
 
     if args.opts is not None:
         cfg = config.merge_cfg_from_list(cfg, args.opts)
@@ -93,9 +94,9 @@ def main():
     if args.manual_seed is not None:
         random.seed(args.manual_seed)
         np.random.seed(args.manual_seed)
-        torch.manual_seed(manualSeed)
-        torch.cuda.manual_seed(manualSeed)
-        torch.cuda.manual_seed_all(manualSeed)
+        torch.manual_seed(args.manual_seed)
+        torch.cuda.manual_seed(args.manual_seed)
+        torch.cuda.manual_seed_all(args.manual_seed)
         cudnn.benchmark = False
         cudnn.deterministic = True
     if args.dist_url == "env://" and args.world_size == -1:
@@ -219,7 +220,7 @@ def main_worker(gpu, ngpus_per_node, argss, gray_folder, edge_folder):
         #transform.Crop([args.train_h, args.train_w], crop_type='rand', padding=mean, ignore_label=args.ignore_label),
         transform.ToTensor(),
         transform.Normalize(mean=mean, std=std)])
-    train_data = dataset.SemData(split='train', data_root=args.data_root, data_list=args.train_list, transform=train_transform)
+    train_data = dataset.SemData(split='train', data_root=args.data_root, dataset=args.dataset, transform=train_transform)
     if args.distributed:
         train_sampler = torch.utils.data.distributed.DistributedSampler(train_data)
     else:
@@ -231,7 +232,7 @@ def main_worker(gpu, ngpus_per_node, argss, gray_folder, edge_folder):
             transform.Resize((args.train_h, args.train_w)),
             transform.ToTensor(),
             transform.Normalize(mean=mean, std=std)])
-        val_data = dataset.SemData(split='val', data_root=args.data_root, data_list=args.val_list, transform=val_transform)
+        val_data = dataset.SemData(split='val', data_root=args.data_root, dataset=args.dataset, transform=val_transform)
         if args.distributed:
             val_sampler = torch.utils.data.distributed.DistributedSampler(val_data)
         else:
