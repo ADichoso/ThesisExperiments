@@ -2,6 +2,7 @@ DATA:
   data_root: ./Datasets/
   train_list: ./Datasets/
   val_list: ./Datasets/
+  dataset: ACOD-12K
   classes: 1
 
 TRAIN:
