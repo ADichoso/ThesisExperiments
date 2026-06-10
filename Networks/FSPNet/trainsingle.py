@@ -44,7 +44,7 @@ def parse_args():
 def build_model(args):
     torch.cuda.set_device(args.gpu)
 
-    net = FSPNet_model.Model(args.pretrain, img_size=704)
+    net = FSPNet_model.Model(args.pretrain, img_size=384)
     net = net.cuda(args.gpu)
 
     model_without_ddp = net  # for API compatibility but no DDP
@@ -212,5 +212,5 @@ if __name__ == '__main__':
 
     args.save_dir = os.path.join(args.save_dir, args.dataset)
     args.path = os.path.join(args.path, args.dataset, "Train")
-    
+
     main(args)
