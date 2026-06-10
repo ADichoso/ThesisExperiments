@@ -31,8 +31,8 @@ opt = parser.parse_args()
 
 opt.rgb_label_root = opt.rgb_label_root + opt.dataset + '/Train/Imgs/'
 opt.depth_label_root = opt.depth_label_root + opt.dataset + '/Train/Depth/'
-opt.gt_label_root = opt.gt_label_root + opt.dataset + '/Train/Gts/'
+opt.gt_label_root = opt.gt_label_root + opt.dataset + '/Train/GT/'
 opt.val_rgb_root = opt.val_rgb_root + opt.dataset + '/Test/Imgs/'
 opt.val_depth_root = opt.val_depth_root + opt.dataset + '/Test/Depth/'
-opt.val_gt_root = opt.val_gt_root + opt.dataset + '/Test/Gts/'
+opt.val_gt_root = opt.val_gt_root + opt.dataset + '/Test/GT/'
 opt.save_path = opt.save_path + opt.dataset + '/'
