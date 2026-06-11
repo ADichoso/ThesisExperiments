@@ -21,6 +21,6 @@ module load anaconda
 conda init
 conda activate base
 
-srun python Networks/SegMaR/OurModule/train.py --dataset="Sweet_Pepper"
+srun /scratch1/aaron.dichoso/Environments/SEGMAR/bin/python Networks/SegMaR/OurModule/train.py --dataset="Sweet_Pepper"
 
 conda deactivate

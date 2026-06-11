@@ -23,7 +23,7 @@ conda -V
 
 conda activate base
 
-srun python Networks/UGTR/trainnew.py --dataset="ACOD-12K"
+srun /scratch1/aaron.dichoso/Environments/MGL/bin/python Networks/UGTR/trainnew.py --dataset="ACOD-12K"
 
 conda deactivate
 

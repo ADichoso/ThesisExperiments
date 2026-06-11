@@ -23,6 +23,6 @@ conda -V
 
 conda activate base
 
-srun python Networks/MGL/trainnew.py --dataset="PApple_RGB-D-Size"
+srun /scratch1/aaron.dichoso/Environments/MGL/bin/python Networks/MGL/trainnew.py --dataset="PApple_RGB-D-Size"
 
 conda deactivate
