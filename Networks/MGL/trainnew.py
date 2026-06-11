@@ -14,7 +14,8 @@ import torch.optim
 import torch.utils.data
 import torch.multiprocessing as mp
 import torch.distributed as dist
-import apex
+#import apex
+from torch.cuda.amp import autocast, GradScaler
 from tensorboardX import SummaryWriter
 
 
@@ -29,10 +30,6 @@ from util.util import AverageMeter, poly_learning_rate, calc_mae, check_makedirs
 
 cv2.ocl.setUseOpenCL(False)
 cv2.setNumThreads(0)
-
-from os.path import join, exists, isfile, realpath, dirname
-from os import makedirs, remove, chdir, environ
-from torch.utils.data import DataLoader, SubsetRandomSampler
 
 def get_parser():
     parser = argparse.ArgumentParser(description='PyTorch Semantic Segmentation')
@@ -121,7 +118,7 @@ def main_worker(gpu, ngpus_per_node, argss, gray_folder, edge_folder):
     args = argss
     if args.sync_bn:
         if args.multiprocessing_distributed:
-            BatchNorm = apex.parallel.SyncBatchNorm
+            BatchNorm = nn.SyncBatchNorm
         else:
             from lib.sync_bn.modules import BatchNorm2d
             BatchNorm = BatchNorm2d
@@ -155,6 +152,10 @@ def main_worker(gpu, ngpus_per_node, argss, gray_folder, edge_folder):
     args.index_split = 5
     optimizer = torch.optim.SGD(params_list, lr=args.base_lr, momentum=args.momentum, weight_decay=args.weight_decay)
 
+
+    use_amp = getattr(args, 'use_apex', False)   # reuse existing config flag
+    scaler = GradScaler(enabled=use_amp)
+
     if main_process():
         global logger, writer
         logger = get_logger()
@@ -168,11 +169,11 @@ def main_worker(gpu, ngpus_per_node, argss, gray_folder, edge_folder):
         args.batch_size = int(args.batch_size / ngpus_per_node)
         args.batch_size_val = int(args.batch_size_val / ngpus_per_node)
         args.workers = int(args.workers / ngpus_per_node)
-        if args.use_apex:
-            model, optimizer = apex.amp.initialize(model.cuda(), optimizer, opt_level=args.opt_level, keep_batchnorm_fp32=args.keep_batchnorm_fp32, loss_scale=args.loss_scale)
-            model = apex.parallel.DistributedDataParallel(model)
-        else:
-            model = torch.nn.parallel.DistributedDataParallel(model.cuda(), device_ids=[gpu])
+
+        if args.sync_bn:
+            model = nn.SyncBatchNorm.convert_sync_batchnorm(model)
+
+        model = torch.nn.parallel.DistributedDataParallel(model.cuda(), device_ids=[gpu])
 
     else:
         model = torch.nn.DataParallel(model.cuda())
@@ -184,6 +185,8 @@ def main_worker(gpu, ngpus_per_node, argss, gray_folder, edge_folder):
                 logger.info("=> loading weight '{}'".format(args.weight))
             checkpoint = torch.load(args.weight)
             model.load_state_dict(checkpoint['state_dict'], strict=False)
+            if 'scaler' in checkpoint:
+                scaler.load_state_dict(checkpoint['scaler'])
             if main_process():
                 logger.info("=> loaded weight '{}', epoch {}".format(args.weight, checkpoint['epoch']))
         else:
@@ -223,10 +226,12 @@ def main_worker(gpu, ngpus_per_node, argss, gray_folder, edge_folder):
         transform.ToTensor(),
         transform.Normalize(mean=mean, std=std)])
     train_data = dataset.SemData(split='train', data_root=args.data_root, dataset=args.dataset, transform=train_transform)
+    
     if args.distributed:
         train_sampler = torch.utils.data.distributed.DistributedSampler(train_data)
     else:
         train_sampler = None
+    
     train_loader = torch.utils.data.DataLoader(train_data, batch_size=args.batch_size, shuffle=(train_sampler is None), num_workers=args.workers, pin_memory=True, sampler=train_sampler, drop_last=True)
 
     if args.evaluate:
@@ -249,7 +254,7 @@ def main_worker(gpu, ngpus_per_node, argss, gray_folder, edge_folder):
         epoch_log = epoch + 1
         if args.distributed:
             train_sampler.set_epoch(epoch)
-        loss_train = train(train_loader, model, optimizer, epoch, train_data.data_list)
+        loss_train = train(train_loader, model, optimizer, scaler, epoch, train_data.data_list)
         if main_process():
             writer.add_scalar('loss_train', loss_train, epoch_log)
 
@@ -279,7 +284,12 @@ def main_worker(gpu, ngpus_per_node, argss, gray_folder, edge_folder):
         if (epoch_log % args.save_freq == 0) and main_process():
             filename = args.save_path + '/' + date_str  + '/train_epoch_' + str(epoch_log) + '.pth'
             logger.info('Saving checkpoint to: ' + filename)
-            torch.save({'epoch': epoch_log, 'state_dict': model.state_dict(), 'optimizer': optimizer.state_dict()}, filename)
+            torch.save({
+                'epoch': epoch_log, 
+                'state_dict': model.state_dict(), 
+                'optimizer': optimizer.state_dict(),
+                'scaler': scaler.state_dict()}, 
+                filename)
 
             '''
             if epoch_log / args.save_freq > 2:
@@ -291,7 +301,7 @@ def main_worker(gpu, ngpus_per_node, argss, gray_folder, edge_folder):
                     logger.info('error')
             '''
 
-def train(train_loader, model, optimizer, epoch, data_list):
+def train(train_loader, model, optimizer, scaler, epoch, data_list):
     batch_time = AverageMeter()
     data_time = AverageMeter()
     main_loss_meter = AverageMeter()
@@ -335,21 +345,19 @@ def train(train_loader, model, optimizer, epoch, data_list):
         target = target.unsqueeze(1).float() / 255.
         edge = edge.unsqueeze(1).float() / 255.
 
-        region, edge, main_loss = model(input, target, epoch, edge)
-        #output, main_loss, fg_assign, bg_assign, colors, h, w = model(input, target, epoch, edge)
-
-        if not args.multiprocessing_distributed:
-            main_loss = torch.mean(main_loss)
-        loss = main_loss
-
         optimizer.zero_grad()
-        if args.use_apex and args.multiprocessing_distributed:
-            with apex.amp.scale_loss(loss, optimizer) as scaled_loss:
-                scaled_loss.backward()
-        else:
-            loss.backward()
-        optimizer.step()
-        # output = torch.sigmoid(output)
+        with autocast(enabled=scaler.is_enabled()):
+            region, edge, main_loss = model(input, target, epoch, edge)
+            if not args.multiprocessing_distributed:
+                main_loss = torch.mean(main_loss)
+            loss = main_loss
+ 
+        # scaler.scale(loss).backward() replaces apex.amp.scale_loss context
+        scaler.scale(loss).backward()
+        scaler.step(optimizer)
+        scaler.update()
+
+        
         n = input.size(0)
         if args.multiprocessing_distributed:
             main_loss, loss = main_loss.detach() * n, loss * n  # not considering ignore pixels
