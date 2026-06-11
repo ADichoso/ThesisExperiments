@@ -19,9 +19,9 @@ def train():
     # print(args)
     setup(args.seed)
 
-    args.train_image_root = args.path + args.dataset + '/Train/Imgs/'
-    args.train_gt_root = args.path + args.dataset + '/Train/GT/'
-    args.test_dataset_root = args.path + args.dataset + '/Test/'
+    args.train_image_root = args.train_image_root + args.dataset + '/Train/Imgs/'
+    args.train_gt_root = args.train_gt_root + args.dataset + '/Train/GT/'
+    args.test_dataset_root = args.test_dataset_root + args.dataset + '/Test/'
     args.model_save_path = args.model_save_path + args.dataset + '/'
     torch.autograd.set_detect_anomaly(True)
 
