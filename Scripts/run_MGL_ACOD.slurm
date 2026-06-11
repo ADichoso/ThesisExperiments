@@ -16,16 +16,16 @@ ls
 echo "CUDA_DEVICE=/dev/nvidia/$CUDA_VISIBLE_DEVICES"
 nvidia-smi
 
-export CUDA_HOME=$HOME/cuda-11.3
-export PATH=$CUDA_HOME/bin:$PATH
-export LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
+#export CUDA_HOME=$HOME/cuda-11.3
+#export PATH=$CUDA_HOME/bin:$PATH
+#export LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
 
 module load anaconda
 source $(conda info --base)/etc/profile.d/conda.sh
 conda -V
 
-conda activate TrainingApex
+conda activate base
 
-srun python Networks/MGL/train.py --dataset="ACOD-12K"
+srun python Networks/MGL/trainnew.py --dataset="ACOD-12K"
 
 conda deactivate

@@ -19,7 +19,7 @@ cd ..
 
 module load anaconda
 conda init
-conda activate Training36
+conda activate base
 
 srun python Networks/SegMaR/OurModule/train.py --dataset="PApple_RGB-D-Size"
 
