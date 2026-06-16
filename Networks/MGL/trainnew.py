@@ -131,7 +131,7 @@ def main_worker(gpu, ngpus_per_node, argss, gray_folder, edge_folder):
             args.rank = args.rank * ngpus_per_node + gpu
         dist.init_process_group(backend=args.dist_backend, init_method=args.dist_url, world_size=args.world_size, rank=args.rank)
 
-    criterion = nn.BCEWithLogitsLoss(reduction='sum')
+    criterion = nn.BCEWithLogitsLoss(reduction='mean')
     if args.arch == 'mgl':
         from model.mglnet import MGLNet
         model = MGLNet(layers=args.layers, classes=args.classes, zoom_factor=args.zoom_factor, criterion=criterion, BatchNorm=BatchNorm, pretrained=False, args=args)
@@ -356,6 +356,8 @@ def train(train_loader, model, optimizer, scaler, epoch, data_list):
         scaler.scale(loss).backward()
         scaler.step(optimizer)
         scaler.update()
+
+        torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
 
         
         n = input.size(0)

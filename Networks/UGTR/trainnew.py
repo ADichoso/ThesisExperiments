@@ -132,7 +132,7 @@ def main_worker(gpu, ngpus_per_node, argss, gray_folder):
         dist.init_process_group(backend=args.dist_backend, init_method=args.dist_url,
                                 world_size=args.world_size, rank=args.rank)
 
-    criterion = nn.BCEWithLogitsLoss(reduction='sum')
+    criterion = nn.BCEWithLogitsLoss(reduction='mean')
 
     if args.arch == 'ugtr':
         from model.ugtr import UGTRNet
@@ -362,10 +362,12 @@ def train(train_loader, model, optimizer, scaler, epoch, data_list):
             if not args.multiprocessing_distributed:
                 main_loss = torch.mean(main_loss)
             loss = main_loss
-
+        
         scaler.scale(loss).backward()
         scaler.step(optimizer)
         scaler.update()
+
+        torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
 
         n = input.size(0)
         if args.multiprocessing_distributed:
