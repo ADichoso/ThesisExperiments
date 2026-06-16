@@ -31,15 +31,17 @@ def _resolve_dataset_root(data_root=None):
 # RETURN A TUPLE (Image Path, GT Path)
 def make_dataset(split='train', data_root=None):
     image_root, gt_root = _resolve_dataset_root(data_root)
-    
+    edge_root = data_root + "Edge/"
+
     images = [image_root + f for f in os.listdir(image_root) if f.endswith('.jpg') or f.endswith('.png')]
     gts = [gt_root + f for f in os.listdir(gt_root) if f.endswith('.png')]
-
+    edges = [image_root + f for f in os.listdir(image_root) if f.endswith('.jpg') or f.endswith('.png')]
+    
     image_label_list = []
 
     i = 0
     for i in range(len(images)):
-        image_label_list.append((images[i], gts[i]))
+        image_label_list.append((images[i], gts[i], edges[i]))
 
     return image_label_list
 
@@ -57,7 +59,7 @@ class SemData(Dataset):
         return len(self.data_list)
 
     def __getitem__(self, index):
-        image_path, label_path = self.data_list[index]
+        image_path, label_path, edge_path = self.data_list[index]
         image = cv2.imread(image_path, cv2.IMREAD_COLOR)  # BGR 3 channel ndarray wiht shape H * W * 3
         if image is None:
             print(image_path)
@@ -68,7 +70,9 @@ class SemData(Dataset):
         if image.shape[0] != label.shape[0] or image.shape[1] != label.shape[1]:
             raise (RuntimeError("Image & label shape mismatch: " + image_path + " " + label_path + "\n"))
 
+        label = cv2.resize(label, (473, 473), interpolation=cv2.INTER_NEAREST)
         edge = cv2.Canny(label, 50, 200) #extract edge from region mask
+        cv2.imwrite(edge_path, edge)
 
         #if image.shape[0] != edge.shape[0] or image.shape[1] != edge.shape[1]:
         #    raise (RuntimeError("Image & edge shape mismatch: " + image_path + " " + edge_path + "\n"))

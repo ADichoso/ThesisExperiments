@@ -301,7 +301,7 @@ def main_worker(gpu, ngpus_per_node, argss, gray_folder, edge_folder):
                     logger.info('error')
             '''
 
-def train(train_loader, model, optimizer, scaler, epoch, data_list):
+def train(train_loader, model, optimizer, scaler, epoch):
     batch_time = AverageMeter()
     data_time = AverageMeter()
     main_loss_meter = AverageMeter()
