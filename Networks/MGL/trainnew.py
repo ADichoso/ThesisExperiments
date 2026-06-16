@@ -348,6 +348,19 @@ def train(train_loader, model, optimizer, scaler, epoch, data_list):
         optimizer.zero_grad()
         with autocast(enabled=scaler.is_enabled()):
             region_out, edge_out, main_loss = model(input, target, epoch, edge)
+
+            #DEBUG
+            if torch.isnan(main_loss).any() or torch.isinf(main_loss).any():
+                if main_process():
+                    logger.info(f"[iter {i}] NaN in loss. Diagnosing inputs:")
+                    logger.info(f"  input  | min={input.min():.4f} max={input.max():.4f} nan={torch.isnan(input).any().item()}")
+                    logger.info(f"  target | min={target.min():.4f} max={target.max():.4f} nan={torch.isnan(target).any().item()}")
+                    logger.info(f"  edge   | min={edge.min():.4f} max={edge.max():.4f} nan={torch.isnan(edge).any().item()}")
+                    logger.info(f"  region_out nan={torch.isnan(region_out).any().item()} inf={torch.isinf(region_out).any().item()}")
+                    logger.info(f"  edge_out   nan={torch.isnan(edge_out).any().item()} inf={torch.isinf(edge_out).any().item()}")
+                optimizer.zero_grad()
+                continue
+
             if not args.multiprocessing_distributed:
                 main_loss = torch.mean(main_loss)
             loss = main_loss
