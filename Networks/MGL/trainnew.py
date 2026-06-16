@@ -254,13 +254,13 @@ def main_worker(gpu, ngpus_per_node, argss, gray_folder, edge_folder):
         epoch_log = epoch + 1
         if args.distributed:
             train_sampler.set_epoch(epoch)
-        loss_train = train(train_loader, model, optimizer, scaler, epoch, train_data.data_list)
+        loss_train = train(train_loader, model, optimizer, scaler, epoch)
         if main_process():
             writer.add_scalar('loss_train', loss_train, epoch_log)
 
         # pdb.set_trace()
         if args.evaluate:
-            r_mae, e_mae = validate(val_loader, model, gray_folder, edge_folder, val_data.data_list)
+            r_mae, e_mae = validate(val_loader, model, gray_folder, edge_folder)
             if main_process():
                 writer.add_scalar('r_mae', r_mae)
                 writer.add_scalar('e_mae', e_mae)
@@ -420,7 +420,7 @@ def train(train_loader, model, optimizer, scaler, epoch):
     return main_loss_meter.avg
 
 
-def validate(val_loader, model, gray_folder, edge_folder, data_list):
+def validate(val_loader, model, gray_folder, edge_folder):
     if main_process():
         logger.info('>>>>>>>>>>>>>>>> Start Evaluation >>>>>>>>>>>>>>>>')
     r_mae, e_mae = AverageMeter(), AverageMeter()

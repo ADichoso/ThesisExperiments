@@ -35,7 +35,7 @@ def make_dataset(split='train', data_root=None):
 
     images = [image_root + f for f in os.listdir(image_root) if f.endswith('.jpg') or f.endswith('.png')]
     gts = [gt_root + f for f in os.listdir(gt_root) if f.endswith('.png')]
-    edges = [image_root + f for f in os.listdir(image_root) if f.endswith('.jpg') or f.endswith('.png')]
+    edges = [edge_root + f for f in os.listdir(image_root) if f.endswith('.jpg') or f.endswith('.png')]
     
     image_label_list = []
 
