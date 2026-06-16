@@ -264,12 +264,12 @@ def main_worker(gpu, ngpus_per_node, argss, gray_folder):
         epoch_log = epoch + 1
         if args.distributed:
             train_sampler.set_epoch(epoch)
-        loss_train = train(train_loader, model, optimizer, scaler, epoch, train_data.data_list)
+        loss_train = train(train_loader, model, optimizer, scaler, epoch)
         if main_process():
             writer.add_scalar('loss_train', loss_train, epoch_log)
 
         if args.evaluate:
-            r_mae, e_mae = validate(val_loader, model, gray_folder, val_data.data_list)
+            r_mae, e_mae = validate(val_loader, model, gray_folder)
             if main_process():
                 writer.add_scalar('r_mae', r_mae)
                 writer.add_scalar('e_mae', e_mae)
@@ -312,7 +312,7 @@ def main_worker(gpu, ngpus_per_node, argss, gray_folder):
 
 
 # scaler is now passed in so the train loop can use it
-def train(train_loader, model, optimizer, scaler, epoch, data_list):
+def train(train_loader, model, optimizer, scaler, epoch):
     batch_time = AverageMeter()
     data_time = AverageMeter()
     main_loss_meter = AverageMeter()
@@ -417,7 +417,7 @@ def train(train_loader, model, optimizer, scaler, epoch, data_list):
     return main_loss_meter.avg
 
 
-def validate(val_loader, model, gray_folder, data_list):
+def validate(val_loader, model, gray_folder):
     if main_process():
         logger.info('>>>>>>>>>>>>>>>> Start Evaluation >>>>>>>>>>>>>>>>')
     r_mae, e_mae = AverageMeter(), AverageMeter()
