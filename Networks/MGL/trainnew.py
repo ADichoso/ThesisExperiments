@@ -322,6 +322,7 @@ def train(train_loader, model, optimizer, scaler, epoch):
         check_makedirs(fg_folder)
         check_makedirs(bg_folder)
 
+    torch.cuda.empty_cache()
     model.train()
     end = time.time()
     max_iter = args.epochs * len(train_loader)
