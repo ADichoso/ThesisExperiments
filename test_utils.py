@@ -117,28 +117,44 @@ def overlay_masks(img, gt, pred=None, alpha=0.8, darken_bg=0.6):
 def display_images2(images=3, image_files=None, title=None, save_path=None,
                     networks=None, pred_network_roots=None,
                     wspace=0.05, hspace=0.05,
-                    title_fontsize=32, label_fontsize=20):
+                    title_fontsize=32, label_fontsize=20,
+                    class_images=None, unique_plants=False):
     global img_root, gt_root
 
-    random_imgs = random.sample(image_files, images)
+    # If class_images dict is provided, sample one image per class
+    if class_images is not None:
+        selected = [(plant, random.choice(imgs))
+                    for plant, imgs in class_images.items() if imgs]
+    elif unique_plants:
+        # Group image_files by plant name, then sample one per plant up to `images` count
+        plant_groups = {}
+        for f in image_files:
+            plant = os.path.splitext(f)[0].split("_")[0].upper()
+            plant_groups.setdefault(plant, []).append(f)
+        sampled_plants = random.sample(list(plant_groups.keys()), 
+                                       min(images, len(plant_groups)))
+        selected = [(plant, random.choice(plant_groups[plant])) 
+                    for plant in sampled_plants]
+    else:
+        selected = [(os.path.splitext(f)[0].split("_")[0].upper(), f)
+                    for f in random.sample(image_files, images)]
+
+    images = len(selected)
     cols = 1 + len(networks) + 1  # label + GT overlay + prediction overlays
 
     # Aspect ratio based on first image
-    sample_img = Image.open(os.path.join(img_root, random_imgs[0]))
+    sample_img = Image.open(os.path.join(img_root, selected[0][1]))
     img_w, img_h = sample_img.size
     aspect = img_h / img_w
     total_width = cols + (cols - 1) * wspace
     total_height = images * aspect + (images - 1) * hspace
     fig = plt.figure(figsize=(total_width * 2.5, total_height * 2.5))
 
-    for i, file_name in enumerate(random_imgs):
+    for i, (plant, file_name) in enumerate(selected):
         img = Image.open(os.path.join(img_root, file_name))
         gt = Image.open(os.path.join(gt_root, file_name.replace(".jpg", ".png")))
-        preds = [Image.open(os.path.join(pred_root, file_name.replace(".jpg", ".png"))) 
+        preds = [Image.open(os.path.join(pred_root, file_name.replace(".jpg", ".png")))
                  for pred_root in pred_network_roots]
-
-        # Extract crop name from filename
-        crop_name = os.path.splitext(file_name)[0]
 
         cell_width = 1.0 / total_width
         cell_height = aspect / total_height
@@ -147,10 +163,10 @@ def display_images2(images=3, image_files=None, title=None, save_path=None,
         # Label column (just text)
         left = 0
         ax = fig.add_axes([left, bottom, cell_width / 0.1, cell_height])
-        ax.text(0.09, 0.5, crop_name.split("_")[0].upper(), fontsize=label_fontsize / 1.2,
+        ax.text(0.09, 0.5, plant.upper(), fontsize=label_fontsize / 1.2,
                 ha='center', va='center', rotation=90)
         ax.axis("off")
-            
+
         # GT + predictions
         for j, pred in enumerate([None] + preds):
             left = (1 + j * (1 + wspace)) * cell_width
@@ -173,7 +189,6 @@ def display_images2(images=3, image_files=None, title=None, save_path=None,
     tp_patch = mpatches.Patch(color=(0, 1, 1), label='TP (True Positive)')
     fn_patch = mpatches.Patch(color=(1, 165/255, 0), label='FN (False Negative)')
     fp_patch = mpatches.Patch(color=(1, 0, 1), label='FP (False Positive)')
-
     fig.legend(
         handles=[gt_patch, tp_patch, fn_patch, fp_patch],
         loc='center',
@@ -184,11 +199,9 @@ def display_images2(images=3, image_files=None, title=None, save_path=None,
         title="Mask Legend",
         title_fontsize=label_fontsize - 2
     )
-
     plt.subplots_adjust(bottom=0.04)
     if save_path:
         fig.savefig(os.path.join(figures_root, save_path), dpi=100, bbox_inches='tight')
-    plt.show()
 
 def display_gt_two_columns(
     row1_types,
