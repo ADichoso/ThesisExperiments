@@ -41,8 +41,8 @@ def get_parser():
     cfg = config.load_cfg_from_cfg_file(args.config)
 
     cfg.data_root = cfg.data_root + "/" + args.dataset + "/Train"
-    cfg.train_list = cfg.train_list + "/" + args.dataset + "/Train/train.lst"
-    cfg.val_list = cfg.val_list + "/" + args.dataset + "/Train/test.lst"
+    cfg.train_list = cfg.train_list + "/" + args.dataset + "/Train/"
+    cfg.val_list = cfg.val_list + "/" + args.dataset + "/Train/"
     cfg.save_path = cfg.save_path + "/" + args.dataset + "/"
 
     if args.opts is not None:
@@ -347,17 +347,17 @@ def train(train_loader, model, optimizer, scaler, epoch, data_list):
 
         optimizer.zero_grad()
         with autocast(enabled=scaler.is_enabled()):
-            region, edge, main_loss = model(input, target, epoch, edge)
+            region_out, edge_out, main_loss = model(input, target, epoch, edge)
             if not args.multiprocessing_distributed:
                 main_loss = torch.mean(main_loss)
             loss = main_loss
  
         # scaler.scale(loss).backward() replaces apex.amp.scale_loss context
         scaler.scale(loss).backward()
+        scaler.unscale_(optimizer)
+        torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
         scaler.step(optimizer)
         scaler.update()
-
-        torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
 
         
         n = input.size(0)

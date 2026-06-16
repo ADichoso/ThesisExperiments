@@ -13,20 +13,17 @@ if __name__ =='__main__':
 
     ckpt=['FSPNet_best_0.01137.pth']
 
-    Dirs=["/path_to_testset/TestDataset/CAMO",
-          "/path_to_testset/TestDataset/CHAMELEON",
-          "/path_to_testset/TestDataset/COD10K",
-          "/path_to_testset/TestDataset/NC4K"]
+    Dirs=["./Datasets/ACOD-12K/Test/",
+          "./Datasets/Papple_RGB-D-Size/Test/",
+          "./Datasets/Sweet_Pepper/Test/"]
 
-    result_save_root="/path_to_save_root/results/"
 
-    inference_times = [-1 for i in range(test_loader.size)]
-    for m in ckpt:
-        print(m)
+    for dataset in ['ACOD-12K', 'PApple_RGB-D-Size', 'Sweet_Pepper']:
+        result_save_root="./Results/FSPNet/" + dataset + "/"
         # pretrained_dict = torch.load("./ckpt/"+m)['model']
-        ckpt_root="/path_to_ckpt_root/"
-        ckpt_file="path_to_ckpt_files/"
-        pretrained_dict = torch.load(ckpt_root+ckpt_file+m)
+        ckpt_root="./Checkpoints/FSPNet/" + dataset + "/"
+        ckpt_file="FSPNet_100.pth"
+        pretrained_dict = torch.load(ckpt_root+ckpt_file)
 
         net_dict = net.state_dict()
         pretrained_dict={k[7:]: v for k, v in pretrained_dict.items() if k[7:] in net_dict }

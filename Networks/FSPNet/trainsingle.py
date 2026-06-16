@@ -148,7 +148,7 @@ def main(args):
     # ------------------------------------------------------------------
     # TRAIN LOOP
     # ------------------------------------------------------------------
-    for epoch in range(args.num_epochs):
+    for epoch in range(args.num_epochs + 1):
 
         # Manual LR drop at epoch 49 (same as original)
         if epoch == 49:
@@ -195,6 +195,19 @@ def main(args):
             save_path = os.path.join(
                 args.save_dir,
                 f"fspnet_epoch{epoch}_mainloss{loss_main_sum/count:.5f}.pth"
+            )
+            torch.save({
+                "model": model.state_dict(),
+                "optimizer": optimizer.state_dict()
+            }, save_path)
+
+            print("Saved:", save_path)
+        
+        if epoch == 100:
+            os.makedirs(args.save_dir, exist_ok=True)
+            save_path = os.path.join(
+                args.save_dir,
+                f"FSPNet_100.pth"
             )
             torch.save({
                 "model": model.state_dict(),

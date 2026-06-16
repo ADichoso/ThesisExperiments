@@ -13,7 +13,7 @@ parser.add_argument('--pth_path', type=str, default='./Checkpoints/HitNet/Net_ep
 opt = parser.parse_args()
 
 # for _data_name in ['CAMO', 'COD10K', 'CHAMELEON',NC4K]:
-for _data_name in ['ACOD-12K']:
+for _data_name in ['ACOD-12K', 'PApple_RGB-D-Size', 'Sweet_Pepper']:
     data_path = './Datasets/{}/Test'.format(_data_name)
     save_path = './Results/HitNet/{}/'.format(_data_name)
     model = Hitnet()

@@ -358,16 +358,16 @@ def train(train_loader, model, optimizer, scaler, epoch, data_list):
 
         optimizer.zero_grad()
         with autocast(enabled=scaler.is_enabled()):
-            region, main_loss = model(input, target)
+            region_out, main_loss = model(input, target)
             if not args.multiprocessing_distributed:
                 main_loss = torch.mean(main_loss)
             loss = main_loss
         
         scaler.scale(loss).backward()
+        scaler.unscale_(optimizer)
+        torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
         scaler.step(optimizer)
         scaler.update()
-
-        torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
 
         n = input.size(0)
         if args.multiprocessing_distributed:

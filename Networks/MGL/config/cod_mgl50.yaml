@@ -50,8 +50,8 @@ Distributed:
   loss_scale:
 
 TEST:
-  test_list: /raid/workspace/loc_toy/dataset/cod/COD10K_test/test.lst
-  split: val  # split in [train, val and test]
+  train_list: ./Datasets/
+  split: test  # split in [train, val and test]
   base_size: 473  # based size for scaling
   test_h: 473
   test_w: 473
@@ -61,5 +61,5 @@ TEST:
   index_start: 0  # evaluation start index in list
   index_step: 0  # evaluation step index in list, 0 means to end
   test_gpu: [0] 
-  model_path:  model_file/mgl_s.pth
-  save_folder: exp/result/  # results save folder
+  model_path:  ./Checkpoints/MGL/
+  save_folder: ./Results/MGL/

@@ -11,7 +11,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--testsize', type=int, default=704, help='testing size')
 parser.add_argument('--pth_path', type=str, default='./Checkpoints/E100/Checkpoints/C2FNet/C2FNet-99.pth')
 
-for _data_name in ['ACOD-12K']: #'CAMO','CHAMELEON','COD10K'
+for _data_name in ['ACOD-12K', 'PApple_RGB-D-Size', 'Sweet_Pepper']: #'CAMO','CHAMELEON','COD10K'
     data_path = './Datasets/{}/Test/'.format(_data_name)
     save_path = './Results/C2FNet/{}/'.format(_data_name)
     opt = parser.parse_args()
