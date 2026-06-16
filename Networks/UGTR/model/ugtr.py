@@ -3,15 +3,10 @@ from torch import nn
 import torch.nn.functional as F
 
 import model.resnet as models
-import pdb
-import os
-import faiss
-import h5py
 import numpy as np
 from model.position_encoding import build_position_encoding
 from model.transformer import build_transformer
 from model.pmm import PMMs
-import torchvision
 from util.util import mask_from_tensor
 
 class UGTRNet(nn.Module):
