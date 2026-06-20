@@ -152,8 +152,8 @@ class GraphNet(nn.Module):
         eps = 1e-6
         for node_id in range(self.node_num):
             residual = (x.view(B, C, -1).permute(0, 2, 1).contiguous() - self.anchor[node_id, :]).div(sigma[node_id, :] + eps)
-            soft_assign[:, node_id, :] = -torch.pow(torch.norm(residual, dim=2), 2) / 2
-
+            #soft_assign[:, node_id, :] = -torch.pow(torch.norm(residual, dim=2), 2) / 2
+            soft_assign[:, node_id, :] = -torch.pow(torch.norm(residual, dim=2), 2).clamp(max=88.0) / 2
         soft_assign = F.softmax(soft_assign, dim=1)
 
         return soft_assign
