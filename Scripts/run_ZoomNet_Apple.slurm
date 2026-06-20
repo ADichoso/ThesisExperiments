@@ -1,6 +1,6 @@
 #!/bin/bash
-#SBATCH --partition="gpu_a100"
-#SBATCH --qos="gpu-a100_default"
+#SBATCH --partition="gpu"
+#SBATCH --qos="gpu-p40_default"
 #SBATCH --gres=gpu:1
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
