@@ -360,6 +360,8 @@ def train(train_loader, model, optimizer, scaler, epoch):
                     logger.info(f"  region_out nan={torch.isnan(region_out).any().item()} inf={torch.isinf(region_out).any().item()}")
                     logger.info(f"  edge_out   nan={torch.isnan(edge_out).any().item()} inf={torch.isinf(edge_out).any().item()}")
                 optimizer.zero_grad()
+                del region_out, edge_out, main_loss
+                torch.cuda.empty_cache()
                 continue
 
             if not args.multiprocessing_distributed:
@@ -436,8 +438,8 @@ def validate(val_loader, model, gray_folder, edge_folder):
         pred1, pred2 = torch.sigmoid(pred1.squeeze(1)), torch.sigmoid(pred2.squeeze(1))
  
         if args.zoom_factor != 8:
-            pred1 = F.interpolate(pred1, size=target.size()[1:], mode='bilinear', align_corners=True)
-            pred2 = F.interpolate(pred2, size=target.size()[1:], mode='bilinear', align_corners=True)
+            pred1 = F.interpolate(pred1.unsqueeze(1), size=target1.size()[1:], mode='bilinear', align_corners=True).squeeze(1)
+            pred2 = F.interpolate(pred2.unsqueeze(1), size=target2.size()[1:], mode='bilinear', align_corners=True).squeeze(1)
 
         pred1, pred2 = pred1.detach().cpu().numpy(), pred2.detach().cpu().numpy()
         target1, target2 = target1.numpy(), target2.numpy()
