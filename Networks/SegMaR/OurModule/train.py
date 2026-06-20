@@ -155,7 +155,7 @@ for epoch in range(1, (opt.epoch+1)):
 
     adjust_lr(generator_optimizer, opt.lr_gen, epoch, opt.decay_rate, opt.decay_epoch)
 
-    save_path = './Checkpoints/SegMaR/{}'.format(opt.dataset)
+    save_path = './Checkpoints/SegMaR/{}/'.format(opt.dataset)
 
     if not os.path.exists(save_path):
         os.makedirs(save_path)
