@@ -17,12 +17,8 @@ echo "CUDA_DEVICE=/dev/nvidia/$CUDA_VISIBLE_DEVICES"
 nvidia-smi
 
 module load anaconda
-source $(conda info --base)/etc/profile.d/conda.sh
-conda -V
 
-conda activate Training36
-
-srun python Networks/HitNet/Train.py --dataset="ACOD-12K"
+srun Environments/HitNet/bin/python Networks/HitNet/Train.py --dataset="ACOD-12K"
 
 
 conda deactivate
