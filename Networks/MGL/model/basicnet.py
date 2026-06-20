@@ -165,7 +165,7 @@ class GraphNet(nn.Module):
         sigma = torch.sigmoid(self.sigma)
         soft_assign = self.gen_soft_assign(x, sigma) # B x C x N(N=HxW)
         #
-        eps = 1e-9
+        eps = 1e-6
         nodes = torch.zeros([B, self.node_num, C], dtype=x.dtype, layout=x.layout, device=x.device)
         for node_id in range(self.node_num):
             residual = (x.view(B, C, -1).permute(0, 2, 1).contiguous() - self.anchor[node_id, :]).div(sigma[node_id, :]) # + eps)
