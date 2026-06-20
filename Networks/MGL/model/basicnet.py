@@ -150,7 +150,7 @@ class GraphNet(nn.Module):
         N = H*W
         soft_assign = torch.zeros([B, self.node_num, N], device=x.device, dtype=x.dtype, layout=x.layout)
         for node_id in range(self.node_num):
-            residual = (x.view(B, C, -1).permute(0, 2, 1).contiguous() - self.anchor[node_id, :]).div(sigma[node_id, :]) # + eps)
+            residual = (x.view(B, C, -1).permute(0, 2, 1).contiguous() - self.anchor[node_id, :]).div(sigma[node_id, :] + eps)
             soft_assign[:, node_id, :] = -torch.pow(torch.norm(residual, dim=2), 2) / 2
 
         soft_assign = F.softmax(soft_assign, dim=1)
