@@ -21,7 +21,7 @@ module load anaconda
 source $(conda info --base)/etc/profile.d/conda.sh
 conda -V
 
-conda activate Training36
+#conda activate Training36
 
 srun python Networks/FSPNet/trainsingle.py --dataset="PApple_RGB-D-Size"
 
