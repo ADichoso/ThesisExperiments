@@ -17,7 +17,7 @@ nvidia-smi
 
 module load anaconda/3-2024
 conda init
-conda activate Training36
+#conda activate Training36
 
 srun python Networks/DaCOD/train.py --dataset="PApple_RGB-D-Size"
 
