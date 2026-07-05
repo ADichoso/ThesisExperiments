@@ -13,7 +13,7 @@ from PIL import Image
 
 def make_dataset(root):
     image_path = os.path.join(root,'Imgs')
-    depth_path = os.path.join(root,'Depth')
+    depth_path = os.path.join(root,'DaCOD_Depth')
     gt_path = os.path.join(root,'GT')
 
     #分割对应路径下的文件名和后缀

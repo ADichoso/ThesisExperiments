@@ -12,13 +12,13 @@ from utils.dataloader import test_dataset
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--testsize', type=int, default=704, help='testing size default 704')
-parser.add_argument('--pth_path', type=str, default='./Checkpoints/RISNet_NoDepth/100_RISNet.pth', help='path to load your model checkpoint')
+parser.add_argument('--pth_path', type=str, default='./Checkpoints/RISNet/Sweet_Pepper/100_RISNet.pth', help='path to load your model checkpoint')
 parser.add_argument('--test_path', type=str, default='./Datasets/', help='path to test dataset')
 opt = parser.parse_args()
 
-for _data_name in ['ACOD-12K']:
-    data_path = opt.test_path + '{}/Test/'.format(_data_name)
-    save_path = './Results/RISNet_NoDepth/{}/'.format(_data_name)
+for _data_name in ['Sweet_Pepper']: #, 'ACOD-12K', 'PApple_RGB-D-Size'    
+    data_path = opt.test_path + '{}/Test/'.format(_data_name)    
+    save_path = './Results/RISNet_ND/{}/'.format(_data_name)
     model = RISNet()
     model.load_state_dict(torch.load(opt.pth_path, map_location="cuda:0"))
     model.cuda()

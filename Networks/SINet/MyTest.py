@@ -14,16 +14,16 @@ device = "cpu"
 parser = argparse.ArgumentParser()
 parser.add_argument('--testsize', type=int, default=352, help='the snapshot input size')
 parser.add_argument('--model_path', type=str,
-                    default='./Checkpoints/SINet/SINet_40.pth')
+                    default='./Checkpoints/SINet/Sweet_Pepper/SINet_40.pth')
 parser.add_argument('--test_save', type=str,
-                    default='./Result/SINet/')
+                    default='./Results/SINet/')
 opt = parser.parse_args()
 
 model = SINet_ResNet50().to(device)
 model.load_state_dict(torch.load(opt.model_path))
 model.eval()
 
-for dataset in ['ACOD-12K']:
+for dataset in ['Sweet_Pepper']:  # , 'ACOD-12K', 'PApple_RGB-D-Size'
     save_path = opt.test_save + dataset + '/'
     os.makedirs(save_path, exist_ok=True)
     # NOTES:

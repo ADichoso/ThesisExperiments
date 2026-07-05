@@ -1,0 +1,2 @@
+
+python ./Networks/DaCOD_SYNDEPTH/NeWCRFs/newcrfs/test.py --data_path ./ --dataset kitti --filenames_file ./Networks/DaCOD_SYNDEPTH/NeWCRFs/data_splits/Sweet_Pepper_Test.txt --checkpoint_path ./Networks/DaCOD_SYNDEPTH/NeWCRFs/models/model_nyu.ckpt --max_depth 10 --save_viz

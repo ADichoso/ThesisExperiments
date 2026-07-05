@@ -53,6 +53,7 @@ class Converter(nn.Module):
         for index in range(len(token_pair) // 2):
             f1_ = self.norm_layer_f1(token_pair[index * 2][:, 2:, :])  # [8,576,768]
             f2_ = self.norm_layer_f2(token_pair[index * 2 + 1][:, 2:, :])  # [8,576,768]
+            
             f1_ = f1_.permute(0, 2, 1).view(bs, chs, int(self.img_size // 16), int(self.img_size // 16)).contiguous()
             # [8,768,24,24]
             f2_ = f2_.permute(0, 2, 1).view(bs, chs, int(self.img_size // 16), int(self.img_size // 16)).contiguous()

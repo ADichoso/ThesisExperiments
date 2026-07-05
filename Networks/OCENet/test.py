@@ -27,7 +27,7 @@ device = "cpu"
 
 # Create the COD-Network and load the weights
 COD_Net = Generator(channel=32).to(device)
-state_dict = torch.load('./Checkpoints/OCENet/COD_Model_50.pth', map_location=device)
+state_dict = torch.load('./Checkpoints/OCENet/Sweet_Pepper/COD_Model_50.pth', map_location=device)
 new_state_dict = OrderedDict()
 # for k, v in state_dict.items():
 #     name = k[7:]
@@ -37,11 +37,11 @@ COD_Net.eval()
 
 # Create the OCE-Network and load the weights
 OCE_Net = FCDiscriminator().to(device)
-OCE_Net.load_state_dict(torch.load('./Checkpoints/OCENet/OCE_Model_50.pth', map_location=device))
+OCE_Net.load_state_dict(torch.load('./Checkpoints/OCENet/Sweet_Pepper/OCE_Model_50.pth', map_location=device))
 OCE_Net.eval()
 
 # 4 COD test datasets
-test_datasets = ['ACOD-12K']
+test_datasets = ['Sweet_Pepper']
 
 # Iterate over the test datasets
 for dataset in test_datasets:

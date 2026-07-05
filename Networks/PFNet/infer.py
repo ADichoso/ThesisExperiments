@@ -45,7 +45,9 @@ img_transform = transforms.Compose([
 to_pil = transforms.ToPILImage()
 
 to_test = OrderedDict([
-                       ('ACOD-12K', "./Datasets/ACOD-12K/test/")
+                       #('ACOD-12K', "./Datasets/ACOD-12K/test/"),
+                       ('Sweet_Pepper', "./Datasets/Sweet_Pepper/test/")
+                       #('PApple_RGB-D-Size', "./Datasets/PApple_RGB-D-Size/test/")
                        ])
 
 results = OrderedDict()
@@ -53,7 +55,7 @@ results = OrderedDict()
 def main():
     net = PFNet(backbone_path).cuda(device_ids[0])
 
-    net.load_state_dict(torch.load('./Networks/PFNet/PFNet.pth'))
+    net.load_state_dict(torch.load('./Checkpoints/PFNet/Sweet_Pepper/100.pth'))
     print('Load {} succeed!'.format('PFNet.pth'))
 
     net.eval()

@@ -13,8 +13,6 @@ from torch.utils.tensorboard import SummaryWriter
 from tqdm import tqdm
 import torch.nn.functional as F
 
-
-
 import utils.joint_transforms as joint_transforms 
 from data.dataset import ImageFolder
 from utils.config import depth_cod_training_root
@@ -190,8 +188,6 @@ def train(net,optimizer):
             
             
             predict1,predict2,predict3,predict4,predict5  = net(inputs)
-
-            
 
             
             loss_1 = bce_iou_loss(predict1,labels)

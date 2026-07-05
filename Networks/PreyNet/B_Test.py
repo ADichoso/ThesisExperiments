@@ -14,10 +14,10 @@ import cv2
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--testsize', type=int, default=704, help='testing size')
-parser.add_argument('--pth_path', type=str, default='./Checkpoints/PreyNet/Net_epoch_best.pth')
+parser.add_argument('--pth_path', type=str, default='./Checkpoints/PreyNet/Sweet_Pepper/Net_epoch_best.pth')
 opt = parser.parse_args()
 
-for _data_name in ['ACOD-12K']:
+for _data_name in ['Sweet_Pepper']: #, 'ACOD-12K', 'PApple_RGB-D-Size'
     # 'CHAMELEON', 'CAMO', 'COD10K', 'NC4K'
     data_path = './Datasets/{}/Test'.format(_data_name)
     save_path = './Results/PreyNet/{}/'.format(_data_name)

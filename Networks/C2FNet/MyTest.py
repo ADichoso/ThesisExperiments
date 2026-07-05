@@ -9,17 +9,18 @@ import time
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--testsize', type=int, default=704, help='testing size')
-parser.add_argument('--pth_path', type=str, default='./Checkpoints/E100/Checkpoints/C2FNet/C2FNet-99.pth')
+parser.add_argument('--checkpoint', type=str, default='./Checkpoints/C2FNet')
+parser.add_argument('--pth_file', type=str, default='C2FNet-99.pth')
 
-for _data_name in ['ACOD-12K', 'PApple_RGB-D-Size', 'Sweet_Pepper']: #'CAMO','CHAMELEON','COD10K'
-    data_path = './Datasets/{}/Test/'.format(_data_name)
+for _data_name in ['ACOD-12K', 'Sweet_Pepper']: #'PApple_RGB-D-Size'
+    data_path = './Datasets/{}/Test'.format(_data_name)
     save_path = './Results/C2FNet/{}/'.format(_data_name)
     opt = parser.parse_args()
     model = C2FNet()
     #model = torch.nn.DataParallel(model)
     #torch.backends.cudnn.benchmark = True
     torch.cuda.set_device(0)
-    model.load_state_dict(torch.load(opt.pth_path))
+    model.load_state_dict(torch.load(os.path.join(opt.checkpoint, _data_name, opt.pth_file)))
     model.cuda()
     model.eval()
 

@@ -231,7 +231,7 @@ class ResNet(nn.Module):
 def _resnet(arch, block, layers, backbone_path, pretrained, **kwargs):
     model = ResNet(block, layers, **kwargs)
     if pretrained:
-        state_dict = torch.load(backbone_path)
+        state_dict = torch.load(backbone_path, weights_only=False)
         model.load_state_dict(state_dict)
         print("From {} Load {} Weights Succeed!".format(backbone_path, arch))
     return model

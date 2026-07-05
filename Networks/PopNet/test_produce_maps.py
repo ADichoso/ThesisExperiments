@@ -27,12 +27,12 @@ model = PopNet(32,50)
 model.cuda()
 
 #model.load_state_dict(torch.load('./Checkpoint/SPNet/SPNet_epoch_best.pth'))
-model.load_state_dict(torch.load('./Checkpoints/PopNet/PopNet_epoch_100.pth'))
+model.load_state_dict(torch.load('./Checkpoints/PopNet/Sweet_Pepper/PopNet_epoch_100.pth'))
 
 model.eval()
 
 #test
-test_datasets = ['ACOD-12K'] 
+test_datasets = ['Sweet_Pepper'] #'P-Apple_RGB-D-Size', 'ACOD-12K'
 
 #test_datasets = ['STERE'] 
 

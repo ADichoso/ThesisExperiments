@@ -227,7 +227,7 @@ class RISNet(nn.Module):
 
         # Load PVT
         self.backbone = pvt_v2_b2()  # [64, 128, 320, 512]
-        path = os.getcwd() + '/Backbones/RISNet_pvt_v2_b2.pth'
+        path = os.getcwd() + '/Backbones/HitNet_pvt_v2_b2.pth'
         save_model = torch.load(path)
         model_dict = self.backbone.state_dict()
         state_dict = {k: v for k, v in save_model.items() if k in model_dict.keys()}

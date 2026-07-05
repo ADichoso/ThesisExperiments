@@ -58,7 +58,7 @@ class TestDataset(Dataset):
         self.count={}
         for i in self.list:
             self.image.append(os.path.join(path, "Imgs", i))
-            self.label.append(os.path.join(path, "GT", i.split(".")[0]+".png"))
+            self.label.append(os.path.join(path, "GT", i))
     def __len__(self):
         return len(self.image)
     def __getitem__(self, item):

@@ -14,12 +14,12 @@ from utils import builder, configurator, io, misc, ops, pipeline
 
 def parse_config():
     parser = argparse.ArgumentParser("Training and evaluation script")
-    parser.add_argument("--config", default="Networks/ZoomNet/configs/zoomnet/cod_zoomnet.py", type=str)
+    parser.add_argument("--config", default="Networks/ZoomNet/configs/zoomnet/peppers.py", type=str)
     parser.add_argument("--datasets-info", default="Networks/ZoomNet/configs/_base_/dataset/dataset_configs.json", type=str)
     parser.add_argument("--model-name", default="ZoomNet", type=str)
     parser.add_argument("--batch-size", type=int)
-    parser.add_argument("--load-from", default="Networks/ZoomNet/output/ZoomNet_BS4_LR0.0001_E45_H448_W448_OPMsgd_OPGMfinetune_SCf3_AMP/pth/state_final.pth", type=str)
-    parser.add_argument("--save-path", default="Results/ZoomNet/ACOD-12K", type=str)
+    parser.add_argument("--load-from", default="./Checkpoints/ZoomNet/Sweet_Pepper/pth/state_final.pth", type=str)
+    parser.add_argument("--save-path", default="Results/ZoomNet/Sweet_Pepper", type=str)
     parser.add_argument("--minmax-results", action="store_true")
     parser.add_argument("--info", type=str)
     args = parser.parse_args()

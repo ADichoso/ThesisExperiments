@@ -9,11 +9,11 @@ from utils.dataloader import My_test_dataset
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--testsize', type=int, default=704, help='testing size default 352')
-parser.add_argument('--pth_path', type=str, default='./Checkpoints/HitNet/Net_epoch_best.pth')
+parser.add_argument('--pth_path', type=str, default='./Checkpoints/HitNet/Sweet_Pepper/Net_epoch_best.pth')
 opt = parser.parse_args()
 
 # for _data_name in ['CAMO', 'COD10K', 'CHAMELEON',NC4K]:
-for _data_name in ['ACOD-12K', 'PApple_RGB-D-Size', 'Sweet_Pepper']:
+for _data_name in ['Sweet_Pepper']: #'ACOD-12K', 'PApple_RGB-D-Size'
     data_path = './Datasets/{}/Test'.format(_data_name)
     save_path = './Results/HitNet/{}/'.format(_data_name)
     model = Hitnet()

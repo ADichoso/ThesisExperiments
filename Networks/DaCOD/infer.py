@@ -44,7 +44,7 @@ to_pil = transforms.ToPILImage()
 
 to_test = OrderedDict([
                         ('ACOD-12K', "./Datasets/ACOD-12K/Test/"),
-                        ('Papple_RGB-D-Size', "./Datasets/Papple_RGB-D-Size/Test/"),
+                        #('Papple_RGB-D-Size', "./Datasets/Papple_RGB-D-Size/Test/"),
                         ('Sweet_Pepper', "./Datasets/Sweet_Pepper/Test/"),
                        ])
 
