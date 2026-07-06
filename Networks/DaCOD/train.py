@@ -36,7 +36,7 @@ opt = parser.parse_args()
 
 cudnn.benchmark = True  
 torch.manual_seed(2021)  
-device_ids = [3]         
+device_ids = [0]         
 
 ckpt_path = './Checkpoints/'     
 exp_name = 'DaCOD'
