@@ -19,9 +19,9 @@ nvcc --version
 cd ..
 
 module load anaconda
-conda init
-conda activate PopNet
+#conda init
+#conda activate PopNet
 
-srun python Networks/PopNet/train.py --dataset="PApple_RGB-D-Size"
+srun /scratch1/aaron.dichoso/Environments/MGL/bin/python Networks/PopNet/train.py --dataset="PApple_RGB-D-Size"
 
 conda deactivate
