@@ -20,7 +20,7 @@ results_path = './Results'
 check_mkdir(results_path)
 exp_name = 'DaCOD'
 args = {
-    'scale': 704,
+    'scale': 448,
     'save_results': True
 }
 
@@ -43,9 +43,9 @@ gt_transform = transforms.Compose([
 to_pil = transforms.ToPILImage()
 
 to_test = OrderedDict([
-                        ('ACOD-12K', "./Datasets/ACOD-12K/Test/"),
+                        #('ACOD-12K', "./Datasets/ACOD-12K/Test/"),
                         #('Papple_RGB-D-Size', "./Datasets/Papple_RGB-D-Size/Test/"),
-                        ('Sweet_Pepper', "./Datasets/Sweet_Pepper/Test/"),
+                        ('Sweet_Pepper', "./Datasets/Sweet_Pepper/Test/")
                        ])
 
 
@@ -54,8 +54,8 @@ results = OrderedDict()
 def main():
     net = De_cod('./Backbones/resnet50-19c8e357.pth').cuda(device_ids[0])
 
-    net.load_state_dict(torch.load('./Checkpoints/DaCOD/55.pth'))
-    print('Load {} succeed!'.format('55.pth'))
+    net.load_state_dict(torch.load('./Checkpoints/DaCOD/Sweet_Pepper/60.pth'))
+    print('Load {} succeed!'.format('60.pth'))
 
     net.eval()
     with torch.no_grad():
@@ -63,7 +63,7 @@ def main():
         for name, root in to_test.items():
             time_list = []
             image_path = os.path.join(root, 'Imgs')
-            depth_path = os.path.join(root, 'Depth')
+            depth_path = os.path.join(root, 'DaCOD_Depth')
             gt_path = os.path.join(root, 'GT')
 
             if args['save_results']:

@@ -45,7 +45,7 @@ for dataset in test_datasets:
 
     image_root  = dataset_path + dataset + '/Test/Imgs/'
     gt_root     = dataset_path + dataset + '/Test/GT/'
-    depth_root  = dataset_path + dataset + '/Test/Depth/'
+    depth_root  = dataset_path + dataset + '/Test/PopNet_Depth/'
     test_loader = test_dataset(image_root, gt_root,depth_root, opt.testsize)
     for i in range(test_loader.size):
         image, gt,depth, name, image_for_post = test_loader.load_data()
