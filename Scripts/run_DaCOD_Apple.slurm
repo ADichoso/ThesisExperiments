@@ -17,9 +17,9 @@ echo "CUDA_DEVICE=/dev/nvidia/$CUDA_VISIBLE_DEVICES"
 nvidia-smi
 
 module load anaconda/3-2024
-conda init
+#conda init
 #conda activate Training36
 
-srun python Networks/DaCOD/train.py --dataset="PApple_RGB-D-Size"
+srun /scratch1/aaron.dichoso/Environments/MGL/bin/python Networks/DaCOD/train.py --dataset="PApple_RGB-D-Size"
 
 conda deactivate

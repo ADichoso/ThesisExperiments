@@ -284,9 +284,9 @@ def save_depth(depth: np.ndarray, out_path: Path, save_vis: bool = False):
 # =============================================================================
 def parse_args():
     p = argparse.ArgumentParser(description="PopNet Sec 3.1 source-free depth generator")
-    p.add_argument("--input_dir",   default="./Datasets/ACOD-12K/Train/Imgs",
+    p.add_argument("--input_dir",   default="./Datasets/ACOD-12K/Test/Imgs",
                    help="Directory of RGB images")
-    p.add_argument("--output_dir",  default="./Datasets/ACOD-12K/Train/PopNet_Depth",
+    p.add_argument("--output_dir",  default="./Datasets/ACOD-12K/Test/PopNet_Depth",
                    help="Directory to write depth maps")
     p.add_argument("--dpt_weights", default="./Backbones/dpt_large-midas-2f21e586.pt",
                    help="Path to dpt_large-midas-2f21e586.pt")
