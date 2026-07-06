@@ -50,7 +50,7 @@ args = {
     'momentum': 0.9,                                    
     'snapshot': '',
     'scale': opt.trainsize,                                       
-    'save_point': [i for i in range (5, 60, 5)],
+    'save_point': [i for i in range (5, 65, 5)],
     'poly_train': True,                                 
     'optimizer': 'SGD',                                 
 }
@@ -66,7 +66,7 @@ check_mkdir(vis_path)                                #检查日志文件夹路�
 
 log_path = os.path.join("./Checkpoints/",exp_name, opt.dataset, 'log.txt')
 
-log_path = log_path.replace('-','_')
+#log_path = log_path.replace('-','_')
 log_path = log_path.replace(':','_')
 writer = SummaryWriter(log_dir=vis_path, comment=exp_name)
 
