@@ -91,7 +91,7 @@ dp_transform = transforms.ToTensor()
 
 
 
-train_set = ImageFolder(".Datasets/{}/Train".format(opt.dataset),joint_transform,img_transform,gt_transform,dp_transform)
+train_set = ImageFolder("./Datasets/{}/Train".format(opt.dataset),joint_transform,img_transform,gt_transform,dp_transform)
 print("Train set: {}".format(train_set.__len__()))
 train_loader = DataLoader(train_set, batch_size=args['train_batch_size'], num_workers=16, shuffle=True)
 
