@@ -121,7 +121,7 @@ def cal_ual(pred):
 
 def flat(mask):
     batch_size = mask.shape[0]
-    h = 28
+    h = args['scale'] // 16
     mask = F.interpolate(mask,size=(int(h),int(h)), mode='bilinear')
     x = mask.view(batch_size, 1, -1).permute(0, 2, 1) 
    
@@ -174,7 +174,7 @@ def train(net,optimizer):
 
             img,labels,dp = data
 
-            inputs = torch.cat((img,dp),dim=1)
+            inputs = torch.cat((img,dp),dim=0)
             
 
             batch_size = inputs.size(0)
