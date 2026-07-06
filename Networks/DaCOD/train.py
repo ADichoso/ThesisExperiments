@@ -65,7 +65,7 @@ vis_path = os.path.join(ckpt_path,exp_name,'log')    #拼接日志文件夹的�
 check_mkdir(vis_path)                                #检查日志文件夹路径是否存在   没有就创建
 
 
-log_path = os.path.join("./Logs/",exp_name,exp_name + "_" + opt.dataset + "_" + str(datetime.datetime.now())+'.txt')
+log_path = os.path.join("./Checkpoints/",exp_name, opt.dataset, str(datetime.datetime.now())+'.txt')
 
 log_path = log_path.replace('-','_')
 log_path = log_path.replace(':','_')
