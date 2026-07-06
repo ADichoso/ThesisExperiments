@@ -23,13 +23,12 @@ from models.Depth_cod import De_cod
 
 import utils.loss as loss
 
-
 import argparse
 parser = argparse.ArgumentParser()
-parser.add_argument('--epoch', type=int, default=100)
+parser.add_argument('--epoch', type=int, default=60)
 parser.add_argument('--lr', type=float, default=1e-4)
-parser.add_argument('--batchsize', type=int, default=4)
-parser.add_argument('--trainsize', type=int, default=704)
+parser.add_argument('--batchsize', type=int, default=10)
+parser.add_argument('--trainsize', type=int, default=448)
 parser.add_argument('--dataset', type=str, default='ACOD-12K')
 
 opt = parser.parse_args()
@@ -51,7 +50,7 @@ args = {
     'momentum': 0.9,                                    
     'snapshot': '',
     'scale': opt.trainsize,                                       
-    'save_point': [i for i in range (5, 50, 5)],
+    'save_point': [i for i in range (5, 60, 5)],
     'poly_train': True,                                 
     'optimizer': 'SGD',                                 
 }
@@ -90,7 +89,6 @@ gt_transform = transforms.ToTensor()
 dp_transform = transforms.ToTensor()  
 
 
-
 train_set = ImageFolder("./Datasets/{}/Train".format(opt.dataset),joint_transform,img_transform,gt_transform,dp_transform)
 print("Train set: {}".format(train_set.__len__()))
 train_loader = DataLoader(train_set, batch_size=args['train_batch_size'], num_workers=16, shuffle=True)
@@ -103,8 +101,6 @@ structure_loss = loss.structure_loss().cuda(device_ids[0])
 bce_loss = nn.BCEWithLogitsLoss().cuda(device_ids[0])
 iou_loss = loss.IOU().cuda(device_ids[0])
 ce_loss = nn.CrossEntropyLoss().cuda(device_ids[0])
-
-
 
 
 def bce_iou_loss(pred, target):
@@ -121,7 +117,7 @@ def cal_ual(pred):
 
 def flat(mask):
     batch_size = mask.shape[0]
-    h = args['scale'] // 16
+    h = 28
     mask = F.interpolate(mask,size=(int(h),int(h)), mode='bilinear')
     x = mask.view(batch_size, 1, -1).permute(0, 2, 1) 
    
